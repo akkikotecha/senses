@@ -24,11 +24,11 @@
 				<p class="p_all_text_set mb-4 d-none" style="font-size:19px">Browse our range today to elevate your workspace experience.
 				</p>
 				<div class="row justify-content-between mt-5">
-					<div class="col-lg-3 ">
-						<a [routerLink]="['/sub_products']"><div class="card">
-						<img src="assets/1 Booths  Pods.webp" class="card-img-top" alt="...">
+					<div class="col-lg-3 "  *ngFor="let getData of Data.data">
+						<a (click)="sub_products(getData._id,getData.categoryName)"><div class="card">
+						<img src="assets/{{getData.image}}" class="card-img-top" alt="...">
 						<div class="card-body">
-						<h5 class="card-title p_all_text_set card_header" >Booths & Pods</h5>
+						<h5 class="card-title p_all_text_set card_header" >{{getData.categoryName}}</h5>
 						
 						<p class="card-text text-left p_all_text_set d-none"><a href="#" class="set_link" >BLOG</a>
 						</p>
@@ -36,7 +36,7 @@
 				</div>
 				</a>
 			</div>
-			<div class="col-lg-3 ">
+			<!-- <div class="col-lg-3 ">
 				<a [routerLink]="['/sub_products']"><div class="card">
 				<img src="assets/2-Space-Dividers.webp" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -71,7 +71,7 @@
 	</div>
 	</div>
 	</a>
-	</div>
+	</div> -->
 	</div>
 	</div>
 	</div>

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +26,22 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FindDealerComponent } from './find-dealer/find-dealer.component';
 import { ResourceDetailComponent } from './resource-detail/resource-detail.component';
 import { ZestPorudctDetailsComponent } from './zest-porudct-details/zest-porudct-details.component';
+import { ResoucesNewComponent } from './resouces-new/resouces-new.component';
+import { ResourcesGalleryComponent } from './resources-gallery/resources-gallery.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
+import { AdminCategoryComponent } from './admin-category/admin-category.component';
+import { AdminProductComponent } from './admin-product/admin-product.component';
+import { AdminProductDetailComponent } from './admin-product-detail/admin-product-detail.component';
+import { AdminProductDetailShowComponent } from './admin-product-detail-show/admin-product-detail-show.component';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { HtmlToPlaintextPipe } from './admin-product-detail-show/html-to-plaintext.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,13 +63,31 @@ import { ZestPorudctDetailsComponent } from './zest-porudct-details/zest-porudct
     NotFoundComponent,
     FindDealerComponent,
     ResourceDetailComponent,
-    ZestPorudctDetailsComponent
+    ZestPorudctDetailsComponent,
+    ResoucesNewComponent,
+    ResourcesGalleryComponent,
+    AdminloginComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    AdminHeaderComponent,
+    AdminSidebarComponent,
+    AdminCategoryComponent,
+    AdminProductComponent,
+    AdminProductDetailComponent,
+    AdminProductDetailShowComponent,
+    HtmlToPlaintextPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MDBBootstrapModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

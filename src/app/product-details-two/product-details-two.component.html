@@ -80,9 +80,9 @@
 		<div class="row">
 		
 <nav class="px-0">
-    <div class="nav nav-tabs  justify-content-center" id="nav-tab" role="tablist" style="border-bottom: 0px solid #dee2e6;">
+    <div class="nav nav-tabs  justify-content-center" id="nav-tab" role="tablist" style="border-bottom: 0px solid #dee2e6;margin: 0px!important;">
       <button class="nav-link active" id="nav-home-tab" style="line-height: 46px;font-weight:600;" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Overview</button>
-      <button class="nav-link" id="nav-profile-tab" style="line-height: 46px;font-weight:600;" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Downloads</button>
+      <button class="nav-link ml-4" id="nav-profile-tab" style="line-height: 46px;font-weight:600;" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Downloads</button>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
@@ -99,18 +99,9 @@
 									Kolo
 								</h5>
 								<p class="p-card-text text-left p_all_text_set" style="font-size:19px">
-									Inspired by the word "colloquy," which means dialogue or conversation. The Kolo range is designed to provide a space that fosters collaboration, discussion, and productivity.
-
+									{{this.Data[0][0].overview | htmlToPlaintext}}
 								</p>
-								<p class="p-card-text  text-left p_all_text_set mt-2" style="font-size:19px">
-									
-These office pods offer a protected environment for private conversations or focused work, helping you to stay productive and on-task. Kolo is designed with comfort in mind, featuring ergonomic seating and ample space to move around.
-
-								</p>
-								<p class="p-card-text  text-left p_all_text_set mt-2" style="font-size:19px">
-									
-With soundproof walls and excellent acoustics, you can enjoy a quiet and focused workspace without worrying about distractions or interruptions.
-								</p>
+								
 								<p class="card-text text-left p_all_text_set mt-2">
 									<button class="btn btn-dark" style="background-color: #232026;">
 										Get Quote
@@ -242,7 +233,7 @@ With soundproof walls and excellent acoustics, you can enjoy a quiet and focused
             </div>
         </div>
 	</div>
-	<div class="col-lg-12 px-0 d-flex align-items-center">
+	<div class="col-lg-12 px-0 d-flex align-items-center mb-5">
 		<div class="col-lg-6">
             <img src="assets/sub_pro_image/Vents-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4" alt="...">
             <div class="">
@@ -292,20 +283,17 @@ With soundproof walls and excellent acoustics, you can enjoy a quiet and focused
 	<div class="container-fluid">
 		<div class="row " style="background: #fbfbfb;">
 			<div class="col-lg-6 px-0 text-center">
-				<img src="assets/sub_pro_image/Solo Single Pod.jpg" class="w-100" style="width: 70%!important;" alt="...">
+				<img src="assets/{{this.Data[0][0].featuredOneImage | htmlToPlaintext}}" class="w-100" style="width: 70%!important;" alt="...">
 			</div>
     <div class="col-lg-6 px-5 d-flex align-items-center" style="background: #fbfbfb!important;">
         <div class="card" style="background-color:transparent!important;background: transparent!important;">
-            <img src="assets/sub_pro_image/Solo Single Pod.jpg" class="card-img-top card-img-top-width mx-auto d-none" alt="...">
+            <img src="assets/{{this.Data[0][0].featuredOneImage | htmlToPlaintext}}" class="card-img-top card-img-top-width mx-auto d-none" alt="...">
             <div class="card-body mt-3">
                 <h5 class="card-title p_all_text_set text-left card_header" style="font-size: 32px;">
-					Solo Single Pod
+					{{this.Data[0][0].featuredOneTitle}}
                 </h5>
                 <p class="card-text text-left p_all_text_set" style="font-size:17px;width: 80%;">
-					Your Confidential Call and Video Conference Haven.
-
-					Experience privacy on-demand with Solo. This sleek pod provides a personal space for quick, confidential calls and video conferences. Keep conversations private, allowing colleagues to focus undisturbed.
-					
+					{{this.Data[0][0].featuredOneDesc | htmlToPlaintext}}
                 </p>
                 <p class="card-text text-left p_all_text_set d-none">
                     <a href="#" class="set_link">BLOG</a>
@@ -322,13 +310,10 @@ With soundproof walls and excellent acoustics, you can enjoy a quiet and focused
             <img src="assets/sub_pro_image/Midi Studio Pod.jpg" class="card-img-top card-img-top-width mx-auto d-none" alt="...">
             <div class="card-body mt-3">
                 <h5 class="card-title p_all_text_set text-left card_header" style="font-size: 32px;">
-                    Midi Studio Pod
+					{{this.Data[0][0].featuredTwoTitle}}
                 </h5>
                 <p class="card-text text-left p_all_text_set" style="font-size:17px;width: 80%;">
-                    Your Private Work Sanctuary in an Open Workspace.
-
-Experience the self-contained solution for private work with Midi. Designed to create your personal space in an open-plan workspace, it provides ample room for a work desk and chair. 
-
+                    {{this.Data[0][0].featuredTwoDesc | htmlToPlaintext}}
                 </p>
                 <p class="card-text text-left p_all_text_set d-none">
                     <a href="#" class="set_link">BLOG</a>
@@ -337,26 +322,23 @@ Experience the self-contained solution for private work with Midi. Designed to c
         </div>
     </div>
     <div class="col-lg-6 px-0 text-center">
-        <img src="assets/sub_pro_image/Midi Studio Pod.jpg" class="w-100"  style="width: 70%!important;" alt="...">
+        <img src="assets/{{this.Data[0][0].featuredTwoImage | htmlToPlaintext}}" class="w-100"  style="width: 70%!important;" alt="...">
     </div>
 </div>
 <div class="row " style="background: #fbfbfb;">
                     
     <div class="col-lg-6 px-0 text-center">
-        <img src="assets/sub_pro_image/Duo Meeting Pod.jpg" class="w-100 replace_iamge" style="width: 70%!important;" alt="...">
+        <img src="assets/{{this.Data[0][0].featuredThreeImage | htmlToPlaintext}}" class="w-100 replace_iamge" style="width: 70%!important;" alt="...">
     </div>
     <div class="col-lg-6 px-5 d-flex align-items-center" style="background: #fbfbfb!important;">
         <div class="card " style="background-color:transparent!important;background: transparent!important;">
             <img src="assets/sub_pro_image/Duo Meeting Pod.jpg" class="card-img-top replace_iamge card-img-top-width mx-auto d-none" alt="...">
             <div class="card-body">
                 <h5 class="card-title p_all_text_set text-left card_header" style="font-size: 32px;">
-					Duo Meeting Pods
+					{{this.Data[0][0].featuredThreeTitle}}
                 </h5>
                 <p class="card-text text-left p_all_text_set mt-3" style="font-size:17px;width: 80%;">
-					Your Flexible Solution for Modern Workstyles.
-
-					Experience the innovation of the Duo Meeting Pods—a flexible meeting room designed for the modern open workstyle. With its modular design, it accommodates up to 4 people per unit. With the option to extend into <span class="click_url_change"  data-url="assets/sub_pro_image/Duo+.jpg" style="color:blue;cursor:pointer">Duo+</span> or <span class="click_url_change" data-url="assets/sub_pro_image/Duo++.jpg" style="color:blue;cursor:pointer">Duo++</span>, providing a formal meeting venue for up to 8 people.
-					
+					{{this.Data[0][0].featuredThreeDesc | htmlToPlaintext}}
                 </p>
                 <p class="card-text text-left p_all_text_set d-none">
                     <a href="#" class="set_link">BLOG</a>

@@ -15,6 +15,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FindDealerComponent} from './find-dealer/find-dealer.component';
 import { ResourceDetailComponent} from './resource-detail/resource-detail.component';
 import { ZestPorudctDetailsComponent } from './zest-porudct-details/zest-porudct-details.component';
+import { ResourcesGalleryComponent } from './resources-gallery/resources-gallery.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminCategoryComponent } from './admin-category/admin-category.component';
+import { AdminProductComponent } from './admin-product/admin-product.component';
+import { AdminProductDetailComponent } from './admin-product-detail/admin-product-detail.component';
+import { AdminProductDetailShowComponent } from './admin-product-detail-show/admin-product-detail-show.component';
 
 
 const routes: Routes = [{
@@ -45,15 +52,20 @@ const routes: Routes = [{
 },
 {
   path:'resources',
-  component:ResourcesComponent,
+  component:ResourceDetailComponent,
   runGuardsAndResolvers: 'always'
 },
 {
   path:'resources_detail',
-  component:ResourceDetailComponent,
+  component:ResourcesComponent,
   runGuardsAndResolvers: 'always'
 },
+{
+  path:'resources_gallery',
+  component:ResourcesGalleryComponent,
+  runGuardsAndResolvers: 'always'
 
+},
 {
   path:'insights',
   component:InsightsComponent,
@@ -94,6 +106,42 @@ const routes: Routes = [{
 {
   path:"find_dealer",
   component:FindDealerComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_login",
+  component:AdminLoginComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_dashboard",
+  component:AdminDashboardComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_product",
+  component:AdminCategoryComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_sub_product",
+  component:AdminProductComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_product_detail",
+  component:AdminProductDetailComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_product_detail_show",
+  component:AdminProductDetailShowComponent,
   runGuardsAndResolvers: 'always'
 
 }

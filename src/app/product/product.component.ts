@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
 declare var $: any;
 
+import { LazyLoadingService} from './lazy-loading.service'
+import { environment } from 'src/environments/environment';
+
+import Swal, {SweetAlertOptions} from 'sweetalert2';
+import { ProductService } from './product.service';
+declare var $: any;
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
+  // router: any;
 
+  
+  constructor(private ProductService:ProductService,private lazyLoadService:LazyLoadingService,private router:Router) { }
+  objectKeys = Object.keys;
+  Data:any;
   ngOnInit(): void {
 
     setTimeout(function(){
@@ -19,5 +31,32 @@ export class ProductComponent {
       $('.logo_style').attr('src',"./assets/SENSES LOGO.svg");
 
     },200)
+
+
+    // console.log("ID : "+localStorage.getItem('CategoryDetailId'));
+    this.ProductService.getAllCategory().subscribe((res)=>{
+  
+      this.Data = JSON.parse(JSON.stringify(res));
+     console.log("JobsiteData "+this.Data);
+    });
+  
+
+    
+      
+    }
+     
+    sub_products(id:any,name:any):void{
+      localStorage.removeItem("productId");
+      localStorage.removeItem("productname");
+      
+      localStorage.setItem("productId",id);
+      localStorage.setItem("productname",name);
+      
+      // console.log(id)
+      this.router.navigate(['sub_products'])
+      .then(() => {
+        // window.location.reload();
+      });
+    }
   }
-}
+  
