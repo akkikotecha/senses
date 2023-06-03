@@ -905,13 +905,13 @@ opacity: .4;
   position: static;
   box-shadow: none;
   text-align: right;
-  margin-right: 120px;
+  margin-right: 80px;
 }
 }
 .cd-tab-filter li {
   display: inline-block;
   font-size: 15px;
-  width: 11%;
+  width: 14%;
 }
 .cd-tab-filter li.placeholder {
   display: none !important;
@@ -1106,7 +1106,7 @@ opacity: 1;
 .cd-filter form {
   padding: 70px 10%;
   background-color: #f1f1f1;
-  padding-bottom: 1170px!important;
+  padding-bottom: 540px!important;
   
 }
 }

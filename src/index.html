@@ -60,8 +60,18 @@
         margin: 0px !important;
         font-family: "Poppins" !important;
         color: #232026;
+        outline: none !important;
       }
 
+      h5 {
+        outline: none;
+      }
+      h5:hover {
+        outline: none !important;
+      }
+      h5:focus {
+        outline: none !important;
+      }
       .zoom-effect-container {
         float: left;
         position: relative;
@@ -517,7 +527,12 @@
   <!-- <script src="https://phase2.advertigers.com/public/app/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script> -->
 
   <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.js"
+    integrity="sha512-fuxK9KrfYYxsXOm+VTYLEX3vOKymX2CDP+X1q0vsTwe9LPyJBSC3LXPu79ZNZiNCFrSzzMklmp5bU9Da/1TQEw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script></script>
 
   <!-- Modal -->
@@ -778,7 +793,10 @@
           loc.pathname == "/insights_two" ||
           loc.pathname == "/zest_product_detail" ||
           loc.pathname == "/resources_detail" ||
-          loc.pathname == "/resources_gallery"
+          loc.pathname == "/resources_gallery" ||
+          loc.pathname == "/resources_certificate" ||
+          loc.pathname == "/resources_material" ||
+          loc.pathname == "/resources_document"
         ) {
           $(".header-main").css({
             background: "#fff",

@@ -40,6 +40,9 @@ import { AdminProductDetailComponent } from './admin-product-detail/admin-produc
 import { AdminProductDetailShowComponent } from './admin-product-detail-show/admin-product-detail-show.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { HtmlToPlaintextPipe } from './admin-product-detail-show/html-to-plaintext.pipe';
+import { ResourcesCertificateComponent } from './resources-certificate/resources-certificate.component';
+import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
+import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
 
 
 @NgModule({
@@ -75,7 +78,10 @@ import { HtmlToPlaintextPipe } from './admin-product-detail-show/html-to-plainte
     AdminProductComponent,
     AdminProductDetailComponent,
     AdminProductDetailShowComponent,
-    HtmlToPlaintextPipe
+    HtmlToPlaintextPipe,
+    ResourcesCertificateComponent,
+    ResourcesDocumentComponent,
+    ResourcesMaterialComponent
   ],
   imports: [
     BrowserModule,
