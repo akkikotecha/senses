@@ -329,3 +329,13 @@ font-size: 20px;
 {
   border-bottom: none!important;
 }
+
+.set_link:hover{
+  border:0px!important;
+}
+
+
+a:hover
+{
+  text-decoration: none;
+}
