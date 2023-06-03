@@ -270,6 +270,22 @@ ngAfterViewInit() {
         .catch((error: any) => {
             console.error('Editor initialization error.', error);
         });
+        ClassicEditor
+        .create(document.querySelector('#editEditor'))
+        .then((editor: { on: (arg0: string, arg1: { (): void; (): void; }) => void; model: { document: { on: (arg0: string, arg1: (evt: any, data: any) => void) => void; }; }; getData: () => any; }) => {
+            // Initialization code
+            console.log('Editor initialized.');
+      
+            editor.model.document.on('change:data', (_evt, _data) => {
+              // Code to run when the document's data changes
+              this.overview_text = editor.getData();
+
+              console.log(editor.getData());
+          });
+        })
+        .catch((error: any) => {
+            console.error('Editor initialization error.', error);
+        });
 
         ClassicEditor
         .create(document.querySelector('#featureOneDescription'))
