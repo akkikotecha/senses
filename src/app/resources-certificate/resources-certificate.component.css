@@ -911,7 +911,7 @@ opacity: .4;
 .cd-tab-filter li {
   display: inline-block;
   font-size: 15px;
-  width: 11%;
+  width: 10%;
 }
 .cd-tab-filter li.placeholder {
   display: none !important;

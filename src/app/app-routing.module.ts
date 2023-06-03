@@ -22,6 +22,9 @@ import { AdminCategoryComponent } from './admin-category/admin-category.componen
 import { AdminProductComponent } from './admin-product/admin-product.component';
 import { AdminProductDetailComponent } from './admin-product-detail/admin-product-detail.component';
 import { AdminProductDetailShowComponent } from './admin-product-detail-show/admin-product-detail-show.component';
+import { ResourcesCertificateComponent } from './resources-certificate/resources-certificate.component';
+import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
+import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
 
 
 const routes: Routes = [{
@@ -63,6 +66,24 @@ const routes: Routes = [{
 {
   path:'resources_gallery',
   component:ResourcesGalleryComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:'resources_certificate',
+  component:ResourcesCertificateComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:'resources_material',
+  component:ResourcesMaterialComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:'resources_document',
+  component:ResourcesDocumentComponent,
   runGuardsAndResolvers: 'always'
 
 },

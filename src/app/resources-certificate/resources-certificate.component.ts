@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 declare var $: any;
 
 import { LazyLoadingService} from './lazy-loading.service'
+
 @Component({
-  selector: 'app-resources-gallery',
-  templateUrl: './resources-gallery.component.html',
-  styleUrls: ['./resources-gallery.component.css']
+  selector: 'app-resources-certificate',
+  templateUrl: './resources-certificate.component.html',
+  styleUrls: ['./resources-certificate.component.css']
 })
-export class ResourcesGalleryComponent {
+export class ResourcesCertificateComponent {
   constructor(private lazyLoadService:LazyLoadingService) {
   }
   ngOnInit(): void {

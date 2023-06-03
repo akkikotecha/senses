@@ -1,0 +1,7 @@
+*:focus:not(:focus-visible) {
+    outline: none!important;
+  }
+  
+  *:focus-visible {
+    outline: none!important;
+  }
