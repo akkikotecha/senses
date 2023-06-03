@@ -23,7 +23,7 @@ constructor(private ProductDetailService:ProductDetailService,private lazyLoadSe
  Data:any;
   ngOnInit(): void {
     setTimeout(function(){
-      console.log("HELLO");
+     
       $('.header-main').css({'background':'#fff', "border":"2px solid #ededed","padding": "9px 0px 11px 0px"});
       $('.header-top').css({'background':'#fff',"padding": "5px 0px 5px 0px"});
       $('.sticky_color').addClass('sticky_add_color');   
@@ -36,8 +36,8 @@ constructor(private ProductDetailService:ProductDetailService,private lazyLoadSe
     // console.log("ID : "+localStorage.getItem('productId'));
     this.ProductDetailService.getAllSubCategory(localStorage.getItem('subCategoryId')).subscribe((res) => {
       if (res && typeof res === 'object') {
-        this.Data = [res]; // Wrap the single object in an array
-        console.log("JobsiteData", this.Data[0][0].overview);
+        this.Data = res; // Wrap the single object in an array
+        console.log("JobsiteData", this.Data);
       } else {
         console.error("Invalid response data: expected a single object");
       }

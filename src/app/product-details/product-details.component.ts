@@ -46,8 +46,9 @@ export class ProductDetailsComponent {
     // console.log("ID : "+localStorage.getItem('productId'));
     this.ProductDetailService.getAllSubCategory(localStorage.getItem('productId')).subscribe((res) => {
       if (res && typeof res === 'object') {
-        this.Data = [res]; // Wrap the single object in an array
-        console.log("JobsiteData", this.Data);
+        this.Data = res; // Wrap the single object in an array
+        
+        console.log("JobsiteData", JSON.stringify(this.Data));
       } else {
         console.error("Invalid response data: expected a single object");
       }
