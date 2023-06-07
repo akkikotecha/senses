@@ -90,7 +90,7 @@ export class AdminProductComponent {
 submit() {
   if ($('#add-form').parsley().validate()) {
     Swal.fire({
-      title: 'Are you Sure?',
+      title: 'Do you want to add the product?',
       text: "",
       icon: 'warning',
       showCancelButton: true,

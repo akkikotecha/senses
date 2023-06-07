@@ -26,7 +26,10 @@ export class AdminProductDetailComponent {
   pm_last_name:any="";
   pm_confirm_password:any="";
   image: File[] = [];
-
+overviewValidation:any =false ;
+featuredOneDescValidation:any =false ;
+featuredTwoDescValidation:any =false ;
+featuredThreeDescValidation:any =false ;
   addFeaturedOneImage: File[] = [];
   addFeaturedTwoImage: File[] = [];
   addFeaturedThreeImage: File[] = [];
@@ -343,105 +346,126 @@ ngAfterViewInit() {
 
 submit() {
   if ($('#add-form').parsley().validate()) {
-    Swal.fire({
-      title: 'Are you Sure?',
-      text: "",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#fd7e14',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const formData = new FormData();
-
-        // Populate image files
-        this.image.forEach((file, index) => {
-          formData.append("image", file);
-        });
-
-        this.addFeaturedOneImage.forEach((file, index) => {
-          formData.append("featuredOneImage", file);
-        });
-
-        this.addFeaturedTwoImage.forEach((file, index) => {
-          formData.append("featuredTwoImage", file);
-        });
-
-        this.addFeaturedThreeImage.forEach((file, index) => {
-          formData.append("featuredThreeImage", file);
-        });
-
-        this.addsnap.forEach((file, index) => {
-          formData.append("snapShots", file);
-        });
-        // const featureOneDescriptionValue = this.editorElementRef_1.nativeElement.getData();
-        // console.log('Feature One Description:', featureOneDescriptionValue);
-        
-
-        
+    console.log("before if",this.overview_text);
+    if(this.overview_text ==="null" || this.overview_text=== undefined || this.overview_text ===""){
+      console.log(this.overview_text);
+      this.overviewValidation=true 
+    }
+    else if(this.description_value_1 ==="null" || this.description_value_1=== undefined || this.description_value_1 ===""){
+      console.log(this.description_value_1);
+      this.featuredOneDescValidation=true 
+    }else if(this.description_value_2 ==="null" || this.description_value_2=== undefined || this.description_value_2 ===""){
+      console.log(this.description_value_2);
+      this.featuredTwoDescValidation=true 
+    }
+    else if(this.description_value_3 ==="null" || this.description_value_3=== undefined || this.description_value_3 ===""){
+      console.log(this.description_value_3);
+      this.featuredThreeDescValidation=true 
+    }
+    else{
+      Swal.fire({
+        title: 'Are you Sure?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#fd7e14',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
   
-// // console.log("HE:LO "+this.overview_text.getData());
-// ClassicEditor
-//   .create(this.editorElementRef_1.nativeElement)
-//   .then((editor: any) => {
-//     this.editorInstance = editor;
-
-//     editor.on('ready', () => {
-//       console.log(editor);
-//       const content = editor.getData();
-//       formData.append('featuredOneDesc', content);
-//       console.log("featuredOneDesc "+content); // Verify the retrieved content here
-//     });
-//   })
-//   .catch((error: any) => {
-//     console.error(error);
-  // });
-        formData.append('overview', this.overview_text);
-        formData.append('featuredOneTitle', $('#featuredOneTitle').val() as string);
-        formData.append('featuredOneDesc',  this.description_value_1);
-        formData.append('featuredTwoTitle', $('#featuredTwoTitle').val() as string);
-        formData.append('featuredTwoDesc', this.description_value_2);
-        formData.append('featuredThreeTitle', $('#featuredThreeTitle').val() as string);
-        formData.append('featuredThreeDesc', this.description_value_3);
-
-        formData.append('category', $('#category').val());
-        formData.append('subCategory', $('#sub_category').val());
-console.log(JSON.stringify(formData));
-        // Send the form data to the server
-        this.AdminCategoryService.CategoryDetailAdd(formData).subscribe((res) => {
-          console.log("Result ", res);
-          const ra = JSON.stringify(res);
-          const Authdata = JSON.parse(ra);
-
-          if (Authdata.message == "Data Added Successfully") {
-            Swal.fire({
-              title: 'Product Detail Added Successfully...',
-              text: '',
-              icon: 'success',
-              confirmButtonText: 'ok',
-              confirmButtonColor: "#fd7e14"
-            });
-
-            this.color = "success";
-            this.successfully_login = "Product Detail Added Successfully...";
-            window.location.reload();
-          } else {
-            Swal.fire({
-              title: 'Product Detail Not Added!!!',
-              text: '',
-              icon: 'error',
-              confirmButtonText: 'ok',
-              confirmButtonColor: "#fd7e14"
-            });
-
-            this.color = "danger";
-            this.successfully_login = "Product Detail Not Added!!!";
-          }
-          this.check_valid = true;
-        });
-      }
-    });
+        if (result.isConfirmed) {
+        
+          const formData = new FormData();
+  
+          // Populate image files
+          this.image.forEach((file, index) => {
+            formData.append("image", file);
+          });
+  
+          this.addFeaturedOneImage.forEach((file, index) => {
+            formData.append("featuredOneImage", file);
+          });
+  
+          this.addFeaturedTwoImage.forEach((file, index) => {
+            formData.append("featuredTwoImage", file);
+          });
+  
+          this.addFeaturedThreeImage.forEach((file, index) => {
+            formData.append("featuredThreeImage", file);
+          });
+  
+          this.addsnap.forEach((file, index) => {
+            formData.append("snapShots", file);
+          });
+          // const featureOneDescriptionValue = this.editorElementRef_1.nativeElement.getData();
+          // console.log('Feature One Description:', featureOneDescriptionValue);
+          
+  
+          
+    
+  // // console.log("HE:LO "+this.overview_text.getData());
+  // ClassicEditor
+  //   .create(this.editorElementRef_1.nativeElement)
+  //   .then((editor: any) => {
+  //     this.editorInstance = editor;
+  
+  //     editor.on('ready', () => {
+  //       console.log(editor);
+  //       const content = editor.getData();
+  //       formData.append('featuredOneDesc', content);
+  //       console.log("featuredOneDesc "+content); // Verify the retrieved content here
+  //     });
+  //   })
+  //   .catch((error: any) => {
+  //     console.error(error);
+    // });
+          formData.append('overview', this.overview_text);
+          formData.append('featuredOneTitle', $('#featuredOneTitle').val() as string);
+          formData.append('featuredOneDesc',  this.description_value_1);
+          formData.append('featuredTwoTitle', $('#featuredTwoTitle').val() as string);
+          formData.append('featuredTwoDesc', this.description_value_2);
+          formData.append('featuredThreeTitle', $('#featuredThreeTitle').val() as string);
+          formData.append('featuredThreeDesc', this.description_value_3);
+  
+          formData.append('category', $('#category').val());
+          formData.append('subCategory', $('#sub_category').val());
+  console.log(JSON.stringify(formData));
+          // Send the form data to the server
+          this.AdminCategoryService.CategoryDetailAdd(formData).subscribe((res) => {
+            console.log("Result ", res);
+            const ra = JSON.stringify(res);
+            const Authdata = JSON.parse(ra);
+  
+            if (Authdata.message == "Data Added Successfully") {
+              Swal.fire({
+                title: 'Product Detail Added Successfully...',
+                text: '',
+                icon: 'success',
+                confirmButtonText: 'ok',
+                confirmButtonColor: "#fd7e14"
+              });
+  
+              this.color = "success";
+              this.successfully_login = "Product Detail Added Successfully...";
+              window.location.reload();
+            } else {
+              Swal.fire({
+                title: 'Product Detail Not Added!!!',
+                text: '',
+                icon: 'error',
+                confirmButtonText: 'ok',
+                confirmButtonColor: "#fd7e14"
+              });
+  
+              this.color = "danger";
+              this.successfully_login = "Product Detail Not Added!!!";
+            }
+            this.check_valid = true;
+          });
+        }
+      });
+    }
+    
   }
 }
 
