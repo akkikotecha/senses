@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import {  OwlOptions } from 'ngx-owl-carousel-o';
 import { LazyLoadingService} from './lazy-loading.service'
-
+import { HomeServicesService} from './home-services.service'
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -12,12 +12,24 @@ export class HomeComponent implements OnInit{
   //carousel: any;
   slides_new_two = Array();
   slides = Array();
-
+  Data:any;
   @ViewChild('carousel', {static: true}) carousel: any;
-  constructor(private lazyLoadService:LazyLoadingService) {
+  constructor(private lazyLoadService:LazyLoadingService,private HomeServicesService:HomeServicesService) {
   }
+  
+  
   ngOnInit(): void {
 
+    this.HomeServicesService.getHomeBanner().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.Data = res; // Wrap the single object in an array
+        console.log("JobsiteData", this.Data);
+      } else {
+        console.error("Invalid response data: expected a single object");
+      }
+    });
+  
+    
     setTimeout(() => {
 
       this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js').subscribe(_ => { 
