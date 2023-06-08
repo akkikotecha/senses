@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import {  OwlOptions } from 'ngx-owl-carousel-o';
 import { LazyLoadingService} from './lazy-loading.service'
-
+import {HomeService} from "./home.service"
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -12,12 +12,37 @@ export class HomeComponent implements OnInit{
   //carousel: any;
   slides_new_two = Array();
   slides = Array();
+   firstFeaturedProduct : any
+   secondFeaturedProduct : any
+   thirdFeaturedProduct : any
+   fourthFeaturedProduct : any
 
   @ViewChild('carousel', {static: true}) carousel: any;
-  constructor(private lazyLoadService:LazyLoadingService) {
+  constructor(private lazyLoadService:LazyLoadingService, private homeService:HomeService) {
   }
   ngOnInit(): void {
-
+    this.homeService.getAllFeaturedProduct().subscribe((res:any)=>{
+console.log("Featured Products",res.data)
+res.data.map((product:any)=>{
+if(product.orderIndex ===1){
+this.firstFeaturedProduct= product
+}
+else if(product.orderIndex ===2){
+this.secondFeaturedProduct= product
+}
+else if(product.orderIndex ===3){
+this.thirdFeaturedProduct= product
+}
+else if(product.orderIndex ===4){
+this.fourthFeaturedProduct= product
+}
+})
+console.log("firstFeaturedProduct", this.firstFeaturedProduct)
+console.log("secondFeaturedProduct", this.secondFeaturedProduct)
+console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
+console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
+    
+    });
     setTimeout(() => {
 
       this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js').subscribe(_ => { 

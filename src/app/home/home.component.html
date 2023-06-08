@@ -172,13 +172,15 @@
           <div class="col-lg-4 text-center">
             <div class="con_design">
               <img
-                src="assets/Hex Tile - 419 x 576 px_True.svg"
+                src="assets/{{ firstFeaturedProduct.image }}"
                 class="item-img"
                 style="width: 98.3%; border-radius: 15px"
               />
               <div class="overlay">
-                <span style="font-weight: 800">Hesx </span>- Trendy acoustic
-                space divider for a peaceful and productive environment.
+                <span style="font-weight: 800"
+                  >{{ firstFeaturedProduct.name }}
+                </span>
+                - {{ firstFeaturedProduct.description }}
               </div>
             </div>
           </div>
@@ -187,28 +189,30 @@
               <div class="col-lg-6">
                 <div class="con_design">
                   <img
-                    src="assets/Punch Tile - 419 x 274 px_True.svg"
+                    src="assets/{{ secondFeaturedProduct.image }}"
                     class="item-img"
                     style="width: 100%; border-radius: 15px"
                   />
                   <div class="overlay">
-                    <span style="font-weight: 800">Punch </span>- Lightweight
-                    and flexible divider with excellent sound-absorbing
-                    qualities.
+                    <span style="font-weight: 800">{{
+                      secondFeaturedProduct.name
+                    }}</span
+                    >- {{ secondFeaturedProduct.description }}
                   </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="con_design">
                   <img
-                    src="assets/Instill Tile - 419 x 274 px_True.png"
+                    src="assets/{{ thirdFeaturedProduct.image }}"
                     class="item-img"
                     style="width: 100%; border-radius: 15px"
                   />
                   <div class="overlay">
-                    <span style="font-weight: 800">Instill </span> - Stylish
-                    board with storage that provides both function and design to
-                    any workspace.
+                    <span style="font-weight: 800"
+                      >{{ thirdFeaturedProduct.name }}
+                    </span>
+                    - {{ thirdFeaturedProduct.description }}
                   </div>
                 </div>
               </div>
@@ -216,14 +220,15 @@
             <div class="text-center">
               <div class="con_design">
                 <img
-                  src="assets/Cara Brick Tile - 867 x 274 px_True.svg"
+                  src="assets/{{ fourthFeaturedProduct.image }}"
                   class="item-img"
                   style="width: 100%; margin-top: 25px; border-radius: 15px"
                 />
                 <div class="overlay">
-                  <span style="font-weight: 800">Cara </span> - 3D acoustic
-                  tiles with unique designs perfect for soundproofing walls in
-                  an office space.
+                  <span style="font-weight: 800"
+                    >{{ fourthFeaturedProduct.name }}
+                  </span>
+                  - {{ fourthFeaturedProduct.description }}
                 </div>
               </div>
             </div>
