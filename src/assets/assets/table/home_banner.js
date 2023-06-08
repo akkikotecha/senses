@@ -249,7 +249,7 @@ $(document).ready(function () {
       
          //   console.log(window.localStorage.getItem('BaseURLAPI')+"deleteProjectManager/"+id);
             $.ajax({
-                url:window.localStorage.getItem('BaseURLAPI')+"deleteCareerJob/"+id,
+                url:window.localStorage.getItem('BaseURLAPI')+"deleteHomeBanner/"+id,
                 method:"GET",
                // data:x,_token:"{{ csrf_token() }}",
                 headers: {
@@ -258,7 +258,7 @@ $(document).ready(function () {
             success:function(result)
             {
                 Swal.fire({
-                    title: 'Career Job Remove Successfully...',
+                    title: 'Home banner removed successfully...',
                     text: '',
                     icon: 'success',
                     confirmButtonText: 'ok',
@@ -334,10 +334,8 @@ $(document).ready(function () {
 
 
         $("#grid").on("click", "button.edit_data", function() {
-            
-
             $('#edit_title').val($(this).attr('data-title'));
-            $('#edit_descrirption').val($(this).attr('data-discription'));
+            $('#edit_description').text($(this).attr('data-discription'));
             $('#edit_id').val($(this).attr('data-id'));
             $('#editOrgCSR').modal('show');
 

@@ -251,7 +251,7 @@
           <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModa">Edit Announcement</h5>
+                <h5 class="modal-title" id="exampleModa">Edit Home Banner</h5>
                 <button
                   type="button"
                   class="close"
@@ -280,34 +280,6 @@
                 <div class="row clearfix">
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
-                      <input
-                        type="hidden"
-                        class="form-control"
-                        name="edit_id"
-                        id="edit_id"
-                        placeholder="Select Date"
-                      />
-
-                      <label>Select Date<span class="text-red">*</span></label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        name="edit_select_date"
-                        id="edit_select_date"
-                        placeholder="Select Date"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-select_date"
-                        data-parsley-required
-                      />
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-select_date"
-                      ></p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
                       <label>Title<span class="text-red">*</span></label>
                       <input
                         type="text"
@@ -325,6 +297,33 @@
                       ></p>
                     </div>
                   </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <input
+                        type="hidden"
+                        class="form-control"
+                        name="edit_id"
+                        id="edit_id"
+                        placeholder="Select Date"
+                      />
+
+                      <label>Description<span class="text-red">*</span></label>
+                      <textarea
+                        class="form-control"
+                        name="edit_description"
+                        id="edit_description"
+                        placeholder="Description"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-addedit-Description"
+                        data-parsley-required
+                      ></textarea>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-addedit-Description"
+                      ></p>
+                    </div>
+                  </div>
+
 
                   <div class="col-md-12 col-sm-12">
                     <a href="" target="_blank"
@@ -341,7 +340,7 @@
                         name="edit_myFile"
                         id="edit_myFileData"
                         (change)="onChangeUpdate($event)"
-                        accept="application/pdf"
+                        
                         style="padding-left: 0px; border: none"
                       />
                       <p
