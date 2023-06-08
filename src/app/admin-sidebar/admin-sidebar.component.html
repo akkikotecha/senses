@@ -661,8 +661,127 @@
             </div>
           </a>
         </li>
+        <li class="online">
+          <a href="javascript:void(0);">
+            <div class="media">
+              <img
+                class="media-object"
+                src="assets/assets/images/xs/avatar5.jpg"
+                alt=""
+              />
+              <div class="media-body">
+                <span class="name">Wendy Keen</span>
+                <span class="message">Java Developer</span>
+                <span class="badge badge-outline status"></span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="offline">
+          <a href="javascript:void(0);">
+            <div class="media">
+              <img
+                class="media-object"
+                src="assets/assets/images/xs/avatar2.jpg"
+                alt=""
+              />
+              <div class="media-body">
+                <span class="name">Matt Rosales</span>
+                <span class="message">CEO, Epic Theme</span>
+                <span class="badge badge-outline status"></span>
+              </div>
+            </div>
+          </a>
+        </li>
       </ul>
     </div>
+  </div>
+
+  <div id="left-sidebar" class="sidebar">
+    <h6 class="brand-name">
+      Admin
+      <a href="javascript:void(0)" class="menu_option float-right d-none"
+        ><i
+          class="icon-grid font-16"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Grid & List Toggle"
+        ></i
+      ></a>
+    </h6>
+    <nav id="left-sidebar-nav" class="sidebar-nav">
+      <ul class="metismenu">
+        <ul>
+          <li class="active">
+            <a
+              href="javascript:void(0)"
+              class="has-arrow arrow-c cursor-pointer"
+              ><i class="icon-rocket mr-2"></i><span> Masters</span></a
+            >
+            <ul>
+              <li>
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/admin_home_banner']"
+                  style="padding-left: 11%"
+                  ><span>Home Banner</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/admin_product']"
+                  style="padding-left: 11%"
+                  ><span>Product</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/admin_sub_product']"
+                  style="padding-left: 11%"
+                  ><span>Sub Product</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/admin_product_detail']"
+                  style="padding-left: 11%"
+                  ><span>Product Detail</span></a
+                >
+              </li>
+              <li class="d-none">
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/admin_code_policies']"
+                  style="padding-left: 11%"
+                  ><span>Code and Policies</span></a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="mt-3 d-none">
+            <a
+              [routerLink]="['/admin_product']"
+              class="has-arrow arrow-c cursor-pointer"
+              ><span>Sub Products</span></a
+            >
+            <ul class="d-none">
+              <li>
+                <a
+                  class="cursor-pointer"
+                  [routerLink]="['/admin_home_banner']"
+                  style="padding-left: 11%"
+                  ><span>Products</span></a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+    </nav>
   </div>
 </div>
 

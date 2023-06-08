@@ -25,6 +25,7 @@ import { AdminProductDetailShowComponent } from './admin-product-detail-show/adm
 import { ResourcesCertificateComponent } from './resources-certificate/resources-certificate.component';
 import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
 import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
+import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.component';
 
 
 const routes: Routes = [{
@@ -163,6 +164,12 @@ const routes: Routes = [{
 {
   path:"admin_product_detail_show",
   component:AdminProductDetailShowComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_home_banner",
+  component:AdminHomeBannerComponent,
   runGuardsAndResolvers: 'always'
 
 }

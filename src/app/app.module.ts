@@ -43,6 +43,7 @@ import { HtmlToPlaintextPipe } from './admin-product-detail-show/html-to-plainte
 import { ResourcesCertificateComponent } from './resources-certificate/resources-certificate.component';
 import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
 import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
+import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { ResourcesMaterialComponent } from './resources-material/resources-mater
     HtmlToPlaintextPipe,
     ResourcesCertificateComponent,
     ResourcesDocumentComponent,
-    ResourcesMaterialComponent
+    ResourcesMaterialComponent,
+    AdminHomeBannerComponent
   ],
   imports: [
     BrowserModule,
