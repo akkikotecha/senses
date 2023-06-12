@@ -48,7 +48,6 @@ import { AdminResouceComponent } from './admin-resource/admin-resouce.component'
 import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +88,7 @@ import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-re
     AdminHomeBannerComponent,
     AdminResouceComponent,
     AdminResourceTypeComponent,
-    AdminResourceSubtypeComponent
+    AdminResourceSubtypeComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,12 +97,10 @@ import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-re
     BrowserAnimationsModule,
     HttpClientModule,
     MDBBootstrapModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
-    
-    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

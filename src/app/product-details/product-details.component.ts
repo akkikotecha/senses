@@ -32,6 +32,7 @@ export class ProductDetailsComponent {
     // {
     //   data_description = "Upgrade your office with our booths and pods designed for private conversations and meetings. Meticulously crafted with high-quality materials, our collection offers versatile and functional solutions that seamlessly blend style and functionality. "
     // }
+    
     setTimeout(function(){
       $('.header-main').css({'background':'#fff', "border":"2px solid #ededed","padding": "9px 0px 11px 0px"});
       $('.header-top').css({'background':'#fff',"padding": "5px 0px 5px 0px"});

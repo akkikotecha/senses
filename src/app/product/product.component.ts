@@ -46,14 +46,16 @@ export class ProductComponent {
     }
      
     sub_products(id:any,name:any):void{
+
       localStorage.removeItem("productId");
       localStorage.removeItem("productname");
+      
       
       localStorage.setItem("productId",id);
       localStorage.setItem("productname",name);
       
       // console.log(id)
-      this.router.navigate(['sub_products'])
+      this.router.navigate(['sub_products',name])
       .then(() => {
         // window.location.reload();
       });

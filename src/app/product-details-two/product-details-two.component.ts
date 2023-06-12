@@ -20,8 +20,55 @@ constructor(private ProductDetailService:ProductDetailService,private lazyLoadSe
 
   // this.productname = localStorage.getItem('productname')
  }
+ related_product:any;
  Data:any;
+ chunkArray(array:any, size:any) {
+  console.log("array "+array+" size "+size);
+  const result = [];
+  if(array.length > 0)
+  {
+
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+  }else{
+    result.push('');
+  }
+
+  console.log("array 1 "+array+" size 1 "+size);
+
+  return result;
+}
   ngOnInit(): void {
+
+
+    
+
+
+
+    function shuffleArray(array:any) {
+      var currentIndex = array.length;
+      var temporaryValue, randomIndex;
+    
+      // While there remain elements to shuffle
+      while (currentIndex !== 0) {
+        // Pick a remaining element
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+    
+        // Swap it with the current element
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+    
+      return array;
+    }
+    
+    
+  
+
+
     setTimeout(function(){
      
       $('.header-main').css({'background':'#fff', "border":"2px solid #ededed","padding": "9px 0px 11px 0px"});
@@ -37,7 +84,18 @@ constructor(private ProductDetailService:ProductDetailService,private lazyLoadSe
     this.ProductDetailService.getAllSubCategory(localStorage.getItem('subCategoryId')).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.Data = res; // Wrap the single object in an array
-        console.log("JobsiteData", this.Data);
+        // console.log("JobsiteData", );
+
+        var related_product_id = this.Data[0].related_product_id
+        
+        var shuffledArray = shuffleArray(related_product_id);
+
+        this.ProductDetailService.getsubproductget(shuffledArray).subscribe((res) => {
+          // console.log("getsubproductget : "+shuffleArray(res) );
+          this.related_product= res;
+        })
+        // console.log("shuffledArray " +shuffledArray);
+
       } else {
         console.error("Invalid response data: expected a single object");
       }

@@ -45,6 +45,25 @@ export class AdminProductDetailService {
     return this.http.post(url,CategoryId);
   }
 
+  getSUbCategoryId(CategoryId:any)
+  {
+
+    let url = environment.base_url+"getSUbCategoryIdPass";
+    return this.http.post(url,CategoryId);
+  }
+
+  getSUbCategoryIdPass(id:any)
+  {
+
+    let url = environment.base_url+"getSUbCategoryIdPass/"+id;
+    return this.http.get(url);
+  }
+
+  
+
+
+  
+
   
 
 }

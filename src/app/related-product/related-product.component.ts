@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
+
 import { LazyLoadingService} from './lazy-loading.service'
 import { environment } from 'src/environments/environment';
 
 import Swal, {SweetAlertOptions} from 'sweetalert2';
-import { HomeBannerService } from './home-banner.service';
+import { RealtedProductService} from './realted-product.service';
 declare var $: any;
-
 @Component({
-  selector: 'app-admin-home-banner',
-  templateUrl: './admin-home-banner.component.html',
-  styleUrls: ['./admin-home-banner.component.css']
+  selector: 'app-related-product',
+  templateUrl: './related-product.component.html',
+  styleUrls: ['./related-product.component.css']
 })
-export class AdminHomeBannerComponent {
+export class RelatedProductComponent {
   image_data:any="";
 
   getProjectManagerData:any='';
@@ -28,7 +28,7 @@ export class AdminHomeBannerComponent {
   edit_successfully_login:any="";
   edit_color:any="";
   check_valid_data:any="";
-  imageUpdate:File[] = [];
+  imageUpdate:any="";
   snapShots: File[] = [];
 
   featuredOneImage: File[] = [];
@@ -40,7 +40,7 @@ export class AdminHomeBannerComponent {
 
 
   
-  constructor(private AdminCategoryService:HomeBannerService,private lazyLoadService:LazyLoadingService) { }
+  constructor(private AdminCategoryService:RealtedProductService,private lazyLoadService:LazyLoadingService) { }
   objectKeys = Object.keys;
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class AdminHomeBannerComponent {
          this.lazyLoadService.loadScript('https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js').subscribe(_ => { });
         this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js').subscribe(_ => { });
         
-        this.lazyLoadService.loadScript('../../assets/assets/table/home_banner.js').subscribe(_ => { 
+        this.lazyLoadService.loadScript('../../assets/assets/table/sub_product.js').subscribe(_ => { 
 
           
         });
@@ -73,13 +73,13 @@ export class AdminHomeBannerComponent {
 
   onChangeUpdate(event: any)
   {
-    this.imageUpdate =  Array.from(event.target.files);
-    // console.log("HELLO "+JSON.stringify(event.target.files));
+    this.imageUpdate = event.target.files;
+    console.log("HELLO "+JSON.stringify(event.target.files[0]));
 
   }
   onChange(event: any) {
     this.image = Array.from(event.target.files);
-    console.log("HELLO "+JSON.stringify(event.target.files));
+
     // console.log();
 //  this.image = event.target.files;
 //  console.log("HELLO "+JSON.stringify(event.target.files[0]));
@@ -91,7 +91,7 @@ export class AdminHomeBannerComponent {
 submit() {
   if ($('#add-form').parsley().validate()) {
     Swal.fire({
-      title: 'Do you want to add the home banner?',
+      title: 'Do you want to add the product?',
       text: "",
       icon: 'warning',
       showCancelButton: true,
@@ -108,19 +108,31 @@ this.image.forEach((file, index) => {
 });
 
 // formData.append('subCategoryName', $('#subCategoryName').val());
-formData.append('title', $('#title').val());
-formData.append('description', $('#description').val());
+formData.append('subCategoryDesc', $('#description').val());
+formData.append('overview', $('#overview').val());
+formData.append('featuredOneTitle', $('#featuredOneTitle').val());
+formData.append('featuredOneDesc', $('#featuredOneDesc').val());
+formData.append('featuredTwoTitle', $('#featuredTwoTitle').val());
+formData.append('featuredTwoDesc', $('#featuredTwoDesc').val());
+formData.append('featuredThreeTitle', $('#featuredThreeTitle').val());
+formData.append('featuredThreeDesc', $('#featuredThreeDesc').val());
+
+
+// Add other form data fields
+formData.append('select_category', "Announcement");
+formData.append('category', $('#category').val());
+formData.append('subCategoryName', $('#title').val());
 
 
         // Send the form data to the server
-        this.AdminCategoryService.createHomeBanner(formData).subscribe((res) => {
+        this.AdminCategoryService.SubCategory(formData).subscribe((res) => {
           console.log("Result ", res);
           const ra = JSON.stringify(res);
           const Authdata = JSON.parse(ra);
 
-          if (Authdata.message == "Data Uplodaded SuccessFully") {
+          if (Authdata.message == "Files Uploaded Successfully") {
             Swal.fire({
-              title: 'Home Banner Added Successfully...',
+              title: 'Sub Product Added Successfully...',
               text: '',
               icon: 'success',
               confirmButtonText: 'ok',
@@ -128,12 +140,11 @@ formData.append('description', $('#description').val());
             });
 
             this.color = "success";
-            this.successfully_login = "Home Banner Added Successfully...";
+            this.successfully_login = "Sub Product Added Successfully...";
             window.location.reload();
-          }else if(Authdata.message == "Invalid Image size") 
-          {
+          } else {
             Swal.fire({
-              title: 'Invalid Image size. Please upload 1519(W) * 700(H) image size.',
+              title: 'Sub Product Not Added!!!',
               text: '',
               icon: 'error',
               confirmButtonText: 'ok',
@@ -141,18 +152,7 @@ formData.append('description', $('#description').val());
             });
 
             this.color = "danger";
-            this.successfully_login = "Home Banner Not Added!!!"
-          }else {
-            Swal.fire({
-              title: 'Home Banner Not Added!!!',
-              text: '',
-              icon: 'error',
-              confirmButtonText: 'ok',
-              confirmButtonColor: "#fd7e14"
-            });
-
-            this.color = "danger";
-            this.successfully_login = "Home Banner Not Added!!!";
+            this.successfully_login = "Sub Product Not Added!!!";
           }
           this.check_valid = true;
         });
@@ -184,76 +184,57 @@ formData.append('description', $('#description').val());
           if (result.isConfirmed) {
       
   
-            // const file_name = this.image;
+            const file = this.imageUpdate;
         //    this.image = file; 
         
             const fda =new FormData();
 
+            fda.append('myFile',file);
             
-this.imageUpdate.forEach((file, index) => {
-  fda.append("image", file);
-});
-            
-            //  fda.append('edit_title',"Announcement");
-             fda.append('edit_title',$('#edit_title').val());
+             fda.append('select_category',"Announcement");
+             fda.append('select_date',$('#edit_select_date').val());
+             fda.append('title',$('#edit_title').val());
              fda.append('edit_id',$('#edit_id').val());
-             fda.append('edit_description',$('#edit_description').val());
             
-        // console.log(file+" "+$('#edit_select_date').val()+" "+$('#edit_title').val()+" "+$('#edit_id').val());
-            this.AdminCategoryService.EditHomeBannerData(fda).subscribe((res)=>{
+        console.log(file+" "+$('#edit_select_date').val()+" "+$('#edit_title').val()+" "+$('#edit_id').val());
+            this.AdminCategoryService.EditOrganizationData(fda).subscribe((res)=>{
   
-            // console.log("Result ",res);
+            console.log("Result ",res);
              const ra = JSON.stringify(res);
               
              const Authdata = JSON.parse(ra);
-            // console.log(Authdata);
-            // console.log("AUTH "+Authdata.message);
             
           //  console.log(Authdata.data[0].User[0].first_name);
   
-          if(Authdata.message == "Data Uploaded Successfully")
+          if(Authdata.message == "Added")
           {
             Swal.fire({
-              title: 'Home Banner Updated Successfully...',
+              title: 'Organization Announcement Updated Successfully...',
               text: '',
               icon: 'success',
               confirmButtonText: 'ok',
               confirmButtonColor: "#fd7e14"
             });
   
-            this.edit_color = "success";
-            this.edit_successfully_login = "Home Banner Updated Successfully...";
+            this.color = "success";
+            this.successfully_login = "Organization Announcement Updated Successfully...";
            //  this.get_data();
              window.location.reload();
             
-          }
-          else if(Authdata.message == "Invalid Image size") 
-          {
+          }else{
             Swal.fire({
-              title: 'Invalid Image size. Please upload 1519px(W) * 700px(H) image size.',
-              text: '',
-              icon: 'error',
-              confirmButtonText: 'ok',
-              confirmButtonColor: "#fd7e14"
-            });
-
-            this.edit_color = "danger";
-            this.edit_successfully_login = "Home Banner Not Added!!!"
-          }
-          else{
-            Swal.fire({
-              title: 'Home Banner Not Added!!!',
+              title: 'Organization Announcement Not Added!!!',
               text: '',
               icon: 'error',
               confirmButtonText: 'ok',
               confirmButtonColor: "#fd7e14"});
   
-            this.edit_color = "danger";
-            this.edit_successfully_login = "Home Banner Not Added!!!";
+            this.color = "danger";
+            this.successfully_login = "Organization Announcement Not Added!!!";
           }
   
           
-          this.check_valid_data = true;
+          this.check_valid = true;
        
            })
         }

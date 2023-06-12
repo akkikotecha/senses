@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -6,36 +7,40 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminCategoryService {
+export class RealtedProductService {
 
   fd: any;
 
   constructor(private http: HttpClient) { }
-  addOrganizationData(data:any)
+  SubCategory(data:any)
   {
 
 
-    let url = environment.base_url+"createCategory";
+    let url = environment.base_url+"SubCategory";
     console.log("AK : "+JSON.stringify(data));
     return this.http.post(url,data);
   }
 
-  EditCategoryData(data:any)
+  EditOrganizationData(data:any)
   {
 
 
-    let url = environment.base_url+"EditCategory";
+    let url = environment.base_url+"EditOrganizationDataAnnouncement";
     console.log("AK : "+JSON.stringify(data));
     return this.http.post(url,data);
   }
 
   
-  organizationAnnouncement()
+  getAllCategory()
   {
 
-    let url = environment.base_url+"organizationAnnouncement";
+    let url = environment.base_url+"getAllCategory";
     return this.http.get(url);
   }
 
+  
+
 }
+
+
 
