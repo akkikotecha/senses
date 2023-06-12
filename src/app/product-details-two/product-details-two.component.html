@@ -628,212 +628,36 @@
                 You may also like...
               </h2>
             </div>
-            <div
-              id="myCarousel"
-              class="carousel carousel_new slide"
-              data-ride="carousel"
-              data-interval="0"
-            >
+            <div id="myCarousel" class="carousel carousel_new slide" data-ride="carousel" data-interval="0">
               <!-- Carousel indicators -->
               <!-- Wrapper for carousel items -->
               <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item" *ngFor="let chunk of chunkArray(related_product.data, 4); let i = index" [class.active]="i === 0">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-lg-3" *ngFor="let getData of chunk">
+                      <!-- Content for each slide -->
                       <div class="thumb-wrapper">
                         <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
+                          <img src="assets/{{ getData.images[0] }}" class="img-fluid" alt="" />
                         </div>
                         <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img
-                            src="./assets/snap_2.png"
-                            class="img-fluid"
-                            alt=""
-                          />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>Echo Punch</h4>
+                          <h4>{{ getData.subCategoryName }}</h4>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            
               <!-- Carousel controls -->
-              <a
-                class="carousel-control-prev carousel-control-prev-new"
-                href="#myCarousel"
-                data-slide="prev"
-              >
+              <a class="carousel-control-prev carousel-control-prev-new" href="#myCarousel" data-slide="prev">
                 <i class="fa fa-angle-left"></i>
               </a>
-              <a
-                class="carousel-control-next carousel-control-prev-new"
-                href="#myCarousel"
-                data-slide="next"
-              >
+              <a class="carousel-control-next carousel-control-prev-new" href="#myCarousel" data-slide="next">
                 <i class="fa fa-angle-right"></i>
               </a>
             </div>
+            
           </div>
         </div>
       </div>

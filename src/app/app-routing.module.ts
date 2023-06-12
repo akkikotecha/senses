@@ -26,6 +26,7 @@ import { ResourcesCertificateComponent } from './resources-certificate/resources
 import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
 import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
 import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.component';
+import { RelatedProductComponent } from './related-product/related-product.component';
 
 
 const routes: Routes = [{
@@ -39,7 +40,7 @@ const routes: Routes = [{
   runGuardsAndResolvers: 'always'
 },
 {
-  path:'sub_products',
+  path:'sub_products/:name',
   component:ProductDetailsComponent,
   runGuardsAndResolvers: 'always'
 },
@@ -170,6 +171,12 @@ const routes: Routes = [{
 {
   path:"admin_home_banner",
   component:AdminHomeBannerComponent,
+  runGuardsAndResolvers: 'always'
+
+},
+{
+  path:"admin_related_product",
+  component:RelatedProductComponent,
   runGuardsAndResolvers: 'always'
 
 }

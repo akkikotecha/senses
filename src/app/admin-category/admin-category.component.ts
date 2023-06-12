@@ -115,6 +115,18 @@ export class AdminCategoryComponent {
          //  this.get_data();
            window.location.reload();
           
+        }else if(Authdata.message == "Invalid Image size") 
+        {
+          Swal.fire({
+            title: 'Invalid Image size. Please upload 322px(W) * 322px(H) image size.',
+            text: '',
+            icon: 'error',
+            confirmButtonText: 'ok',
+            confirmButtonColor: "#fd7e14"
+          });
+
+          this.edit_color = "danger";
+          this.edit_successfully_login = "Product Not Added!!!"
         }else{
           Swal.fire({
             title: 'Product Not Added!!!',
@@ -166,7 +178,7 @@ export class AdminCategoryComponent {
         
             const fda =new FormData();
 
-            fda.append('myFile',file);
+            fda.append('image',file);
             
              fda.append('select_category',"Announcement");
              fda.append('select_date',$('#edit_select_date').val());
@@ -174,7 +186,7 @@ export class AdminCategoryComponent {
              fda.append('edit_id',$('#edit_id').val());
             
         console.log(file+" "+$('#edit_select_date').val()+" "+$('#edit_title').val()+" "+$('#edit_id').val());
-            this.AdminCategoryService.EditOrganizationData(fda).subscribe((res)=>{
+            this.AdminCategoryService.EditCategoryData(fda).subscribe((res)=>{
   
             console.log("Result ",res);
              const ra = JSON.stringify(res);
@@ -183,10 +195,10 @@ export class AdminCategoryComponent {
             
           //  console.log(Authdata.data[0].User[0].first_name);
   
-          if(Authdata.message == "Added")
+          if(Authdata.message == "Data Uploaded Successfully")
           {
             Swal.fire({
-              title: 'Organization Announcement Updated Successfully...',
+              title: 'Product Updated Successfully...',
               text: '',
               icon: 'success',
               confirmButtonText: 'ok',
@@ -194,20 +206,32 @@ export class AdminCategoryComponent {
             });
   
             this.color = "success";
-            this.successfully_login = "Organization Announcement Updated Successfully...";
+            this.successfully_login = "Product Updated Successfully...";
            //  this.get_data();
              window.location.reload();
             
+          }else if(Authdata.message == "Invalid Image size") 
+          {
+            Swal.fire({
+              title: 'Invalid Image size. Please upload 322px(W) * 322px(H) image size.',
+              text: '',
+              icon: 'error',
+              confirmButtonText: 'ok',
+              confirmButtonColor: "#fd7e14"
+            });
+  
+            this.edit_color = "danger";
+            this.edit_successfully_login = "Product Not Added!!!"
           }else{
             Swal.fire({
-              title: 'Organization Announcement Not Added!!!',
+              title: 'Product Not Added!!!',
               text: '',
               icon: 'error',
               confirmButtonText: 'ok',
               confirmButtonColor: "#fd7e14"});
   
             this.color = "danger";
-            this.successfully_login = "Organization Announcement Not Added!!!";
+            this.successfully_login = "Product Not Added!!!";
           }
   
           

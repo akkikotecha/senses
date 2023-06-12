@@ -44,6 +44,7 @@ import { ResourcesCertificateComponent } from './resources-certificate/resources
 import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
 import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
 import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.component';
+import { RelatedProductComponent } from './related-product/related-product.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.
     ResourcesCertificateComponent,
     ResourcesDocumentComponent,
     ResourcesMaterialComponent,
-    AdminHomeBannerComponent
+    AdminHomeBannerComponent,
+    RelatedProductComponent
   ],
   imports: [
     BrowserModule,

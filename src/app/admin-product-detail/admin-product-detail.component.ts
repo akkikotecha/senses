@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit  } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit,ChangeDetectorRef   } from '@angular/core';
 import { LazyLoadingService} from './lazy-loading.service'
 import { environment } from 'src/environments/environment';
 // import * as ClassicEditorDate from '@ckeditor/ckeditor5-build-classic';
@@ -50,6 +50,8 @@ featuredThreeDescValidation:any =false ;
   addsnap: File[] = [];
   
   JobsiteData:any="";
+  related_product:any="";
+  
   overview_text:any;
   description_value_1:any;
   description_value_2:any;
@@ -70,18 +72,17 @@ featuredThreeDescValidation:any =false ;
   // @ViewChild('featureThreeDescription',{ read: NgModel }) editorModel_4!: NgModel;
 
   
-  constructor(private AdminCategoryService:AdminProductDetailService,private lazyLoadService:LazyLoadingService) { }
+  constructor(private AdminCategoryService:AdminProductDetailService,private lazyLoadService:LazyLoadingService,private cdRef: ChangeDetectorRef) { }
   objectKeys = Object.keys;
 
   ngOnInit(): void {
 
-
-    
-  
     
   this.AdminCategoryService.getAllCategory().subscribe((res)=>{
 
     this.JobsiteData = JSON.parse(JSON.stringify(res));
+    // this.related_product = JSON.parse(JSON.stringify(res));
+    
    console.log(this.JobsiteData);
   });
 
@@ -94,7 +95,8 @@ featuredThreeDescValidation:any =false ;
           this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js').subscribe(_ => { });
          this.lazyLoadService.loadScript('https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js').subscribe(_ => { });
         this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js').subscribe(_ => { });
-        
+        this.lazyLoadService.loadScript('../../assets/assets/table/select.js').subscribe(_ => { });
+  
       this.lazyLoadService.loadScript('../../assets/assets/table/categoryDetail.js').subscribe(_ => { 
       
   //       setTimeout(function(){
@@ -104,6 +106,27 @@ featuredThreeDescValidation:any =false ;
   // // $('#btn').on('click', function(e) {
   // //   console.log('ckeditor content: ' + $('textarea[name="DSC"]').val());
   // // })
+
+
+  $(document).ready(function(){
+
+    setTimeout(function () {
+    $( ".select2-multiple" ).select2({
+      theme: "bootstrap",
+      placeholder: "Select a Employee",
+      containerCssClass: ':all:'
+    });
+
+    $( ".select2-multiple-jobiste" ).select2({
+     theme: "bootstrap",
+     placeholder: "Select a Jobsite",
+     containerCssClass: ':all:'
+   });
+
+  }, 500);
+    
+    
+});    
         });
         
       
@@ -189,7 +212,48 @@ snapChange(event: any) {
 // Store the array of selected files in your component's state or variable
 
 }
+onChange(value: any) {
+  // console.log("HELLO");
+  console.log(value.target.value);
+  // varid = ;
 
+
+ 
+  this.AdminCategoryService.getSUbCategoryIdPass(value.target.value).subscribe((res) => {
+    // console.log("JSON " + JSON.stringify(res));
+    const data = JSON.parse(JSON.stringify(res)); // Extract the 'data' property from the response
+    // if (Array.isArray(data)) { // Check if 'data' is an array
+    console.log("DATA "+JSON.stringify(data));
+      // this.related_product = data;
+      // $('#select_multiple_data').val(null).trigger('change');
+    //  setTimeout(function(){
+      $('#select_multiple_data').empty().trigger('change');
+
+    for (const item of data) {
+        // console.log("LLOOP "+item.subCategoryName, item._id.toString());
+        const option = new Option(item.subCategoryName, item._id.toString());
+        $('#select_multiple_data').append(option);
+      }
+      
+      $('#select_multiple_data').trigger('change');
+    //  },2000)
+      
+    
+  });
+  
+    
+    // Append new options to the Select2 dropdown
+    // $.each(newData, function(index:any, value:any) {
+    //   $('#select2-multiple-input-sm').append($('<option>').text(value.text).attr('value', value.id));
+    // });
+    
+    // // Trigger the Select2 to update the dropdown
+    // $('#select2-multiple-input-sm').trigger('change');
+
+  //  console.log(this.JobsiteData);
+  // });
+
+}
 
 onChangeCategory(event: any) {
   // this.AdminCategoryService.SubCategory(event.target.value).subscribe((res) => {
@@ -345,6 +409,15 @@ ngAfterViewInit() {
 
 
 submit() {
+  
+  
+                // $.each(multi, function (indexes:any, values:any){
+                //     //console.log("values : "+values);
+                //     ResponseData += values+',';
+                // });
+                // strVal = ResponseData.slice(0, -1);
+                // console.log("multi : "+multi);
+                // return false;
   if ($('#add-form').parsley().validate()) {
     console.log("before if",this.overview_text);
     if(this.overview_text ==="null" || this.overview_text=== undefined || this.overview_text ===""){
@@ -429,6 +502,18 @@ submit() {
   
           formData.append('category', $('#category').val());
           formData.append('subCategory', $('#sub_category').val());
+var ResponseData = '';
+var strVal = '';
+          $.each($('.select_multiple_data').val(), function (indexes:any, values:any){
+                //console.log("values : "+values);
+                ResponseData += values+',';
+            });
+            strVal = ResponseData.slice(0, -1);
+            // console.log("multi : "+multi);
+          // });
+          formData.append('related_product', strVal);
+          // var multi = ;
+
   console.log(JSON.stringify(formData));
           // Send the form data to the server
           this.AdminCategoryService.CategoryDetailAdd(formData).subscribe((res) => {
@@ -549,7 +634,12 @@ submit() {
         }
         })
   
+
+        
       }
+
+
+      
 
 // this.color = "success";
 // this.successfully_login = "Project Manager Added Successfully...";
