@@ -25,9 +25,16 @@ constructor(private ProductDetailService:ProductDetailService,private lazyLoadSe
  chunkArray(array:any, size:any) {
   console.log("array "+array+" size "+size);
   const result = [];
-  for (let i = 0; i < array.length; i += size) {
-    result.push(array.slice(i, i + size));
+  if(array.length > 0)
+  {
+
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+  }else{
+    result.push('');
   }
+
   console.log("array 1 "+array+" size 1 "+size);
 
   return result;

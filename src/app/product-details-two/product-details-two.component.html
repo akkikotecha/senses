@@ -638,6 +638,7 @@
               <!-- Carousel indicators -->
               <!-- Wrapper for carousel items -->
               <div class="carousel-inner">
+                <ng-container *ngIf="related_product?.data && related_product.data.length > 0">
                 <div class="carousel-item" *ngFor="let chunk of chunkArray(related_product.data, 4); let i = index" [class.active]="i === 0">
                   <div class="row">
                     <div class="col-lg-3" *ngFor="let getData of chunk">
@@ -653,6 +654,7 @@
                     </div>
                   </div>
                 </div>
+              </ng-container>
               </div>
             
               <!-- Carousel controls -->
