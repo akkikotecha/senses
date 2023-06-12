@@ -26,6 +26,9 @@ import { ResourcesCertificateComponent } from './resources-certificate/resources
 import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
 import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
 import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.component';
+import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
+import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
+import { AdminResouceComponent } from './admin-resource/admin-resouce.component';
 
 
 const routes: Routes = [{
@@ -171,8 +174,22 @@ const routes: Routes = [{
   path:"admin_home_banner",
   component:AdminHomeBannerComponent,
   runGuardsAndResolvers: 'always'
-
-}
+},
+{
+  path:"admin_resource_type",
+  component:AdminResourceTypeComponent,
+  runGuardsAndResolvers: 'always'
+},
+{
+  path:"admin_resource_sub_type",
+  component:AdminResourceSubtypeComponent,
+  runGuardsAndResolvers: 'always'
+},
+{
+  path:"admin_resource",
+  component:AdminResouceComponent,
+  runGuardsAndResolvers: 'always'
+},
 ];
 
 @NgModule({
