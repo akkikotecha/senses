@@ -330,7 +330,11 @@
   </div>
 </section>
 
-<section class="process mt-0 pt-0 pb-0" style="background: #f9f9f9">
+<section
+  class="process mt-0 pt-0 pb-0"
+  style="background: #f9f9f9"
+  *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
+>
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="background: #f9f9f9 !important">
@@ -452,6 +456,7 @@
     </div>
   </div>
 </section>
+
 <section class="process mt-0 pt-0 pb-0" #target>
   <div class="container-fluid">
     <div class="row" style="background: #fbfbfb">
@@ -605,6 +610,7 @@
                 src="assets/{{ this.getData | htmlToPlaintext }}"
                 class="card-img-top card-img-top-width-snapshot mx-auto rounded-lg"
                 alt="..."
+                style="height: 300px"
               />
             </div>
           </div>
