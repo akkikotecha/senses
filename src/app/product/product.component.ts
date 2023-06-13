@@ -29,7 +29,6 @@ export class ProductComponent {
       $('.search-field').css({'background-image':"url('./assets/search.png')"});
       $('.logo img').css({"max-width":"170px"})
       $('.logo_style').attr('src',"./assets/SENSES LOGO.svg");
-
     },200)
 
 
