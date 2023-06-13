@@ -29,6 +29,21 @@ export class AdminResouceComponent {
       this.categoryData = JSON.parse(JSON.stringify(res));
       console.log(this.categoryData);
     });
+    this.adminResource.getAllProducts().subscribe((res: any) => {
+      console.log(res);
+      this.productData = JSON.parse(JSON.stringify(res));
+      console.log(this.categoryData);
+    });
+    this.adminResource.getAllResourceType().subscribe((res: any) => {
+      console.log(res);
+      this.resourceType = JSON.parse(JSON.stringify(res));
+      console.log(this.categoryData);
+    });
+    this.adminResource.getAllResourceSubType().subscribe((res: any) => {
+      console.log(res);
+      this.resourceSubType = JSON.parse(JSON.stringify(res));
+      console.log(this.categoryData);
+    });
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/js/sweetalert.js')
@@ -65,6 +80,11 @@ export class AdminResouceComponent {
         .subscribe((_) => {});
     }, 1000);
   }
+  onChange(event: any) {
+    // console.log();
+    this.image = event.target.files[0];
+    console.log('HELLO ' + JSON.stringify(event.target.files[0]));
+  }
   submit() {
     if ($('#add-form').parsley().validate()) {
       console.log('before if' + $('#resource-type').val());
@@ -79,19 +99,23 @@ export class AdminResouceComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           const formData = new FormData();
+          const file = this.image;
 
           // Populate image files
 
           // formData.append('subCategoryName', $('#subCategoryName').val());
-          formData.append('title', $('#resource-type').val());
+          formData.append('title', $('#title').val());
+          formData.append('category', $('#category').val());
+          formData.append('product', $('#product').val());
+          formData.append('resourceType', $('#resource-type').val());
+          formData.append('resourceSubType', $('#resource-sub-type').val());
 
-          const file = this.image;
           //    this.image = file;
 
           formData.append('image', file);
 
           // Send the form data to the server
-          this.adminResource.addResourceType(formData).subscribe((res: any) => {
+          this.adminResource.addResource(formData).subscribe((res: any) => {
             console.log('Result ', res);
             const ra = JSON.stringify(res);
             const Authdata = JSON.parse(ra);

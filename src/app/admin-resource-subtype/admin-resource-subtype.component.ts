@@ -73,13 +73,6 @@ export class AdminResourceSubtypeComponent {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
-          const formData = new FormData();
-
-          // Populate image files
-
-          // formData.append('subCategoryName', $('#subCategoryName').val());
-          formData.append('resourceType', $('#resource-type').val());
-          formData.append('title', $('#resource-sub-type').val());
           const requestData = {
             title: $('#resource-sub-type').val(),
             resourceType: $('#resource-type').val(),
