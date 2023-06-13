@@ -44,8 +44,9 @@ import { ResourcesCertificateComponent } from './resources-certificate/resources
 import { ResourcesDocumentComponent } from './resources-document/resources-document.component';
 import { ResourcesMaterialComponent } from './resources-material/resources-material.component';
 import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.component';
-import { RelatedProductComponent } from './related-product/related-product.component';
-
+import { AdminResouceComponent } from './admin-resource/admin-resouce.component';
+import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
+import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,9 @@ import { RelatedProductComponent } from './related-product/related-product.compo
     ResourcesDocumentComponent,
     ResourcesMaterialComponent,
     AdminHomeBannerComponent,
-    RelatedProductComponent
+    AdminResouceComponent,
+    AdminResourceTypeComponent,
+    AdminResourceSubtypeComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,12 +97,10 @@ import { RelatedProductComponent } from './related-product/related-product.compo
     BrowserAnimationsModule,
     HttpClientModule,
     MDBBootstrapModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
-    
-    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
