@@ -10,12 +10,12 @@ export class AboutTwoComponent {
   ngOnInit(): void {
 
     setTimeout(function(){
-      console.log("HELLO");
-      $('.header-main').css({'background':'transparent!important', "border":"0px solid #ededed!important","padding": "0px 0px 32px 0px!important"});
-      $('.header-top').css({'background':'transparent!important',"padding": "10px 0px 0px 0px!important"});
-      $('.sticky_color').removeClass('sticky_add_color');
-      $('.search-field').css({'background-image':"url('./assets/search_white.png')"});
-
-    },2000)
+      $('.header-main').css({'background':'#fff', "border":"2px solid #ededed","padding": "9px 0px 11px 0px"});
+      $('.header-top').css({'background':'#fff',"padding": "5px 0px 5px 0px"});
+      $('.sticky_color').addClass('sticky_add_color');   
+      $('.search-field').css({'background-image':"url('./assets/search.png')"});
+      $('.logo img').css({"max-width":"170px"})
+      $('.logo_style').attr('src',"./assets/SENSES LOGO.svg");
+    },200)
   }
 }
