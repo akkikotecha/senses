@@ -6,43 +6,40 @@
     data-ride="carousel"
     style="position: relative"
   >
-  <ol class="carousel-indicators home_caro">
-    <li
-      *ngFor="let image of Data.data; let i = index"
-      [attr.data-target]="'#carouselExampleIndicators'"
-      [attr.data-slide-to]="i"
-      [class.active]="i === 0"
-    ></li>
-  </ol>
-  <div class="carousel-inner">
-    <div
-      class="carousel-item get_text active"
-      *ngFor="let getData of Data.data; let i = index"
-      [class.active]="i === 0"
-    >
-      <img
-        class="d-block w-100"
-        src="assets/{{ getData.image | htmlToPlaintext }}"
-        alt="First slide"
-        style="height: 700px"
-      />
+    <ol class="carousel-indicators home_caro">
+      <li
+        *ngFor="let image of Data.data; let i = index"
+        [attr.data-target]="'#carouselExampleIndicators'"
+        [attr.data-slide-to]="i"
+        [class.active]="i === 0"
+      ></li>
+    </ol>
+    <div class="carousel-inner">
       <div
-        class="carousel-caption d-none d-md-block"
-        style="text-align: initial"
+        class="carousel-item get_text active"
+        *ngFor="let getData of Data.data; let i = index"
+        [class.active]="i === 0"
       >
-
-
-
-        <h3 style="font-weight: 500; font-size: 36px" class="text-left">
-          {{ getData.title }}
-        </h3>
-        <p style="font-size: 20px;width: 52%;" class="text-left">
-          {{ getData.description }}
-        </p>
-        <a href="#" class="btn btn_set_css text-left">Learn More</a>
+        <img
+          class="d-block w-100"
+          src="assets/{{ getData.image | htmlToPlaintext }}"
+          alt="First slide"
+          style="height: 700px"
+        />
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="text-align: initial"
+        >
+          <h3 style="font-weight: 500; font-size: 36px" class="text-left">
+            {{ getData.title }}
+          </h3>
+          <p style="font-size: 20px; width: 52%" class="text-left">
+            {{ getData.description }}
+          </p>
+          <a href="#" class="btn btn_set_css text-left">Learn More</a>
+        </div>
       </div>
     </div>
-  </div>
     <!-- <ol class="carousel-indicators home_caro">
       <li
         data-target="#carouselExampleIndicators"
@@ -453,7 +450,7 @@
       </div>
       <div class="col-lg-4 text-center">
         <img
-          src="assets/Mask group.png"
+          src="assets/3.webp"
           class="item-img"
           style="width: 100%; border-radius: 15px"
         />
@@ -504,9 +501,9 @@
             class="col-lg-3 d-flex justify-content-center align-items-end"
             style="padding-top: 520px"
           >
-          <a href="./assets/SA_Sustainability_Report23.pdf" download="">
-            <p class="p_all_text_set mt-5" style="text-align: end">
-              <button
+            <a href="./assets/SA_Sustainability_Report23.pdf" download="">
+              <p class="p_all_text_set mt-5" style="text-align: end">
+                <button
                   class="btn btn-success"
                   style="
                     background: transparent !important;
@@ -517,8 +514,8 @@
                 >
                   <i class="fa fa-book"></i> Sustainability Report 2023
                 </button>
-            </p>
-          </a>
+              </p>
+            </a>
           </div>
         </div>
       </div>
