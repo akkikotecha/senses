@@ -494,8 +494,8 @@
             <p
               class="card-text text-left p_all_text_set"
               style="font-size: 17px; width: 80%"
-            >
-              {{ this.Data[0].featuredOneDesc | htmlToPlaintext }}
+              [innerHTML]="this.Data[0].featuredOneDesc">
+              <!-- {{ this.Data[0].featuredOneDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
               <a href="#" class="set_link">BLOG</a>
@@ -531,8 +531,8 @@
             <p
               class="card-text text-left p_all_text_set"
               style="font-size: 17px; width: 80%"
-            >
-              {{ this.Data[0].featuredTwoDesc | htmlToPlaintext }}
+              [innerHTML]="this.Data[0].featuredTwoDesc">
+              <!-- {{ this.Data[0].featuredTwoDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
               <a href="#" class="set_link">BLOG</a>
@@ -584,8 +584,8 @@
             <p
               class="card-text text-left p_all_text_set mt-3"
               style="font-size: 17px; width: 80%"
-            >
-              {{ this.Data[0].featuredThreeDesc | htmlToPlaintext }}
+              [innerHTML]="this.Data[0].featuredThreeDesc">
+              <!-- {{ this.Data[0].featuredThreeDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
               <a href="#" class="set_link">BLOG</a>
