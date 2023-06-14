@@ -26,8 +26,20 @@ export class AdminResourceService {
     let url = environment.base_url + 'getAllCategory';
     return this.http.get(url);
   }
-  addResourceType(data: any) {
-    let url = environment.base_url + 'addResourceType';
+  getAllProducts() {
+    let url = environment.base_url + 'getSubCategories';
+    return this.http.get(url);
+  }
+  getAllResourceType() {
+    let url = environment.base_url + 'getAllResourceType';
+    return this.http.get(url);
+  }
+  getAllResourceSubType() {
+    let url = environment.base_url + 'getAllResourceSubType';
+    return this.http.get(url);
+  }
+  addResource(data: any) {
+    let url = environment.base_url + 'addResourceImage';
     console.log('AK : ' + JSON.stringify(data));
     return this.http.post(url, data);
   }
