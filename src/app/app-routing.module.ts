@@ -29,6 +29,7 @@ import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.
 import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 import { AdminResouceComponent } from './admin-resource/admin-resouce.component';
+import { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
 
 const routes: Routes = [
   {
@@ -176,6 +177,13 @@ const routes: Routes = [
     component: AdminResouceComponent,
     runGuardsAndResolvers: 'always',
   },
+
+  {
+    path: 'admin_featured_project',
+    component: FeaturedProjectsComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  
 ];
 
 @NgModule({
