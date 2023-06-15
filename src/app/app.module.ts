@@ -47,6 +47,7 @@ import { AdminHomeBannerComponent } from './admin-home-banner/admin-home-banner.
 import { AdminResouceComponent } from './admin-resource/admin-resouce.component';
 import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
+import { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-re
     AdminResouceComponent,
     AdminResourceTypeComponent,
     AdminResourceSubtypeComponent,
+    FeaturedProjectsComponent,
   ],
   imports: [
     BrowserModule,

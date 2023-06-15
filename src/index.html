@@ -855,6 +855,35 @@
 
     setTimeout(function () {
       //console.log("HELLO");
+      if($('.get_text_slider.active').attr("data-url") == "#1")
+        {
+
+                  
+        $(".h1_text_set").animate({ opacity: 0 }, 500, function () {
+          $(".h1_text_set").text(
+            $(".get_text_slider.active").attr("data-text_h1")
+          );
+          $(".h1_text_set").animate({ opacity: 1 }, 500);
+        });
+
+        $(".p_text_set").animate({ opacity: 0 }, 500, function () {
+          $(".p_text_set").addClass('d-none');
+        });
+
+        $(".p_text_button").animate({ opacity: 0 }, 500, function () {
+          $(".p_text_button").addClass('d-none');
+        });
+
+        $(".text_number_change").animate({ opacity: 1 }, 500, function () {
+          console.log("JHELLO");
+          $(".text_number_change").text(
+        $(".get_text_slider.active").attr("data-count")
+      );
+      $(".text_number_change").animate({ opacity: 1 }, 500);
+    })
+
+        }else{
+
       $(".h1_text_set").text($("get_text_slider.active").attr("data-text_h1"));
 
       $(".p_text_set").text(
@@ -864,51 +893,86 @@
         "href",
         $(".get_text_slider.active").attr("data-url")
       );
-      $(".text_number_change").text(
+
+      $(".text_number_change").animate({ opacity: 1 }, 500, function () {
+          console.log("JHELLO");
+          $(".text_number_change").text(
         $(".get_text_slider.active").attr("data-count")
-      );
+
+        );
+        $(".text_number_change").animate({ opacity: 1 }, 500);
+      })
+
+        }
     }, 1000);
 
     $(document).on("click", ".left_right_click", function () {
+      console.log("count_val "+$(".get_text_slider.active").attr("data-url"));
+
       setTimeout(function () {
-        $(".h1_text_set").animate({ opacity: 0 }, 500, function () {
+        if($('.get_text_slider.active').attr("data-url") == "#1")
+        {
+
+                  
+        $(".h1_text_set").animate({ opacity: 0 }, 1000, function () {
           $(".h1_text_set").text(
             $(".get_text_slider.active").attr("data-text_h1")
           );
-          $(".h1_text_set").animate({ opacity: 1 }, 500);
+          $(".h1_text_set").animate({ opacity: 1 }, 1000);
         });
 
-        $(".p_text_set").animate({ opacity: 0 }, 500, function () {
+        $(".p_text_set").animate({ opacity: 0 }, 1000, function () {
+          $(".p_text_set").addClass('d-none');
+        });
+
+        $(".p_text_button").animate({ opacity: 0 }, 1000, function () {
+          $(".p_text_button").addClass('d-none');
+        });
+
+
+        }else{
+
+        $(".h1_text_set").animate({ opacity: 0 }, 1000, function () {
+          $(".h1_text_set").text(
+            $(".get_text_slider.active").attr("data-text_h1")
+          );
+          $(".h1_text_set").animate({ opacity: 1 }, 1000);
+        });
+
+        $(".p_text_set").animate({ opacity: 0 }, 1000, function () {
+          $(".p_text_set").removeClass('d-none');
           $(".p_text_set").text(
             $(".get_text_slider.active").attr("data-p_all_text_set")
           );
-          $(".p_text_set").animate({ opacity: 1 }, 500);
+          $(".p_text_set").animate({ opacity: 1 }, 1000);
         });
 
-        $(".p_text_button").animate({ opacity: 0 }, 500, function () {
+        $(".p_text_button").animate({ opacity: 0 }, 1000, function () {
+          $(".p_text_button").removeClass('d-none');
           $(".p_text_button").attr(
             "href",
             $(".get_text.active").attr("data-url")
           );
-          $(".p_text_button").animate({ opacity: 1 }, 500);
+          $(".p_text_button").animate({ opacity: 1 }, 1000);
         });
 
-        $(".text_number_change").animate({ opacity: 0 }, 500, function () {
+        $(".text_number_change").animate({ opacity: 0 }, 1000, function () {
           $(".text_number_change").text(
-            $(".get_text_slider.active").attr("data-count_val")
+            $('.get_text_slider.active').attr("data-count")
           );
-          $(".text_number_change").animate({ opacity: 1 }, 500);
+          $(".text_number_change").animate({ opacity: 1 }, 1000);
         });
-
+      }
         // setTimeout(function(){
         //   $('.text_number_change').text("HELO : "+$('.get_text.active').attr("data-count"))
         // },2000)
         // console.log(":HE::P");
         //  ;
-      }, 500);
+      }, 1000);
 
       // console.log();
     });
+
 
     $(document).on("click", ".left_right_click_new", function () {
       setTimeout(function () {
