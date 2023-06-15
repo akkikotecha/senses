@@ -26,4 +26,21 @@ export class ResourceDocumentService {
     console.log(url);
     return this.http.get(url);
   }
+  getAllSubCategory(id: string) {
+    let url = environment.base_url + 'getSubCategoryIdData/' + id;
+    return this.http.get(url);
+  }
+  getAllCategory() {
+    let url = environment.base_url + 'getAllCategory';
+    return this.http.get(url);
+  }
+  getAllResourceDataByFilter(categoryId: any, setCategoryId: any) {
+    let url =
+      environment.base_url +
+      'getResourceImageDataByCategoryProduct/' +
+      categoryId +
+      '/' +
+      setCategoryId;
+    return this.http.get(url);
+  }
 }

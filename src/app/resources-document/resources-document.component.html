@@ -47,7 +47,12 @@
     <section class="cd-gallery filter-is-visible">
       <table>
         <tr *ngFor="let document of data.data">
-          <ng-container *ngIf="document.resourceFormat === 'pdf'">
+          <ng-container *ngIf="data.data.length === 0">
+            <div class="height:500px">
+              <h4>No Resource Available</h4>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="data.data.length > 0">
             <th style="width: 80%">
               <span style="font-size: 16px; color: #000"
                 ><input
@@ -77,7 +82,9 @@
 
             <th class="text-uppercase">{{ document.resourceFormat }}</th>
             <th>
-              <a href="assets/{{ document.image | htmlToPlaintext }}" download
+              <a
+                href="assets/{{ document.image | htmlToPlaintext }}"
+                target="_senses"
                 ><i class="fa fa-download" style="font-weight: 500"></i
               ></a>
             </th>
@@ -89,7 +96,7 @@
     <!-- cd-gallery -->
 
     <div class="cd-filter filter-is-visible">
-      <form>
+      <form style="height: 550px">
         <div class="cd-filter-block">
           <h4>Search</h4>
 
@@ -100,42 +107,6 @@
         </div>
         <!-- cd-filter-block -->
 
-        <div class="cd-filter-block d-none">
-          <h4>Check boxes</h4>
-
-          <ul class="cd-filter-content cd-filters list">
-            <li>
-              <input
-                class="filter"
-                data-filter=".check1"
-                type="checkbox"
-                id="checkbox1"
-              />
-              <label class="checkbox-label" for="checkbox1">Option 1</label>
-            </li>
-
-            <li>
-              <input
-                class="filter"
-                data-filter=".check2"
-                type="checkbox"
-                id="checkbox2"
-              />
-              <label class="checkbox-label" for="checkbox2">Option 2</label>
-            </li>
-
-            <li>
-              <input
-                class="filter"
-                data-filter=".check3"
-                type="checkbox"
-                id="checkbox3"
-              />
-              <label class="checkbox-label" for="checkbox3">Option 3</label>
-            </li>
-          </ul>
-          <!-- cd-filter-content -->
-        </div>
         <!-- cd-filter-block -->
 
         <div class="cd-filter-block">
@@ -143,12 +114,19 @@
 
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
-              <select class="filter" name="selectThis" id="selectThis">
+              <select
+                class="filter"
+                name="selectThis"
+                (change)="handleChange($event)"
+                id="categoryID"
+              >
                 <option value="">Choose an option</option>
-                <option value=".option1">Option 1</option>
-                <option value=".option2">Option 2</option>
-                <option value=".option3">Option 3</option>
-                <option value=".option4">Option 4</option>
+                <option
+                  value="{{ category._id }}"
+                  *ngFor="let category of categoryData.data"
+                >
+                  {{ category.categoryName }}
+                </option>
               </select>
             </div>
             <!-- cd-select -->
@@ -162,12 +140,14 @@
 
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
-              <select class="filter" name="selectThis" id="selectThis">
+              <select class="filter" name="selectThis" id="subCategoryID">
                 <option value="">Choose an option</option>
-                <option value=".option1">Option 1</option>
-                <option value=".option2">Option 2</option>
-                <option value=".option3">Option 3</option>
-                <option value=".option4">Option 4</option>
+                <option
+                  value="{{ subCategory._id }}"
+                  *ngFor="let subCategory of subCategoryData.data"
+                >
+                  {{ subCategory.subCategoryName }}
+                </option>
               </select>
             </div>
             <!-- cd-select -->
@@ -175,47 +155,19 @@
           <!-- cd-filter-content -->
         </div>
 
-        <div class="cd-filter-block d-none">
-          <h4>Radio buttons</h4>
-
-          <ul class="cd-filter-content cd-filters list">
-            <li>
-              <input
-                class="filter"
-                data-filter=""
-                type="radio"
-                name="radioButton"
-                id="radio1"
-                checked
-              />
-              <label class="radio-label" for="radio1">All</label>
-            </li>
-
-            <li>
-              <input
-                class="filter"
-                data-filter=".radio2"
-                type="radio"
-                name="radioButton"
-                id="radio2"
-              />
-              <label class="radio-label" for="radio2">Choice 2</label>
-            </li>
-
-            <li>
-              <input
-                class="filter"
-                data-filter=".radio3"
-                type="radio"
-                name="radioButton"
-                id="radio3"
-              />
-              <label class="radio-label" for="radio3">Choice 3</label>
-            </li>
-          </ul>
-          <!-- cd-filter-content -->
-        </div>
         <!-- cd-filter-block -->
+        <div class="d-flex justify-content-around">
+          <button
+            type="button"
+            class="fs-6 filterButton"
+            (click)="handleFormSubmit()"
+          >
+            Apply Filter
+          </button>
+          <button type="button" class="fs-6 filterButtonReset">
+            Reset Filter
+          </button>
+        </div>
       </form>
 
       <a class="cd-close"><i class="fa fa-close"></i></a>

@@ -12,11 +12,18 @@ import { ResourceDocumentService } from './resources-document.service';
 export class ResourcesDocumentComponent {
   data: any = '';
   filterData: any = '';
+  categoryData: any = '';
+  subCategoryData: any = '';
+  categorySelectedId: any = '';
+  subCategorySelectedId: any = '';
+
   constructor(
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
   ) {}
   ngOnInit(): void {
+    console.log('categorySelectedId', this.categorySelectedId);
+
     this.resourceDocument.getResourceTypeData().subscribe((res) => {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
@@ -29,6 +36,16 @@ export class ResourcesDocumentComponent {
       if (res && typeof res === 'object') {
         this.filterData = res; // Wrap the single object in an array
         console.log('JobsiteData', this.filterData);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+
+    this.resourceDocument.getAllCategory().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.categoryData = res; // Wrap the single object in an array
+
+        console.log('categoryData', this.categoryData);
       } else {
         console.error('Invalid response data: expected a single object');
       }
@@ -87,5 +104,46 @@ export class ResourcesDocumentComponent {
           }
         });
     }
+  }
+  // Inside your Angular component
+  handleChange(event: any) {
+    const selectedValue = event?.target?.value;
+    if (selectedValue) {
+      // Function logic here
+      console.log('Selected value:', selectedValue);
+      this.resourceDocument
+        .getAllSubCategory(selectedValue)
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.subCategoryData = res; // Wrap the single object in an array
+
+            console.log('subCategoryData', this.subCategoryData);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+      // Additional code you want to execute
+    }
+  }
+  handleFormSubmit() {
+    this.categorySelectedId = $('#categoryID option:selected').val();
+    this.subCategorySelectedId = $('#subCategoryID option:selected').val();
+    this.resourceDocument
+      .getAllResourceDataByFilter(
+        this.categorySelectedId,
+        this.subCategorySelectedId
+      )
+      .subscribe((res) => {
+        if (res && typeof res === 'object') {
+          this.data = res; // Wrap the single object in an array
+          console.log('filterResourceData', this.data);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
+    console.log(this.categorySelectedId);
+    console.log(this.subCategorySelectedId);
+    console.log('categoryID');
+    console.log('categoryID');
   }
 }
