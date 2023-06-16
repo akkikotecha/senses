@@ -12,6 +12,7 @@ import { ResourceDocumentService } from './resources-document.service';
 export class ResourcesDocumentComponent {
   data: any = '';
   filterData: any = '';
+  filterResourceData: any = '';
   categoryData: any = '';
   subCategoryData: any = '';
   categorySelectedId: any = '';
@@ -27,7 +28,9 @@ export class ResourcesDocumentComponent {
     this.resourceDocument.getResourceTypeData().subscribe((res) => {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
-        console.log('JobsiteData', this.data);
+        this.filterResourceData = this.data.data; // Wrap the single object in an array
+        console.log('ResourceTypeData', this.data);
+        console.log('filterResourceData', this.filterResourceData);
       } else {
         console.error('Invalid response data: expected a single object');
       }
@@ -35,7 +38,7 @@ export class ResourcesDocumentComponent {
     this.resourceDocument.getResourceSubTypeDataByTypeID().subscribe((res) => {
       if (res && typeof res === 'object') {
         this.filterData = res; // Wrap the single object in an array
-        console.log('JobsiteData', this.filterData);
+        console.log('JobsiteData2', this.filterData);
       } else {
         console.error('Invalid response data: expected a single object');
       }
@@ -50,7 +53,6 @@ export class ResourcesDocumentComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
-
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/table/resourcesGalley.js')
@@ -64,7 +66,6 @@ export class ResourcesDocumentComponent {
           // // })
         });
     }, 1000);
-
     setTimeout(function () {
       console.log('HELLO');
       $('.header-main').css({
@@ -83,26 +84,27 @@ export class ResourcesDocumentComponent {
   }
   handleClick(id: string) {
     console.log('id', id);
+
     if (id === '') {
-      this.resourceDocument.getResourceTypeData().subscribe((res) => {
-        if (res && typeof res === 'object') {
-          this.data = res; // Wrap the single object in an array
-          console.log('JobsiteData', this.data);
-        } else {
-          console.error('Invalid response data: expected a single object');
+      // this.resourceDocument.getResourceTypeData().subscribe((res) => {
+      //   if (res && typeof res === 'object') {
+      // this.data = res;
+      this.filterResourceData = this.data.data; // Wrap the single object in an array
+      // Wrap the single object in an array
+      console.log('JobsiteData', this.data);
+      //   } else {
+      //     console.error('Invalid response data: expected a single object');
+      //   }
+      // });
+    } else {
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == id) {
+          console.log(res);
+          return res;
         }
       });
-    } else {
-      this.resourceDocument
-        .getResourceImageDataBySubTypeID(id)
-        .subscribe((res) => {
-          if (res && typeof res === 'object') {
-            this.data = res; // Wrap the single object in an array
-            console.log('jobsiteData', this.data);
-          } else {
-            console.error('Invalid response data: expected a single object');
-          }
-        });
+      console.log('this.data', this.data);
+      console.log('this.filterResourceData', this.filterResourceData);
     }
   }
   // Inside your Angular component
@@ -128,22 +130,57 @@ export class ResourcesDocumentComponent {
   handleFormSubmit() {
     this.categorySelectedId = $('#categoryID option:selected').val();
     this.subCategorySelectedId = $('#subCategoryID option:selected').val();
-    this.resourceDocument
-      .getAllResourceDataByFilter(
-        this.categorySelectedId,
-        this.subCategorySelectedId
-      )
-      .subscribe((res) => {
-        if (res && typeof res === 'object') {
-          this.data = res; // Wrap the single object in an array
-          console.log('filterResourceData', this.data);
-        } else {
-          console.error('Invalid response data: expected a single object');
-        }
-      });
+
+    if (this.categorySelectedId && this.subCategorySelectedId) {
+      this.resourceDocument
+        .getAllResourceDataByFilter(
+          this.categorySelectedId,
+          this.subCategorySelectedId,
+          localStorage.getItem('resourceTypeId')
+        )
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('filterResourceData', this.data);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+    } else {
+      this.resourceDocument
+        .getAllResourceDataByCategoryFilter(
+          this.categorySelectedId,
+
+          localStorage.getItem('resourceTypeId')
+        )
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('filterResourceData', this.data);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+    }
     console.log(this.categorySelectedId);
     console.log(this.subCategorySelectedId);
     console.log('categoryID');
     console.log('categoryID');
+  }
+  handleResetButton() {
+    this.resourceDocument.getResourceTypeData().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.filterResourceData = this.data.data; // Wrap the single object in an array
+        console.log('ResourceTypeDataReset', this.data);
+        console.log('filterResourceDataReset', this.filterResourceData);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
   }
 }

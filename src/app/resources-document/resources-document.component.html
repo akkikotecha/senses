@@ -46,13 +46,13 @@
 
     <section class="cd-gallery filter-is-visible">
       <table>
-        <tr *ngFor="let document of data.data">
-          <ng-container *ngIf="data.data.length === 0">
+        <tr *ngFor="let document of filterResourceData">
+          <ng-container *ngIf="data.length === 0">
             <div class="height:500px">
               <h4>No Resource Available</h4>
             </div>
           </ng-container>
-          <ng-container *ngIf="data.data.length > 0">
+          <ng-container *ngIf="filterResourceData.length > 0">
             <th style="width: 80%">
               <span style="font-size: 16px; color: #000"
                 ><input
@@ -164,17 +164,25 @@
           >
             Apply Filter
           </button>
-          <button type="button" class="fs-6 filterButtonReset">
+          <button
+            type="button"
+            class="fs-6 filterButtonReset"
+            (click)="handleResetButton()"
+          >
             Reset Filter
           </button>
         </div>
       </form>
 
-      <a class="cd-close"><i class="fa fa-close"></i></a>
+      <a class="cd-close"
+        ><i class="fa fa-close" style="cursor: pointer"></i
+      ></a>
     </div>
     <!-- cd-filter -->
 
-    <a class="cd-filter-trigger filter-is-visible">Filters</a>
+    <a class="cd-filter-trigger filter-is-visible" style="cursor: pointer"
+      >Filters</a
+    >
   </main>
   <!-- cd-main-content -->
 

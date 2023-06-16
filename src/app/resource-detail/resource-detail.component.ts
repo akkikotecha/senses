@@ -12,35 +12,31 @@ export class ResourceDetailComponent {
   constructor(private adminResource: ResourceService, private router: Router) {}
   resourceType: any = '';
   resourceSubType: any = '';
-  resourceImagesType: any = '';
-  resourceDocumentsType: any = '';
-  resourceMaterialsType: any = '';
-  resourceCertificationsType: any = '';
+  resourceFilterTypeSubTypeData: any = '';
   ngOnInit(): void {
     this.adminResource.getAllResourceType().subscribe((res: any) => {
-      console.log(res);
       this.resourceType = JSON.parse(JSON.stringify(res));
-      console.log('this.resourceType', this.resourceType);
+      // Insert the removed element at the beginning of the array
+      const secondPositionData = this.resourceType.data.splice(1, 1); // Remove the element at index 1 and store it
+      console.log(secondPositionData);
+      this.resourceType.data.unshift(secondPositionData[0]);
+      console.log('After Filter Data', this.resourceType);
     });
     this.adminResource.getAllResourceSubType().subscribe((res: any) => {
-      console.log(res);
       this.resourceSubType = JSON.parse(JSON.stringify(res));
-      console.log('this.resourceSubType', this.resourceSubType);
     });
-    this.resourceType.data.forEach((resType: any) => {
-      this.resourceSubType.data.forEach((resSubType: any) => {
-        if (
-          (resType._id =
-            resSubType.resourceType && resType.title == 'Documents')
-        ) {
-          console.log('resSubType', resSubType);
-          // Display or use the resSubType object as per your requirement
-        }
-      });
+    this.adminResource.getAllResourceTypeSubTypeData().subscribe((res: any) => {
+      this.resourceFilterTypeSubTypeData = JSON.parse(JSON.stringify(res));
+      const secondPositionData = this.resourceFilterTypeSubTypeData.data.splice(
+        1,
+        1
+      ); // Remove the element at index 1 and store it
+      console.log(secondPositionData);
+      this.resourceFilterTypeSubTypeData.data.unshift(secondPositionData[0]);
     });
+    const array = [1, 2, 3, 4, 5];
 
     setTimeout(function () {
-      console.log('HELLO');
       $('.header-main').css({
         background: '#fff',
         border: '2px solid #ededed',

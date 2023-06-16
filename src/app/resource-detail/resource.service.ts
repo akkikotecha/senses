@@ -19,4 +19,8 @@ export class ResourceService {
     let url = environment.base_url + 'getAllResourceSubType';
     return this.http.get(url);
   }
+  getAllResourceTypeSubTypeData() {
+    let url = environment.base_url + 'getResourceSubTypeDataByTypeId';
+    return this.http.get(url);
+  }
 }

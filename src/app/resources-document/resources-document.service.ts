@@ -34,13 +34,28 @@ export class ResourceDocumentService {
     let url = environment.base_url + 'getAllCategory';
     return this.http.get(url);
   }
-  getAllResourceDataByFilter(categoryId: any, setCategoryId: any) {
+  getAllResourceDataByFilter(
+    categoryId: any,
+    setCategoryId: any,
+    resourceId: any
+  ) {
     let url =
       environment.base_url +
       'getResourceImageDataByCategoryProduct/' +
       categoryId +
       '/' +
-      setCategoryId;
+      setCategoryId +
+      '/' +
+      resourceId;
+    return this.http.get(url);
+  }
+  getAllResourceDataByCategoryFilter(categoryId: any, resourceId: any) {
+    let url =
+      environment.base_url +
+      'getResourceImageDataByCategory/' +
+      categoryId +
+      '/' +
+      resourceId;
     return this.http.get(url);
   }
 }
