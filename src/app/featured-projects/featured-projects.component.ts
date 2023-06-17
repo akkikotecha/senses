@@ -38,6 +38,7 @@ export class FeaturedProjectsComponent {
   addFeaturedOneImage: File[] = [];
   addFeaturedTwoImage: File[] = [];
   addFeaturedThreeImage: File[] = [];
+  download_pdf: File[] = [];
 
   successfully_login: any = '';
   check_valid: any = '';
@@ -126,7 +127,7 @@ export class FeaturedProjectsComponent {
         .subscribe((_) => {});
 
       this.lazyLoadService
-        .loadScript('../../assets/assets/table/featuredProjectF.js')
+        .loadScript('../../assets/assets/table/featuredProject.js')
         .subscribe((_) => {
           //       setTimeout(function(){
           //         $('textarea[name="DSC"]').ckeditor();
@@ -181,6 +182,16 @@ export class FeaturedProjectsComponent {
 
   featuredThreeImageChange(event: any) {
     this.addFeaturedThreeImage = Array.from(event.target.files);
+
+    // console.log();
+    //  this.image = event.target.files;
+    //  console.log("HELLO "+JSON.stringify(event.target.files[0]));
+
+    // Store the array of selected files in your component's state or variable
+  }
+
+  featuredONeImageChange(event: any) {
+    this.download_pdf = Array.from(event.target.files);
 
     // console.log();
     //  this.image = event.target.files;
@@ -447,105 +458,91 @@ export class FeaturedProjectsComponent {
         console.log(this.description_value_1);
         this.featuredOneDescValidation = true;
       } else {
-        if (
-          $('#banner_index').val() == '' ||
-          $('#banner_index').val() == '1' ||
-          $('#banner_index').val() == '2' ||
-          $('#banner_index').val() == '3'
-        ) {
-          Swal.fire({
-            title: 'Are you Sure?',
-            text: '',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#fd7e14',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              const formData = new FormData();
+        Swal.fire({
+          title: 'Are you Sure?',
+          text: '',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#fd7e14',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const formData = new FormData();
 
-              this.addFeaturedThreeImage.forEach((file, index) => {
-                formData.append('image', file);
-              });
+            this.addFeaturedThreeImage.forEach((file, index) => {
+              formData.append('image', file);
+            });
+            this.download_pdf.forEach((file, index) => {
+              formData.append('DownloadData', file);
+            });
 
-              formData.append('title', $('#AddTitle').val());
-              formData.append('Architect', $('#Architect').val() as string);
-              formData.append('Client', $('#Client').val() as string);
+            formData.append('title', $('#AddTitle').val());
+            formData.append('Architect', $('#Architect').val() as string);
+            formData.append('Client', $('#Client').val() as string);
 
-              formData.append('Description', this.description_value_1);
-              formData.append('Product', $('#Product').val() as string);
-              formData.append('Location', $('#Location').val());
-              formData.append('Completion', $('#Completion').val() as string);
-              formData.append(
-                'banner_index',
-                $('#banner_index').val() as string
-              );
+            formData.append('Description', this.description_value_1);
+            formData.append('Product', $('#Product').val() as string);
+            formData.append('Location', $('#Location').val());
+            formData.append('Completion', $('#Completion').val() as string);
+            formData.append('banner_index', $('#banner_index').val() as string);
+            formData.append(
+              'slidDescription',
+              $('#slidDescription').val() as string
+            );
 
-              var ResponseData = '';
-              var strVal = '';
+            var ResponseData = '';
+            var strVal = '';
 
-              console.log(JSON.stringify(formData));
-              // Send the form data to the server
-              this.AdminCategoryService.FeaturedProjectAdd(formData).subscribe(
-                (res) => {
-                  console.log('Result ', res);
-                  const ra = JSON.stringify(res);
-                  const Authdata = JSON.parse(ra);
+            console.log(JSON.stringify(formData));
+            // Send the form data to the server
+            this.AdminCategoryService.FeaturedProjectAdd(formData).subscribe(
+              (res) => {
+                console.log('Result ', res);
+                const ra = JSON.stringify(res);
+                const Authdata = JSON.parse(ra);
 
-                  if (Authdata.message == 'Data Uplodaded SuccessFully') {
-                    Swal.fire({
-                      title: 'Featured Project Added Successfully...',
-                      text: '',
-                      icon: 'success',
-                      confirmButtonText: 'ok',
-                      confirmButtonColor: '#fd7e14',
-                    });
+                if (Authdata.message == 'Data Uplodaded SuccessFully') {
+                  Swal.fire({
+                    title: 'Featured Project Added Successfully...',
+                    text: '',
+                    icon: 'success',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: '#fd7e14',
+                  });
 
-                    this.color = 'success';
-                    this.successfully_login =
-                      'Product Detail Added Successfully...';
-                    window.location.reload();
-                  } else if (Authdata.message == 'already exit index.') {
-                    Swal.fire({
-                      title: 'Banner Index already exit',
-                      text: '',
-                      icon: 'error',
-                      confirmButtonText: 'ok',
-                      confirmButtonColor: '#fd7e14',
-                    });
+                  this.color = 'success';
+                  this.successfully_login =
+                    'Product Detail Added Successfully...';
+                  window.location.reload();
+                } else if (Authdata.message == 'already exit index.') {
+                  Swal.fire({
+                    title: 'Banner Index already exit',
+                    text: '',
+                    icon: 'error',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: '#fd7e14',
+                  });
 
-                    this.color = 'danger';
-                    this.successfully_login = 'Banner Index already exit';
-                  } else {
-                    Swal.fire({
-                      title: 'Product Detail Not Added!!!',
-                      text: '',
-                      icon: 'error',
-                      confirmButtonText: 'ok',
-                      confirmButtonColor: '#fd7e14',
-                    });
+                  this.color = 'danger';
+                  this.successfully_login = 'Banner Index already exit';
+                } else {
+                  Swal.fire({
+                    title: 'Product Detail Not Added!!!',
+                    text: '',
+                    icon: 'error',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: '#fd7e14',
+                  });
 
-                    this.color = 'danger';
-                    this.successfully_login = 'Product Detail Not Added!!!';
-                  }
-                  this.check_valid = true;
+                  this.color = 'danger';
+                  this.successfully_login = 'Product Detail Not Added!!!';
                 }
-              );
-            }
-          });
-        } else {
-          Swal.fire({
-            title: 'index not supported accept 1,2,3',
-            text: '',
-            icon: 'error',
-            confirmButtonText: 'ok',
-            confirmButtonColor: '#fd7e14',
-          });
-
-          this.color = 'danger';
-          this.successfully_login = 'index not supported accept 1,2,3';
-        }
+                this.check_valid = true;
+              }
+            );
+          }
+        });
       }
     }
   }

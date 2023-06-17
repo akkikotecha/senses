@@ -11,6 +11,7 @@ import { HomeService } from './home.service';
 import { HomeServicesService } from './home-services.service';
 import { Router } from '@angular/router';
 declare var $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   secondFeaturedProduct: any;
   thirdFeaturedProduct: any;
   fourthFeaturedProduct: any;
-
+  FeaturedProjectdata: any;
   Data: any;
   @ViewChild('carousel', { static: true }) carousel: any;
   constructor(
@@ -33,6 +34,8 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private HomeServicesService: HomeServicesService
   ) {}
+
+  getAllBlogs: any;
 
   ngOnInit(): void {
     this.homeService.getAllFeaturedProduct().subscribe((res: any) => {
@@ -52,6 +55,24 @@ export class HomeComponent implements OnInit {
       console.log('secondFeaturedProduct', this.secondFeaturedProduct);
       console.log('thirdFeaturedProduct', this.thirdFeaturedProduct);
       console.log('fourthFeaturedProduct', this.fourthFeaturedProduct);
+    });
+
+    this.homeService.getThreeFeaturedProjects().subscribe((res: any) => {
+      console.log('Featured Project', res.data);
+      this.FeaturedProjectdata = res.data;
+      // console.log("firstFeaturedProduct", this.firstFeaturedProduct)
+      // console.log("secondFeaturedProduct", this.secondFeaturedProduct)
+      // console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
+      // console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
+    });
+
+    this.homeService.getAllBlogs().subscribe((res: any) => {
+      console.log('getAllBlogs', res.data);
+      this.getAllBlogs = res;
+      // console.log("firstFeaturedProduct", this.firstFeaturedProduct)
+      // console.log("secondFeaturedProduct", this.secondFeaturedProduct)
+      // console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
+      // console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
     });
 
     this.HomeServicesService.getHomeBanner().subscribe((res) => {
@@ -76,6 +97,7 @@ export class HomeComponent implements OnInit {
             nav: false,
             mouseDrag: true,
             autoplay: true,
+            // items:3,
             // animateOut: "animate__animated animate__slideOutDown",
             // animateIn: "animate__animated animate__flipInX",
             smartSpeed: 450,
@@ -84,69 +106,76 @@ export class HomeComponent implements OnInit {
                 items: 1,
               },
               600: {
-                items: 1,
-              },
-              1000: {
-                items: 1,
-              },
-            },
-          });
-
-          $('#owl-demo').owlCarousel({
-            loop: true,
-            margin: 10,
-            dots: true,
-            nav: false,
-            mouseDrag: true,
-            autoplay: true,
-            // //animateOut: "animate__animated animate__slideOutDown",
-            // animateIn: "animate__animated animate__flipInX",
-            smartSpeed: 450,
-            responsive: {
-              0: {
-                items: 1,
-              },
-              600: {
-                items: 1,
-              },
-              1000: {
-                items: 1,
-              },
-            },
-          });
-
-          $('#owl-demo-new').owlCarousel({
-            loop: true,
-            margin: 10,
-            dots: true,
-            nav: false,
-            mouseDrag: true,
-            autoplay: true,
-            // animateOut: "slideOutDown",
-            // animateIn: "slideInDown",
-            smartSpeed: 450,
-            responsive: {
-              0: {
-                items: 1,
-              },
-
-              568: {
                 items: 2,
               },
-
-              992: {
+              1000: {
                 items: 3,
               },
             },
           });
+
+          //   $("#owl-demo-new").owlCarousel({
+
+          //     loop:true,
+          //     margin:10,
+          //     dots:true,
+          //     nav:false,
+          //     mouseDrag:true,
+          //     autoplay:true,
+          //     items:3,
+          //     // animateOut: "slideOutDown",
+          //     // animateIn: "slideInDown",
+          //     smartSpeed: 450,
+          //     // responsive:{
+          //     //   0:{
+          //     //     items:5
+          //     // },
+
+          //     // 568:{
+          //     //     items:5
+          //     // },
+
+          //     // 992:{
+          //     //     items:5
+          //     // }
+          //     // }
+
+          // });
         });
     }, 1000);
   }
-  ngAfterViewInit() {}
+
   handleViewAllImage() {
     localStorage.setItem('resourceTypeId', '648ac6763b5871e6e15ed341');
     this.router.navigate(['resources_gallery']).then(() => {
       // window.location.reload();
     });
   }
+  chunkArray(array: any, size: any) {
+    console.log('array ' + array + ' size ' + size);
+    const result = [];
+    if (array && array.length > 0) {
+      const length = array.length;
+      for (let i = 0; i < length; i += size) {
+        result.push(array.slice(i, i + size));
+      }
+    }
+    console.log('array 1 ' + array + ' size 1 ' + size);
+    return result;
+  }
+
+  blog_news_click(id: any, name: any): void {
+    localStorage.removeItem('blogs_id');
+    localStorage.removeItem('blogs_title');
+
+    localStorage.setItem('blogs_id', id);
+    localStorage.setItem('blogs_title', name);
+
+    // console.log(id)
+    this.router.navigate(['blog_and_news_show_details', name]).then(() => {
+      // window.location.reload();
+    });
+  }
+
+  ngAfterViewInit() {}
 }
