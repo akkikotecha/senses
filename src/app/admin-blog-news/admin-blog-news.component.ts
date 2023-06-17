@@ -1,23 +1,20 @@
-import { Component, ElementRef, ViewChild, AfterViewInit,ChangeDetectorRef   } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { LazyLoadingService} from './lazy-loading.service'
 import { environment } from 'src/environments/environment';
 // import * as ClassicEditorDate from '@ckeditor/ckeditor5-build-classic';
 import { NgModel } from '@angular/forms';
 
 import Swal, {SweetAlertOptions} from 'sweetalert2';
-import { FeaturedProjectService } from './featured-project.service';
+import { AdminBlogNewsService } from './admin-blog-news.service';
 declare var $: any;
 declare var ClassicEditor: any;
 declare var CKEDITOR: any;
-
-
-
 @Component({
-  selector: 'app-featured-projects',
-  templateUrl: './featured-projects.component.html',
-  styleUrls: ['./featured-projects.component.css']
+  selector: 'app-admin-blog-news',
+  templateUrl: './admin-blog-news.component.html',
+  styleUrls: ['./admin-blog-news.component.css']
 })
-export class FeaturedProjectsComponent {
+export class AdminBlogNewsComponent {
   image_data:any="";
 
   getProjectManagerData:any='';
@@ -74,19 +71,12 @@ featuredThreeDescValidation:any =false ;
   // @ViewChild('featureThreeDescription',{ read: NgModel }) editorModel_4!: NgModel;
 
   
-  constructor(private AdminCategoryService:FeaturedProjectService,private lazyLoadService:LazyLoadingService,private cdRef: ChangeDetectorRef) { }
+  constructor(private AdminCategoryService:AdminBlogNewsService,private lazyLoadService:LazyLoadingService,private cdRef: ChangeDetectorRef) { }
   objectKeys = Object.keys;
 
   ngOnInit(): void {
 
     
-  this.AdminCategoryService.getAllCategory().subscribe((res)=>{
-
-    this.JobsiteData = JSON.parse(JSON.stringify(res));
-    // this.related_product = JSON.parse(JSON.stringify(res));
-    
-   console.log(this.JobsiteData);
-  });
 
     setTimeout(() => {
 
@@ -99,7 +89,7 @@ featuredThreeDescValidation:any =false ;
         this.lazyLoadService.loadScript('https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js').subscribe(_ => { });
         this.lazyLoadService.loadScript('../../assets/assets/table/select.js').subscribe(_ => { });
   
-      this.lazyLoadService.loadScript('../../assets/assets/table/featuredProject.js').subscribe(_ => { 
+      this.lazyLoadService.loadScript('../../assets/assets/table/BlogsAndNews.js').subscribe(_ => { 
       
         
   //       setTimeout(function(){
@@ -446,21 +436,15 @@ submit() {
           this.addFeaturedThreeImage.forEach((file, index) => {
             formData.append("image", file);
           });
-          this.download_pdf.forEach((file, index) => {
-            formData.append("DownloadData", file);
-          });
+          // this.download_pdf.forEach((file, index) => {
+          //   formData.append("DownloadData", file);
+          // });
           
           
           formData.append('title', $('#AddTitle').val());
-          formData.append('Architect', $('#Architect').val() as string);
-          formData.append('Client', $('#Client').val() as string);
-          
+          formData.append('sub_title', $('#subTitle').val() as string);
           formData.append('Description',  this.description_value_1);
-          formData.append('Product', $('#Product').val() as string);
-          formData.append('Location', $('#Location').val());
-          formData.append('Completion', $('#Completion').val() as string);
-          formData.append('banner_index', $('#banner_index').val() as string);
-          formData.append('slidDescription', $('#slidDescription').val() as string);
+          // formData.append('banner_index', $('#banner_index').val() as string);
           
           
 var ResponseData = '';
@@ -469,7 +453,7 @@ var strVal = '';
 
   console.log(JSON.stringify(formData));
           // Send the form data to the server
-          this.AdminCategoryService.FeaturedProjectAdd(formData).subscribe((res) => {
+          this.AdminCategoryService.addPostBlogs(formData).subscribe((res) => {
             console.log("Result ", res);
             const ra = JSON.stringify(res);
             const Authdata = JSON.parse(ra);
@@ -486,17 +470,6 @@ var strVal = '';
               this.color = "success";
               this.successfully_login = "Product Detail Added Successfully...";
               window.location.reload();
-            }else if(Authdata.message == "already exit index.") {
-              Swal.fire({
-                title: 'Banner Index already exit',
-                text: '',
-                icon: 'error',
-                confirmButtonText: 'ok',
-                confirmButtonColor: "#fd7e14"
-              });
-  
-              this.color = "danger";
-              this.successfully_login = "Banner Index already exit";
             }
             else {
               Swal.fire({
@@ -615,4 +588,5 @@ var strVal = '';
   }
 
 }
+
 

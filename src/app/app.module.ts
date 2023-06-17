@@ -48,6 +48,10 @@ import { AdminResouceComponent } from './admin-resource/admin-resouce.component'
 import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 import { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
+import { FeatureProjectViewAllComponent } from './feature-project-view-all/feature-project-view-all.component';
+import { FeatureProductShowDetailComponent } from './feature-product-show-detail/feature-product-show-detail.component';
+import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
+import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +95,10 @@ import { FeaturedProjectsComponent } from './featured-projects/featured-projects
     AdminResourceTypeComponent,
     AdminResourceSubtypeComponent,
     FeaturedProjectsComponent,
+    FeatureProjectViewAllComponent,
+    FeatureProductShowDetailComponent,
+    AdminBlogNewsComponent,
+    BlogAndNewsShowDetailsComponent,
   ],
   imports: [
     BrowserModule,

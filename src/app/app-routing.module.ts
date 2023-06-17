@@ -30,6 +30,10 @@ import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 import { AdminResouceComponent } from './admin-resource/admin-resouce.component';
 import { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
+import { FeatureProjectViewAllComponent } from './feature-project-view-all/feature-project-view-all.component';
+import { FeatureProductShowDetailComponent } from './feature-product-show-detail/feature-product-show-detail.component';
+import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
+import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
 
 const routes: Routes = [
   {
@@ -183,7 +187,31 @@ const routes: Routes = [
     component: FeaturedProjectsComponent,
     runGuardsAndResolvers: 'always',
   },
+  {
+    path: 'featured_project_view_all',
+    component: FeatureProjectViewAllComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'featured_project_view_all_detail/:name',
+    component: FeatureProductShowDetailComponent,
+    runGuardsAndResolvers: 'always',
+
+  },
+  {
+    path: 'admin_blog_news',
+    component: AdminBlogNewsComponent,
+    runGuardsAndResolvers: 'always',
+
+  },
+  {
+    path: 'blog_and_news_show_details/:name',
+    component: BlogAndNewsShowDetailsComponent,
+    runGuardsAndResolvers: 'always',
+
+  },
   
+
 ];
 
 @NgModule({

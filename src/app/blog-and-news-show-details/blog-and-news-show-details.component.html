@@ -1,0 +1,61 @@
+<app-header> </app-header>
+<section class="process mt-0 pt-3 pb-2">
+  <div class="container">
+    <div class="row">
+      <div class="title-page-white text-center w-100">
+        
+        <div class="row justify-content-between mt-5">
+            <p class="mb-1 text-center d-none" style="color:#3da2ac!important;font-weight: 600;font-size: 15px;">Blogs And News</p>
+          <h1 class="mb-4  text-center" style="font-weight: 700;font-size: 40px;"> {{blogsNews[0].title}}</h1>
+          <h4 class="mb-4  text-center" style="font-weight: 700;font-size: 28px;"> {{blogsNews[0].sub_title}}</h4>
+          <img src="assets/{{blogsNews[0].image}}" class="card-img-top" alt="...">
+		
+        
+
+          <div class="mt-4" [innerHTML]="blogsNews[0].Description"></div>
+
+          <div class="mt-4" ><h4 class="mb-4  text-center" style="font-weight: 700;font-size: 22px;"> Share : <span><i class="fa fa-facebook"></i></span><span><i class="fa fa-whatsapp ml-3"></i></span><span><i class="fa fa-twitter ml-3"></i></span></h4></div>
+
+
+            <!-- <div class="col-lg-3 ">
+				<a [routerLink]="['/sub_products']"><div class="card">
+				<img src="assets/2-Space-Dividers.webp" class="card-img-top" alt="...">
+				<div class="card-body">
+				<h5 class="card-title p_all_text_set card_header" >Space Dividers</h5>
+				
+				<p class="card-text text-left p_all_text_set d-none"><a href="#" class="set_link" >BLOG</a>
+				</p>
+			</div>
+		</div>
+		</a>
+	</div>
+	<div class="col-lg-3 ">
+		<a [routerLink]="['/sub_products']"><div class="card">
+		<img src="assets/3-Acoustics.webp" class="card-img-top" alt="...">
+		<div class="card-body">
+		<h5 class="card-title p_all_text_set card_header" >Acoustics</h5>
+		
+		<p class="card-text text-left p_all_text_set d-none"><a href="#" class="set_link" >BLOG</a>
+		</p>
+	</div>
+	</div>
+	</a>
+	</div>
+	<div class="col-lg-3 ">
+		<a [routerLink]="['/sub_products']"><div class="card">
+		<img src="assets/4-Accessories-_-Lighting.webp" class="card-img-top" alt="...">
+		<div class="card-body">
+		<h5 class="card-title p_all_text_set card_header" >Accessories & Lighting</h5>
+		
+		<p class="card-text text-left p_all_text_set d-none"><a href="#" class="set_link" >BLOG</a>
+		</p>
+	</div>
+	</div>
+	</a>
+	</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer> </app-footer>

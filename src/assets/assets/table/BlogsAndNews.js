@@ -70,7 +70,7 @@ $(document).ready(function () {
     var items = [];
     //var ResponseData=[];
     $.ajax({
-      url: window.localStorage.getItem("BaseURLAPI") + "getAllFeaturedProjects",
+      url: window.localStorage.getItem("BaseURLAPI") + "getAllBlogs",
       method: "GET",
       // data:x,_token:"{{ csrf_token() }}",
       headers: {
@@ -87,14 +87,9 @@ $(document).ready(function () {
           items.push({
             ID: val._id,
             title: val.title,
-            Architect: val.Architect,
-            Client: val.Client,
-            Product:val.Product,
-            Location:val.Location,
-            Completion:val.Completion,
+            sub_title: val.sub_title,
             Description:val.Description,
             image:val.image,
-            download_url:val.download_url
           });
         });
   
@@ -151,36 +146,15 @@ $(document).ready(function () {
               title: "Title",
             },
             {
-              field: "Architect",
-              title: "Architect",
+              field: "sub_title",
+              title: "Sub Title",
             },
-            {
-              field: "Client",
-              title: "Client",
-            },
-
-
-            {
-                field: "Product",
-                title: "Product",
-              },
-              {
-                field: "Location",
-                title: "Location",
-              },
-              {
-                field: "Completion",
-                title: "Completion",
-              },
+           
               {
                 field: "Description",
                 title: "Description",
               },
-              {
-                title: "Download PDF",
-                template: "<a href='./assets/#:download_url#' ><i class='fa fa-download'></i></a>",
-            }
-          ],
+                     ],
           dataBound: function () {
             $(".k-grid-myDelete span").addClass("k-icon k-delete");
           },
