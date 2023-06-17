@@ -1050,7 +1050,8 @@ xfilter
 
 -------------------------------- */
 .cd-filter {
-  position: absolute;
+  /* position: absolute; */
+  margin-top: -50px;
   top: 0;
   left: 0;
   width: 280px;
@@ -1132,7 +1133,7 @@ xfilter
 }
 
 .cd-filter-trigger {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   height: 50px;

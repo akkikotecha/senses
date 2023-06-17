@@ -48,6 +48,7 @@ import { AdminResouceComponent } from './admin-resource/admin-resouce.component'
 import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource-type.component';
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 import { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
+import { FeaturedProductsComponent } from './featured-products/featured-products.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { FeaturedProjectsComponent } from './featured-projects/featured-projects
     AdminResourceTypeComponent,
     AdminResourceSubtypeComponent,
     FeaturedProjectsComponent,
+    FeaturedProductsComponent,
   ],
   imports: [
     BrowserModule,

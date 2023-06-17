@@ -11,17 +11,17 @@ import { environment } from 'src/environments/environment';
 import { NgModel } from '@angular/forms';
 
 import Swal, { SweetAlertOptions } from 'sweetalert2';
-import { FeaturedProjectService } from './featured-project.service';
+import { FeaturedProjectService } from './featured-product.service';
 declare var $: any;
 declare var ClassicEditor: any;
 declare var CKEDITOR: any;
 
 @Component({
-  selector: 'app-featured-projects',
-  templateUrl: './featured-projects.component.html',
-  styleUrls: ['./featured-projects.component.css'],
+  selector: 'app-featured-products',
+  templateUrl: './featured-products.component.html',
+  styleUrls: ['./featured-products.component.css'],
 })
-export class FeaturedProjectsComponent {
+export class FeaturedProductsComponent {
   image_data: any = '';
 
   getProjectManagerData: any = '';
@@ -126,7 +126,7 @@ export class FeaturedProjectsComponent {
         .subscribe((_) => {});
 
       this.lazyLoadService
-        .loadScript('../../assets/assets/table/featuredProjectF.js')
+        .loadScript('../../assets/assets/table/featuredProduct.js')
         .subscribe((_) => {
           //       setTimeout(function(){
           //         $('textarea[name="DSC"]').ckeditor();
@@ -448,10 +448,11 @@ export class FeaturedProjectsComponent {
         this.featuredOneDescValidation = true;
       } else {
         if (
-          $('#banner_index').val() == '' ||
-          $('#banner_index').val() == '1' ||
-          $('#banner_index').val() == '2' ||
-          $('#banner_index').val() == '3'
+          $('#order_index').val() == '' ||
+          $('#order_index').val() == '1' ||
+          $('#order_index').val() == '2' ||
+          $('#order_index').val() == '3' ||
+          $('#order_index').val() == '4'
         ) {
           Swal.fire({
             title: 'Are you Sure?',
@@ -469,21 +470,11 @@ export class FeaturedProjectsComponent {
                 formData.append('image', file);
               });
 
-              formData.append('title', $('#AddTitle').val());
-              formData.append('Architect', $('#Architect').val() as string);
-              formData.append('Client', $('#Client').val() as string);
+              formData.append('name', $('#AddTitle').val());
 
-              formData.append('Description', this.description_value_1);
-              formData.append('Product', $('#Product').val() as string);
-              formData.append('Location', $('#Location').val());
-              formData.append('Completion', $('#Completion').val() as string);
-              formData.append(
-                'banner_index',
-                $('#banner_index').val() as string
-              );
+              formData.append('description', this.description_value_1);
 
-              var ResponseData = '';
-              var strVal = '';
+              formData.append('orderIndex', $('#order_index').val() as string);
 
               console.log(JSON.stringify(formData));
               // Send the form data to the server
@@ -495,7 +486,7 @@ export class FeaturedProjectsComponent {
 
                   if (Authdata.message == 'Data Uplodaded SuccessFully') {
                     Swal.fire({
-                      title: 'Featured Project Added Successfully...',
+                      title: 'Featured Product Added Successfully...',
                       text: '',
                       icon: 'success',
                       confirmButtonText: 'ok',

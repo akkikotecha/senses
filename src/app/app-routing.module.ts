@@ -30,6 +30,8 @@ import { AdminResourceTypeComponent } from './admin-resource-type/admin-resource
 import { AdminResourceSubtypeComponent } from './admin-resource-subtype/admin-resource-subtype.component';
 import { AdminResouceComponent } from './admin-resource/admin-resouce.component';
 import { FeaturedProjectsComponent } from './featured-projects/featured-projects.component';
+import { FeaturedProjectService } from './featured-projects/featured-project.service';
+import { FeaturedProductsComponent } from './featured-products/featured-products.component';
 
 const routes: Routes = [
   {
@@ -183,7 +185,11 @@ const routes: Routes = [
     component: FeaturedProjectsComponent,
     runGuardsAndResolvers: 'always',
   },
-  
+  {
+    path: 'admin_featured_product',
+    component: FeaturedProductsComponent,
+    runGuardsAndResolvers: 'always',
+  },
 ];
 
 @NgModule({

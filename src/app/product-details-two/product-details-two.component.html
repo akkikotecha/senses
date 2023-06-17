@@ -74,7 +74,7 @@
     </a> -->
   </div>
 </header>
-<section class="process mt-0 pt-0 pb-2" style="top: -2px !important">
+<section class="process">
   <div class="container-fluid">
     <div class="row">
       <nav class="px-0">
@@ -87,7 +87,7 @@
           <button
             class="nav-link active"
             id="nav-home-tab"
-            style="line-height: 46px; font-weight: 600"
+            style="line-height: 20px; font-weight: 600"
             data-bs-toggle="tab"
             data-bs-target="#nav-home"
             type="button"
@@ -100,7 +100,7 @@
           <button
             class="nav-link ml-4"
             id="nav-profile-tab"
-            style="line-height: 46px; font-weight: 600"
+            style="line-height: 20px; font-weight: 600"
             data-bs-toggle="tab"
             data-bs-target="#nav-profile"
             type="button"
@@ -119,7 +119,7 @@
           role="tabpanel"
           aria-labelledby="nav-home-tab"
         >
-          <div class="container mt-5">
+          <div class="container mt-3">
             <div class="row">
               <div class="title-page-white text-center w-100">
                 <div class="row justify-content-between mt-0 d-flex">
@@ -331,7 +331,7 @@
 </section>
 
 <section
-  class="process mt-0 pt-0 pb-0"
+  class="process"
   style="background: #f9f9f9"
   *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
 >
@@ -457,7 +457,7 @@
   </div>
 </section>
 
-<section class="process mt-0 pt-0 pb-0" #target>
+<section class="process" #target>
   <div class="container-fluid">
     <div class="row" style="background: #fbfbfb">
       <div class="col-lg-6 px-0 text-center">
@@ -494,7 +494,8 @@
             <p
               class="card-text text-left p_all_text_set"
               style="font-size: 17px; width: 80%"
-              [innerHTML]="this.Data[0].featuredOneDesc">
+              [innerHTML]="this.Data[0].featuredOneDesc"
+            >
               <!-- {{ this.Data[0].featuredOneDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
@@ -531,7 +532,8 @@
             <p
               class="card-text text-left p_all_text_set"
               style="font-size: 17px; width: 80%"
-              [innerHTML]="this.Data[0].featuredTwoDesc">
+              [innerHTML]="this.Data[0].featuredTwoDesc"
+            >
               <!-- {{ this.Data[0].featuredTwoDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
@@ -584,7 +586,8 @@
             <p
               class="card-text text-left p_all_text_set mt-3"
               style="font-size: 17px; width: 80%"
-              [innerHTML]="this.Data[0].featuredThreeDesc">
+              [innerHTML]="this.Data[0].featuredThreeDesc"
+            >
               <!-- {{ this.Data[0].featuredThreeDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
@@ -597,13 +600,13 @@
   </div>
 </section>
 
-<section class="process mt-0 pt-0 pb-2">
+<section class="process">
   <div class="container">
     <div class="row">
       <div class="title-page-white text-center w-100">
-        <h2 class="title_set mt-5" style="font-weight: 700">Snapshots</h2>
+        <h2 class="title_set mb-3" style="font-weight: 700">Snapshots</h2>
 
-        <div class="row justify-content-center d-flex mt-5">
+        <div class="row justify-content-center d-flex">
           <div class="col-lg-4" *ngFor="let getData of Data[0].snapShots">
             <div class="card bg-transparent">
               <img
@@ -621,51 +624,78 @@
 </section>
 
 <section
-  class="process mt-0 pt-4 pb-2"
+  class="process"
   style="background: #fff7e3ad !important; margin-bottom: -26px"
 >
   <div class="container">
     <div class="row">
       <div class="title-page-white text-center w-100">
-        <div class="row justify-content-between mt-5">
+        <div class="row justify-content-between mb-3">
           <div class="col-md-12">
             <div class="title-page-white text-center w-100">
               <h2 class="title_set" style="font-weight: 700">
                 You may also like...
               </h2>
             </div>
-            <div id="myCarousel" class="carousel carousel_new slide" data-ride="carousel" data-interval="0">
+            <div
+              id="myCarousel"
+              class="carousel carousel_new slide"
+              data-ride="carousel"
+              data-interval="0"
+            >
               <!-- Carousel indicators -->
               <!-- Wrapper for carousel items -->
               <div class="carousel-inner">
-                <ng-container *ngIf="related_product?.data && related_product.data.length > 0">
-                <div class="carousel-item" *ngFor="let chunk of chunkArray(related_product.data, 4); let i = index" [class.active]="i === 0">
-                  <div class="row">
-                    <div class="col-lg-3" *ngFor="let getData of chunk">
-                      <!-- Content for each slide -->
-                      <div class="thumb-wrapper">
-                        <div class="img-box">
-                          <img src="assets/{{ getData.images[0] }}" class="img-fluid" alt="" />
-                        </div>
-                        <div class="thumb-content">
-                          <h4>{{ getData.subCategoryName }}</h4>
+                <ng-container
+                  *ngIf="
+                    related_product?.data && related_product.data.length > 0
+                  "
+                >
+                  <div
+                    class="carousel-item"
+                    *ngFor="
+                      let chunk of chunkArray(related_product.data, 4);
+                      let i = index
+                    "
+                    [class.active]="i === 0"
+                  >
+                    <div class="row">
+                      <div class="col-lg-3" *ngFor="let getData of chunk">
+                        <!-- Content for each slide -->
+                        <div class="thumb-wrapper">
+                          <div class="img-box">
+                            <img
+                              src="assets/{{ getData.images[0] }}"
+                              class="img-fluid"
+                              alt=""
+                            />
+                          </div>
+                          <div class="thumb-content">
+                            <h4>{{ getData.subCategoryName }}</h4>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </ng-container>
+                </ng-container>
               </div>
-            
+
               <!-- Carousel controls -->
-              <a class="carousel-control-prev carousel-control-prev-new" href="#myCarousel" data-slide="prev">
+              <a
+                class="carousel-control-prev carousel-control-prev-new"
+                href="#myCarousel"
+                data-slide="prev"
+              >
                 <i class="fa fa-angle-left"></i>
               </a>
-              <a class="carousel-control-next carousel-control-prev-new" href="#myCarousel" data-slide="next">
+              <a
+                class="carousel-control-next carousel-control-prev-new"
+                href="#myCarousel"
+                data-slide="next"
+              >
                 <i class="fa fa-angle-right"></i>
               </a>
             </div>
-            
           </div>
         </div>
       </div>

@@ -57,7 +57,7 @@ export class ResourceDetailComponent {
     localStorage.removeItem('resourceType');
 
     localStorage.setItem('resourceTypeId', id);
-    localStorage.setItem('productName', name);
+    localStorage.setItem('ResourceTypeName', name);
 
     // console.log(id)
     this.router.navigate([name]).then(() => {

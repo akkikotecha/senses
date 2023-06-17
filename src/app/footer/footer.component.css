@@ -7,8 +7,8 @@
 .footer {
   border-top: 1px solid #dfdfdf;
   background: #fff;
-  position: relative;
-  top: 120px;
+  /* position: relative;
+  top: 120px; */
 }
 .footer h4 {
   font-weight: 600;

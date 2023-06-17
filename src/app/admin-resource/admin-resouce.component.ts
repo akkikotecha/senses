@@ -105,8 +105,16 @@ export class AdminResouceComponent {
 
           // formData.append('subCategoryName', $('#subCategoryName').val());
           formData.append('title', $('#title').val());
-          formData.append('category', $('#category').val());
-          formData.append('product', $('#product').val());
+          if ($('#category').val() == '') {
+            formData.append('category', '');
+          } else {
+            formData.append('category', $('#category').val());
+          }
+          if ($('#product').val() == '') {
+            formData.append('product', '');
+          } else {
+            formData.append('product', $('#product').val());
+          }
           formData.append('resourceType', $('#resource-type').val());
           formData.append('resourceSubType', $('#resource-sub-type').val());
 

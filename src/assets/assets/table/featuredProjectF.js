@@ -70,40 +70,34 @@ $(document).ready(function () {
   var items = [];
   //var ResponseData=[];
   $.ajax({
-    url: window.localStorage.getItem("BaseURLAPI") + "getAllResourceImage",
+    url: window.localStorage.getItem("BaseURLAPI") + "getAllFeaturedProjects",
     method: "GET",
     // data:x,_token:"{{ csrf_token() }}",
     headers: {
       "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
     },
     success: function (result) {
-      let categoryName = "";
-      let subCategoryName = "";
       console.log(result);
       $.each(result.data, (i, val) => {
-        if (val.categoriesData.length == 0) {
-          categoryName = "";
-        } else {
-          categoryName = val.categoriesData[0].categoryName;
-        }
-        if (val.subcategoriesData.length == 0) {
-          subCategoryName = "";
-        } else {
-          subCategoryName = val.subcategoriesData[0].subCategoryName;
-        }
-        console.log(val);
+        const div = document.createElement("div");
+        div.innerHTML = val.overview;
+        const plainTextOverview = div.textContent || div.innerText;
+
+        //   console.log("IMAGE : " + val.subcategoriesdata[0].subCategoryName);
         items.push({
-          category: categoryName,
-          product: subCategoryName,
-          resource_type: val.resourceTypeData[0].title,
-          resource_subtype: val.resourceSubTypeData[0].title,
-          resourceTitle: val.title,
-          resourceFormat: val.resourceFormat,
-          image: val.image,
-          // resource_type: val.categoriesData[0].categoryName,
           ID: val._id,
+          title: val.title,
+          Architect: val.Architect,
+          Client: val.Client,
+          Product: val.Product,
+          Location: val.Location,
+          Completion: val.Completion,
+          Description: val.Description,
+          image: val.image,
         });
       });
+
+      console.log("items : " + items);
 
       $("#grid").kendoGrid({
         dataSource: items,
@@ -130,44 +124,55 @@ $(document).ready(function () {
           componentType: "modern",
         },
         excel: {
-          fileName: "career_job_form_details.xlsx",
+          fileName: "Code of Polices.xlsx",
           filterable: true,
           allPages: true,
         },
         columns: [
+          //     {
+          //     selectable: true,
+          //     width: 75,
+          //     attributes: {
+          //         "class": "checkbox-align",
+          //     },
+          //     headerAttributes: {
+          //         "class": "checkbox-align",
+          //     }
+          // },
+
           {
-            field: "category",
-            title: "Category ",
+            title: "Image",
+            template:
+              "<img src='./assets/#:image#' style='width:35%;margin-top:20px;margin-bottom:20px;'>",
           },
           {
-            field: "product",
-            title: "Product ",
+            field: "title",
+            title: "Title",
           },
           {
-            field: "resource_type",
-            title: "Resource Type ",
+            field: "Architect",
+            title: "Architect",
+          },
+          {
+            field: "Client",
+            title: "Client",
           },
 
           {
-            field: "resource_subtype",
-            title: "Resource Subtype ",
+            field: "Product",
+            title: "Product",
           },
           {
-            field: "resourceTitle",
-            title: "Resource Title",
+            field: "Location",
+            title: "Location",
           },
           {
-            template:
-              "#if(resourceFormat == 'pdf') {# <a href='assets/#:image#' target='_blank'><i class='fa-solid fa-file-pdf' style='font-size:20px'></i></a> #} else {# <img src='./assets/#:image#' style='width:35%;margin-top:20px;margin-bottom:20px;'> #}#",
-            field: "resourceFormat",
-            title: "Resource Format",
+            field: "Completion",
+            title: "Completion",
           },
           {
-            title: "Action",
-            template:
-              "<button class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-title='#:category#' data-discription='#:category#' title='Edit' ><i class='fa fa-edit text-white'></i></button><button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>",
-            width: 180,
-            // field: "ID",
+            field: "Description",
+            title: "Description",
           },
         ],
         dataBound: function () {
@@ -272,9 +277,7 @@ $("#grid").on("click", "button.removeData", function () {
       //   console.log(window.localStorage.getItem('BaseURLAPI')+"deleteProjectManager/"+id);
       $.ajax({
         url:
-          window.localStorage.getItem("BaseURLAPI") +
-          "deleteOrginizationAnnouncement/" +
-          id,
+          window.localStorage.getItem("BaseURLAPI") + "deleteCareerJob/" + id,
         method: "GET",
         // data:x,_token:"{{ csrf_token() }}",
         headers: {
@@ -282,7 +285,7 @@ $("#grid").on("click", "button.removeData", function () {
         },
         success: function (result) {
           Swal.fire({
-            title: "Organization Announcement Remove Successfully...",
+            title: "Career Job Remove Successfully...",
             text: "",
             icon: "success",
             confirmButtonText: "ok",
@@ -365,24 +368,26 @@ var categories = [
   },
 ];
 
+$("#grid").on("click", "button.view_data", function () {
+  window.localStorage.setItem("CategoryDetailId", $(this).attr("data-id"));
+  window.location.href =
+    window.localStorage.getItem("baseurlhostname") +
+    "admin_product_detail_show";
+  // $('#edit_id').val();
+});
+
 $("#grid").on("click", "button.edit_data", function () {
-  //console.log("HELLO");
-  var select_date = moment($(this).attr("data-select_date")).format(
-    "YYYY-MM-DD"
-  );
-  console.log(select_date);
-  $("#edit_select_date").val(select_date);
   $("#edit_title").val($(this).attr("data-title"));
-  $("#mobile_number").val($(this).attr("data-upload_data"));
+  $("#edit_descrirption").val($(this).attr("data-discription"));
   $("#edit_id").val($(this).attr("data-id"));
-  $("#editOrgCSR").modal("show");
+  $("#editProductModal").modal("show");
 });
 
 $(".close").on("click", function () {
-  $("#editOrgCSR").modal("hide");
+  $("#editProductModal").modal("hide");
   $("#exampleModal").modal("hide");
 });
 $(".btn-close").on("click", function () {
-  $("#editOrgCSR").modal("hide");
+  $("#editProductModal").modal("hide");
   $("#exampleModal").modal("hide");
 });

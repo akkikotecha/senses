@@ -2,14 +2,53 @@ import { Component } from '@angular/core';
 declare var $: any;
 
 import { LazyLoadingService } from './lazy-loading.service';
+import { ResourceGalleryService } from './resources-gallery.service';
 @Component({
   selector: 'app-resources-gallery',
   templateUrl: './resources-gallery.component.html',
   styleUrls: ['./resources-gallery.component.css'],
 })
 export class ResourcesGalleryComponent {
-  constructor(private lazyLoadService: LazyLoadingService) {}
+  data: any = '';
+  filterData: any = '';
+  filterResourceData: any = '';
+  categoryData: any = '';
+  subCategoryData: any = '';
+  categorySelectedId: any = '';
+  subCategorySelectedId: any = '';
+  constructor(
+    private lazyLoadService: LazyLoadingService,
+    private resourceGallery: ResourceGalleryService
+  ) {}
   ngOnInit(): void {
+    this.resourceGallery.getResourceTypeData().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.filterResourceData = this.data.data; // Wrap the single object in an array
+        console.log('ResourceTypeData', this.data);
+        console.log('filterResourceData', this.filterResourceData);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.resourceGallery.getResourceSubTypeDataByTypeID().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.filterData = res; // Wrap the single object in an array
+        console.log('JobsiteData2', this.filterData);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+
+    this.resourceGallery.getAllCategory().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.categoryData = res; // Wrap the single object in an array
+
+        console.log('categoryData', this.categoryData);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/table/resourcesGalley.js')

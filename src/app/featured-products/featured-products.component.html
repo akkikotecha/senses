@@ -105,7 +105,7 @@
                   data-toggle="modal"
                   data-target="#exampleModal"
                 >
-                  <i class="fe fe-plus mr-2"></i>Add Resources
+                  <i class="fe fe-plus mr-2"></i>Add Featured Product
                 </button>
               </div>
             </div>
@@ -175,7 +175,7 @@
               >
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Resources</h3>
+                    <h3 class="card-title">Featured Project</h3>
                     <div class="card-options">
                       <form>
                         <div class="input-group d-none">
@@ -246,6 +246,7 @@
           id="edit_basic-form"
           class="parsleyjs"
           data-parsley-priority-enabled="false"
+          (ngSubmit)="submitEditData()"
         >
           <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
@@ -260,7 +261,11 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div>
+              <div
+                class="alert alert-{{ edit_color }} alert-dismissable"
+                role="alert"
+                *ngIf="check_valid_data"
+              >
                 <button
                   type="button"
                   class="close"
@@ -268,7 +273,7 @@
                   aria-label="Close"
                 ></button>
                 <h6 class="alert-heading font-size-h4 font-w400 mb-0">
-                  <!-- {{ edit_successfully_login }} -->
+                  {{ edit_successfully_login }}
                 </h6>
               </div>
               <div class="modal-body">
@@ -335,6 +340,7 @@
                         class="form-control"
                         name="edit_myFile"
                         id="edit_myFileData"
+                        (change)="onChangeUpdate($event)"
                         accept="application/pdf"
                         style="padding-left: 0px; border: none"
                       />
@@ -360,12 +366,11 @@
           </div>
         </form>
       </div>
-
+      <!-- Create Product Details Modal -->
       <div
         class="modal fade"
         id="exampleModal"
         tabindex="-1"
-        (ngSubmit)="submit()"
         role="dialog"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -374,15 +379,15 @@
           method="POST"
           id="add-form"
           enctype="multipart/form-data"
-          (ngSubmit)="submit()"
           class="parsleyjs"
           data-parsley-priority-enabled="false"
+          (ngSubmit)="submit()"
         >
-          <div class="modal-dialog modal-md" role="document">
+          <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header" style="padding-bottom: 0px">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Add Resources
+                  Add Product Detail
                 </h5>
                 <button
                   type="button"
@@ -393,7 +398,11 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div>
+              <div
+                class="alert alert-{{ color }} alert-dismissable"
+                role="alert"
+                *ngIf="check_valid"
+              >
                 <button
                   type="button"
                   class="close"
@@ -401,180 +410,81 @@
                   aria-label="Close"
                 ></button>
                 <h6 class="alert-heading font-size-h4 font-w400 mb-0">
-                  <!-- {{ successfully_login }} -->
+                  {{ successfully_login }}
                 </h6>
               </div>
               <div class="modal-body">
                 <div class="row clearfix">
-                  <div class="col-md-12 col-sm-12">
+                  <div class="col-md-12">
                     <div class="form-group">
-                      <label
-                        >Resources Title<span class="text-red">*</span></label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="title"
-                        id="title"
-                        placeholder="Title"
-                        data-parsley-required-message="This field is required"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-resourceImage-title"
-                        data-parsley-required
-                      />
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-resourceImage-title"
-                      ></p>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label
-                        >Select Category <span class="text-red">*</span></label
-                      >
-                      <select
-                        class="form-control category"
-                        name="category"
-                        id="category"
-                        data-parsley-required-message="This field is required"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-category"
-                      >
-                        <option value="">Select</option>
-                        <option
-                          value="{{ jobData._id }}"
-                          *ngFor="
-                            let jobData of categoryData.data;
-                            let i = index
-                          "
-                        >
-                          {{ jobData.categoryName }}
-                        </option>
-                      </select>
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-category"
-                      ></p>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label
-                        >Select Product <span class="text-red">*</span></label
-                      >
-                      <select
-                        class="form-control category"
-                        name="category"
-                        id="product"
-                        data-parsley-required-message="This field is required"
-                        data-parsley-required-message="This field is required"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-product"
-                      >
-                        <option value="">Select</option>
-                        <option
-                          value="{{ jobData._id }}"
-                          *ngFor="
-                            let jobData of productData.data;
-                            let i = index
-                          "
-                        >
-                          {{ jobData.subCategoryName }}
-                        </option>
-                      </select>
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-product"
-                      ></p>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label
-                        >Select Resource Type
-                        <span class="text-red">*</span></label
-                      >
-                      <select
-                        class="form-control category"
-                        name="category"
-                        id="resource-type"
-                        data-parsley-required-message="This field is required"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-resource-type"
-                        data-parsley-required
-                      >
-                        <option value="">Select</option>
-                        <option
-                          value="{{ jobData._id }}"
-                          *ngFor="
-                            let jobData of resourceType.data;
-                            let i = index
-                          "
-                        >
-                          {{ jobData.title }}
-                        </option>
-                      </select>
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-resource-type"
-                      ></p>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label
-                        >Select Resource SubType
-                        <span class="text-red">*</span></label
-                      >
-                      <select
-                        class="form-control category"
-                        name="category"
-                        id="resource-sub-type"
-                        data-parsley-required-message="This field is required"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-resource-sub-type"
-                        data-parsley-required
-                      >
-                        <option value="">Select</option>
-                        <option
-                          value="{{ jobData._id }}"
-                          *ngFor="
-                            let jobData of resourceSubType.data;
-                            let i = index
-                          "
-                        >
-                          {{ jobData.title }}
-                        </option>
-                      </select>
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-resource-sub-type"
-                      ></p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label
-                        >Upload Image <span class="text-red">*</span></label
-                      >
+                      <label>Image <span class="text-red">*</span></label>
                       <input
                         type="file"
                         class="form-control"
                         name="myFile"
                         id="myFileData"
-                        (change)="onChange($event)"
+                        (change)="featuredThreeImageChange($event)"
                         style="padding-left: 0px; border: none"
-                        data-parsley-required-message="This field is required"
                         data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-upload_product_image"
+                        data-parsley-errors-container="#error-add-featureThreeImage"
+                        data-parsley-required-message="This field is required"
                         data-parsley-required
                       />
                       <p
                         class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-upload_product_image"
+                        id="error-add-featureThreeImage"
                       ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Title<span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="AddTitle"
+                        id="AddTitle"
+                        placeholder="Title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-AddTitle"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-AddTitle"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description<span class="text-red">*</span></label>
+                      <div
+                        #featureOneDescription
+                        id="featureOneDescription"
+                        contenteditable="true"
+                      ></div>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        *ngIf="featuredOneDescValidation"
+                      >
+                        This field is required
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Order Index</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="banner_index"
+                        id="order_index"
+                        placeholder="Order Index"
+                      />
                     </div>
                   </div>
                 </div>
@@ -593,6 +503,7 @@
           </div>
         </form>
       </div>
+      <!-- Edit Product Detail Modal -->
     </div>
 
     <script

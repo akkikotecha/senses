@@ -143,8 +143,7 @@
                   (click)="
                     resourceTypeClick(
                       image._id,
-                      image.title === 'Images' ||
-                        image.title === 'Certifications'
+                      image.title === 'Images'
                         ? '/resources_gallery'
                         : '/resources_document'
                     )
@@ -160,7 +159,10 @@
                     <div class="card-body">
                       <h5
                         class="card-title p_all_text_set card_header"
-                        style="font-size: 24px !important"
+                        style="
+                          font-size: 24px !important;
+                          text-transform: capitalize;
+                        "
                       >
                         {{ image.title }}
                       </h5>

@@ -32,6 +32,7 @@
             "
           >
             <a
+              style="text-transform: capitalize"
               [attr.data-type]="'color-' + documentTypeIndex"
               (click)="handleClick(documentType._id)"
               >{{ documentType.title }}</a
@@ -180,7 +181,9 @@
     </div>
     <!-- cd-filter -->
 
-    <a class="cd-filter-trigger filter-is-visible" style="cursor: pointer"
+    <a
+      class="cd-filter-trigger filter-is-visible"
+      style="cursor: pointer; position: absolute; left: 0"
       >Filters</a
     >
   </main>
