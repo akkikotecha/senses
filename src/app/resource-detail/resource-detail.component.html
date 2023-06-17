@@ -88,109 +88,43 @@
           <div class="col-lg-3">
             <div class="row col-lg-12 d-flex mt-0">
               <div class="accordion" id="accordionExampleOne">
-                <div class="accordion-item accordion-item-text">
+                <div
+                  class="accordion-item accordion-item-text"
+                  *ngFor="
+                    let typeFilterData of resourceFilterTypeSubTypeData.data
+                  "
+                >
                   <h2 class="accordion-header" id="headingStartOne">
                     <button
                       class="accordion-button accordion-button-text collapsed"
                       type="button"
                       data-bs-toggle="collapse"
-                      data-bs-target="#collapseStartOne"
+                      [attr.data-bs-target]="
+                        '#collapseStartOne_' + typeFilterData._id
+                      "
                       aria-expanded="false"
-                      aria-controls="collapseStartOne"
+                      [attr.aria-controls]="
+                        'collapseStartOne_' + typeFilterData._id
+                      "
                     >
-                      Images
+                      {{ typeFilterData.title }}
                     </button>
                   </h2>
                   <div
-                    id="collapseStartOne"
+                    [attr.id]="'collapseStartOne_' + typeFilterData._id"
                     class="accordion-collapse collapse"
                     aria-labelledby="headingStartOne"
                     data-bs-parent="#accordionExampleOne"
                   >
                     <div class="accordion-body accor_left p_all_text_set p-0">
-                      <p class="p_all_text_set_new">What’s New</p>
-                      <p class="p_all_text_set_new">Products</p>
-                      <p class="p_all_text_set_new">Projects</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item accordion-item-text">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button
-                      class="accordion-button accordion-button-text collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseStartTwo"
-                      aria-expanded="false"
-                      aria-controls="collapseStartTwo"
-                    >
-                      Documents
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseStartTwo"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="headingTwo"
-                    data-bs-parent="#accordionExample"
-                  >
-                    <div class="accordion-body accor_left p_all_text_set p-0">
-                      <p class="p_all_text_set_new">Brochures</p>
-                      <p class="p_all_text_set_new">Spec. Sheets</p>
-                      <p class="p_all_text_set_new">Assembly Guides</p>
-                      <p class="p_all_text_set_new">Reports</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item accordion-item-text">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button
-                      class="accordion-button accordion-button-text collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseStartThree"
-                      aria-expanded="false"
-                      aria-controls="collapseStartThree"
-                    >
-                      Material
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseStartThree"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="headingThree"
-                    data-bs-parent="#accordionExample"
-                  >
-                    <div class="accordion-body accor_left p_all_text_set p-0">
-                      <p class="p_all_text_set_new">Swatch Cards</p>
-                      <p class="p_all_text_set_new">Finish Library</p>
-                      <p class="p_all_text_set_new">CAD Files</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item accordion-item-text">
-                  <h2 class="accordion-header" id="headingFour">
-                    <button
-                      class="accordion-button accordion-button-text collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseStartFour"
-                      aria-expanded="false"
-                      aria-controls="collapseStartFour"
-                    >
-                      Certifications
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseStartFour"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="headingFour"
-                    data-bs-parent="#accordionExample"
-                  >
-                    <div class="accordion-body accor_left p_all_text_set p-0">
-                      <p class="p_all_text_set_new">Certifications</p>
-                      <p class="p_all_text_set_new">Awards</p>
+                      <p
+                        class="p_all_text_set_new"
+                        *ngFor="
+                          let subtypeDataFilter of typeFilterData.resourceSubTypeData
+                        "
+                      >
+                        {{ subtypeDataFilter.title }}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -205,6 +139,7 @@
               >
                 <!-- http://52.44.128.214/resources_document -->
                 <a
+                  style="cursor: pointer"
                   (click)="
                     resourceTypeClick(
                       image._id,
@@ -215,7 +150,7 @@
                     )
                   "
                 >
-                  <div class="card">
+                  <div class="card" style="cursor: pointer">
                     <img
                       src="assets/{{ image.image | htmlToPlaintext }}"
                       class="card-img-top"

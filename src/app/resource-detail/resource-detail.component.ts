@@ -11,14 +11,32 @@ import { Router } from '@angular/router';
 export class ResourceDetailComponent {
   constructor(private adminResource: ResourceService, private router: Router) {}
   resourceType: any = '';
+  resourceSubType: any = '';
+  resourceFilterTypeSubTypeData: any = '';
   ngOnInit(): void {
     this.adminResource.getAllResourceType().subscribe((res: any) => {
-      console.log(res);
       this.resourceType = JSON.parse(JSON.stringify(res));
-      console.log(this.resourceType);
+      // Insert the removed element at the beginning of the array
+      const secondPositionData = this.resourceType.data.splice(1, 1); // Remove the element at index 1 and store it
+      console.log(secondPositionData);
+      this.resourceType.data.unshift(secondPositionData[0]);
+      console.log('After Filter Data', this.resourceType);
     });
+    this.adminResource.getAllResourceSubType().subscribe((res: any) => {
+      this.resourceSubType = JSON.parse(JSON.stringify(res));
+    });
+    this.adminResource.getAllResourceTypeSubTypeData().subscribe((res: any) => {
+      this.resourceFilterTypeSubTypeData = JSON.parse(JSON.stringify(res));
+      const secondPositionData = this.resourceFilterTypeSubTypeData.data.splice(
+        1,
+        1
+      ); // Remove the element at index 1 and store it
+      console.log(secondPositionData);
+      this.resourceFilterTypeSubTypeData.data.unshift(secondPositionData[0]);
+    });
+    const array = [1, 2, 3, 4, 5];
+
     setTimeout(function () {
-      console.log('HELLO');
       $('.header-main').css({
         background: '#fff',
         border: '2px solid #ededed',

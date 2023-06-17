@@ -13,7 +13,14 @@ export class ResourceService {
 
   getAllResourceType() {
     let url = environment.base_url + 'getAllResourceType';
-    console.log(url);
+    return this.http.get(url);
+  }
+  getAllResourceSubType() {
+    let url = environment.base_url + 'getAllResourceSubType';
+    return this.http.get(url);
+  }
+  getAllResourceTypeSubTypeData() {
+    let url = environment.base_url + 'getResourceSubTypeDataByTypeId';
     return this.http.get(url);
   }
 }
