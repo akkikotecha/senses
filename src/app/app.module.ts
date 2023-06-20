@@ -53,6 +53,7 @@ import { FeatureProjectViewAllComponent } from './feature-project-view-all/featu
 import { FeatureProductShowDetailComponent } from './feature-product-show-detail/feature-product-show-detail.component';
 import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
 import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/bl
     MDBBootstrapModule,
     FormsModule,
     ReactiveFormsModule,
+    // CKEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

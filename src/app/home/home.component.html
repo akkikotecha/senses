@@ -4,7 +4,7 @@
     id="carouselExampleIndicators"
     class="carousel slide"
     data-ride="carousel"
-    data-bs-interval="1500"
+    data-bs-interval="1000"
     style="position: relative"
   >
     <ol class="carousel-indicators home_caro">
@@ -77,65 +77,95 @@
         <div class="row ml-auto mr-auto" style="width: 100%">
           <div class="col-lg-4 text-center">
             <div class="con_design">
-              <img
-                src="assets/{{ firstFeaturedProduct.image }}"
-                class="item-img"
-                style="width: 98.3%; border-radius: 15px"
-              />
-              <div class="overlay">
-                <span style="font-weight: 800"
-                  >{{ firstFeaturedProduct.name }}
-                </span>
-                - {{ firstFeaturedProduct.description }}
-              </div>
+              <a
+                (click)="handleFeaturedProduct(firstFeaturedProduct.productId)"
+              >
+                <img
+                  src="assets/{{ firstFeaturedProduct.image }}"
+                  class="item-img"
+                  style="width: 98.3%; border-radius: 15px"
+                />
+                <div class="overlay" style="font-weight: 800">
+                  <p [innerHTML]="firstFeaturedProduct.description"></p>
+                  <!-- {{ firstFeaturedProduct.description }} -->
+                </div>
+                <div class="overlay2" style="font-weight: 800">
+                  <p [innerHTML]="firstFeaturedProduct.name"></p>
+                  <!-- {{ firstFeaturedProduct.description }} -->
+                </div>
+              </a>
             </div>
           </div>
           <div class="col-lg-8 text-center">
             <div class="row">
               <div class="col-lg-6">
                 <div class="con_design">
-                  <img
-                    src="assets/{{ secondFeaturedProduct.image }}"
-                    class="item-img"
-                    style="width: 100%; border-radius: 15px"
-                  />
-                  <div class="overlay">
-                    <span style="font-weight: 800">{{
-                      secondFeaturedProduct.name
-                    }}</span
-                    >- {{ secondFeaturedProduct.description }}
+                  <div
+                    (click)="
+                      handleFeaturedProduct(secondFeaturedProduct.productId)
+                    "
+                  >
+                    <img
+                      src="assets/{{ secondFeaturedProduct.image }}"
+                      class="item-img"
+                      style="width: 100%; border-radius: 15px"
+                    />
+                    <div class="overlay">
+                      <p [innerHTML]="secondFeaturedProduct.description"></p>
+                      <!-- {{ secondFeaturedProduct.description }} -->
+                    </div>
+                    <div class="overlay2">
+                      <p [innerHTML]="secondFeaturedProduct.name"></p>
+                      <!-- {{ secondFeaturedProduct.description }} -->
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="con_design">
-                  <img
-                    src="assets/{{ thirdFeaturedProduct.image }}"
-                    class="item-img"
-                    style="width: 100%; border-radius: 15px"
-                  />
-                  <div class="overlay">
-                    <span style="font-weight: 800"
-                      >{{ thirdFeaturedProduct.name }}
-                    </span>
-                    - {{ thirdFeaturedProduct.description }}
-                  </div>
+                  <a
+                    (click)="
+                      handleFeaturedProduct(thirdFeaturedProduct.productId)
+                    "
+                  >
+                    <img
+                      src="assets/{{ thirdFeaturedProduct.image }}"
+                      class="item-img"
+                      style="width: 100%; border-radius: 15px"
+                    />
+                    <div class="overlay">
+                      <p [innerHTML]="thirdFeaturedProduct.description"></p>
+                      <!-- {{ thirdFeaturedProduct.description }} -->
+                    </div>
+                    <div class="overlay2Punch">
+                      <p [innerHTML]="thirdFeaturedProduct.name"></p>
+                      <!-- {{ thirdFeaturedProduct.description }} -->
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
             <div class="text-center">
               <div class="con_design">
-                <img
-                  src="assets/{{ fourthFeaturedProduct.image }}"
-                  class="item-img"
-                  style="width: 100%; margin-top: 25px; border-radius: 15px"
-                />
-                <div class="overlay">
-                  <span style="font-weight: 800"
-                    >{{ fourthFeaturedProduct.name }}
-                  </span>
-                  - {{ fourthFeaturedProduct.description }}
-                </div>
+                <a
+                  (click)="
+                    handleFeaturedProduct(fourthFeaturedProduct.productId)
+                  "
+                >
+                  <img
+                    src="assets/{{ fourthFeaturedProduct.image }}"
+                    class="item-img"
+                    style="width: 100%; margin-top: 25px; border-radius: 15px"
+                  />
+                  <div class="overlay">
+                    <p [innerHTML]="fourthFeaturedProduct.description"></p>
+                    <!-- {{ fourthFeaturedProduct.description }} -->
+                  </div>
+                  <div class="orderIndex4">
+                    <p [innerHTML]="fourthFeaturedProduct.name"></p>
+                    <!-- {{ fourthFeaturedProduct.description }} -->
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -172,18 +202,24 @@
           style="height: 720px; width: 65% !important; margin-left: auto"
         />
       </div>
-      <div class="carousel-item get_text_slider"
-     [attr.data-count_val]="i + 2"
-     [attr.data-text_h1]="dataProject.title"
-     [attr.data-id]="dataProject._id"
-     [attr.data-p_all_text_set]="dataProject.slide_discription.substr(0, 30) + '...'"
-     [attr.data-url]="'#' + i + 2"
-     *ngFor="let dataProject of FeaturedProjectdata; let i = index">
-  <img class="d-block w-100"
-       src="assets/{{dataProject.image}}"
-       alt="Second slide"
-       style="height: 720px; width: 65% !important; margin-left: auto" />
-</div>
+      <div
+        class="carousel-item get_text_slider"
+        [attr.data-count_val]="i + 2"
+        [attr.data-text_h1]="dataProject.title"
+        [attr.data-id]="dataProject._id"
+        [attr.data-p_all_text_set]="
+          dataProject.slide_discription.substr(0, 30) + '...'
+        "
+        [attr.data-url]="'#' + i + 2"
+        *ngFor="let dataProject of FeaturedProjectdata; let i = index"
+      >
+        <img
+          class="d-block w-100"
+          src="assets/{{ dataProject.image }}"
+          alt="Second slide"
+          style="height: 720px; width: 65% !important; margin-left: auto"
+        />
+      </div>
 
       <!-- <div
         class="carousel-item get_text_slider"
@@ -258,14 +294,17 @@
           </button></a
         >
 
-        <a class="set_link view_all_prj d-none"
-        [routerLink]="['/featured_project_view_all']" ><button
+        <a
+          class="set_link view_all_prj d-none"
+          [routerLink]="['/featured_project_view_all']"
+          ><button
             class="btn btn-success"
             style="
               background: transparent !important;
               border: 2px solid #000;
               color: black;
-              font-size: 20px;margin-left: 15px;
+              font-size: 20px;
+              margin-left: 15px;
             "
           >
             View All Project
@@ -448,45 +487,51 @@
                 justify-content: center;
               "
             >
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
                   src="assets/logo/Amazon.svg"
                   alt="Owl Image"
+                  class="box__image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
                   src="assets/logo/Cisco.svg"
                   alt="Owl Image"
+                  class="box__image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
                   src="assets/logo/DBS.svg"
                   alt="Owl Image"
+                  class="box__image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
                   src="assets/logo/Deloitte.svg"
                   alt="Owl Image"
+                  class="box__image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
                   src="assets/logo/Here Solutions.svg"
                   alt="Owl Image"
+                  class="box__image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
                   src="assets/logo/Ice.svg"
                   alt="Owl Image"
+                  class="box__image"
                   style="width: 80%"
                 />
               </div>
@@ -499,43 +544,49 @@
                 justify-content: center;
               "
             >
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
+                  class="box__image"
                   src="assets/logo/KPMG.svg"
                   alt="Owl Image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
+                  class="box__image"
                   src="assets/logo/Standard Chartered.svg"
                   alt="Owl Image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
+                  class="box__image"
                   src="assets/logo/Telstra.svg"
                   alt="Owl Image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
+                  class="box__image"
                   src="assets/logo/Wells Fargo.svg"
                   alt="Owl Image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
+                  class="box__image"
                   src="assets/logo/WeWork.svg"
                   alt="Owl Image"
                   style="width: 80%"
                 />
               </div>
-              <div class="col-lg-2 text-center">
+              <div class="box col-lg-2 text-center">
                 <img
+                  class="box__image"
                   src="assets/logo/Wipro.svg"
                   alt="Owl Image"
                   style="width: 80%"
@@ -705,9 +756,8 @@
 
         <div class="row ml-auto mr-auto">
           <div id="owl-demo-new" class="owl-carousel owl-theme owl-theme-blog">
-            
             <!-- <div class="carousel-inner"> -->
-              <!-- <div class="item" *ngFor="let chunk of chunkArray(getAllBlogs.data, 3); let i = index" [ngClass]="{ 'active': i === 0 }">
+            <!-- <div class="item" *ngFor="let chunk of chunkArray(getAllBlogs.data, 3); let i = index" [ngClass]="{ 'active': i === 0 }">
                 <div class="row justify-content-between mt-0">
                   <div class="col-lg-4" *ngFor="let getData of chunk">
                     <div class="card">
@@ -728,41 +778,45 @@
                 </div>
               </div> -->
             <!-- </div> -->
-            
+
             <div class="item" *ngFor="let getData of getAllBlogs.data">
               <!-- <div class="row justify-content-between mt-0"> -->
-                <!-- <div class="col-lg-12" > -->
-                  <a class="set_link" (click)="blog_news_click(getData._id, getData.title)" style="cursor: pointer;"><div class="card">
-                    <img
-                      src="assets/{{ getData.image }}"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <h5
-                        class="card-title p_all_text_set text-left"
-                        style="font-weight: 600 !important; font-size: 18px"
-                      >
+              <!-- <div class="col-lg-12" > -->
+              <a
+                class="set_link"
+                (click)="blog_news_click(getData._id, getData.title)"
+                style="cursor: pointer"
+                ><div class="card">
+                  <img
+                    src="assets/{{ getData.image }}"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5
+                      class="card-title p_all_text_set text-left"
+                      style="font-weight: 600 !important; font-size: 18px"
+                    >
                       {{ getData.title }}
-                      </h5>
-                      <p
-                        class="card-text text-left p_all_text_set"
-                        style="font-size: 18px"
-                        [innerHtml]="getData.Description.substr(0, 30) + '...'">
-                        
-                      </p>
-                      <p class="card-text text-left p_all_text_set">
-                        <a class="set_link" (click)="blog_news_click(getData._id, getData.title)">View More</a>
-                      </p>
-                    </div>
+                    </h5>
+                    <p
+                      class="card-text text-left p_all_text_set"
+                      style="font-size: 18px"
+                      [innerHtml]="getData.Description.substr(0, 30) + '...'"
+                    ></p>
+                    <p class="card-text text-left p_all_text_set">
+                      <a
+                        class="set_link"
+                        (click)="blog_news_click(getData._id, getData.title)"
+                        >View More</a
+                      >
+                    </p>
+                  </div>
                   <!-- </div> -->
-                <!-- </div> -->
-                
-                
-              </div>
-            </a>
+                  <!-- </div> -->
+                </div>
+              </a>
             </div>
-           
           </div>
         </div>
       </div>

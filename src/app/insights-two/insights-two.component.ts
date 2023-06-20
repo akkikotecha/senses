@@ -73,6 +73,7 @@ export class InsightsTwoComponent {
             nav: false,
             mouseDrag: true,
             autoplay: true,
+            items: 3,
             // animateOut: "animate__animated animate__slideOutDown",
             // animateIn: "animate__animated animate__flipInX",
             smartSpeed: 450,

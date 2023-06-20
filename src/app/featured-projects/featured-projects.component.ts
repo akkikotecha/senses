@@ -362,7 +362,33 @@ export class FeaturedProjectsComponent {
       });
 
     ClassicEditor.create(document.querySelector('#featureOneDescription'), {
-      // toolbar: ['imageUpload'],
+      toolbar: [
+        'undo',
+        'redo',
+        'heading',
+        'fontfamily',
+        'fontsize',
+        'fontColor',
+        'fontBackgroundColor',
+        'bold',
+        'italic',
+        'strikethrough',
+        'alignment',
+        'subscript',
+        'superscript',
+        'code',
+        'link',
+
+        'blockQuote',
+        'codeBlock',
+        'alignment',
+        'bulletedList',
+        'numberedList',
+        'todoList',
+        'outdent',
+        'indent',
+        'imageUpload',
+      ],
       ckfinder: {
         uploadUrl: environment.base_url + 'ckeEditorImageUpload',
       },

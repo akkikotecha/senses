@@ -1090,6 +1090,12 @@
     }, 2000);
 
     $(document).on("click", ".view_project", function () {
+      console.log("View Project");
+      console.log($(".get_text_slider.active").attr("data-id"));
+      console.log(
+        "feature_project_title",
+        $(".get_text_slider.active").attr("data-text_h1")
+      );
       // localStorage.setItem("feature_project_Id",id);
       //   localStorage.setItem("feature_project_title",name);
 
@@ -1148,6 +1154,9 @@
         "https://phase2.advertigers.com/ckeditor/upload?_token=rvCi5evM526Gyvw0xD9eZeAHCXN78lTk7U4Cf2cy",
       filebrowserImageUploadUrl:
         "https://phase2.advertigers.com/ckeditor/upload?_token=rvCi5evM526Gyvw0xD9eZeAHCXN78lTk7U4Cf2cy",
+    });
+    $("#modal-container").modal({
+      focus: false,
     });
   </script>
 </html>

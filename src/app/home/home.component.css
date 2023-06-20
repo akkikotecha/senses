@@ -475,6 +475,7 @@ header:hover .owl-next {
 .con_design {
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 
 .image {
@@ -484,21 +485,87 @@ header:hover .owl-next {
 }
 
 .overlay {
+  font-weight: 800;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   position: absolute;
   bottom: 0;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
-  color: #f1f1f1;
+  background: rgb(218 218 218 / 60%);
+  /* color: #f1f1f1; */
   width: 100%;
   transition: 0.5s ease;
   opacity: 0;
-  color: white;
-  font-size: 20px;
+  color: #000;
+  font-size: 16px;
   padding: 20px;
   text-align: center;
 }
-
-.con_design:hover .overlay {
+.orderIndex4 {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  top: 25px;
+  left: 12px;
+  background: rgb(218 218 218 / 60%);
+  /* color: #f1f1f1; */
+  width: auto;
+  transition: 0.5s ease;
+  opacity: 0;
+  color: #000;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.overlay2Punch {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  top: 0px;
+  left: 12px;
+  background: rgb(224 224 224 / 60%);
+  /* color: #f1f1f1; */
+  width: auto;
+  transition: 0.5s ease;
+  opacity: 0;
+  color: #000;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.overlay2 {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  top: 0px;
+  left: 12px;
+  background: rgb(218 218 218 / 60%);
+  /* color: #f1f1f1; */
+  width: auto;
+  transition: 0.5s ease;
+  opacity: 0;
+  color: #000;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.overlay2 p,
+.overlay2Punch p,
+.orderIndex4 p {
+  margin-bottom: 0;
+  font-weight: 800;
+}
+.con_design:hover .overlay,
+.con_design:hover .orderIndex4,
+.con_design:hover .overlay2Punch,
+.con_design:hover .overlay2 {
   opacity: 1;
 }
 

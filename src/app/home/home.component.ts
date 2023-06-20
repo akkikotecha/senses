@@ -176,6 +176,13 @@ export class HomeComponent implements OnInit {
       // window.location.reload();
     });
   }
+  handleFeaturedProduct(id: any) {
+    console.log('Product Details ID: ' + id);
+    localStorage.setItem('subCategoryId', id);
+    this.router.navigate(['product_detail_two']).then(() => {
+      // window.location.reload();
+    });
+  }
 
   ngAfterViewInit() {}
 }

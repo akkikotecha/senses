@@ -39,8 +39,7 @@
               "./node_modules/jquery/my_js/parsley/dist/parsley.js",
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/jquery/my_js/js/jszip.js",
-              "./node_modules/jquery/my_js/js/kendo.all.min.js",
-              "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"
+              "./node_modules/jquery/my_js/js/kendo.all.min.js"
 
             ]
           },

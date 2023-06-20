@@ -62,7 +62,7 @@ export class FeaturedProductsComponent {
   description_value_2: any;
   description_value_3: any;
   editorContent: string | undefined;
-
+  subCategoryID: any = '';
   // @ViewChild('editor') editorElementRef!: ElementRef;
   @ViewChild('editor', { static: false }) editorElementRef!: ElementRef;
   @ViewChild('featureOneDescription', { static: false })
@@ -201,40 +201,7 @@ export class FeaturedProductsComponent {
   onChange(value: any) {
     // console.log("HELLO");
     console.log(value.target.value);
-    // varid = ;
-
-    this.AdminCategoryService.getSUbCategoryIdPass(
-      value.target.value
-    ).subscribe((res) => {
-      // console.log("JSON " + JSON.stringify(res));
-      const data = JSON.parse(JSON.stringify(res)); // Extract the 'data' property from the response
-      // if (Array.isArray(data)) { // Check if 'data' is an array
-      console.log('DATA ' + JSON.stringify(data));
-      // this.related_product = data;
-      // $('#select_multiple_data').val(null).trigger('change');
-      //  setTimeout(function(){
-      $('#select_multiple_data').empty().trigger('change');
-
-      for (const item of data) {
-        // console.log("LLOOP "+item.subCategoryName, item._id.toString());
-        const option = new Option(item.subCategoryName, item._id.toString());
-        $('#select_multiple_data').append(option);
-      }
-
-      $('#select_multiple_data').trigger('change');
-      //  },2000)
-    });
-
-    // Append new options to the Select2 dropdown
-    // $.each(newData, function(index:any, value:any) {
-    //   $('#select2-multiple-input-sm').append($('<option>').text(value.text).attr('value', value.id));
-    // });
-
-    // // Trigger the Select2 to update the dropdown
-    // $('#select2-multiple-input-sm').trigger('change');
-
-    //  console.log(this.JobsiteData);
-    // });
+    this.subCategoryID = value.target.value;
   }
 
   onChangeCategory(event: any) {
@@ -469,8 +436,9 @@ export class FeaturedProductsComponent {
               this.addFeaturedThreeImage.forEach((file, index) => {
                 formData.append('image', file);
               });
-
+              console.log('this.subCategoryID', this.subCategoryID);
               formData.append('name', $('#AddTitle').val());
+              formData.append('productId', this.subCategoryID);
 
               formData.append('description', this.description_value_1);
 
