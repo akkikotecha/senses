@@ -556,11 +556,12 @@ header:hover .owl-next {
   padding: 10px;
   text-align: center;
 }
+.overlay p,
 .overlay2 p,
 .overlay2Punch p,
 .orderIndex4 p {
   margin-bottom: 0;
-  font-weight: 800;
+  font-weight: 700;
 }
 .con_design:hover .overlay,
 .con_design:hover .orderIndex4,
@@ -581,7 +582,7 @@ header:hover .owl-next {
   text-align: center;
 }
 
-.btn_set_css {
+.btn_set_css2 {
   display: inline-block;
   position: relative;
   margin: 0;
@@ -608,7 +609,7 @@ header:hover .owl-next {
   background-color: transparent;
 }
 
-.btn_set_css:hover {
+.btn_set_css2:hover {
   display: inline-block;
   position: relative;
   margin: 0;

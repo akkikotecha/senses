@@ -4,6 +4,7 @@
     id="carouselExampleIndicators"
     class="carousel slide"
     data-ride="carousel"
+    data-bs-interval="100"
     style="position: relative"
   >
     <ol class="carousel-indicators home_caro">
@@ -38,7 +39,7 @@
           </p>
           <button
             class="btn btn_set_css_new text-left"
-            (click)="scroll(target)"
+            (click)="scroll(targetElement.nativeElement)"
           >
             Learn More
           </button>
@@ -74,7 +75,7 @@
     </a> -->
   </div>
 </header>
-<section class="process">
+<section class="process pt-0">
   <div class="container-fluid">
     <div class="row">
       <nav class="px-0">
@@ -334,6 +335,7 @@
   class="process"
   style="background: #f9f9f9"
   *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
+  #target
 >
   <div class="container">
     <div class="row">
@@ -347,7 +349,7 @@
             />
             <div class="">
               <h5
-                class="card-title p_all_text_set text-left card_header"
+                class="card-title p_all_text_set text-left card_header text-capitalize"
                 style="font-size: 22px"
               >
                 Acoustic Solution
@@ -372,7 +374,7 @@
             />
             <div class="">
               <h5
-                class="card-title p_all_text_set text-left card_header"
+                class="card-title p_all_text_set text-left card_header text-capitalize"
                 style="font-size: 22px"
               >
                 Personalised Lighting
@@ -399,7 +401,7 @@
             />
             <div class="">
               <h5
-                class="card-title p_all_text_set text-left card_header"
+                class="card-title p_all_text_set text-left card_header text-capitalize"
                 style="font-size: 22px"
               >
                 Ventilated Space
@@ -424,7 +426,7 @@
             />
             <div class="">
               <h5
-                class="card-title p_all_text_set text-left card_header"
+                class="card-title p_all_text_set text-left card_header text-capitalize"
                 style="font-size: 22px"
               >
                 Built-in Charging Station
@@ -457,9 +459,16 @@
   </div>
 </section>
 
-<section class="process" #target>
+<section
+  class="process"
+  [style.background-color]="
+    Data[0].subcategoriesdata[0].subCategoryName === 'Kolo'
+      ? '#fbfbfb'
+      : 'white'
+  "
+>
   <div class="container-fluid">
-    <div class="row" style="background: #fbfbfb">
+    <div class="row">
       <div class="col-lg-6 px-0 text-center">
         <img
           src="assets/{{ this.Data[0].featuredOneImage | htmlToPlaintext }}"
@@ -468,10 +477,7 @@
           alt="..."
         />
       </div>
-      <div
-        class="col-lg-6 px-5 d-flex align-items-center"
-        style="background: #fbfbfb !important"
-      >
+      <div class="col-lg-6 px-5 d-flex align-items-center">
         <div
           class="card"
           style="
@@ -486,7 +492,7 @@
           />
           <div class="card-body mt-3">
             <h5
-              class="card-title p_all_text_set text-left card_header"
+              class="card-title p_all_text_set text-left card_header text-capitalize"
               style="font-size: 32px"
             >
               {{ this.Data[0].featuredOneTitle }}
@@ -505,11 +511,8 @@
         </div>
       </div>
     </div>
-    <div class="row" style="background: #fbfbfb">
-      <div
-        class="col-lg-6 px-5 d-flex align-items-center"
-        style="background: #fbfbfb !important"
-      >
+    <div class="row">
+      <div class="col-lg-6 px-5 d-flex align-items-center">
         <div
           class="card ml-5"
           style="
@@ -524,7 +527,7 @@
           />
           <div class="card-body mt-3">
             <h5
-              class="card-title p_all_text_set text-left card_header"
+              class="card-title p_all_text_set text-left card_header text-capitalize"
               style="font-size: 32px"
             >
               {{ this.Data[0].featuredTwoTitle }}
@@ -551,7 +554,7 @@
         />
       </div>
     </div>
-    <div class="row" style="background: #fbfbfb">
+    <div class="row">
       <div class="col-lg-6 px-0 text-center">
         <img
           src="assets/{{ this.Data[0].featuredThreeImage | htmlToPlaintext }}"
@@ -560,10 +563,7 @@
           alt="..."
         />
       </div>
-      <div
-        class="col-lg-6 px-5 d-flex align-items-center"
-        style="background: #fbfbfb !important"
-      >
+      <div class="col-lg-6 px-5 d-flex align-items-center">
         <div
           class="card"
           style="
@@ -578,7 +578,7 @@
           />
           <div class="card-body">
             <h5
-              class="card-title p_all_text_set text-left card_header"
+              class="card-title p_all_text_set text-left card_header text-capitalize"
               style="font-size: 32px"
             >
               {{ this.Data[0].featuredThreeTitle }}

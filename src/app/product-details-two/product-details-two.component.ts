@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+
 declare var $: any;
 
 import { LazyLoadingService } from './lazy-loading.service';
@@ -13,8 +14,9 @@ import { ProductDetailService } from './product-detail.service';
   styleUrls: ['./product-details-two.component.css'],
 })
 export class ProductDetailsTwoComponent {
-  scroll(el: HTMLElement) {
-    el.scrollIntoView();
+  @ViewChild('target', { static: false }) targetElement!: ElementRef;
+  scroll(target: HTMLElement) {
+    this.targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
   constructor(
     private ProductDetailService: ProductDetailService,

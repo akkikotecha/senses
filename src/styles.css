@@ -92,3 +92,59 @@ body {
   transition: all 0.5s ease;
   z-index: 2;
 }
+
+/* Common Button Css */
+.btn_set_css {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  width: auto;
+  padding: 0.9em 2em 0.75em;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #000000;
+  border: 1px solid #558de2;
+  border-radius: 100px;
+  background-color: #558de2;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* color: #fff; */
+  border-color: #000000;
+  background-color: transparent;
+}
+
+.btn_set_css:hover {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  padding: 0.9em 2em 0.75em;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  border: 1px solid #558de2;
+  border-radius: 100px;
+  background-color: #558de2;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #fff;
+  border-color: #fecc00;
+  background-color: #fecc00;
+}
