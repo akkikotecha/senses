@@ -137,14 +137,32 @@
                           style="font-size: 19px"
                           [innerHTML]="this.Data[0].overview"
                         ></p>
-
-                        <p class="card-text text-left p_all_text_set mt-2">
+                        <br />
+                        <p
+                          class="card-text text-left p_all_text_set mt-2"
+                          style="
+                            font-size: 19px;
+                            font-weight: bold;
+                            color: rgba(0, 0, 0, 0.65);
+                          "
+                        >
+                          Discover how
+                          {{ Data[0].subcategoriesdata[0].subCategoryName }}
+                          can elevate your space.
                           <button
-                            class="btn btn-dark"
-                            style="background-color: #232026"
+                            data-toggle="modal"
+                            data-target="#myModal"
+                            style="
+                              border: none;
+                              outline: none;
+                              background-color: transparent;
+                              font-weight: bold;
+                              color: #fecc00;
+                            "
                           >
-                            Get Quote
+                            Let's talk
                           </button>
+                          and explore the possibilities.
                         </p>
                       </div>
                     </div>

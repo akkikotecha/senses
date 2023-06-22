@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class InsightsTwoComponent {
   slides_new_two = Array();
+  showDescription: boolean = false;
   slides = Array();
   FeaturedProjectdata: any;
   lengthCount: any;
@@ -151,6 +152,10 @@ export class InsightsTwoComponent {
     this.router.navigate(['blog_and_news_show_details', name]).then(() => {
       // window.location.reload();
     });
+  }
+
+  toggleDescription() {
+    this.showDescription = !this.showDescription;
   }
   ngAfterViewInit() {}
 }

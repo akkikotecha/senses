@@ -20,6 +20,6 @@ export class HeaderComponent implements OnInit {
     });
   }
   redirectToSection(): void {
-    this.router.navigateByUrl('about_us_two#woWeAre');
+    this.router.navigate(['about_us_two']);
   }
 }

@@ -362,33 +362,97 @@ export class FeaturedProjectsComponent {
       });
 
     ClassicEditor.create(document.querySelector('#featureOneDescription'), {
-      toolbar: [
-        'undo',
-        'redo',
-        'heading',
-        'fontfamily',
-        'fontsize',
-        'fontColor',
-        'fontBackgroundColor',
-        'bold',
-        'italic',
-        'strikethrough',
-        'alignment',
-        'subscript',
-        'superscript',
-        'code',
-        'link',
+      image: {
+        styles: {
+          // Defining custom styling options for the images.
+          options: [
+            {
+              name: 'side',
+              // icon: 'fa fa-image',
+              title: 'Side image',
+              className: 'image-side',
+              modelElements: ['imageBlock'],
+            },
+            {
+              name: 'margin-left',
+              // icon: 'fa fa-align-left',
+              title: 'Image on left margin',
+              className: 'image-margin-left',
+              modelElements: ['imageInline'],
+            },
+            {
+              name: 'margin-right',
+              // icon: 'fa fa-image',
+              title: 'Image on right margin',
+              className: 'image-margin-right',
+              modelElements: ['imageInline'],
+            },
+            // Modifying icons and titles of the default inline and
+            // block image styles to reflect its real appearance.
+            {
+              name: 'inline',
+              // icon: 'fa fa-image'
+            },
+            {
+              name: 'block',
+              title: 'Centered image',
+              // icon: 'fa fa-image'
+            },
+          ],
+        },
+        toolbar: [
+          {
+            // Grouping the buttons for the icon-like image styling
+            // into one drop-down.
+            name: 'imageStyle:icons',
+            title: 'Alignment',
+            items: [
+              'imageStyle:margin-left',
+              'imageStyle:margin-right',
+              'imageStyle:inline',
+            ],
+            defaultItem: 'imageStyle:margin-left',
+          },
+          {
+            // Grouping the buttons for the regular
+            // picture-like image styling into one drop-down.
+            name: 'imageStyle:pictures',
+            title: 'Style',
+            items: ['imageStyle:block', 'imageStyle:side'],
+            defaultItem: 'imageStyle:block',
+          },
+          '|',
+          'toggleImageCaption',
+          'linkImage',
+        ],
+      },
+      // toolbar: [
+      //   'undo',
+      //   'redo',
+      //   'heading',
+      //   'fontfamily',
+      //   'fontsize',
+      //   'fontColor',
+      //   'fontBackgroundColor',
+      //   'bold',
+      //   'italic',
+      //   'strikethrough',
+      //   'alignment',
+      //   'subscript',
+      //   'superscript',
+      //   'code',
+      //   'link',
 
-        'blockQuote',
-        'codeBlock',
-        'alignment',
-        'bulletedList',
-        'numberedList',
-        'todoList',
-        'outdent',
-        'indent',
-        'imageUpload',
-      ],
+      //   'blockQuote',
+      //   'codeBlock',
+      //   'alignment',
+      //   'bulletedList',
+      //   'numberedList',
+      //   'todoList',
+      //   'outdent',
+      //   'indent',
+      //   'imageUpload',
+      // ],
       ckfinder: {
         uploadUrl: environment.base_url + 'ckeEditorImageUpload',
       },
@@ -397,14 +461,14 @@ export class FeaturedProjectsComponent {
         (editor: {
           model: {
             document: {
-              on: (arg0: string, arg1: (_evt: any, _data: any) => void) => void;
+              on: (arg0: string, arg1: (evt: any, data: any) => void) => void;
             };
           };
           getData: () => any;
         }) => {
           console.log('Editor initialized.');
 
-          editor.model.document.on('change:data', (_evt, _data) => {
+          editor.model.document.on('change:data', (evt, data) => {
             // Code to run when the document's data changes
             this.description_value_1 = editor.getData();
             console.log(editor.getData());

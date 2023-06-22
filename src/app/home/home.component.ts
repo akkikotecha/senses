@@ -179,9 +179,10 @@ export class HomeComponent implements OnInit {
   handleFeaturedProduct(id: any) {
     console.log('Product Details ID: ' + id);
     localStorage.setItem('subCategoryId', id);
-    this.router.navigate(['product_detail_two']).then(() => {
-      // window.location.reload();
-    });
+    window.open('/product_detail_two', '_blank');
+    // this.router.navigate(['product_detail_two']).then(() => {
+    //   // window.location.reload();
+    // });
   }
 
   ngAfterViewInit() {}

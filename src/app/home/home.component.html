@@ -37,7 +37,11 @@
           <p style="font-size: 20px; width: 52%" class="text-left">
             {{ getData.description }}
           </p>
-          <a href="#" class="btn btn_set_css2 text-left">Learn More</a>
+          <a
+            (click)="handleFeaturedProduct(getData.productId)"
+            class="btn btn_set_css2 text-left"
+            >Learn More</a
+          >
         </div>
       </div>
     </div>
@@ -419,8 +423,8 @@
 <section class="process mt-4">
   <div class="container">
     <div class="row">
-      <div class="title-page-white w-100">
-        <h2 class="title_set hover_effect text-center" style="font-weight: 500">
+      <div class="title-page-white text-center w-100">
+        <h2 class="title_set hover_effect" style="font-weight: 500">
           Trusted By Brands
         </h2>
 

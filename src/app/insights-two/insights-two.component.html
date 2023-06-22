@@ -559,12 +559,154 @@
               </div>
             </div>
           </div>
+          <div class="row" *ngIf="showDescription">
+            <div
+              class="col-lg-12 row mt-0"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.accenture.com/us-en" target="_blank">
+                  <img
+                    src="assets/logo/Accenture.webp"
+                    alt="Owl Image"
+                    class="box__image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.google.com/" target="_blank">
+                  <img
+                    src="assets/logo/Google.webp"
+                    alt="Owl Image"
+                    class="box__image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.hcltech.com/" target="_blank">
+                  <img
+                    src="assets/logo/HCL.webp"
+                    alt="Owl Image"
+                    class="box__image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.icicibank.com/" target="_blank">
+                  <img
+                    src="assets/logo/ICICI Bank.webp"
+                    alt="Owl Image"
+                    class="box__image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.kotak.com/en/home.html" target="_blank">
+                  <img
+                    src="assets/logo/Kotak.webp"
+                    alt="Owl Image"
+                    class="box__image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.maersk.com/" target="_blank">
+                  <img
+                    src="assets/logo/Maersk.webp"
+                    alt="Owl Image"
+                    class="box__image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+            </div>
+            <div
+              class="col-lg-12 row mt-3"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.sportingnews.com/in/nba" target="_blank">
+                  <img
+                    class="box__image"
+                    src="assets/logo/NBA.webp"
+                    alt="Owl Image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.oneplus.in/" target="_blank">
+                  <img
+                    class="box__image"
+                    src="assets/logo/OnePlus.webp"
+                    alt="Owl Image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.qualcomm.com/" target="_blank">
+                  <img
+                    class="box__image"
+                    src="assets/logo/Qualcomm.webp"
+                    alt="Owl Image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.slb.com/" target="_blank">
+                  <img
+                    class="box__image"
+                    src="assets/logo/Schlumberger.webp"
+                    alt="Owl Image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.siemens.com/in" target="_blank">
+                  <img
+                    class="box__image"
+                    src="assets/logo/Siemens.webp"
+                    alt="Owl Image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+              <div class="box col-lg-2 text-center">
+                <a href="https://www.westerndigital.com/en-in" target="_blank">
+                  <img
+                    class="box__image"
+                    src="assets/logo/Western Digital.webp"
+                    alt="Owl Image"
+                    style="width: 80%"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center w-100">
-    <button class="btn_set_css">View More</button>
+  <div class="row justify-content-center w-100" (click)="toggleDescription()">
+    <button class="btn_set_css">
+      {{ showDescription ? "Show Less" : "Show More" }}
+    </button>
   </div>
 </section>
 <!-- <section class="process mt-5 pt-2 pb-4" style="top:50px !important;background:#ECF5F5!important;">

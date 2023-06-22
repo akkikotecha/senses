@@ -18,6 +18,7 @@ export class ProductDetailsTwoComponent {
   scroll(target: HTMLElement) {
     this.targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
+
   constructor(
     private ProductDetailService: ProductDetailService,
     private lazyLoadService: LazyLoadingService

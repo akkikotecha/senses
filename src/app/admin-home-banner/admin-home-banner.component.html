@@ -323,7 +323,32 @@
                       ></p>
                     </div>
                   </div>
-
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        >Select Sub Product<span class="text-red"
+                          >*</span
+                        ></label
+                      >
+                      <select
+                        class="form-control sub_category"
+                        name="sub_category"
+                        id="sub_category"
+                        (change)="onChangeSubCategory($event)"
+                      >
+                        <option value="">Select</option>
+                        <option
+                          value="{{ jobData._id }}"
+                          *ngFor="
+                            let jobData of JobsiteData.data;
+                            let i = index
+                          "
+                        >
+                          {{ jobData.subCategoryName }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
 
                   <div class="col-md-12 col-sm-12">
                     <a href="" target="_blank"
@@ -333,14 +358,18 @@
 
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
-                      <label>Upload Image <span class="text-red">(1519px(W) x 700px(H))</span></label>
+                      <label
+                        >Upload Image
+                        <span class="text-red"
+                          >(1519px(W) x 700px(H))</span
+                        ></label
+                      >
                       <input
                         type="file"
                         class="form-control"
                         name="edit_myFile"
                         id="edit_myFileData"
                         (change)="onChangeUpdate($event)"
-                        
                         style="padding-left: 0px; border: none"
                       />
                       <p
@@ -414,8 +443,6 @@
               </div>
               <div class="modal-body">
                 <div class="row clearfix">
-                 
-
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
                       <label>Title<span class="text-red">*</span></label>
@@ -438,10 +465,7 @@
 
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
-                      <label
-                        >Description
-                        <span class="text-red">*</span></label
-                      >
+                      <label>Description <span class="text-red">*</span></label>
                       <textarea
                         class="form-control"
                         name="description"
@@ -457,11 +481,39 @@
                       ></p>
                     </div>
                   </div>
-
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
                       <label
-                        >Upload Image <span class="text-red">* (1519px(W) x 700px(H))</span></label
+                        >Select Sub Product<span class="text-red"
+                          >*</span
+                        ></label
+                      >
+                      <select
+                        class="form-control sub_category"
+                        name="sub_category"
+                        id="sub_category"
+                        (change)="onChangeSubCategory($event)"
+                      >
+                        <option value="">Select</option>
+                        <option
+                          value="{{ jobData._id }}"
+                          *ngFor="
+                            let jobData of JobsiteData.data;
+                            let i = index
+                          "
+                        >
+                          {{ jobData.subCategoryName }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        >Upload Image
+                        <span class="text-red"
+                          >* (1519px(W) x 700px(H))</span
+                        ></label
                       >
                       <input
                         type="file"
