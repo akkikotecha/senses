@@ -70,107 +70,99 @@
 </section>
 <section class="process">
   <div class="container">
-    <div class="row">
-      <div class="title-page-white text-center w-100">
-        <h2 class="title_set hover_effect" style="font-weight: 500">
-          Our Top Picks for the Modern Workspace
-        </h2>
-        <div class="col-lg-12 text-center mb-3 d-flex justify-content-center">
-          <hr class="hr_draw_product d-none" />
-        </div>
-        <div class="row ml-auto mr-auto" style="width: 100%">
-          <div class="col-lg-4 text-center">
-            <div class="con_design">
-              <a
-                (click)="handleFeaturedProduct(firstFeaturedProduct.productId)"
-              >
-                <img
-                  src="assets/{{ firstFeaturedProduct.image }}"
-                  class="item-img"
-                  style="width: 98.3%; border-radius: 15px"
-                />
-                <div class="overlay" style="font-weight: 700">
-                  <p [innerHTML]="firstFeaturedProduct.description"></p>
-                  <!-- {{ firstFeaturedProduct.description }} -->
-                </div>
-                <div class="overlay2" style="font-weight: 800">
-                  <p [innerHTML]="firstFeaturedProduct.name"></p>
-                  <!-- {{ firstFeaturedProduct.description }} -->
-                </div>
-              </a>
-            </div>
+    <div class="title-page-white text-center w-100">
+      <h2 class="title_set hover_effect" style="font-weight: 500">
+        Our Top Picks for the Modern Workspace
+      </h2>
+
+      <div class="row ml-auto mr-auto" style="width: 100%">
+        <div class="col-lg-4 mb-2 text-center">
+          <div class="con_design">
+            <a (click)="handleFeaturedProduct(firstFeaturedProduct.productId)">
+              <img
+                src="assets/{{ firstFeaturedProduct.image }}"
+                class="item-img"
+                style="width: 98.3%; border-radius: 15px"
+              />
+              <div class="overlay" style="font-weight: 700">
+                <p [innerHTML]="firstFeaturedProduct.description"></p>
+                <!-- {{ firstFeaturedProduct.description }} -->
+              </div>
+              <div class="overlay2" style="font-weight: 800">
+                <p [innerHTML]="firstFeaturedProduct.name"></p>
+                <!-- {{ firstFeaturedProduct.description }} -->
+              </div>
+            </a>
           </div>
-          <div class="col-lg-8 text-center">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="con_design">
-                  <div
-                    (click)="
-                      handleFeaturedProduct(secondFeaturedProduct.productId)
-                    "
-                  >
-                    <img
-                      src="assets/{{ secondFeaturedProduct.image }}"
-                      class="item-img"
-                      style="width: 100%; border-radius: 15px"
-                    />
-                    <div class="overlay">
-                      <p [innerHTML]="secondFeaturedProduct.description"></p>
-                      <!-- {{ secondFeaturedProduct.description }} -->
-                    </div>
-                    <div class="overlay2">
-                      <p [innerHTML]="secondFeaturedProduct.name"></p>
-                      <!-- {{ secondFeaturedProduct.description }} -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="con_design">
-                  <a
-                    (click)="
-                      handleFeaturedProduct(thirdFeaturedProduct.productId)
-                    "
-                  >
-                    <img
-                      src="assets/{{ thirdFeaturedProduct.image }}"
-                      class="item-img"
-                      style="width: 100%; border-radius: 15px"
-                    />
-                    <div class="overlay">
-                      <p [innerHTML]="thirdFeaturedProduct.description"></p>
-                      <!-- {{ thirdFeaturedProduct.description }} -->
-                    </div>
-                    <div class="overlay2Punch">
-                      <p [innerHTML]="thirdFeaturedProduct.name"></p>
-                      <!-- {{ thirdFeaturedProduct.description }} -->
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="text-center">
+        </div>
+        <div class="col-lg-8 text-center">
+          <div class="row">
+            <div class="col-lg-6 mb-2">
               <div class="con_design">
-                <a
+                <div
                   (click)="
-                    handleFeaturedProduct(fourthFeaturedProduct.productId)
+                    handleFeaturedProduct(secondFeaturedProduct.productId)
                   "
                 >
                   <img
-                    src="assets/{{ fourthFeaturedProduct.image }}"
+                    src="assets/{{ secondFeaturedProduct.image }}"
                     class="item-img"
-                    style="width: 100%; margin-top: 25px; border-radius: 15px"
+                    style="width: 100%; border-radius: 15px"
                   />
                   <div class="overlay">
-                    <p [innerHTML]="fourthFeaturedProduct.description"></p>
-                    <!-- {{ fourthFeaturedProduct.description }} -->
+                    <p [innerHTML]="secondFeaturedProduct.description"></p>
+                    <!-- {{ secondFeaturedProduct.description }} -->
                   </div>
-                  <div class="orderIndex4">
-                    <p [innerHTML]="fourthFeaturedProduct.name"></p>
-                    <!-- {{ fourthFeaturedProduct.description }} -->
+                  <div class="overlay2">
+                    <p [innerHTML]="secondFeaturedProduct.name"></p>
+                    <!-- {{ secondFeaturedProduct.description }} -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-2">
+              <div class="con_design">
+                <a
+                  (click)="
+                    handleFeaturedProduct(thirdFeaturedProduct.productId)
+                  "
+                >
+                  <img
+                    src="assets/{{ thirdFeaturedProduct.image }}"
+                    class="item-img"
+                    style="width: 100%; border-radius: 15px"
+                  />
+                  <div class="overlay">
+                    <p [innerHTML]="thirdFeaturedProduct.description"></p>
+                    <!-- {{ thirdFeaturedProduct.description }} -->
+                  </div>
+                  <div class="overlay2Punch">
+                    <p [innerHTML]="thirdFeaturedProduct.name"></p>
+                    <!-- {{ thirdFeaturedProduct.description }} -->
                   </div>
                 </a>
               </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="con_design">
+              <a
+                (click)="handleFeaturedProduct(fourthFeaturedProduct.productId)"
+              >
+                <img
+                  src="assets/{{ fourthFeaturedProduct.image }}"
+                  class="item-img4"
+                  style="width: 100%; border-radius: 15px"
+                />
+                <div class="overlay">
+                  <p [innerHTML]="fourthFeaturedProduct.description"></p>
+                  <!-- {{ fourthFeaturedProduct.description }} -->
+                </div>
+                <div class="orderIndex4">
+                  <p [innerHTML]="fourthFeaturedProduct.name"></p>
+                  <!-- {{ fourthFeaturedProduct.description }} -->
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -201,9 +193,9 @@
       >
         <img
           class="d-block w-100"
-          src="assets/newslider.webp"
+          src="assets/Collage.webp"
           alt="First slide"
-          style="height: 720px; width: 65% !important; margin-left: auto"
+          style="width: 65% !important; margin-left: auto"
         />
       </div>
       <div
@@ -221,7 +213,7 @@
           class="d-block w-100"
           src="assets/{{ dataProject.image }}"
           alt="Second slide"
-          style="height: 720px; width: 65% !important; margin-left: auto"
+          style="width: 65% !important; margin-left: auto"
         />
       </div>
 
@@ -321,16 +313,16 @@
         results for our clients.
       </p>
     </div>
-    <div class="row col-lg-12 mt-3">
-      <div class="col-lg-4 text-center">
+    <div class="row mt-3">
+      <div class="col-lg-4 text-center mb-3">
         <img
           src="assets/1.webp"
           class="item-img"
           style="width: 100%; border-radius: 15px"
         />
-        <p class="p_all_text_set mt-4"></p>
+        <!-- <p class="p_all_text_set mt-4"></p> -->
       </div>
-      <div class="col-lg-4 text-center">
+      <div class="col-lg-4 text-center mb-3">
         <img
           src="assets/2.webp"
           class="item-img"
@@ -357,28 +349,21 @@
     </button>
   </div>
 </section>
-<section
-  class="process"
-  style="
-    background: url(./assets/Sustainability.jpeg) no-repeat left border-box;
-    background-size: cover;
-    height: 780px;
-  "
->
-  <div class="container pt-4 pb-4">
+<section class="process sustainabilityHeader" style="">
+  <div class="container">
     <div class="row">
       <div class="title-page-white text-center w-100">
         <div class="row mt-3 d-flex">
-          <div class="col-lg-9" style="margin-top: 50px">
+          <div class="col-lg-9">
             <h2 class="title_set text-left text-white" style="font-weight: 500">
               Sustainability
             </h2>
             <div
-              class="col-lg-12 text-center mb-4 d-flex justify-content-left pl-0"
+              class="col-lg-12 text-center mb-2 d-flex justify-content-left pl-0"
             >
               <hr class="hr_draw_Sustainability text-white" />
             </div>
-            <p class="p_all_text_set mb-4 text-left text-white">
+            <p class="p_all_text_set text-left text-white">
               At our core, sustainability is a way of life. We strive to
               minimise our<br />
               environmental impact not just through responsible sourcing and
@@ -395,8 +380,7 @@
             </p>
           </div>
           <div
-            class="col-lg-3 d-flex justify-content-center align-items-end"
-            style="padding-top: 520px"
+            class="col-lg-3 d-flex justify-content-center align-items-end sustainabilityDownloadButton"
           >
             <a href="./assets/SA_Sustainability_Report23.pdf" target="_blank">
               <p class="p_all_text_set mt-5" style="text-align: end">
@@ -422,310 +406,132 @@
 
 <section class="process mt-4">
   <div class="container">
-    <div class="row">
-      <div class="title-page-white text-center w-100">
-        <h2 class="title_set hover_effect" style="font-weight: 500">
-          Trusted By Brands
-        </h2>
+    <div class="title-page-white text-center w-100">
+      <h2 class="title_set hover_effect" style="font-weight: 500">
+        Trusted By Brands
+      </h2>
 
-        <div class="row ml-auto mr-auto mb-4 pt-2" style="width: 100%">
-          <div class="col-lg-6 d-none">
-            <p class="p_all_text_set">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-              sem. Nulla consequat massa quis enim. massa quis enim.
-            </p>
-          </div>
-          <div class="row">
-            <div
-              class="col-lg-12 row mt-0"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.amazon.com" target="_blank">
-                  <img
-                    src="assets/logo/Amazon.svg"
-                    alt="Owl Image"
-                    class="box__image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.cisco.com" target="_blank">
-                  <img
-                    src="assets/logo/Cisco.svg"
-                    alt="Owl Image"
-                    class="box__image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.dbs.com" target="_blank">
-                  <img
-                    src="assets/logo/DBS.svg"
-                    alt="Owl Image"
-                    class="box__image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www2.deloitte.com/" target="_blank">
-                  <img
-                    src="assets/logo/Deloitte.svg"
-                    alt="Owl Image"
-                    class="box__image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.here.com" target="_blank">
-                  <img
-                    src="assets/logo/Here Solutions.svg"
-                    alt="Owl Image"
-                    class="box__image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://anatomyit.com/" target="_blank">
-                  <img
-                    src="assets/logo/Ice.svg"
-                    alt="Owl Image"
-                    class="box__image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-            </div>
-            <div
-              class="col-lg-12 row mt-3"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <div class="box col-lg-2 text-center">
-                <a href="https://kpmg.com/xx/en/" target="_blank">
-                  <img
-                    class="box__image"
-                    src="assets/logo/KPMG.svg"
-                    alt="Owl Image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.sc.com/in/" target="_blank">
-                  <img
-                    class="box__image"
-                    src="assets/logo/Standard Chartered.svg"
-                    alt="Owl Image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.telstra.com.au" target="_blank">
-                  <img
-                    class="box__image"
-                    src="assets/logo/Telstra.svg"
-                    alt="Owl Image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.wellsfargo.com/" target="_blank">
-                  <img
-                    class="box__image"
-                    src="assets/logo/Wells Fargo.svg"
-                    alt="Owl Image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.wework.com/en-GB" target="_blank">
-                  <img
-                    class="box__image"
-                    src="assets/logo/WeWork.svg"
-                    alt="Owl Image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-              <div class="box col-lg-2 text-center">
-                <a href="https://www.wipro.com" target="_blank">
-                  <img
-                    class="box__image"
-                    src="assets/logo/Wipro.svg"
-                    alt="Owl Image"
-                    style="width: 80%"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 text-center d-none">
-            <div id="owl-demo" class="owl-carousel owl-theme owl-theme-logo">
-              <div class="item">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/google.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/amazon.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/icice.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                </div>
-                <div class="row mt-4">
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/one_plus.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/wipro.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/tel.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/google.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/amazon.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/icice.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                </div>
-                <div class="row mt-4">
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/one_plus.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/wipro.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/tel.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/google.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/amazon.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/icice.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                </div>
-                <div class="row mt-4">
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/one_plus.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/wipro.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                  <div class="col-lg-4">
-                    <img
-                      src="assets/tel.svg"
-                      alt="Owl Image"
-                      style="width: 100%"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="row w-100 mb-4 pt-2">
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.amazon.com" target="_blank">
+            <img
+              src="assets/logo/Amazon.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.cisco.com" target="_blank">
+            <img
+              src="assets/logo/Cisco.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.dbs.com" target="_blank">
+            <img
+              src="assets/logo/DBS.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www2.deloitte.com/" target="_blank">
+            <img
+              src="assets/logo/Deloitte.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.here.com" target="_blank">
+            <img
+              src="assets/logo/Here Solutions.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://anatomyit.com/" target="_blank">
+            <img
+              src="assets/logo/Ice.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+
+        <div class="box col-lg-2 text-center">
+          <a href="https://kpmg.com/xx/en/" target="_blank">
+            <img
+              class="box__image"
+              src="assets/logo/KPMG.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.sc.com/in/" target="_blank">
+            <img
+              class="box__image"
+              src="assets/logo/Standard Chartered.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.telstra.com.au" target="_blank">
+            <img
+              class="box__image"
+              src="assets/logo/Telstra.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.wellsfargo.com/" target="_blank">
+            <img
+              class="box__image"
+              src="assets/logo/Wells Fargo.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.wework.com/en-GB" target="_blank">
+            <img
+              class="box__image"
+              src="assets/logo/WeWork.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
+          </a>
+        </div>
+        <div class="box col-lg-2 text-center">
+          <a href="https://www.wipro.com" target="_blank">
+            <img
+              class="box__image"
+              src="assets/logo/Wipro.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
+          </a>
         </div>
       </div>
     </div>
@@ -734,14 +540,11 @@
 
 <section class="process" style="background: #fff7e3ad !important">
   <div class="container">
-    <div class="row">
-      <div class="title-page-white text-center w-100">
-        <h2 class="title_set mb-3" style="font-weight: 500">Blogs and News</h2>
-
-        <div class="row ml-auto mr-auto">
-          <div id="owl-demo-new" class="owl-carousel owl-theme owl-theme-blog">
-            <!-- <div class="carousel-inner"> -->
-            <!-- <div class="item" *ngFor="let chunk of chunkArray(getAllBlogs.data, 3); let i = index" [ngClass]="{ 'active': i === 0 }">
+    <div class="title-page-white text-center w-100">
+      <h2 class="title_set mb-3" style="font-weight: 500">Blogs and News</h2>
+      <div id="owl-demo-new" class="owl-carousel owl-theme owl-theme-blog">
+        <!-- <div class="carousel-inner"> -->
+        <!-- <div class="item" *ngFor="let chunk of chunkArray(getAllBlogs.data, 3); let i = index" [ngClass]="{ 'active': i === 0 }">
                 <div class="row justify-content-between mt-0">
                   <div class="col-lg-4" *ngFor="let getData of chunk">
                     <div class="card">
@@ -761,47 +564,45 @@
                   </div>
                 </div>
               </div> -->
-            <!-- </div> -->
+        <!-- </div> -->
 
-            <div class="item" *ngFor="let getData of getAllBlogs.data">
-              <!-- <div class="row justify-content-between mt-0"> -->
-              <!-- <div class="col-lg-12" > -->
-              <a
-                class="set_link"
-                (click)="blog_news_click(getData._id, getData.title)"
-                style="cursor: pointer"
-                ><div class="card">
-                  <img
-                    src="assets/{{ getData.image }}"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5
-                      class="card-title p_all_text_set text-left"
-                      style="font-weight: 600 !important; font-size: 18px"
-                    >
-                      {{ getData.title }}
-                    </h5>
-                    <p
-                      class="card-text text-left p_all_text_set"
-                      style="font-size: 18px"
-                      [innerHtml]="getData.Description.substr(0, 30) + '...'"
-                    ></p>
-                    <p class="card-text text-left p_all_text_set">
-                      <a
-                        class="set_link"
-                        (click)="blog_news_click(getData._id, getData.title)"
-                        >View More</a
-                      >
-                    </p>
-                  </div>
-                  <!-- </div> -->
-                  <!-- </div> -->
-                </div>
-              </a>
+        <div class="item" *ngFor="let getData of getAllBlogs.data">
+          <!-- <div class="row justify-content-between mt-0"> -->
+          <!-- <div class="col-lg-12" > -->
+          <a
+            class="set_link"
+            (click)="blog_news_click(getData._id, getData.title)"
+            style="cursor: pointer"
+            ><div class="card">
+              <img
+                src="assets/{{ getData.image }}"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5
+                  class="card-title p_all_text_set text-left"
+                  style="font-weight: 600 !important; font-size: 18px"
+                >
+                  {{ getData.title }}
+                </h5>
+                <p
+                  class="card-text text-left p_all_text_set"
+                  style="font-size: 18px"
+                  [innerHtml]="getData.Description.substr(0, 30) + '...'"
+                ></p>
+                <p class="card-text text-left p_all_text_set">
+                  <a
+                    class="set_link"
+                    (click)="blog_news_click(getData._id, getData.title)"
+                    >View More</a
+                  >
+                </p>
+              </div>
+              <!-- </div> -->
+              <!-- </div> -->
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

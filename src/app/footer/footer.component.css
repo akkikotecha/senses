@@ -27,8 +27,15 @@
 }
 
 .footer-rowtop {
-  padding: 50px 00px 90px 00px;
+  padding: 40px 00px 50px 00px;
   color: #888888;
+}
+@media only screen and (max-width: 600px) {
+  .footer-rowtop {
+    padding: 30px 20px;
+    color: #888888;
+    text-align: left;
+  }
 }
 
 .footer-rowbottom {

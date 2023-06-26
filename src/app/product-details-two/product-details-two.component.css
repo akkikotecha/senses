@@ -455,3 +455,12 @@ nav {
   border-color: #fecc00 !important;
   background-color: #fecc00 !important;
 }
+
+.card-featured-desc {
+  width: 80%;
+}
+@media only screen and (max-width: 600px) {
+  .card-featured-desc {
+    width: 100%;
+  }
+}

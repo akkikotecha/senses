@@ -62,7 +62,64 @@ export class ProductDetailsTwoComponent {
       return array;
     }
 
-    setTimeout(function () {
+    setTimeout(() => {
+      this.lazyLoadService
+        .loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js'
+        )
+        .subscribe((_) => {
+          $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            dots: true,
+            nav: false,
+            mouseDrag: true,
+            autoplay: true,
+            // items:3,
+            // animateOut: "animate__animated animate__slideOutDown",
+            // animateIn: "animate__animated animate__flipInX",
+            smartSpeed: 450,
+            responsive: {
+              0: {
+                items: 1,
+              },
+              600: {
+                items: 2,
+              },
+              1000: {
+                items: 3,
+              },
+            },
+          });
+
+          //   $("#owl-demo-new").owlCarousel({
+
+          //     loop:true,
+          //     margin:10,
+          //     dots:true,
+          //     nav:false,
+          //     mouseDrag:true,
+          //     autoplay:true,
+          //     items:3,
+          //     // animateOut: "slideOutDown",
+          //     // animateIn: "slideInDown",
+          //     smartSpeed: 450,
+          //     // responsive:{
+          //     //   0:{
+          //     //     items:5
+          //     // },
+
+          //     // 568:{
+          //     //     items:5
+          //     // },
+
+          //     // 992:{
+          //     //     items:5
+          //     // }
+          //     // }
+
+          // });
+        });
       $('.header-main').css({
         background: '#fff',
         border: '2px solid #ededed',
@@ -76,6 +133,65 @@ export class ProductDetailsTwoComponent {
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);
+    setTimeout(() => {
+      this.lazyLoadService
+        .loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js'
+        )
+        .subscribe((_) => {
+          $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            dots: true,
+            nav: false,
+            mouseDrag: true,
+            autoplay: true,
+            items: 4,
+            // animateOut: "animate__animated animate__slideOutDown",
+            // animateIn: "animate__animated animate__flipInX",
+            smartSpeed: 450,
+            responsive: {
+              0: {
+                items: 1,
+              },
+              600: {
+                items: 2,
+              },
+              1000: {
+                items: 4,
+              },
+            },
+          });
+
+          //   $("#owl-demo-new").owlCarousel({
+
+          //     loop:true,
+          //     margin:10,
+          //     dots:true,
+          //     nav:false,
+          //     mouseDrag:true,
+          //     autoplay:true,
+          //     items:3,
+          //     // animateOut: "slideOutDown",
+          //     // animateIn: "slideInDown",
+          //     smartSpeed: 450,
+          //     // responsive:{
+          //     //   0:{
+          //     //     items:5
+          //     // },
+
+          //     // 568:{
+          //     //     items:5
+          //     // },
+
+          //     // 992:{
+          //     //     items:5
+          //     // }
+          //     // }
+
+          // });
+        });
+    }, 1000);
 
     // console.log("ID : "+localStorage.getItem('productId'));
     this.ProductDetailService.getAllSubCategory(
@@ -93,6 +209,9 @@ export class ProductDetailsTwoComponent {
           (res) => {
             // console.log("getsubproductget : "+shuffleArray(res) );
             this.related_product = res;
+            console.log(
+              'related_product.data: ' + JSON.stringify(this.related_product)
+            );
           }
         );
         // console.log("shuffledArray " +shuffledArray);

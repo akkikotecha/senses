@@ -680,3 +680,34 @@ header:hover .owl-next {
   background-size: 0 100%;
   animation: stripes 10s linear 1 forwards;
 }
+.sustainabilityHeader {
+  background: url("./../../assets/Sustainability.jpeg") no-repeat left
+    border-box;
+  background-size: cover;
+  height: 780px;
+}
+.sustainabilityDownloadButton {
+  padding-top: 520px;
+}
+.item-img4 {
+  margin-top: 25px;
+}
+@media only screen and (max-width: 600px) {
+  .sustainabilityHeader {
+    height: 800px;
+    padding: 20px 0;
+  }
+  .sustainabilityDownloadButton {
+    padding-top: 20px;
+    margin-bottom: 20px;
+
+    /* padding-top: 520px; */
+  }
+  .p_all_text_set br {
+    display: none;
+    text-align: left;
+  }
+  .item-img4 {
+    margin-top: 0;
+  }
+}

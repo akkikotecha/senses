@@ -15,48 +15,46 @@
 </section>
 <section class="process pt-1">
   <div class="container">
-    <div class="row">
-      <div class="title-page-white text-center w-100">
-        <h2 class="title_set mb-3" style="font-weight: 500">Products</h2>
-        <p class="p_all_text_set mb-2" style="font-size: 19px">
-          Welcome to our collection of acoustics and agile furniture
-          solutions,<br />
-          where form meets function to create a harmonious soundscape that<br />
-          enhances productivity and focus in dynamic work environments. Our
-          <br />contemporary designs combine exceptional quality with versatile
-          and<br />
-          flexible solutions for modern workplaces.
-        </p>
-        <p class="p_all_text_set mb-4 d-none" style="font-size: 19px">
-          Browse our range today to elevate your workspace experience.
-        </p>
-        <div class="row justify-content-between mt-5">
-          <div class="col-lg-3" *ngFor="let getData of Data.data">
-            <a
-              (click)="sub_products(getData._id, getData.categoryName)"
-              style="cursor: pointer"
-            >
-              <div class="card">
-                <img
-                  src="assets/{{ getData.image }}"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5
-                    class="card-title p_all_text_set card_header text-capitalize"
-                  >
-                    {{ getData.categoryName }}
-                  </h5>
+    <div class="title-page-white text-center w-100">
+      <h2 class="title_set mb-3" style="font-weight: 500">Products</h2>
+      <p class="p_all_text_set mb-2" style="font-size: 19px">
+        Welcome to our collection of acoustics and agile furniture solutions,<br />
+        where form meets function to create a harmonious soundscape that<br />
+        enhances productivity and focus in dynamic work environments. Our
+        <br />contemporary designs combine exceptional quality with versatile
+        and<br />
+        flexible solutions for modern workplaces.
+      </p>
+      <p class="p_all_text_set mb-4 d-none" style="font-size: 19px">
+        Browse our range today to elevate your workspace experience.
+      </p>
+      <div class="row justify-content-between mt-5">
+        <div class="col-lg-3" *ngFor="let getData of Data.data">
+          <a
+            (click)="sub_products(getData._id, getData.categoryName)"
+            style="cursor: pointer"
+          >
+            <div class="card">
+              <img
+                src="assets/{{ getData.image }}"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5
+                  class="card-title text-center p_all_text_set card_header text-capitalize"
+                >
+                  {{ getData.categoryName }}
+                </h5>
 
-                  <p class="card-text text-left p_all_text_set d-none">
-                    <a href="#" class="set_link">BLOG</a>
-                  </p>
-                </div>
+                <p class="card-text text-left p_all_text_set d-none">
+                  <a href="#" class="set_link">BLOG</a>
+                </p>
               </div>
-            </a>
-          </div>
-          <!-- <div class="col-lg-3 ">
+            </div>
+          </a>
+        </div>
+        <!-- <div class="col-lg-3 ">
 				<a [routerLink]="['/sub_products']"><div class="card">
 				<img src="assets/2-Space-Dividers.webp" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -92,7 +90,6 @@
 	</div>
 	</a>
 	</div> -->
-        </div>
       </div>
     </div>
   </div>

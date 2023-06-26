@@ -16,48 +16,47 @@
 </section>
 <section class="process pt-0">
   <div class="container">
-    <div class="row">
-      <div class="title-page-white text-center w-100">
-        <h2 class="title_set" style="font-weight: 500">
-          {{ productname }}
-        </h2>
+    <div class="title-page-white text-center w-100">
+      <h2 class="title_set" style="font-weight: 500">
+        {{ productname }}
+      </h2>
 
-        <p class="p_all_text_set mb-4" style="font-size: 19px">
-          Upgrade your office with our booths and pods designed for private<br />
-          conversations and meetings. Meticulously crafted with high-quality<br />
-          materials, our collection offers versatile and functional solutions
-          that<br />
-          seamlessly blend style and functionality.
-          <!-- {{Data.data}} -->
-        </p>
-        <div class="row justify-content-center mt-5">
-          <div class="col-lg-3" *ngFor="let getData of Data.data">
-            <a (click)="sub_products(getData._id)">
-              <div class="card" style="cursor: pointer">
-                <img
-                  src="assets/{{ getData.images[0] }}"
-                  class="card-img-top"
-                  alt="..."
-                />
-                <div class="card-body">
-                  <h5
-                    class="card-title p_all_text_set card_header text-capitalize"
-                  >
-                    {{ getData.subCategoryName }}
-                  </h5>
-                  <p class="card-text text-center p_all_text_set">
-                    {{ getData.subCategoryDesc | htmlToPlaintext }}
-                  </p>
-                  <p class="card-text text-left p_all_text_set d-none">
-                    <a href="#" class="set_link">BLOG</a>
-                  </p>
-                </div>
+      <p class="p_all_text_set mb-4" style="font-size: 19px">
+        Upgrade your office with our booths and pods designed for private<br />
+        conversations and meetings. Meticulously crafted with high-quality<br />
+        materials, our collection offers versatile and functional solutions
+        that<br />
+        seamlessly blend style and functionality.
+        <!-- {{Data.data}} -->
+      </p>
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-3" *ngFor="let getData of Data.data">
+          <a (click)="sub_products(getData._id)">
+            <div class="card" style="cursor: pointer">
+              <img
+                src="assets/{{ getData.images[0] }}"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5
+                  class="card-title p_all_text_set card_header text-center text-capitalize"
+                >
+                  {{ getData.subCategoryName }}
+                </h5>
+                <p class="card-text text-center p_all_text_set">
+                  {{ getData.subCategoryDesc | htmlToPlaintext }}
+                </p>
+                <p class="card-text text-left p_all_text_set d-none">
+                  <a href="#" class="set_link">BLOG</a>
+                </p>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
+      </div>
 
-        <!-- <div class="col-lg-3 ">
+      <!-- <div class="col-lg-3 ">
 				<a [routerLink]="['/zest_product_detail']"><div class="card">
 				<img src="assets/Zest.webp" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -69,7 +68,6 @@
 		</div>
 		</a>
 	</div> -->
-      </div>
     </div>
   </div>
 </section>
