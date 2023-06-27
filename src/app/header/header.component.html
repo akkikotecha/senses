@@ -1,4 +1,52 @@
 <header id="sticky_nav">
+
+  
+<ng-template [ngIf]="isLoggedIn" >
+<style>
+  
+.mobile-container {
+  max-width: initial;
+  margin: auto;
+  color: white;
+  margin-top: 16px;
+  border-radius: 10px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px!important;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  color: black;
+}
+</style>
   <div class="header-top">
     <div class="container">
       <div class="row">
@@ -6,8 +54,89 @@
         <div class="col-md-7 col-sm-12 left_info">
           <ul>
             <li>
+              <a  [routerLink]="['/about_us_two','whoWeAre']"
+                
+                class="sticky_color"
+                style="font-size: 16px !important"
+                >Locate Us</a
+              >
+            </li>
+            <li style="color: white" class="sticky_color">|</li>
+            <li>
               <a
-                (click)="redirectToSection()"
+                href="#"
+                class="sticky_color"
+                style="font-size: 16px !important"
+                data-toggle="modal"
+                data-target="#myModal"
+                >Let's Talk</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-main">
+    <div class="container">
+      <nav id="cssmenu">
+       
+        <div id="head-mobile" style="padding-top: 0px!important;padding-bottom: 4px!important;"><a href="#"><img [src]="netImage" class="logo_style" style="width: 30%!important;" /></a></div>
+        <a href="javascript:void(0);" class="icon button" onclick="myFunction()">
+        </a>
+        <div class="mobile-container">
+
+          <!-- Top Navigation Menu -->
+          <div class="topnav">
+          
+            <div id="myLinks">
+              <a [routerLink]="['/products']" class="sticky_color"
+              ><span class="sticky_color_span">Products</span></a
+            >
+          
+              <a
+                href="#"
+                class="sticky_color"
+                [routerLink]="['/insights_two']"
+                ><span class="sticky_color_span">Insights</span></a
+              >
+          
+            
+              <a href="#" class="sticky_color" [routerLink]="['/resources']"
+                ><span class="sticky_color_span">Resources</span></a
+              >
+            
+           
+              <a [routerLink]="['/about_us_two','']" class="sticky_color"
+                ><span class="sticky_color_span">About</span></a
+              >
+          
+            </div>
+
+          </div>
+          </div>
+        <!-- START: RUBY DEMO HEADER -->
+       
+        <!-- END: RUBY DEMO HEADER -->
+      </nav>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template [ngIf]="islaptop" >
+
+
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-sm-12 right_info"></div>
+        <div class="col-md-7 col-sm-12 left_info">
+          <ul>
+            <li>
+              <a  [routerLink]="['/about_us_two','whoWeAre']"
+                
                 class="sticky_color"
                 style="
                   font-size: 16px !important;
@@ -285,7 +414,7 @@
                 >
               </li>
               <li class="ruby-active-menu-item">
-                <a [routerLink]="['/about_us_two']" class="sticky_color"
+                <a [routerLink]="['/about_us_two','']" class="sticky_color"
                   ><span class="sticky_color_span">About</span></a
                 >
               </li>
@@ -1289,6 +1418,7 @@
       </nav>
     </div>
   </div>
+  </ng-template>
 </header>
 
 <!-- Button trigger modal -->

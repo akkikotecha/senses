@@ -1,8 +1,17 @@
 <app-header> </app-header>
+<style>
+p{
+    text-align: left!important;
+}
+h1,h2,h3,h4,h5,h6{
+  text-align: center!important;
+}
+
+</style>
 <section class="process mt-0 pt-3 pb-2" style="margin-top: 100px !important">
   <div class="container">
     <div class="row">
-      <div class="title-page-white text-center w-100">
+      <div class="title-page-white  w-100">
         <div class="row justify-content-between mt-5">
           <p
             class="mb-1 text-center d-none"
@@ -22,6 +31,13 @@
           >
             {{ blogsNews[0].sub_title }}
           </h4>
+
+          <p
+            class="mb-5 text-center"
+            style=" font-size: 18px;text-align: center!important;"
+          >
+            Posted On: {{ blogsNews[0].createdAt | date:'dd-MM-yyyy' }}
+        </p>
           <img
             src="assets/{{ blogsNews[0].image }}"
             class="card-img-top"
