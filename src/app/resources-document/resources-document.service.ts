@@ -8,16 +8,16 @@ import { environment } from 'src/environments/environment';
 })
 export class ResourceDocumentService {
   fd: any;
-  id = localStorage.getItem('resourceTypeId');
+
   constructor(private http: HttpClient) {}
 
-  getResourceTypeData() {
-    let url = environment.base_url + 'getResourceImage/' + this.id;
+  getResourceTypeData(id: any) {
+    let url = environment.base_url + 'getResourceImage/' + id;
     console.log(url);
     return this.http.get(url);
   }
-  getResourceSubTypeDataByTypeID() {
-    let url = environment.base_url + 'getAllResourceSubTypeByTypeID/' + this.id;
+  getResourceSubTypeDataByTypeID(id: any) {
+    let url = environment.base_url + 'getAllResourceSubTypeByTypeID/' + id;
     console.log(url);
     return this.http.get(url);
   }

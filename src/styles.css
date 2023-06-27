@@ -271,6 +271,9 @@ placed on the editor margins. */
   padding-top: 30px;
   padding-bottom: 40px;
 }
+.cd-gallery {
+  height: 100%;
+}
 @media screen and (max-width: 600px) {
   .process {
     padding-top: 30px !important;

@@ -36,6 +36,7 @@ import { FeatureProjectViewAllComponent } from './feature-project-view-all/featu
 import { FeatureProductShowDetailComponent } from './feature-product-show-detail/feature-product-show-detail.component';
 import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
 import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
+import { AdminletstalkComponent } from './adminletstalk/adminletstalk.component';
 
 const routes: Routes = [
   {
@@ -212,6 +213,11 @@ const routes: Routes = [
   {
     path: 'blog_and_news_show_details/:name',
     component: BlogAndNewsShowDetailsComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'admin_lets_talk',
+    component: AdminletstalkComponent,
     runGuardsAndResolvers: 'always',
   },
 ];

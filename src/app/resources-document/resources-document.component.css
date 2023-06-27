@@ -829,7 +829,16 @@ xtab-filter
   /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); */
   z-index: 1;
   margin-top: 0px !important;
-  margin-left: 271px !important;
+  margin-left: 271px;
+}
+@media only screen and (max-width: 600px) {
+  .cd-tab-filter-wrapper {
+    /* background-color: #ffffff; */
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); */
+    z-index: 1;
+    margin-top: 33px !important;
+    margin-left: 0;
+  }
 }
 .cd-tab-filter-wrapper:after {
   content: "";
@@ -845,28 +854,13 @@ xtab-filter
   margin: 0 auto;
   z-index: 1;
 }
-.cd-tab-filter::after {
-  /* small arrow icon */
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  bottom: auto;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8426/cd-icon-arrow.svg")
-    no-repeat center center;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-  pointer-events: none;
+@media only screen and (max-width: 600px) {
+  .cd-tab-filter {
+    width: 100%;
+    margin-top: -16px;
+  }
 }
+
 .cd-tab-filter ul {
   position: absolute;
   top: 0;
@@ -874,14 +868,16 @@ xtab-filter
   background-color: #ffffff;
   box-shadow: inset 0 -2px 0 #41307c;
 }
+@media only screen and (max-width: 600px) {
+  .cd-tab-filter ul {
+    box-shadow: none;
+  }
+}
 .cd-tab-filter li {
   display: none;
   font-size: 15px;
 }
-.cd-tab-filter li:first-child {
-  /* this way the placehodler is alway visible */
-  display: block;
-}
+
 .cd-tab-filter a {
   display: block;
   /* set same size of the .cd-tab-filter */
@@ -889,6 +885,11 @@ xtab-filter
   width: 140px;
   line-height: 50px;
   padding-left: 14px;
+}
+@media only screen and (max-width: 600px) {
+  .cd-tab-filter a {
+    padding: 0 0.5em;
+  }
 }
 .cd-tab-filter a.selected {
   background: #41307c;
@@ -927,14 +928,13 @@ xtab-filter
     position: static;
     box-shadow: none;
     text-align: right;
-    margin-right: 80px;
+    margin-right: 120px;
   }
 }
 .cd-tab-filter li {
   display: inline-block;
   font-size: 15px;
-  width: auto;
-  cursor: pointer;
+  width: auto !important;
 }
 .cd-tab-filter li.placeholder {
   display: none !important;
@@ -947,6 +947,11 @@ xtab-filter
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
+}
+@media only screen and (max-width: 600px) {
+  .cd-tab-filter a {
+    padding: 0 0.5em;
+  }
 }
 .no-touch .cd-tab-filter a:hover {
   color: #41307c;
@@ -987,6 +992,14 @@ xgallery
 .cd-gallery {
   padding: 26px 5%;
   width: 100%;
+}
+@media screen and (max-width: 600px) {
+  .cd-gallery {
+    padding: 26px 0;
+  }
+}
+.cd-gallery ul {
+  padding: 0;
 }
 .cd-gallery li {
   margin-bottom: 1.6em;
@@ -1050,8 +1063,7 @@ xfilter
 
 -------------------------------- */
 .cd-filter {
-  /* position: absolute; */
-  margin-top: -50px;
+  position: absolute;
   top: 0;
   left: 0;
   width: 280px;
@@ -1128,12 +1140,17 @@ xfilter
   .cd-filter form {
     padding: 70px 10%;
     background-color: #f1f1f1;
-    padding-bottom: 540px !important;
+    /* padding-bottom: 1170px !important; */
+  }
+}
+@media only screen and (max-width: 600px) {
+  .cd-filter form {
+    background-color: #f1f1f1;
   }
 }
 
 .cd-filter-trigger {
-  /* position: absolute; */
+  position: absolute;
   top: 0;
   left: 0;
   height: 50px;
@@ -1144,9 +1161,9 @@ xfilter
   text-indent: 100%;
   color: transparent;
   white-space: nowrap;
-  /* background: transparent
+  background: transparent
     url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8426/cd-icon-filter.svg")
-    no-repeat center center; */
+    no-repeat center center;
   z-index: 3;
 }
 .cd-filter-trigger.filter-is-visible {
@@ -1307,6 +1324,18 @@ xcustom form elements
   display: none;
 }
 
+.cd-filters {
+  margin-top: 16px;
+}
+@media screen and (max-width: 600px) {
+  .cd-filter-content .cd-filters {
+    margin-left: 0px;
+  }
+  .cd-filters {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}
 .cd-filters.list {
   color: #96979d;
 }
@@ -1452,6 +1481,10 @@ td {
   font-size: 15px;
   padding-top: 30px;
 }
+
+.cd-gallery .color-1 img {
+  height: 235px;
+}
 .filterButton {
   background-color: #ffffff;
   border: 1px solid black;
@@ -1484,4 +1517,11 @@ td {
   outline: none;
   padding: 10px 16px;
   border-radius: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .filterButton,
+  .filterButtonReset {
+    padding: 10px;
+  }
 }

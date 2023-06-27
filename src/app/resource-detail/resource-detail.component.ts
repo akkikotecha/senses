@@ -53,15 +53,17 @@ export class ResourceDetailComponent {
   }
 
   resourceTypeClick(id: any, name: any): void {
-    localStorage.removeItem('resourceTypeId');
-    localStorage.removeItem('resourceType');
+    console.log('resourceTypeClick', id);
+    setTimeout(() => {
+      localStorage.removeItem('resourceTypeId');
+      localStorage.removeItem('resourceType');
 
-    localStorage.setItem('resourceTypeId', id);
-    localStorage.setItem('ResourceTypeName', name);
-
-    // console.log(id)
-    this.router.navigate([name]).then(() => {
-      // window.location.reload();
-    });
+      localStorage.setItem('resourceTypeId', id);
+      localStorage.setItem('ResourceTypeName', name);
+      // console.log(id)
+      this.router.navigate([name]).then(() => {
+        // window.location.reload();
+      });
+    }, 1000);
   }
 }

@@ -9,7 +9,7 @@
   <main class="cd-main-content">
     <div class="cd-tab-filter-wrapper">
       <div class="cd-tab-filter">
-        <ul class="cd-filters" style="margin-top: 16px !important">
+        <ul class="cd-filters" style="cursor: pointer">
           <li class="placeholder">
             <a data-type="all">All</a>
             <!-- selected option on mobile -->
@@ -46,59 +46,67 @@
     <!-- cd-tab-filter-wrapper -->
 
     <section class="cd-gallery filter-is-visible">
-      <table>
-        <tr *ngFor="let document of filterResourceData">
-          <ng-container *ngIf="data.length === 0">
-            <div class="height:500px">
-              <h4>No Resource Available</h4>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="filterResourceData.length > 0">
-            <th style="width: 80%">
-              <span style="font-size: 16px; color: #000"
-                ><input
-                  id="wp-comment-cookies-consent"
-                  name="wp-comment-cookies-consent"
-                  type="checkbox"
-                  class="checkbox_design"
-                  value="yes"
-                />
-              </span>
-              <span class="truncate" style="font-weight: 600">{{
-                document.title
-              }}</span
-              ><span
-                class="download-item-type ml-2"
-                style="font-size: 14px; font-weight: 400"
-                >{{ document.resourceSubTypeData[0].title }}</span
-              >
-            </th>
-            <th>
-              {{
-                document.imageSize
-                  ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
-                  : "7 MB"
-              }}
-            </th>
+      <ng-container *ngIf="filterResourceData.length == 0">
+        <div style="height: 400px">
+          <h4>No Resource Available</h4>
+        </div>
+      </ng-container>
+      <form id="download_form">
+        <table>
+          <tr *ngFor="let document of filterResourceData; let i = index">
+            <ng-container *ngIf="filterResourceData.length != 0">
+              <th style="width: 80%">
+                <span style="font-size: 16px; color: #000"
+                  ><input
+                    [attr.data-amount]="i + 1"
+                    [attr.data-url1]="'assets/' + document.image"
+                    data-folder1="assets/assets/upload/"
+                    id="wp-comment-cookies-consent"
+                    name="wp-comment-cookies-consent"
+                    type="checkbox"
+                    class="checkbox_design"
+                    value="yes"
+                  />
+                </span>
+                <span class="truncate" style="font-weight: 600">{{
+                  document.title
+                }}</span
+                ><span
+                  class="download-item-type ml-2"
+                  style="font-size: 14px; font-weight: 400"
+                  >{{ document.resourceSubTypeData[0].title }}</span
+                >
+              </th>
+              <th>
+                {{
+                  document.imageSize
+                    ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
+                    : "7 MB"
+                }}
+              </th>
 
-            <th class="text-uppercase">{{ document.resourceFormat }}</th>
-            <th>
-              <a
-                href="assets/{{ document.image | htmlToPlaintext }}"
-                target="_senses"
-                ><i class="fa fa-download" style="font-weight: 500"></i
-              ></a>
-            </th>
-          </ng-container>
-        </tr>
-      </table>
+              <th class="text-uppercase">{{ document.resourceFormat }}</th>
+              <th>
+                <a
+                  href="assets/{{ document.image | htmlToPlaintext }}"
+                  target="_senses"
+                  ><i class="fa fa-download" style="font-weight: 500"></i
+                ></a>
+              </th>
+            </ng-container>
+          </tr>
+          <button type="submit" class="btn2 btn-primary" value="zip">
+            Download ZIP
+          </button>
+        </table>
+      </form>
       <div class="cd-fail-message">No results found</div>
     </section>
     <!-- cd-gallery -->
 
-    <div class="cd-filter filter-is-visible">
-      <form style="height: 550px">
-        <div class="cd-filter-block">
+    <div class="cd-filter filter-is-visible" style="cursor: pointer">
+      <form style="height: inherit">
+        <div class="cd-filter-block d-none">
           <h4>Search</h4>
 
           <div class="cd-filter-content">
@@ -183,7 +191,7 @@
 
     <a
       class="cd-filter-trigger filter-is-visible"
-      style="cursor: pointer; position: absolute; left: 0"
+      style="cursor: pointer; position: absolute"
       >Filters</a
     >
   </main>

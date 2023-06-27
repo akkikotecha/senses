@@ -836,7 +836,7 @@ xtab-filter
     /* background-color: #ffffff; */
     /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); */
     z-index: 1;
-    margin-top: 20px !important;
+    margin-top: 33px !important;
     margin-left: 0;
   }
 }
@@ -857,30 +857,10 @@ xtab-filter
 @media only screen and (max-width: 600px) {
   .cd-tab-filter {
     width: 100%;
+    margin-top: -16px;
   }
 }
-.cd-tab-filter::after {
-  /* small arrow icon */
-  content: "";
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  bottom: auto;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8426/cd-icon-arrow.svg")
-    no-repeat center center;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-  pointer-events: none;
-}
+
 .cd-tab-filter ul {
   position: absolute;
   top: 0;
@@ -1012,6 +992,9 @@ xgallery
 .cd-gallery {
   padding: 26px 5%;
   width: 100%;
+}
+.cd-gallery ul {
+  padding: 0;
 }
 .cd-gallery li {
   margin-bottom: 1.6em;
@@ -1152,7 +1135,7 @@ xfilter
   .cd-filter form {
     padding: 70px 10%;
     background-color: #f1f1f1;
-    padding-bottom: 1170px !important;
+    /* padding-bottom: 1170px !important; */
   }
 }
 @media only screen and (max-width: 600px) {
@@ -1336,6 +1319,18 @@ xcustom form elements
   display: none;
 }
 
+.cd-filters {
+  margin-top: 16px;
+}
+@media screen and (max-width: 600px) {
+  .cd-filter-content .cd-filters {
+    margin-left: 0px;
+  }
+  .cd-filters {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
+}
 .cd-filters.list {
   color: #96979d;
 }
@@ -1484,4 +1479,44 @@ td {
 
 .cd-gallery .color-1 img {
   height: 235px;
+}
+.filterButton {
+  background-color: #ffffff;
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  /* border: 0; */
+  outline: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+.filterButton:hover {
+  background-color: #ffffff;
+  color: #fecc00;
+  border: 0;
+  outline: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+.filterButtonReset {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid black;
+  outline: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+.filterButtonReset:hover {
+  background-color: #ffffff;
+  color: #fecc00;
+  border: 0;
+  outline: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .filterButton,
+  .filterButtonReset {
+    padding: 10px;
+  }
 }

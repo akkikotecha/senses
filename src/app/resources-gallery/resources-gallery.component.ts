@@ -11,6 +11,7 @@ import { ResourceGalleryService } from './resources-gallery.service';
 export class ResourcesGalleryComponent {
   data: any = '';
   filterData: any = '';
+  disableSidebarContent: any = false;
   filterResourceData: any = '';
   categoryData: any = '';
   subCategoryData: any = '';
@@ -79,13 +80,15 @@ export class ResourcesGalleryComponent {
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);
   }
-  handleClick(id: string) {
+  handleClick(id: string, title: string) {
     console.log('id', id);
 
     if (id === '') {
       // this.resourceDocument.getResourceTypeData().subscribe((res) => {
       //   if (res && typeof res === 'object') {
       // this.data = res;
+      this.disableSidebarContent = false;
+
       this.filterResourceData = this.data.data; // Wrap the single object in an array
       // Wrap the single object in an array
       console.log('JobsiteData', this.data);
@@ -93,7 +96,34 @@ export class ResourcesGalleryComponent {
       //     console.error('Invalid response data: expected a single object');
       //   }
       // });
+    } else if (
+      id == '648b0ba83b5871e6e15ed48d' ||
+      id == '648b0bb23b5871e6e15ed491'
+    ) {
+      this.disableSidebarContent = true;
+      this.resourceGallery.getResourceTypeData().subscribe((res) => {
+        if (res && typeof res === 'object') {
+          this.data = res; // Wrap the single object in an array
+          this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+          console.log('handleClick id', id);
+          this.filterResourceData = this.filterResourceData.filter(
+            (res: any) => {
+              if (res.resourceSubType == id) {
+                console.log(res);
+                return res;
+              }
+            }
+          );
+          console.log('this.data', this.data);
+          console.log('this.filterResourceData', this.filterResourceData);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
     } else {
+      this.disableSidebarContent = false;
+
       this.filterResourceData = this.data.data.filter((res: any) => {
         if (res.resourceSubType == id) {
           console.log(res);
@@ -104,14 +134,78 @@ export class ResourcesGalleryComponent {
       console.log('this.filterResourceData', this.filterResourceData);
     }
   }
+  handleChange(event: any) {
+    const selectedValue = event?.target?.value;
+    if (selectedValue) {
+      // Function logic here
+      console.log('Selected value:', selectedValue);
+      this.resourceGallery.getAllSubCategory(selectedValue).subscribe((res) => {
+        if (res && typeof res === 'object') {
+          this.subCategoryData = res; // Wrap the single object in an array
 
-  // resourceService.getResourcesByType(id).subscribe(
-  //   (data) => {
-  //     this.resources = data;
-  //     console.log(this.resources);
-  //   },
-  //   (error) => {
-  //     console.error('Error fetching resources:', error);
-  //   }
-  // );
+          console.log('subCategoryData', this.subCategoryData);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
+      // Additional code you want to execute
+    }
+  }
+
+  handleFormSubmit() {
+    this.categorySelectedId = $('#categoryID option:selected').val();
+    this.subCategorySelectedId = $('#subCategoryID option:selected').val();
+
+    if (this.categorySelectedId && this.subCategorySelectedId) {
+      this.resourceGallery
+        .getAllResourceDataByFilter(
+          this.categorySelectedId,
+          this.subCategorySelectedId,
+          localStorage.getItem('resourceTypeId')
+        )
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('filterResourceData', this.data);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+    } else {
+      this.resourceGallery
+        .getAllResourceDataByCategoryFilter(
+          this.categorySelectedId,
+
+          localStorage.getItem('resourceTypeId')
+        )
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('filterResourceData', this.data);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+    }
+    console.log(this.categorySelectedId);
+    console.log(this.subCategorySelectedId);
+    console.log('categoryID');
+    console.log('categoryID');
+  }
+  handleResetButton() {
+    this.resourceGallery.getResourceTypeData().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.filterResourceData = this.data.data; // Wrap the single object in an array
+        console.log('ResourceTypeDataReset', this.data);
+        console.log('filterResourceDataReset', this.filterResourceData);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+  }
 }
