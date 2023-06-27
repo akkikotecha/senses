@@ -10,12 +10,26 @@ import { LazyLoadingService } from './lazy-loading.service';
 import { HomeService } from './home.service';
 import { HomeServicesService } from './home-services.service';
 import { Router } from '@angular/router';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { fadeIn, fadeOut } from 'ng-animate';
+import { OnDestroy } from '@angular/core';
+import { interval, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 declare var $: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('carouselAnimation', [
+      transition('void => *', useAnimation(fadeIn, { params: { time: '1s' } })),
+      transition(
+        '* => void',
+        useAnimation(fadeOut, { params: { time: '1s' } })
+      ),
+    ]),
+  ],
 })
 export class HomeComponent implements OnInit {
   //carousel: any;
@@ -27,6 +41,9 @@ export class HomeComponent implements OnInit {
   fourthFeaturedProduct: any;
   FeaturedProjectdata: any;
   Data: any;
+  // currentImageIndex = 0;
+  currentImageIndex = 0;
+  private destroy$ = new Subject<void>();
   @ViewChild('carousel', { static: true }) carousel: any;
   constructor(
     private lazyLoadService: LazyLoadingService,
@@ -38,6 +55,12 @@ export class HomeComponent implements OnInit {
   getAllBlogs: any;
 
   ngOnInit(): void {
+    interval(1000)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.nextImage();
+      });
+
     this.homeService.getAllFeaturedProduct().subscribe((res: any) => {
       console.log('Featured Products', res.data);
       res.data.map((product: any) => {
@@ -91,7 +114,7 @@ export class HomeComponent implements OnInit {
         )
         .subscribe((_) => {
           $('.owl-carousel').owlCarousel({
-            loop: true,
+            loop: false,
             margin: 10,
             dots: true,
             nav: false,
@@ -143,6 +166,15 @@ export class HomeComponent implements OnInit {
           // });
         });
     }, 1000);
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  nextImage() {
+    this.currentImageIndex =
+      (this.currentImageIndex + 1) % this.Data.data.length;
   }
 
   handleViewAllImage() {

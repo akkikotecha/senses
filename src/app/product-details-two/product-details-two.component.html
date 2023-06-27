@@ -510,9 +510,8 @@
             <h5
               class="card-title p_all_text_set text-left card_header text-capitalize"
               style="font-size: 32px"
-            >
-              {{ this.Data[0].featuredOneTitle }}
-            </h5>
+              [innerHTML]="this.Data[0].featuredOneTitle"
+            ></h5>
             <p
               class="card-text text-left p_all_text_set card-featured-desc"
               style="font-size: 17px"
@@ -545,9 +544,8 @@
             <h5
               class="card-title p_all_text_set text-left card_header text-capitalize"
               style="font-size: 32px"
-            >
-              {{ this.Data[0].featuredTwoTitle }}
-            </h5>
+              [innerHTML]="this.Data[0].featuredTwoTitle"
+            ></h5>
             <p
               class="card-text text-left p_all_text_set card-featured-desc"
               style="font-size: 17px"
@@ -596,9 +594,8 @@
             <h5
               class="card-title p_all_text_set text-left card_header text-capitalize"
               style="font-size: 32px"
-            >
-              {{ this.Data[0].featuredThreeTitle }}
-            </h5>
+              [innerHTML]="this.Data[0].featuredThreeTitle"
+            ></h5>
             <p
               class="card-text text-left p_all_text_set mt-3 card-featured-desc"
               style="font-size: 17px"
@@ -632,6 +629,27 @@
       </div>
     </div>
   </div>
+  <p
+    class="card-text text-center p_all_text_set mt-2"
+    style="font-size: 19px; font-weight: bold; color: rgba(0, 0, 0, 0.65)"
+  >
+    Interested in learning more about our products?
+
+    <button
+      data-toggle="modal"
+      data-target="#myModal"
+      style="
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-weight: bold;
+        color: #fecc00;
+      "
+    >
+      Connect
+    </button>
+    with our sales rep.
+  </p>
 </section>
 
 <section
@@ -644,7 +662,7 @@
         <div class="col-md-12">
           <div class="title-page-white text-center w-100 mb-4">
             <h2 class="title_set" style="font-weight: 700">
-              You may also like...
+              Discover other great choices to complete your space
             </h2>
           </div>
 

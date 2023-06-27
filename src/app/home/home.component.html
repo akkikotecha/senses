@@ -4,7 +4,6 @@
     id="carouselExampleIndicators"
     class="carousel slide"
     data-ride="carousel"
-    data-bs-interval="1000"
     style="position: relative"
   >
     <ol class="carousel-indicators home_caro">
@@ -13,6 +12,7 @@
         [attr.data-target]="'#carouselExampleIndicators'"
         [attr.data-slide-to]="i"
         [class.active]="i === 0"
+        [@carouselAnimation]="currentImageIndex === i ? 'active' : 'inactive'"
       ></li>
     </ol>
     <div class="carousel-inner">
@@ -314,38 +314,40 @@
       </p>
     </div>
     <div class="row mt-3">
-      <div class="col-lg-4 text-center mb-3">
+      <div class="col-lg-4 image-container text-center mb-3">
         <img
           src="assets/1.webp"
           class="item-img"
           style="width: 100%; border-radius: 15px"
         />
+        <div class="image-overlay"></div>
         <!-- <p class="p_all_text_set mt-4"></p> -->
       </div>
-      <div class="col-lg-4 text-center mb-3">
+      <div class="col-lg-4 image-container text-center mb-3">
         <img
           src="assets/2.webp"
           class="item-img"
           style="width: 100%; border-radius: 15px"
         />
+        <div class="image-overlay"></div>
       </div>
-      <div class="col-lg-4 text-center">
+      <div class="col-lg-4 image-container text-center">
         <img
           src="assets/3.webp"
           class="item-img"
           style="width: 100%; border-radius: 15px"
         />
-        <p class="p_all_text_set mt-4"></p>
+        <div class="image-overlay2"></div>
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex mt-3 justify-content-center">
     <button
       (click)="handleViewAllImage()"
       [routerLink]="['/products']"
       class="btn_set_css"
     >
-      View All Images
+      View More
     </button>
   </div>
 </section>
@@ -579,7 +581,7 @@
                 class="card-img-top"
                 alt="..."
               />
-              <div class="card-body">
+              <div class="card-body" style="height: 168px">
                 <h5
                   class="card-title p_all_text_set text-left"
                   style="font-weight: 600 !important; font-size: 18px"

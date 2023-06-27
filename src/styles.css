@@ -266,3 +266,14 @@ placed on the editor margins. */
   font-size: 13px;
   /* box-shadow: 0 0 18px #1a1a1a26; */
 }
+
+.process {
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+@media screen and (max-width: 600px) {
+  .process {
+    padding-top: 30px !important;
+    padding-bottom: 40px !important;
+  }
+}

@@ -1,3 +1,6 @@
+p {
+  margin-bottom: 0;
+}
 header {
   position: relative;
   top: 0px;
@@ -561,7 +564,7 @@ header:hover .owl-next {
 .overlay2Punch p,
 .orderIndex4 p {
   margin-bottom: 0;
-  font-weight: 700;
+  font-weight: 500;
 }
 .con_design:hover .overlay,
 .con_design:hover .orderIndex4,
@@ -709,5 +712,59 @@ header:hover .owl-next {
   }
   .item-img4 {
     margin-top: 0;
+  }
+}
+.process .image-overlay {
+  width: 93%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 16px;
+  border-radius: 15px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+.process .image-container {
+  position: relative;
+}
+.process .image-overlay2 {
+  width: 93%;
+  height: 98%;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: -1px;
+  left: 16px;
+  border-radius: 15px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+
+.process .image-container:hover .image-overlay,
+.process .image-container:hover .image-overlay2 {
+  background-color: unset;
+  transform: scale(1.02);
+}
+
+@media screen and (max-width: 600px) {
+  .process .image-overlay2 {
+    width: 93%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -1px;
+    left: 16px;
+    border-radius: 15px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-transition: background-color 0.4s;
+    transition: background-color 0.4s;
   }
 }

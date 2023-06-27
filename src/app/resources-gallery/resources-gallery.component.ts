@@ -79,6 +79,31 @@ export class ResourcesGalleryComponent {
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);
   }
+  handleClick(id: string) {
+    console.log('id', id);
+
+    if (id === '') {
+      // this.resourceDocument.getResourceTypeData().subscribe((res) => {
+      //   if (res && typeof res === 'object') {
+      // this.data = res;
+      this.filterResourceData = this.data.data; // Wrap the single object in an array
+      // Wrap the single object in an array
+      console.log('JobsiteData', this.data);
+      //   } else {
+      //     console.error('Invalid response data: expected a single object');
+      //   }
+      // });
+    } else {
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == id) {
+          console.log(res);
+          return res;
+        }
+      });
+      console.log('this.data', this.data);
+      console.log('this.filterResourceData', this.filterResourceData);
+    }
+  }
 
   // resourceService.getResourcesByType(id).subscribe(
   //   (data) => {

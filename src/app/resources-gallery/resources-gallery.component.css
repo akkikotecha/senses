@@ -1481,3 +1481,7 @@ td {
   font-size: 15px;
   padding-top: 30px;
 }
+
+.cd-gallery .color-1 img {
+  height: 235px;
+}

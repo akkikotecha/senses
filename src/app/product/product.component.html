@@ -35,11 +35,15 @@
             style="cursor: pointer"
           >
             <div class="card">
-              <img
-                src="assets/{{ getData.image }}"
-                class="card-img-top"
-                alt="..."
-              />
+              <div class="image-container text-center">
+                <img
+                  src="assets/{{ getData.image }}"
+                  class="card-img-top"
+                  alt="..."
+                />
+
+                <div class="image-overlay"></div>
+              </div>
               <div class="card-body">
                 <h5
                   class="card-title text-center p_all_text_set card_header text-capitalize"

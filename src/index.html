@@ -125,8 +125,7 @@
 
       .process {
         /* background: #E8741D; */
-        padding-top: 30px;
-        padding-bottom: 40px;
+
         /* margin-top: 20px; */
         /* position: relative; */
         /* top: 94px; */
@@ -749,6 +748,13 @@
     </div>
   </div>
   <script>
+    $(document).on("click", ".click_url_change", function () {
+      var url = $(this).attr("data-url");
+      console.log("url " + url);
+      $(".replace_iamge").fadeOut(200, function () {
+        $(this).attr("src", url).fadeIn(200);
+      });
+    });
     (function ($) {
       $(document).ready(function () {
         $("#cssmenu").menumaker({
@@ -1064,13 +1070,6 @@
       $(".ruby-menu").removeClass("d-none");
       $(".search_btn").removeClass("d-none");
       $(this).addClass("d-none");
-    });
-    $(document).on("click", ".click_url_change", function () {
-      var url = $(this).attr("data-url");
-      console.log("url " + url);
-      $(".replace_iamge").fadeOut(200, function () {
-        $(this).attr("src", url).fadeIn(200);
-      });
     });
 
     $(document).ready(function () {
