@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,AfterViewInit  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 declare var $: any;
 @Component({
@@ -6,17 +6,26 @@ declare var $: any;
   templateUrl: './about-two.component.html',
   styleUrls: ['./about-two.component.css'],
 })
-export class AboutTwoComponent {
+export class AboutTwoComponent implements AfterViewInit  {
   constructor(private route: ActivatedRoute) {}
+ 
   ngOnInit(): void {
+
     const paramValue = this.route.snapshot.paramMap.get('paramName');
     if (paramValue == 'whoWeAre') {
-      console.log('paramValue', paramValue);
-      const element = document.getElementById('whoWeAre'); // Replace 'sectionId' with the actual ID of the section you want to scroll to
-      if (element) {
-        element.scrollIntoView();
-      }
+      setTimeout(() => {
+        this.scroll();
+      }, 1000);
     }
+    // this.scroll();
+    // const paramValue = this.route.snapshot.paramMap.get('paramName');
+    // if (paramValue == 'whoWeAre') {
+    //   console.log('paramValue', paramValue);
+    //   const element = document.getElementById('whoWeAre'); // Replace 'sectionId' with the actual ID of the section you want to scroll to
+    //   if (element) {
+    //     element.scrollIntoView();
+    //   }
+    // }
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -32,4 +41,23 @@ export class AboutTwoComponent {
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 200);
   }
+
+  ngAfterViewInit(): void {
+    // setTimeout(() => {
+    //   this.scroll();
+    // }, 1000);
+  }
+
+  scroll() {
+    const element = document.getElementById('whoWeAre');
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const offset = rect.top + window.scrollY;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+  }
+  
+  
+  
+
 }

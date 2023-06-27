@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 declare var $: any;
 
@@ -52,6 +53,11 @@ export class BlogAndNewsShowDetailsComponent {
     
       
     // }
+
+    setTimeout(function(){
+      $('h1, h2, h3, h4, h5, h6').css('text-align', 'center');
+      $('.image').css('text-align', 'center');
+    },2000)
      
   }
 

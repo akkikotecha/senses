@@ -7,7 +7,29 @@ declare var $: any;
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) {}
+  getScreenWidth:any;
+  isLoggedIn:any;
+  islaptop:any;
+  
+  constructor(private router: Router) {
+
+
+    this.getScreenWidth = window.innerWidth;
+    console.log(this.getScreenWidth);
+
+        if(this.getScreenWidth <= 780)
+        {
+            this.isLoggedIn = true;
+            this.islaptop = false;
+         //   console.log("AK ")
+
+        }else{
+            this.islaptop = true;
+            this.isLoggedIn = false;
+        }
+
+
+  }
 
   netImage: any = './assets/sens_logo_white.svg';
   ngOnInit(): void {

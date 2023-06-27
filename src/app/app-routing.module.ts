@@ -99,7 +99,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'about_us_two',
+    path: 'about_us_two/:paramName',
     component: AboutTwoComponent,
     runGuardsAndResolvers: 'always',
   },
