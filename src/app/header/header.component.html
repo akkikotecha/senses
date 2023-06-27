@@ -9,6 +9,14 @@
         border-radius: 10px;
       }
 
+      .mobile-container {
+        max-width: initial;
+        margin: auto;
+        color: white;
+        margin-top: 16px;
+        border-radius: 10px;
+      }
+
       .topnav {
         overflow: hidden;
         background-color: white;
@@ -109,7 +117,10 @@
                   ><span class="sticky_color_span">Insights</span></a
                 >
 
-                <a href="#" class="sticky_color" [routerLink]="['/resources']"
+                <a
+                  href="#"
+                  class="sticky_color d-none"
+                  [routerLink]="['/resources']"
                   ><span class="sticky_color_span">Resources</span></a
                 >
 
@@ -134,7 +145,7 @@
           <div class="col-md-5 col-sm-12 right_info"></div>
           <div class="col-md-7 col-sm-12 left_info">
             <ul>
-              <li>
+              <li class="d-none">
                 <a
                   [routerLink]="['/about_us_two', 'whoWeAre']"
                   class="sticky_color"
@@ -146,7 +157,7 @@
                   >Locate Us</a
                 >
               </li>
-              <li style="color: white" class="sticky_color">|</li>
+              <li style="color: white" class="sticky_color d-none">|</li>
               <li>
                 <a
                   href="#"
@@ -171,7 +182,7 @@
           <div id="head-mobile"></div>
           <div class="button"></div>
           <ul class="rightside">
-            <li class="active">
+            <li class="active d-none">
               <!-- <form role="search" method="get" class="search-form" action="">
 							<label>
 						
@@ -408,7 +419,7 @@
                     ><span class="sticky_color_span">Insights</span></a
                   >
                 </li>
-                <li class="ruby-active-menu-item">
+                <li class="ruby-active-menu-item d-none">
                   <a href="#" class="sticky_color" [routerLink]="['/resources']"
                     ><span class="sticky_color_span">Resources</span></a
                   >

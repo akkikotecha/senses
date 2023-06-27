@@ -1,4 +1,4 @@
-import { Component,AfterViewInit  } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 declare var $: any;
 @Component({
@@ -6,9 +6,9 @@ declare var $: any;
   templateUrl: './about-two.component.html',
   styleUrls: ['./about-two.component.css'],
 })
-export class AboutTwoComponent implements AfterViewInit  {
-  constructor(private route: ActivatedRoute) {}
- 
+export class AboutTwoComponent implements AfterViewInit {
+  constructor(private route: ActivatedRoute) { }
+
   ngOnInit(): void {
 
     const paramValue = this.route.snapshot.paramMap.get('paramName');
@@ -56,8 +56,8 @@ export class AboutTwoComponent implements AfterViewInit  {
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   }
-  
-  
-  
+
+
+
 
 }

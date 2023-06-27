@@ -37,6 +37,10 @@ import { FeatureProductShowDetailComponent } from './feature-product-show-detail
 import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
 import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
 import { AdminletstalkComponent } from './adminletstalk/adminletstalk.component';
+import { WarrantyComponent } from './warranty/warranty.component';
+import { FaqComponent } from './faq/faq.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsofuserComponent } from './termsofuser/termsofuser.component';
 
 const routes: Routes = [
   {
@@ -218,6 +222,26 @@ const routes: Routes = [
   {
     path: 'admin_lets_talk',
     component: AdminletstalkComponent,
+
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'termofuse',
+    component: TermsofuserComponent,
+  },
+  {
+    path: 'privacy_policy',
+    component: PrivacyPolicyComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'faq',
+    component: FaqComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'warranty',
+    component: WarrantyComponent,
     runGuardsAndResolvers: 'always',
   },
 ];
