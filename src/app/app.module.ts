@@ -53,6 +53,10 @@ import { FeatureProjectViewAllComponent } from './feature-project-view-all/featu
 import { FeatureProductShowDetailComponent } from './feature-product-show-detail/feature-product-show-detail.component';
 import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
 import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
+import { TermsofuserComponent } from './termsofuser/termsofuser.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { FaqComponent } from './faq/faq.component';
+import { WarrantyComponent } from './warranty/warranty.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
@@ -102,6 +106,10 @@ import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/bl
     FeatureProductShowDetailComponent,
     AdminBlogNewsComponent,
     BlogAndNewsShowDetailsComponent,
+    TermsofuserComponent,
+    PrivacyPolicyComponent,
+    FaqComponent,
+    WarrantyComponent,
   ],
   imports: [
     BrowserModule,

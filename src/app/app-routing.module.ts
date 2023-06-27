@@ -36,6 +36,10 @@ import { FeatureProjectViewAllComponent } from './feature-project-view-all/featu
 import { FeatureProductShowDetailComponent } from './feature-product-show-detail/feature-product-show-detail.component';
 import { AdminBlogNewsComponent } from './admin-blog-news/admin-blog-news.component';
 import { BlogAndNewsShowDetailsComponent } from './blog-and-news-show-details/blog-and-news-show-details.component';
+import { WarrantyComponent } from './warranty/warranty.component';
+import { FaqComponent } from './faq/faq.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsofuserComponent } from './termsofuser/termsofuser.component';
 
 const routes: Routes = [
   {
@@ -214,6 +218,26 @@ const routes: Routes = [
     component: BlogAndNewsShowDetailsComponent,
     runGuardsAndResolvers: 'always',
   },
+  {
+    path: 'termofuse',
+    component: TermsofuserComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'privacy_policy',
+    component: PrivacyPolicyComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'faq',
+    component: FaqComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'warranty',
+    component: WarrantyComponent,
+    runGuardsAndResolvers: 'always',
+  },
 ];
 
 @NgModule({
@@ -225,4 +249,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -50,11 +50,19 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private homeService: HomeService,
     private HomeServicesService: HomeServicesService
-  ) {}
+  ) {
+
+
+  }
 
   getAllBlogs: any;
 
+
   ngOnInit(): void {
+
+
+
+
     interval(1000)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
@@ -217,5 +225,5 @@ export class HomeComponent implements OnInit {
     // });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 }

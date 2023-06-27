@@ -23,41 +23,25 @@
         <div class="col-lg-3">
           <div class="row d-flex mt-0">
             <div class="accordion" id="accordionExampleOne">
-              <div
-                class="accordion-item accordion-item-text"
-                *ngFor="
+              <div class="accordion-item accordion-item-text" *ngFor="
                   let typeFilterData of resourceFilterTypeSubTypeData.data
-                "
-              >
+                ">
                 <h2 class="accordion-header" id="headingStartOne">
-                  <button
-                    class="accordion-button accordion-button-text collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    [attr.data-bs-target]="
+                  <button class="accordion-button accordion-button-text collapsed" type="button"
+                    data-bs-toggle="collapse" [attr.data-bs-target]="
                       '#collapseStartOne_' + typeFilterData._id
-                    "
-                    aria-expanded="false"
-                    [attr.aria-controls]="
+                    " aria-expanded="false" [attr.aria-controls]="
                       'collapseStartOne_' + typeFilterData._id
-                    "
-                  >
+                    ">
                     {{ typeFilterData.title }}
                   </button>
                 </h2>
-                <div
-                  [attr.id]="'collapseStartOne_' + typeFilterData._id"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingStartOne"
-                  data-bs-parent="#accordionExampleOne"
-                >
+                <div [attr.id]="'collapseStartOne_' + typeFilterData._id" class="accordion-collapse collapse"
+                  aria-labelledby="headingStartOne" data-bs-parent="#accordionExampleOne">
                   <div class="accordion-body accor_left p_all_text_set p-0">
-                    <p
-                      class="p_all_text_set_new"
-                      *ngFor="
+                    <p class="p_all_text_set_new" *ngFor="
                         let subtypeDataFilter of typeFilterData.resourceSubTypeData
-                      "
-                    >
+                      ">
                       {{ subtypeDataFilter.title }}
                     </p>
                   </div>
@@ -68,37 +52,24 @@
         </div>
         <div class="col-lg-9">
           <div class="row justify-content-between mt-3">
-            <div
-              class="col-lg-6"
-              *ngFor="let image of resourceType.data; let i = index"
-            >
+            <div class="col-lg-6" *ngFor="let image of resourceType.data; let i = index">
               <!-- http://52.44.128.214/resources_document -->
-              <a
-                style="cursor: pointer"
-                (click)="
+              <a style="cursor: pointer" (click)="
                   resourceTypeClick(
                     image._id,
                     image.title === 'Images'
                       ? '/resources_gallery'
                       : '/resources_document'
                   )
-                "
-              >
+                ">
                 <div class="card" style="cursor: pointer">
-                  <img
-                    src="assets/{{ image.image | htmlToPlaintext }}"
-                    class="card-img-top"
-                    style="height: 300px"
-                    alt="..."
-                  />
+                  <img src="assets/{{ image.image | htmlToPlaintext }}" class="card-img-top" style="height: 300px"
+                    alt="..." />
                   <div class="card-body">
-                    <h5
-                      class="card-title p_all_text_set card_header"
-                      style="
+                    <h5 class="card-title p_all_text_set card_header" style="
                         font-size: 24px !important;
                         text-transform: capitalize;
-                      "
-                    >
+                      ">
                       {{ image.title }}
                     </h5>
                     <p class="card-text text-left p_all_text_set d-none">
@@ -118,13 +89,8 @@
 <section class="process">
   <div class="container">
     <div class="title-page-white text-center w-100">
-      <p
-        class="card-text text-left p_all_text_set mt-4 mb-4 justify-content-center d-none"
-      >
-        <button
-          class="btn btn-dark"
-          style="background-color: #fecc00; border-color: #fecc00; color: black"
-        >
+      <p class="card-text text-left p_all_text_set mt-4 mb-4 justify-content-center d-none">
+        <button class="btn btn-dark" style="background-color: #fecc00; border-color: #fecc00; color: black">
           <span style="font-weight: 600; font-size: 13px">
             Frequently Asked Question
           </span>
@@ -140,159 +106,233 @@
         <div class="accordion" id="accordionExampleSIx">
           <div class="accordion-item accordion_back">
             <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button accordion-button-set collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsesix"
-                aria-expanded="false"
-                aria-controls="collapsesix"
-                style="font-size: 18px !important"
-              >
-                Documents
+              <button class="accordion-button accordion-button-set collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix"
+                style="font-size: 18px !important">
+                Images
               </button>
             </h2>
-            <div
-              id="collapsesix"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingsix"
-              data-bs-parent="#accordionExampleSIx"
-            >
+            <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingsix"
+              data-bs-parent="#accordionExampleSIx">
               <div class="accordion-body p_all_text_set">
-                It is shown by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the , though the
-                transition does limit overflow.
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">1. Can I download product and project images?
+                  </p>
+
+
+                  <p class="pl-4">- You can download high-resolution images and project case studies in PDF format
+                    from our website.
+
+
+                  </p>
+
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">2. Can I use and share the images commercially?
+                  </p>
+
+
+                  <p class="pl-4">Unauthorized commercial use of our property is strictly prohibited. For more
+                    information, read our Terms of Use Policy.
+                  </p>
+
+                </div>
+
+
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">3. The color of the actual product I received is
+                    different from that shown in the images, why is it so?
+
+
+                  </p>
+
+
+                  <p class="pl-4">- Please be aware that the PDF color shades can appear different from the real
+                    fabric colors. We advise you to request actual fabric samples before ordering.
+
+                  </p>
+
+                </div>
               </div>
             </div>
           </div>
           <div class="accordion-item accordion_back">
             <h2 class="accordion-header" id="headingTwo">
-              <button
-                class="accordion-button accordion-button-set collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-                style="font-size: 18px !important"
-              >
+              <button class="accordion-button accordion-button-set collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                style="font-size: 18px !important">
                 Documents
               </button>
             </h2>
-            <div
-              id="collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingTwo"
-              data-bs-parent="#accordionExample"
-            >
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
               <div class="accordion-body p_all_text_set">
-                It is hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the , though the
-                transition does limit overflow.
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">1. Can I download brochures, specification sheets
+                    and assembly guidelines?
+
+                  </p>
+
+
+                  <p class="pl-4">- The Downloads Section is exclusively available for your convenience.
+
+
+                  </p>
+
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">2. Can I order products of different dimensions
+                    than that mentioned in the Specification Sheet?
+
+                  </p>
+
+
+                  <p class="pl-4"> Customizations are not available unless specified on the product specification
+                    sheet.
+                  </p>
+
+                </div>
+
+
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">3. Can you provide a video for product assembly
+                    guidelines?
+                  </p>
+
+
+                  <p class="pl-4">- While we don't offer video assembly services currently, we provide detailed
+                    and user-friendly installation manuals that make the process easy to follow.
+
+                  </p>
+
+                </div>
+
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">4. I am having some doubts regarding the dimensions
+                    of the product, whom should I contact?
+
+
+
+                  </p>
+
+
+                  <p class="pl-4">- To discuss your exact requirements and address any specific inquiries, we
+                    recommend reaching out to our Sales Rep or Dealer in your location.
+
+                  </p>
+
+                </div>
               </div>
             </div>
           </div>
           <div class="accordion-item accordion_back">
             <h2 class="accordion-header" id="headingThree">
-              <button
-                class="accordion-button accordion-button-set collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-                style="font-size: 18px !important"
-              >
-                Finish
+              <button class="accordion-button accordion-button-set collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                style="font-size: 18px !important">
+                Materials
               </button>
             </h2>
-            <div
-              id="collapseThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingThree"
-              data-bs-parent="#accordionExample"
-            >
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample">
               <div class="accordion-body p_all_text_set">
-                It is hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the , though the
-                transition does limit overflow.
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">1. Can I order products other than the color
+                    mentioned in swatch cards?
+                  </p>
+
+
+                  <p class="pl-4">- While we strive to provide a wide range of color options, we cannot guarantee
+                    an exact match to specific expectations. However, we will do our best to find a color that
+                    closely aligns with your preferences from our extensive colorway options.
+
+
+                  </p>
+
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">2. Why is there color variation in the swatch cards
+                    and the actual product?
+
+                  </p>
+
+
+                  <p class="pl-4">Colors may appear slightly different in photos than in reality due to monitor
+                    variations.
+                  </p>
+
+                </div>
+
+
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">3. Can I download CAD files?
+
+
+
+                  </p>
+
+
+                  <p class="pl-4">- Feel free to access and download the available 2D drawing files from our
+                    website.
+
+
+                  </p>
+
+                </div>
               </div>
             </div>
           </div>
           <div class="accordion-item accordion_back">
             <h2 class="accordion-header" id="headingFour">
-              <button
-                class="accordion-button accordion-button-set collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFour"
-                aria-expanded="false"
-                aria-controls="collapseFour"
-                style="font-size: 18px !important"
-              >
-                Environmental Document
+              <button class="accordion-button accordion-button-set collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"
+                style="font-size: 18px !important">
+                Certifications
               </button>
             </h2>
-            <div
-              id="collapseFour"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingFour"
-              data-bs-parent="#accordionExample"
-            >
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+              data-bs-parent="#accordionExample">
               <div class="accordion-body p_all_text_set">
-                It is hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the , though the
-                transition does limit overflow.
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">1. What is the authenticity of certificates and
+                    awards?
+                  </p>
+
+
+                  <p class="pl-4">- Our products are certified and awarded by renowned organizations. For more
+                    information on the certifications we hold, please visit our website.
+
+
+
+                  </p>
+
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px;font-weight: 600;">2. Are the test reports validated by a Third party
+                    or valid institution?
+
+
+                  </p>
+
+
+                  <p class="pl-4"> Rest assured, our test reports undergo rigorous validation by esteemed
+                    institutions, ensuring their accuracy and reliability.
+
+                  </p>
+
+                </div>
               </div>
             </div>
           </div>
-          <div class="accordion-item accordion_back">
-            <h2 class="accordion-header" id="headingFive">
-              <button
-                class="accordion-button accordion-button-set collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseFive"
-                aria-expanded="false"
-                aria-controls="collapseFive"
-                style="font-size: 18px !important"
-              >
-                Drawing/CAD
-              </button>
-            </h2>
-            <div
-              id="collapseFive"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingFive"
-              data-bs-parent="#accordionExample"
-            >
-              <div class="accordion-body p_all_text_set">
-                It is hidden by default, until the collapse plugin adds the
-                appropriate classes that we use to style each element. These
-                classes control the overall appearance, as well as the showing
-                and hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the , though the
-                transition does limit overflow.
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
