@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -21,7 +22,8 @@ export class ProductDetailsTwoComponent {
 
   constructor(
     private ProductDetailService: ProductDetailService,
-    private lazyLoadService: LazyLoadingService
+    private lazyLoadService: LazyLoadingService,
+    private router: Router
   ) {
     // this.productname = localStorage.getItem('productname')
   }
@@ -220,4 +222,18 @@ export class ProductDetailsTwoComponent {
       }
     });
   }
+
+
+  handleFeaturedProduct(id: any) {
+    localStorage.removeItem('subCategoryId');
+    // localStorage.removeItem("productname");
+
+    localStorage.setItem('subCategoryId', id);
+    window.open('/product_detail_two', '_blank');
+    // this.router.navigate(['product_detail_two']).then(() => {
+    //   // window.location.reload();
+    // });
+  }
+
+
 }

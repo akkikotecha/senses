@@ -1,46 +1,24 @@
 <app-header> </app-header>
 <header style="margin-top: 6%">
-  <div
-    id="carouselExampleIndicators"
-    class="carousel slide"
-    data-ride="carousel"
-    data-bs-interval="100"
-    style="position: relative"
-  >
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-bs-interval="100"
+    style="position: relative">
     <ol class="carousel-indicators home_caro">
-      <li
-        *ngFor="let image of Data[0].images; let i = index"
-        [attr.data-target]="'#carouselExampleIndicators'"
-        [attr.data-slide-to]="i"
-        [class.active]="i === 0"
-      ></li>
+      <li *ngFor="let image of Data[0].images; let i = index" [attr.data-target]="'#carouselExampleIndicators'"
+        [attr.data-slide-to]="i" [class.active]="i === 0"></li>
     </ol>
     <div class="carousel-inner">
-      <div
-        class="carousel-item get_text active"
-        *ngFor="let getData of Data[0].images; let i = index"
-        [class.active]="i === 0"
-      >
-        <img
-          class="d-block w-100"
-          src="assets/{{ this.getData | htmlToPlaintext }}"
-          alt="First slide"
-          style="height: 700px"
-        />
-        <div
-          class="carousel-caption d-none d-md-block"
-          style="text-align: initial"
-        >
+      <div class="carousel-item get_text active" *ngFor="let getData of Data[0].images; let i = index"
+        [class.active]="i === 0">
+        <img class="d-block w-100" src="assets/{{ this.getData | htmlToPlaintext }}" alt="First slide"
+          style="height: 700px" />
+        <div class="carousel-caption d-none d-md-block" style="text-align: initial">
           <h3 style="font-weight: 500; font-size: 36px" class="text-left">
             {{ Data[0].subcategoriesdata[0].subCategoryName }}
           </h3>
           <p style="font-size: 20px" class="text-left">
             {{ Data[0].subcategoriesdata[0].subCategoryDesc }}
           </p>
-          <button
-            class="btn btn_set_css_new text-left"
-            (click)="scroll(targetElement.nativeElement)"
-          >
+          <button class="btn btn_set_css_new text-left" (click)="scroll(targetElement.nativeElement)">
             Learn More
           </button>
         </div>
@@ -79,86 +57,49 @@
   <div class="container-fluid">
     <div class="row">
       <nav class="px-0">
-        <div
-          class="nav nav-tabs justify-content-center"
-          id="nav-tab"
-          role="tablist"
-          style="border-bottom: 0px solid #dee2e6; margin: 0px !important"
-        >
-          <button
-            class="nav-link active"
-            id="nav-home-tab"
-            style="line-height: 20px; font-weight: 600"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-home"
-            type="button"
-            role="tab"
-            aria-controls="nav-home"
-            aria-selected="true"
-          >
+        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist"
+          style="border-bottom: 0px solid #dee2e6; margin: 0px !important">
+          <button class="nav-link active" id="nav-home-tab" style="line-height: 20px; font-weight: 600"
+            data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+            aria-selected="true">
             Overview
           </button>
-          <button
-            class="nav-link ml-4"
-            id="nav-profile-tab"
-            style="line-height: 20px; font-weight: 600"
-            data-bs-toggle="tab"
-            data-bs-target="#nav-profile"
-            type="button"
-            role="tab"
-            aria-controls="nav-profile"
-            aria-selected="false"
-          >
+          <button class="nav-link ml-4" id="nav-profile-tab" style="line-height: 20px; font-weight: 600"
+            data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+            aria-selected="false">
             Downloads
           </button>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div
-          class="tab-pane fade show active"
-          id="nav-home"
-          role="tabpanel"
-          aria-labelledby="nav-home-tab"
-        >
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           <div class="container mt-3">
             <div class="title-page-white text-center w-100">
               <div class="row justify-content-between mt-0 d-flex">
                 <div class="col-lg-12">
                   <div class="card" style="border: none !important">
                     <div class="card-body p-0">
-                      <h5
-                        class="card-title text-left p_all_text_set card_header_set_header d-none"
-                      >
+                      <h5 class="card-title text-left p_all_text_set card_header_set_header d-none">
                         Kolo
                       </h5>
-                      <p
-                        class="p-card-text text-left p_all_text_set"
-                        style="font-size: 19px"
-                        [innerHTML]="this.Data[0].overview"
-                      ></p>
+                      <p class="p-card-text text-left p_all_text_set" style="font-size: 19px"
+                        [innerHTML]="this.Data[0].overview"></p>
                       <br />
-                      <p
-                        class="card-text text-left p_all_text_set mt-2"
-                        style="
+                      <p class="card-text text-left p_all_text_set mt-2" style="
                           font-size: 19px;
                           font-weight: bold;
                           color: rgba(0, 0, 0, 0.65);
-                        "
-                      >
+                        ">
                         Discover how
                         {{ Data[0].subcategoriesdata[0].subCategoryName }}
                         can elevate your space.
-                        <button
-                          data-toggle="modal"
-                          data-target="#myModal"
-                          style="
+                        <button data-toggle="modal" data-target="#myModal" class="link" style="
                             border: none;
                             outline: none;
                             background-color: transparent;
                             font-weight: bold;
                             color: #fecc00;
-                          "
-                        >
+                          ">
                           Let's talk
                         </button>
                         and explore the possibilities.
@@ -170,12 +111,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="tab-pane fade"
-          id="nav-profile"
-          role="tabpanel"
-          aria-labelledby="nav-profile-tab"
-        >
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
           <div class="container mt-5">
             <div class="row">
               <div class="title-page-white text-center w-100">
@@ -183,23 +119,13 @@
                   <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
-                        <button
-                          class="accordion-button"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseOne"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                           Project Images
                         </button>
                       </h2>
-                      <div
-                        id="collapseOne"
-                        class="accordion-collapse collapse show"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample"
-                      >
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body p_all_text_set">
                           It is shown by default, until the collapse plugin adds
                           the appropriate classes that we use to style each
@@ -214,23 +140,13 @@
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingTwo">
-                        <button
-                          class="accordion-button collapsed"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseTwo"
-                          aria-expanded="false"
-                          aria-controls="collapseTwo"
-                        >
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           Documents
                         </button>
                       </h2>
-                      <div
-                        id="collapseTwo"
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample"
-                      >
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body p_all_text_set">
                           It is hidden by default, until the collapse plugin
                           adds the appropriate classes that we use to style each
@@ -245,23 +161,13 @@
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingThree">
-                        <button
-                          class="accordion-button collapsed"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseThree"
-                          aria-expanded="false"
-                          aria-controls="collapseThree"
-                        >
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                           Finish
                         </button>
                       </h2>
-                      <div
-                        id="collapseThree"
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample"
-                      >
+                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body p_all_text_set">
                           It is hidden by default, until the collapse plugin
                           adds the appropriate classes that we use to style each
@@ -276,23 +182,13 @@
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingFour">
-                        <button
-                          class="accordion-button collapsed"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseFour"
-                          aria-expanded="false"
-                          aria-controls="collapseFour"
-                        >
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                           Environmental Document
                         </button>
                       </h2>
-                      <div
-                        id="collapseFour"
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingFour"
-                        data-bs-parent="#accordionExample"
-                      >
+                      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body p_all_text_set">
                           It is hidden by default, until the collapse plugin
                           adds the appropriate classes that we use to style each
@@ -307,23 +203,13 @@
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingFive">
-                        <button
-                          class="accordion-button collapsed"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseFive"
-                          aria-expanded="false"
-                          aria-controls="collapseFive"
-                        >
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                           Drawing/CAD
                         </button>
                       </h2>
-                      <div
-                        id="collapseFive"
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingFive"
-                        data-bs-parent="#accordionExample"
-                      >
+                      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#accordionExample">
                         <div class="accordion-body p_all_text_set">
                           It is hidden by default, until the collapse plugin
                           adds the appropriate classes that we use to style each
@@ -347,33 +233,20 @@
   </div>
 </section>
 
-<section
-  class="process"
-  style="background: #f9f9f9"
-  *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
-  #target
->
+<section class="process" style="background: #f9f9f9" *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
+  #target>
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="background: #f9f9f9 !important">
         <div class="col-lg-12 px-0 d-flex align-items-center py-5">
           <div class="col-lg-6">
-            <img
-              src="assets/sub_pro_image/accoustic-icon.svg"
-              class="card-img-top card-img-top-width mx-auto mb-4"
-              alt="..."
-            />
+            <img src="assets/sub_pro_image/accoustic-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4"
+              alt="..." />
             <div class="">
-              <h5
-                class="card-title p_all_text_set text-left card_header text-capitalize"
-                style="font-size: 22px"
-              >
+              <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
                 Acoustic Solution
               </h5>
-              <p
-                class="card-text text-left p_all_text_set"
-                style="font-size: 16px"
-              >
+              <p class="card-text text-left p_all_text_set" style="font-size: 16px">
                 Made with class-leading soundproofing materials and structural
                 detailing to mitigate noise.
               </p>
@@ -383,22 +256,13 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <img
-              src="assets/sub_pro_image/personal-light-icon.svg"
-              class="card-img-top card-img-top-width mx-auto mb-4"
-              alt="..."
-            />
+            <img src="assets/sub_pro_image/personal-light-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4"
+              alt="..." />
             <div class="">
-              <h5
-                class="card-title p_all_text_set text-left card_header text-capitalize"
-                style="font-size: 22px"
-              >
+              <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
                 Personalised Lighting
               </h5>
-              <p
-                class="card-text text-left p_all_text_set"
-                style="font-size: 16px"
-              >
+              <p class="card-text text-left p_all_text_set" style="font-size: 16px">
                 Adjustable LED light brightness and temperature with automatic
                 motion detector.
               </p>
@@ -410,22 +274,13 @@
         </div>
         <div class="col-lg-12 px-0 d-flex align-items-center mb-5">
           <div class="col-lg-6">
-            <img
-              src="assets/sub_pro_image/Vents-icon.svg"
-              class="card-img-top card-img-top-width mx-auto mb-4"
-              alt="..."
-            />
+            <img src="assets/sub_pro_image/Vents-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4"
+              alt="..." />
             <div class="">
-              <h5
-                class="card-title p_all_text_set text-left card_header text-capitalize"
-                style="font-size: 22px"
-              >
+              <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
                 Ventilated Space
               </h5>
-              <p
-                class="card-text text-left p_all_text_set"
-                style="font-size: 16px"
-              >
+              <p class="card-text text-left p_all_text_set" style="font-size: 16px">
                 Custom-designed airflow vents provide constant natural air
                 circulation.
               </p>
@@ -435,22 +290,13 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <img
-              src="assets/sub_pro_image/Charging ports-icon.svg"
-              class="card-img-top card-img-top-width mx-auto mb-4"
-              alt="..."
-            />
+            <img src="assets/sub_pro_image/Charging ports-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4"
+              alt="..." />
             <div class="">
-              <h5
-                class="card-title p_all_text_set text-left card_header text-capitalize"
-                style="font-size: 22px"
-              >
+              <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
                 Built-in Charging Station
               </h5>
-              <p
-                class="card-text text-left p_all_text_set"
-                style="font-size: 16px"
-              >
+              <p class="card-text text-left p_all_text_set" style="font-size: 16px">
                 User-friendly charging ports placed at table level for easy
                 access.
               </p>
@@ -461,62 +307,36 @@
           </div>
         </div>
       </div>
-      <div
-        class="col-lg-6 px-lg-5 d-flex align-items-center justify-content-center"
-      >
-        <img
-          src="assets/sub_pro_image/Untitled design.gif"
-          class="w-100"
-          style="width: 100% !important"
-          alt="..."
-        />
+      <div class="col-lg-6 px-lg-5 d-flex align-items-center justify-content-center">
+        <img src="assets/sub_pro_image/Untitled design.gif" class="w-100" style="width: 100% !important" alt="..." />
       </div>
     </div>
   </div>
 </section>
 
-<section
-  class="process"
-  [style.background-color]="
+<section class="process" [style.background-color]="
     Data[0].subcategoriesdata[0].subCategoryName === 'Kolo'
       ? '#fbfbfb'
       : 'white'
-  "
->
+  ">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-6 px-0 text-center">
-        <img
-          src="assets/{{ this.Data[0].featuredOneImage | htmlToPlaintext }}"
-          class="w-100"
-          style="width: 70% !important"
-          alt="..."
-        />
+        <img src="assets/{{ this.Data[0].featuredOneImage | htmlToPlaintext }}" class="w-100"
+          style="width: 70% !important" alt="..." />
       </div>
       <div class="col-lg-6 px-lg-5 d-flex align-items-center">
-        <div
-          class="card"
-          style="
+        <div class="card" style="
             background-color: transparent !important;
             background: transparent !important;
-          "
-        >
-          <img
-            src="assets/{{ this.Data[0].featuredOneImage | htmlToPlaintext }}"
-            class="card-img-top card-img-top-width mx-auto d-none"
-            alt="..."
-          />
+          ">
+          <img src="assets/{{ this.Data[0].featuredOneImage | htmlToPlaintext }}"
+            class="card-img-top card-img-top-width mx-auto d-none" alt="..." />
           <div class="card-body mt-3">
-            <h5
-              class="card-title p_all_text_set text-left card_header text-capitalize"
-              style="font-size: 32px"
-              [innerHTML]="this.Data[0].featuredOneTitle"
-            ></h5>
-            <p
-              class="card-text text-left p_all_text_set card-featured-desc"
-              style="font-size: 17px"
-              [innerHTML]="this.Data[0].featuredOneDesc"
-            >
+            <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 32px"
+              [innerHTML]="this.Data[0].featuredOneTitle"></h5>
+            <p class="card-text text-left p_all_text_set card-featured-desc" style="font-size: 17px"
+              [innerHTML]="this.Data[0].featuredOneDesc">
               <!-- {{ this.Data[0].featuredOneDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
@@ -528,29 +348,17 @@
     </div>
     <div class="row">
       <div class="col-lg-6 px-lg-5 d-flex align-items-center">
-        <div
-          class="card ml-lg-5 ml-md-0"
-          style="
+        <div class="card ml-lg-5 ml-md-0" style="
             background-color: transparent !important;
             background: transparent !important;
-          "
-        >
-          <img
-            src="assets/sub_pro_image/Midi Studio Pod.jpg"
-            class="card-img-top card-img-top-width mx-auto d-none"
-            alt="..."
-          />
+          ">
+          <img src="assets/sub_pro_image/Midi Studio Pod.jpg" class="card-img-top card-img-top-width mx-auto d-none"
+            alt="..." />
           <div class="card-body mt-3">
-            <h5
-              class="card-title p_all_text_set text-left card_header text-capitalize"
-              style="font-size: 32px"
-              [innerHTML]="this.Data[0].featuredTwoTitle"
-            ></h5>
-            <p
-              class="card-text text-left p_all_text_set card-featured-desc"
-              style="font-size: 17px"
-              [innerHTML]="this.Data[0].featuredTwoDesc"
-            >
+            <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 32px"
+              [innerHTML]="this.Data[0].featuredTwoTitle"></h5>
+            <p class="card-text text-left p_all_text_set card-featured-desc" style="font-size: 17px"
+              [innerHTML]="this.Data[0].featuredTwoDesc">
               <!-- {{ this.Data[0].featuredTwoDesc | htmlToPlaintext }} -->
             </p>
             <p class="card-text text-left p_all_text_set d-none">
@@ -560,47 +368,27 @@
         </div>
       </div>
       <div class="col-lg-6 px-0 text-center">
-        <img
-          src="assets/{{ this.Data[0].featuredTwoImage | htmlToPlaintext }}"
-          class="w-100"
-          style="width: 70% !important"
-          alt="..."
-        />
+        <img src="assets/{{ this.Data[0].featuredTwoImage | htmlToPlaintext }}" class="w-100"
+          style="width: 70% !important" alt="..." />
       </div>
     </div>
     <div class="row">
       <div class="col-lg-6 px-0 text-center">
-        <img
-          src="assets/{{ this.Data[0].featuredThreeImage | htmlToPlaintext }}"
-          class="w-100 replace_iamge"
-          style="width: 70% !important"
-          alt="..."
-        />
+        <img src="assets/{{ this.Data[0].featuredThreeImage | htmlToPlaintext }}" class="w-100 replace_iamge"
+          style="width: 70% !important" alt="..." />
       </div>
       <div class="col-lg-6 px-lg-5 d-flex align-items-center">
-        <div
-          class="card"
-          style="
+        <div class="card" style="
             background-color: transparent !important;
             background: transparent !important;
-          "
-        >
-          <img
-            src="assets/sub_pro_image/Duo Meeting Pod.jpg"
-            class="card-img-top replace_iamge card-img-top-width mx-auto d-none"
-            alt="..."
-          />
+          ">
+          <img src="assets/sub_pro_image/Duo Meeting Pod.jpg"
+            class="card-img-top replace_iamge card-img-top-width mx-auto d-none" alt="..." />
           <div class="card-body">
-            <h5
-              class="card-title p_all_text_set text-left card_header text-capitalize"
-              style="font-size: 32px"
-              [innerHTML]="this.Data[0].featuredThreeTitle"
-            ></h5>
-            <p
-              class="card-text text-left p_all_text_set mt-3 card-featured-desc"
-              style="font-size: 17px"
-              [innerHTML]="this.Data[0].featuredThreeDesc"
-            >
+            <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 32px"
+              [innerHTML]="this.Data[0].featuredThreeTitle"></h5>
+            <p class="card-text text-left p_all_text_set mt-3 card-featured-desc" style="font-size: 17px"
+              [innerHTML]="this.Data[0].featuredThreeDesc">
               <!-- {{ this.Data[0].featuredThreeDesc | htmlToPlaintext }} -->
             </p>
           </div>
@@ -618,44 +406,31 @@
       <div class="row justify-content-center d-flex">
         <div class="col-lg-4" *ngFor="let getData of Data[0].snapShots">
           <div class="card bg-transparent">
-            <img
-              src="assets/{{ this.getData | htmlToPlaintext }}"
-              class="card-img-top card-img-top-width-snapshot mx-auto rounded-lg"
-              alt="..."
-              style="height: 300px"
-            />
+            <img src="assets/{{ this.getData | htmlToPlaintext }}"
+              class="card-img-top card-img-top-width-snapshot mx-auto rounded-lg" alt="..." style="height: 300px" />
           </div>
         </div>
       </div>
     </div>
   </div>
-  <p
-    class="card-text text-center p_all_text_set mt-2"
-    style="font-size: 19px; font-weight: bold; color: rgba(0, 0, 0, 0.65)"
-  >
+  <p class="card-text text-center p_all_text_set mt-2"
+    style="font-size: 19px; font-weight: bold; color: rgba(0, 0, 0, 0.65)">
     Interested in learning more about our products?
 
-    <button
-      data-toggle="modal"
-      data-target="#myModal"
-      style="
+    <button data-toggle="modal" data-target="#myModal" class="link" style="
         border: none;
         outline: none;
         background-color: transparent;
         font-weight: bold;
         color: #fecc00;
-      "
-    >
+      ">
       Connect
     </button>
     with our sales rep.
   </p>
 </section>
 
-<section
-  class="process"
-  style="background: #fff7e3ad !important; margin-bottom: -26px"
->
+<section class="process" style="background: #fff7e3ad !important; margin-bottom: -26px">
   <div class="container">
     <div class="title-page-white text-center w-100">
       <div class="row justify-content-between mb-3">
@@ -670,23 +445,20 @@
             <div class="item m" *ngFor="let getData of related_product.data">
               <!-- <div class="row justify-content-between mt-0"> -->
               <!-- <div class="col-lg-12" > -->
-              <a class="set_link" style="cursor: pointer">
+              <a class="set_link" (click)="handleFeaturedProduct(getData._id)" style="cursor: pointer">
                 <div class="card">
-                  <img
-                    src="assets/{{ getData.images }}"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <h5
-                      class="card-title p_all_text_set text-left"
-                      style="font-weight: 600 !important; font-size: 18px"
-                    >
-                      {{ getData.subCategoryName }}
-                    </h5>
+                  <div class="image-container text-center">
+                    <img src="assets/{{ getData.images }}" class="card-img-top" alt="..." />
+                    <div class="image-overlay"></div>
+                    <div class="card-body">
+                      <h5 class="card-title p_all_text_set text-left"
+                        style="font-weight: 600 !important; font-size: 18px">
+                        {{ getData.subCategoryName }}
+                      </h5>
+                    </div>
+                    <!-- </div> -->
+                    <!-- </div> -->
                   </div>
-                  <!-- </div> -->
-                  <!-- </div> -->
                 </div>
               </a>
             </div>

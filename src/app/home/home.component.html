@@ -18,7 +18,7 @@
           <p style="font-size: 20px; width: 52%" class="text-left">
             {{ getData.description }}
           </p>
-          <a (click)="handleFeaturedProduct(getData.productId)" class="btn btn_set_css2 text-left">Learn More</a>
+          <a (click)="handleFeaturedProduct(getData.productId)" class="btn btn_set_css2 text-left ">Learn More</a>
         </div>
       </div>
     </div>
@@ -52,12 +52,12 @@
         Our Top Picks for the Modern Workspace
       </h2>
 
-      <div class="row ml-auto mr-auto" style="width: 100%">
+      <div class="row ml-auto mr-auto mt-4" style="width: 100%">
         <div class="col-lg-4 mb-2 text-center">
           <div class="con_design">
             <a (click)="handleFeaturedProduct(firstFeaturedProduct.productId)">
               <img src="assets/{{ firstFeaturedProduct.image }}" class="item-img"
-                style="width: 98.3%; border-radius: 15px" />
+                style="width: 100%; border-radius: 15px" />
               <div class="overlay" style="font-weight: 700">
                 <p [innerHTML]="firstFeaturedProduct.description"></p>
                 <!-- {{ firstFeaturedProduct.description }} -->
@@ -128,7 +128,7 @@
       </div>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center d-none">
     <a [routerLink]="['/products']" class="btn_set_css mt-3">View All Products</a>
   </div>
 </section>
@@ -141,30 +141,15 @@
         data-p_all_text_set="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
         data-url="#1">
         <img class="d-block w-100" src="assets/Collage.webp" alt="First slide"
-          style="width: 65% !important; margin-left: auto" />
+          style="height: 720px; width: 65% !important; margin-left: auto" />
       </div>
       <div class="carousel-item get_text_slider" [attr.data-count_val]="i + 2" [attr.data-text_h1]="dataProject.title"
         [attr.data-id]="dataProject._id" [attr.data-p_all_text_set]="
           dataProject.slide_discription.substr(0, 30) + '...'
         " [attr.data-url]="'#' + i + 2" *ngFor="let dataProject of FeaturedProjectdata; let i = index">
         <img class="d-block w-100" src="assets/{{ dataProject.image }}" alt="Second slide"
-          style="width: 65% !important; margin-left: auto" />
+          style="height: 720px; width: 65% !important; margin-left: auto" />
       </div>
-
-      <!-- <div
-        class="carousel-item get_text_slider"
-        data-count_val="3"
-        data-text_h1="From Concept to Reality: A Look at Our Featured Projects"
-        data-p_all_text_set="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
-        data-url="#3"
-      >
-        <img
-          class="d-block w-100"
-          src="assets/newslider.webp"
-          alt="Third slide"
-          style="height: 720px; width: 65% !important; margin-left: auto"
-        />
-      </div> -->
     </div>
     <a class="carousel-control-prev left_right_click" href="#carouselExampleIndicators_new" role="button"
       data-slide="prev">
@@ -203,6 +188,16 @@
             ">
             View Project
           </button></a>
+
+        <a class="  view_all_prj ml-3" (click)="project_case()"><button class="btn btn-success" style="
+              background: transparent !important;
+              border: 2px solid #000;
+              color: black;
+              font-size: 20px;
+            ">
+            View All Project
+          </button></a>
+
       </p>
     </div>
   </div>
@@ -249,7 +244,7 @@
     </button>
   </div>
 </section>
-<section class="process sustainabilityHeader" #Sustainability id="Sustainability" style="">
+<section class="process sustainabilityHeader" #Sustainability id="Sustainability" style=" scroll-margin-top: 30%;">
   <div class="container">
     <div class="row">
       <div class="title-page-white text-center w-100">

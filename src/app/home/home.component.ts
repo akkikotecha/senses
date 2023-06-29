@@ -225,5 +225,28 @@ export class HomeComponent implements OnInit {
     // });
   }
 
+  project_case(): void {
+    this.router.navigate(['insights_two'])
+      .then(() => {
+        // window.location.reload();
+        localStorage.setItem('project_case', "project_case")
+        if (localStorage.getItem('project_case') == 'project_case') {
+          setTimeout(() => {
+            this.project_casescroll();
+          }, 1000);
+        }
+      });
+
+  }
+  project_casescroll() {
+    const element = document.getElementById('project_case');
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const offset = rect.top + window.scrollY;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+      localStorage.setItem('project_case', "")
+    }
+  }
+
   ngAfterViewInit() { }
 }
