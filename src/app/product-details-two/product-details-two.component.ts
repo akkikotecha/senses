@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class ProductDetailsTwoComponent {
     private ProductDetailService: ProductDetailService,
     private lazyLoadService: LazyLoadingService,
     private elementRef: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) {
     // this.productname = localStorage.getItem('productname')
   }
@@ -249,5 +251,16 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+  }
+
+  handleFeaturedProduct(id: any) {
+    localStorage.removeItem('subCategoryId');
+    // localStorage.removeItem("productname");
+
+    localStorage.setItem('subCategoryId', id);
+    window.open('/product_detail_two', '_blank');
+    // this.router.navigate(['product_detail_two']).then(() => {
+    //   // window.location.reload();
+    // });
   }
 }

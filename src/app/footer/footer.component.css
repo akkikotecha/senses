@@ -24,6 +24,7 @@
 
 .footer a:hover {
   color: #f9c70c;
+  
 }
 
 .footer-rowtop {
@@ -92,4 +93,37 @@ div .forrm {
 
 .logo_style_footer {
   width: 90%;
+}
+
+
+.icon_hover_instagram:hover
+{
+  font-size: 36px;
+  color: transparent;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+          /* Also define standard property for compatibility */
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+}
+
+.icon_hover_linkedin:hover
+{
+  font-size: 36px;
+  color:#0A66C2!important;
+  transition: 0.3s;
+}
+
+.icon_hover_youtube:hover
+{
+  font-size: 36px;
+  color:#CD201F!important;
+  transition: 0.3s;
+}
+
+.hover_text:hover{
+
+  font-size: 22px!important;
+  transform: scale(1.02);
 }
