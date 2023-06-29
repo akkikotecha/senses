@@ -315,6 +315,13 @@ header:hover .owl-next {
   font-size: 18px;
   color: #de9a86cf;
 }
+.viewMoreLink {
+  text-decoration: underline !important;
+}
+.viewMoreLink:hover {
+  /* transform: scale(1.02); */
+  font-size: 20px;
+}
 .btn-outline-warning {
   border-color: #ffc107 !important;
   border: 3px solid #ffc107 !important;
@@ -505,6 +512,7 @@ header:hover .owl-next {
   padding: 20px;
   text-align: center;
 }
+
 .orderIndex4 {
   border-top-right-radius: 0px;
   border-top-left-radius: 0px;
@@ -566,6 +574,7 @@ header:hover .owl-next {
   margin-bottom: 0;
   font-weight: 500;
 }
+
 .con_design:hover .overlay,
 .con_design:hover .orderIndex4,
 .con_design:hover .overlay2Punch,
@@ -655,7 +664,7 @@ header:hover .owl-next {
 }
 
 .card-img-top {
-  border-radius: 13px;
+  border-radius: 9px;
 }
 
 .hover_effect {
@@ -767,4 +776,14 @@ header:hover .owl-next {
     -webkit-transition: background-color 0.4s;
     transition: background-color 0.4s;
   }
+}
+
+.blogCardShadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 9px;
+  margin: 0px 10px;
+}
+.blogCardShadow:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 declare var $: any;
 
@@ -21,9 +21,39 @@ export class ProductDetailsTwoComponent {
 
   constructor(
     private ProductDetailService: ProductDetailService,
-    private lazyLoadService: LazyLoadingService
+    private lazyLoadService: LazyLoadingService,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
   ) {
     // this.productname = localStorage.getItem('productname')
+  }
+  scrollToSectionKOLO(sectionId: string) {
+    const section = this.elementRef.nativeElement.querySelector(
+      '#' + sectionId
+    );
+    if (section) {
+      const offset = 50; // Adjust the offset value as needed
+      const topOffset =
+        section.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topOffset - offset,
+        behavior: 'smooth',
+      });
+    }
+  }
+  scrollToSection(sectionId: string) {
+    const section = this.elementRef.nativeElement.querySelector(
+      '#' + sectionId
+    );
+    if (section) {
+      const offset = 100; // Adjust the offset value as needed
+      const topOffset =
+        section.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topOffset - offset,
+        behavior: 'smooth',
+      });
+    }
   }
   related_product: any;
   Data: any;

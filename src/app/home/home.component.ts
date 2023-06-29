@@ -41,6 +41,8 @@ export class HomeComponent implements OnInit {
   fourthFeaturedProduct: any;
   FeaturedProjectdata: any;
   Data: any;
+  underConstruction: boolean = false;
+  readyToLive: boolean = true;
   // currentImageIndex = 0;
   currentImageIndex = 0;
   private destroy$ = new Subject<void>();
@@ -50,20 +52,12 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private homeService: HomeService,
     private HomeServicesService: HomeServicesService
-  ) {
-
-
-  }
+  ) {}
 
   getAllBlogs: any;
 
-
   ngOnInit(): void {
-
-
-
-
-    interval(1000)
+    interval(500)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.nextImage();
@@ -123,7 +117,7 @@ export class HomeComponent implements OnInit {
         .subscribe((_) => {
           $('.owl-carousel').owlCarousel({
             loop: false,
-            margin: 10,
+            margin: 4,
             dots: true,
             nav: false,
             mouseDrag: true,
@@ -187,9 +181,10 @@ export class HomeComponent implements OnInit {
 
   handleViewAllImage() {
     localStorage.setItem('resourceTypeId', '648ac6763b5871e6e15ed341');
-    this.router.navigate(['resources_gallery']).then(() => {
-      // window.location.reload();
-    });
+    window.open('/resources_gallery', '_blank');
+    // this.router.navigate(['resources_gallery']).then(() => {
+    //   // window.location.reload();
+    // });
   }
   chunkArray(array: any, size: any) {
     console.log('array ' + array + ' size ' + size);
@@ -210,11 +205,11 @@ export class HomeComponent implements OnInit {
 
     localStorage.setItem('blogs_id', id);
     localStorage.setItem('blogs_title', name);
-
+    window.open(`/blog_and_news_show_details/${name}`, '_blank');
     // console.log(id)
-    this.router.navigate(['blog_and_news_show_details', name]).then(() => {
-      // window.location.reload();
-    });
+    // this.router.navigate(['blog_and_news_show_details', name]).then(() => {
+    //   // window.location.reload();
+    // });
   }
   handleFeaturedProduct(id: any) {
     console.log('Product Details ID: ' + id);
@@ -225,5 +220,5 @@ export class HomeComponent implements OnInit {
     // });
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {}
 }

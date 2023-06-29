@@ -59,6 +59,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { FaqComponent } from './faq/faq.component';
 import { WarrantyComponent } from './warranty/warranty.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+// import { NgxCaptchaModule, RECAPTCHA_SETTINGS } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -122,9 +123,15 @@ import { WarrantyComponent } from './warranty/warranty.component';
     MDBBootstrapModule,
     FormsModule,
     ReactiveFormsModule,
+    // RecaptchaModule
     // CKEditorModule,
   ],
   providers: [],
+  // providers: [{
+  //   provide: RECAPTCHA_SETTINGS,
+  //   useValue: {
+  //     siteKey: '6LfpU94mAAAAAKCIGLrsKZfkuJXMYkgvHZXGYIlW', // Replace with your reCAPTCHA site key
+  //   }}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

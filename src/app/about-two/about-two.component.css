@@ -296,10 +296,14 @@ input:focus-visible {
 }
 
 .about_us_image {
-  width: 90%;
+  width: 84%;
 }
 @media only screen and (max-width: 600px) {
   .about_us_image {
     width: 100%;
   }
+}
+.customProcess {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

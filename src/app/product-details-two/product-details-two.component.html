@@ -38,8 +38,16 @@
             {{ Data[0].subcategoriesdata[0].subCategoryDesc }}
           </p>
           <button
+            *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
             class="btn btn_set_css_new text-left"
-            (click)="scroll(targetElement.nativeElement)"
+            (click)="scrollToSectionKOLO('target')"
+          >
+            Learn More
+          </button>
+          <button
+            *ngIf="Data[0].subcategoriesdata[0].subCategoryName != 'Kolo'"
+            class="btn btn_set_css_new text-left"
+            (click)="scrollToSection('featuredOne')"
           >
             Learn More
           </button>
@@ -99,7 +107,7 @@
             Overview
           </button>
           <button
-            class="nav-link ml-4"
+            class="nav-link ml-4 d-none"
             id="nav-profile-tab"
             style="line-height: 20px; font-weight: 600"
             data-bs-toggle="tab"
@@ -171,7 +179,7 @@
           </div>
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade d-none"
           id="nav-profile"
           role="tabpanel"
           aria-labelledby="nav-profile-tab"
@@ -348,10 +356,11 @@
 </section>
 
 <section
+  id="target"
+  #target
   class="process"
   style="background: #f9f9f9"
   *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
-  #target
 >
   <div class="container">
     <div class="row">
@@ -476,6 +485,7 @@
 </section>
 
 <section
+  id="featuredOne"
   class="process"
   [style.background-color]="
     Data[0].subcategoriesdata[0].subCategoryName === 'Kolo'
@@ -493,7 +503,7 @@
           alt="..."
         />
       </div>
-      <div class="col-lg-6 px-lg-5 d-flex align-items-center">
+      <div class="col-lg-6 px-lg-1 d-flex align-items-center">
         <div
           class="card"
           style="
@@ -509,12 +519,12 @@
           <div class="card-body mt-3">
             <h5
               class="card-title p_all_text_set text-left card_header text-capitalize"
-              style="font-size: 32px"
+              style="font-size: 30px"
               [innerHTML]="this.Data[0].featuredOneTitle"
             ></h5>
             <p
               class="card-text text-left p_all_text_set card-featured-desc"
-              style="font-size: 17px"
+              style="font-size: 16px"
               [innerHTML]="this.Data[0].featuredOneDesc"
             >
               <!-- {{ this.Data[0].featuredOneDesc | htmlToPlaintext }} -->
@@ -527,7 +537,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 px-lg-5 d-flex align-items-center">
+      <div class="col-lg-6 pl-lg-5 d-flex align-items-center">
         <div
           class="card ml-lg-5 ml-md-0"
           style="
@@ -543,12 +553,12 @@
           <div class="card-body mt-3">
             <h5
               class="card-title p_all_text_set text-left card_header text-capitalize"
-              style="font-size: 32px"
+              style="font-size: 30px"
               [innerHTML]="this.Data[0].featuredTwoTitle"
             ></h5>
             <p
               class="card-text text-left p_all_text_set card-featured-desc"
-              style="font-size: 17px"
+              style="font-size: 16px"
               [innerHTML]="this.Data[0].featuredTwoDesc"
             >
               <!-- {{ this.Data[0].featuredTwoDesc | htmlToPlaintext }} -->
@@ -577,7 +587,7 @@
           alt="..."
         />
       </div>
-      <div class="col-lg-6 px-lg-5 d-flex align-items-center">
+      <div class="col-lg-6 px-lg-1 d-flex align-items-center">
         <div
           class="card"
           style="
@@ -593,12 +603,12 @@
           <div class="card-body">
             <h5
               class="card-title p_all_text_set text-left card_header text-capitalize"
-              style="font-size: 32px"
+              style="font-size: 30px"
               [innerHTML]="this.Data[0].featuredThreeTitle"
             ></h5>
             <p
               class="card-text text-left p_all_text_set mt-3 card-featured-desc"
-              style="font-size: 17px"
+              style="font-size: 16px"
               [innerHTML]="this.Data[0].featuredThreeDesc"
             >
               <!-- {{ this.Data[0].featuredThreeDesc | htmlToPlaintext }} -->
@@ -635,9 +645,8 @@
   >
     Interested in learning more about our products?
 
-    <button
-      data-toggle="modal"
-      data-target="#myModal"
+    <a
+      [routerLink]="['/about_us_two', 'whoWeAre']"
       style="
         border: none;
         outline: none;
@@ -647,7 +656,7 @@
       "
     >
       Connect
-    </button>
+    </a>
     with our sales rep.
   </p>
 </section>
