@@ -17,7 +17,7 @@ export class ResourcesDocumentComponent {
   subCategoryData: any = '';
   categorySelectedId: any = '';
   subCategorySelectedId: any = '';
-
+  disableSidebarContent: any = '';
   constructor(
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
@@ -95,6 +95,8 @@ export class ResourcesDocumentComponent {
     console.log('id', id);
 
     if (id === '') {
+      this.disableSidebarContent = false;
+
       // this.resourceDocument.getResourceTypeData().subscribe((res) => {
       //   if (res && typeof res === 'object') {
       // this.data = res;
@@ -105,7 +107,37 @@ export class ResourcesDocumentComponent {
       //     console.error('Invalid response data: expected a single object');
       //   }
       // });
+    } else if (
+      id == '648b0bdd3b5871e6e15ed495'
+      // ||
+      // id == '648b0bb23b5871e6e15ed491'
+    ) {
+      this.disableSidebarContent = true;
+      this.resourceDocument
+        .getResourceTypeData(localStorage.getItem('resourceTypeId'))
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('handleClick id', id);
+            this.filterResourceData = this.filterResourceData.filter(
+              (res: any) => {
+                if (res.resourceSubType == id) {
+                  console.log(res);
+                  return res;
+                }
+              }
+            );
+            console.log('this.data', this.data);
+            console.log('this.filterResourceData', this.filterResourceData);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
     } else {
+      this.disableSidebarContent = false;
+
       this.filterResourceData = this.data.data.filter((res: any) => {
         if (res.resourceSubType == id) {
           console.log(res);

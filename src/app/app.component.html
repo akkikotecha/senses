@@ -447,7 +447,13 @@
                     ><i class="bar"></i>
                   </div>
                 </div>
+
                 <div class="col-lg-6">
+                  <re-captcha
+                    (resolved)="handleRecaptchaResolved($event)"
+                    siteKey="6LfpU94mAAAAAKCIGLrsKZfkuJXMYkgvHZXGYIlW"
+                  ></re-captcha>
+                  <p>{{ recatchaVerification }}</p>
                   <div class="form-group form-group-new">
                     <button
                       (click)="submitEditData()"
