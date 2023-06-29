@@ -101,7 +101,7 @@ export class ProductDetailsTwoComponent {
         )
         .subscribe((_) => {
           $('.owl-carousel').owlCarousel({
-            loop: false,
+            loop: true,
             margin: 10,
             dots: true,
             nav: false,

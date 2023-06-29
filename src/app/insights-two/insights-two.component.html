@@ -707,7 +707,10 @@
 						</div> -->
             <!-- </div> -->
 
-            <div class="item" *ngFor="let getData of getAllBlogs.data">
+            <div
+              class="item blogCardShadow"
+              *ngFor="let getData of getAllBlogs.data"
+            >
               <!-- <div class="row justify-content-between mt-0"> -->
               <!-- <div class="col-lg-12" > -->
               <a
@@ -720,21 +723,24 @@
                     class="card-img-top"
                     alt="..."
                   />
-                  <div class="card-body">
-                    <h5
-                      class="card-title p_all_text_set text-left"
-                      style="font-weight: 600 !important; font-size: 18px"
-                    >
-                      {{ getData.title }}
-                    </h5>
+                  <div class="card-body" style="height: 168px">
+                    <div class="text-container">
+                      <h5
+                        class="card-title p_all_text_set text-left"
+                        style="font-weight: 600 !important; font-size: 18px"
+                      >
+                        {{ getData.title }}
+                      </h5>
+                    </div>
                     <p
-                      class="card-text text-left p_all_text_set"
+                      class="card-text mt-2 text-left p_all_text_set"
                       style="font-size: 18px"
-                      [innerHtml]="getData.Description.substr(0, 30) + '...'"
+                      [innerHtml]="getData.Description.substr(0, 60) + '...'"
                     ></p>
+
                     <p class="card-text text-left p_all_text_set">
                       <a
-                        class="set_link"
+                        class="set_link viewMoreLink"
                         (click)="blog_news_click(getData._id, getData.title)"
                         >View More</a
                       >
