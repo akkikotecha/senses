@@ -716,7 +716,7 @@
   });
 
   setInterval(function () {
-    //console.log("HELLO");
+    console.log("HELLO " + $(".get_text_slider.active").attr("data-url"));
     if ($(".get_text_slider.active").attr("data-url") == "#1") {
 
       $(".h1_text_set").text(
@@ -1017,10 +1017,6 @@
       window.location.origin +
       "/featured_project_view_all_detail/" +
       $(".get_text_slider.active").attr("data-text_h1");
-//     const link = window.location.origin +
-//   "/featured_project_view_all_detail/" +
-//   $(".get_text_slider.active").attr("data-text_h1");
-// window.open(link, "_blank");
     // console.log("HELLO "+);
   });
 
