@@ -57,6 +57,7 @@ import { AdminletstalkComponent } from './adminletstalk/adminletstalk.component'
 import { TermsofuserComponent } from './termsofuser/termsofuser.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { FaqComponent } from './faq/faq.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 import { WarrantyComponent } from './warranty/warranty.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
@@ -121,10 +122,11 @@ import { WarrantyComponent } from './warranty/warranty.component';
     HttpClientModule,
     MDBBootstrapModule,
     FormsModule,
-    ReactiveFormsModule,
+    RecaptchaModule,
     // CKEditorModule,
   ],
   providers: [],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

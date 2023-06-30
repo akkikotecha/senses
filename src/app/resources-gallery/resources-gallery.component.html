@@ -49,6 +49,7 @@
           *ngFor="let resourceImage of filterResourceData"
         >
           <img
+            class="filterImage"
             src="assets/{{ resourceImage.image | htmlToPlaintext }}"
             alt="Image 1"
           />

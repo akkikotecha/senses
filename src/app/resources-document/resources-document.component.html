@@ -95,9 +95,9 @@
               </th>
             </ng-container>
           </tr>
-          <button type="submit" class="btn2 btn-primary" value="zip">
+          <!-- <button type="submit" class="btn2 btn-primary" value="zip">
             Download ZIP
-          </button>
+          </button> -->
         </table>
       </form>
       <div class="cd-fail-message">No results found</div>
@@ -124,6 +124,7 @@
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
               <select
+                [disabled]="disableSidebarContent"
                 class="filter"
                 name="selectThis"
                 (change)="handleChange($event)"
@@ -149,7 +150,12 @@
 
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
-              <select class="filter" name="selectThis" id="subCategoryID">
+              <select
+                [disabled]="disableSidebarContent"
+                class="filter"
+                name="selectThis"
+                id="subCategoryID"
+              >
                 <option value="">Choose an option</option>
                 <option
                   value="{{ subCategory._id }}"
@@ -168,6 +174,7 @@
         <div class="d-flex justify-content-around">
           <button
             type="button"
+            [disabled]="disableSidebarContent"
             class="fs-6 filterButton"
             (click)="handleFormSubmit()"
           >
@@ -175,6 +182,7 @@
           </button>
           <button
             type="button"
+            [disabled]="disableSidebarContent"
             class="fs-6 filterButtonReset"
             (click)="handleResetButton()"
           >

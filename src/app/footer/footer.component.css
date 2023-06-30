@@ -70,7 +70,7 @@ select {
 
 .button_set {
   width: 20%;
-  background-color: #888888;
+  background-color: #0b0b0b;
   color: white;
   padding: 9px 20px;
   border: none;
@@ -82,7 +82,7 @@ select {
 }
 
 .button_set:hover {
-  background-color: #a1aeb7;
+  background-color: #fecc00;
 }
 
 div .forrm {

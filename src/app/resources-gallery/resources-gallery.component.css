@@ -1164,6 +1164,12 @@ xfilter
 .cd-filter-trigger.filter-is-visible {
   pointer-events: none;
 }
+/* .filterImage {
+  overflow: hidden;
+}
+.filterImage:hover {
+  transform: scale(1.2);
+} */
 @media only screen and (min-width: 1170px) {
   .cd-filter-trigger {
     width: auto;

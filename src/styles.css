@@ -280,3 +280,30 @@ placed on the editor margins. */
     padding-bottom: 40px !important;
   }
 }
+
+.customParagraphMB p {
+  margin: 0 !important;
+}
+
+.text-container {
+  overflow: hidden;
+}
+.text-container h5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Limit the text to three lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis (...) to indicate truncated text */
+}
+
+.hover_effect {
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+}
+
+.hover_effect:hover {
+  color: #ffcc00 !important;
+  background-size: 0 100%;
+  animation: stripes 10s linear 1 forwards;
+}
