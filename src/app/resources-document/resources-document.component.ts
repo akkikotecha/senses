@@ -108,9 +108,8 @@ export class ResourcesDocumentComponent {
       //   }
       // });
     } else if (
-      id == '648b0bdd3b5871e6e15ed495'
-      // ||
-      // id == '648b0bb23b5871e6e15ed491'
+      id == '648b0bdd3b5871e6e15ed495' ||
+      id == '649c015577e6aa32c9f114e7'
     ) {
       this.disableSidebarContent = true;
       this.resourceDocument

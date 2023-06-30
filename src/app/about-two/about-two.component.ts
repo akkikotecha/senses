@@ -1,31 +1,27 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 declare var $: any;
+declare var google: any; // Declare the global google object
+
 @Component({
   selector: 'app-about-two',
   templateUrl: './about-two.component.html',
   styleUrls: ['./about-two.component.css'],
 })
 export class AboutTwoComponent implements AfterViewInit {
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
+  map: any;
+  mapMarkerIcon: string = './assets/pin.png';
   ngOnInit(): void {
-
+    this.handleMapMumbai();
     const paramValue = this.route.snapshot.paramMap.get('paramName');
     if (paramValue == 'whoWeAre') {
       setTimeout(() => {
         this.scroll();
       }, 1000);
     }
-    // this.scroll();
-    // const paramValue = this.route.snapshot.paramMap.get('paramName');
-    // if (paramValue == 'whoWeAre') {
-    //   console.log('paramValue', paramValue);
-    //   const element = document.getElementById('whoWeAre'); // Replace 'sectionId' with the actual ID of the section you want to scroll to
-    //   if (element) {
-    //     element.scrollIntoView();
-    //   }
-    // }
+
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -57,7 +53,84 @@ export class AboutTwoComponent implements AfterViewInit {
     }
   }
 
+  handleMapMumbai() {
+    const mapOptions = {
+      center: { lat: 19.0834753, lng: 72.7870962 }, // Set the initial map center coordinates
+      zoom: 10, // Set the initial zoom level
+    };
 
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    const markerOptions = {
+      position: { lat: 19.1450465, lng: 72.8338796 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
 
+    const marker = new google.maps.Marker(markerOptions);
+    const markerOptions1 = {
+      position: { lat: 19.1450465, lng: 72.8338796 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+    const marker1 = new google.maps.Marker(markerOptions1);
 
+    // Marker 2
+    const markerOptions2 = {
+      position: { lat: 12.9748669, lng: 77.6138136 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+    const marker2 = new google.maps.Marker(markerOptions2);
+  }
+  handleMapSingapore() {
+    const mapOptions = {
+      center: { lat: 1.3345125, lng: 103.7398654 }, // Set the initial map center coordinates
+      zoom: 10, // Set the initial zoom level
+    };
+
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    const markerOptions = {
+      position: { lat: 1.3344923, lng: 103.740258 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      // icon: this.mapMarkerIcon,
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    const marker = new google.maps.Marker(markerOptions);
+  }
+  handleMapUSA() {
+    const mapOptions = {
+      center: { lat: 42.1913535, lng: -71.8614438 }, // Set the initial map center coordinates
+      zoom: 10, // Set the initial zoom level
+    };
+
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    const markerOptions = {
+      position: { lat: 42.1913535, lng: -71.8614438 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    const marker = new google.maps.Marker(markerOptions);
+  }
 }

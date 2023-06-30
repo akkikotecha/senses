@@ -59,6 +59,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { FaqComponent } from './faq/faq.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { WarrantyComponent } from './warranty/warranty.component';
+import { MapComponent } from './map/map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
@@ -113,6 +115,7 @@ import { WarrantyComponent } from './warranty/warranty.component';
     PrivacyPolicyComponent,
     FaqComponent,
     WarrantyComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +126,8 @@ import { WarrantyComponent } from './warranty/warranty.component';
     MDBBootstrapModule,
     FormsModule,
     RecaptchaModule,
+    GoogleMapsModule,
+
     // CKEditorModule,
   ],
   providers: [],

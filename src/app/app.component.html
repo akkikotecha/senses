@@ -59,18 +59,40 @@
             </div>
           </div>
           <div class="col-lg-7">
-            <form>
+            <form
+              method="POST"
+              id="add-form"
+              class="parsleyjs"
+              data-parsley-priority-enabled="false"
+              (ngSubmit)="submitEditData()"
+            >
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <input type="text" required="required" id="name" />
+                    <input
+                      type="text"
+                      required="required"
+                      id="name"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-name"
+                      data-parsley-required
+                    />
                     <label for="input" class="control-label">Name*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-name"
+                    ></p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <select id="country">
+                    <select
+                      id="country"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-country"
+                      data-parsley-required
+                    >
                       <option value="" selected="selected">
                         Select Country
                       </option>
@@ -400,51 +422,120 @@
                     </select>
                     <label for="select" class="control-label">Country*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-country"
+                    ></p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <input type="text" required="required" id="email" />
+                    <input
+                      type="text"
+                      required="required"
+                      id="email"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-email"
+                      data-parsley-required
+                    />
                     <label for="input" class="control-label">Email*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-email"
+                    ></p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <input type="text" required="required" id="city" />
+                    <input
+                      type="text"
+                      required="required"
+                      id="city"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-city"
+                      data-parsley-required
+                    />
                     <label for="input" class="control-label">City*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-city"
+                    ></p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <input type="text" required="required" id="phoneNumber" />
+                    <input
+                      type="text"
+                      required="required"
+                      id="phoneNumber"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-phoneNumber"
+                      data-parsley-required
+                    />
                     <label for="input" class="control-label"
                       >Phone Number*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-phoneNumber"
+                    ></p>
                   </div>
                   <div
                     class="form-group form-group-new"
                     style="margin-top: 3rem"
                   >
-                    <input type="text" required="required" id="company" />
+                    <input
+                      type="text"
+                      required="required"
+                      id="company"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-company"
+                      data-parsley-required
+                    />
                     <label for="input" class="control-label">Company*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-company"
+                    ></p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <textarea required="required" id="message"></textarea>
+                    <textarea
+                      required="required"
+                      id="message"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-message"
+                      data-parsley-required
+                    ></textarea>
                     <label for="textarea" class="control-label">Message</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-message"
+                    ></p>
                   </div>
                 </div>
 
                 <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <input type="text" id="jobTitle" required="required" />
+                    <input
+                      type="text"
+                      id="jobTitle"
+                      required="required"
+                      data-parsley-trigger-after-failure="change"
+                      data-parsley-errors-container="#error-add-jobtitle"
+                      data-parsley-required
+                    />
                     <label for="input" class="control-label">Job Title*</label
                     ><i class="bar"></i>
+                    <p
+                      class="text-danger mb-0 text-left f-12 mt-2"
+                      id="error-add-jobtitle"
+                    ></p>
                   </div>
                 </div>
 
@@ -453,13 +544,16 @@
                     (resolved)="handleRecaptchaResolved($event)"
                     siteKey="6LfpU94mAAAAAKCIGLrsKZfkuJXMYkgvHZXGYIlW"
                   ></re-captcha>
-                  <p>{{ recatchaVerification }}</p>
+                  <p
+                    class="text-danger mb-0 text-left f-12 mt-2"
+                    id="error-add-message"
+                  >
+                    {{ recatchaVerification }}
+                  </p>
+                </div>
+                <div class="col-lg-6">
                   <div class="form-group form-group-new">
-                    <button
-                      (click)="submitEditData()"
-                      class="btn btnLetsTalk"
-                      style=""
-                    >
+                    <button type="submit" class="btn btnLetsTalk" style="">
                       Submit
                     </button>
                   </div>

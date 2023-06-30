@@ -307,3 +307,9 @@ input:focus-visible {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.mapBorder {
+  border: 2px solid #f1f1f1;
+  margin: 10px 0;
+  padding: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
