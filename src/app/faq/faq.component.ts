@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 declare var $: any;
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.css']
+  styleUrls: ['./faq.component.css'],
 })
 export class FaqComponent {
+  constructor(private meta: Meta, private titleService: Title) {}
   ngOnInit(): void {
+    this.titleService.setTitle('Frequently Asked Questions | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Frequently Asked Questions | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Go through our list of frequently asked questions to know more about our products and services. If you are still stuck, drop us an email.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Go through our list of frequently asked questions to know more about our products and services. If you are still stuck, drop us an email.',
+    });
     // var loc = window.location;
 
     // if(loc.pathname == "/products")

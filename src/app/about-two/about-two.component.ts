@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 declare var $: any;
 declare var google: any; // Declare the global google object
@@ -9,11 +10,32 @@ declare var google: any; // Declare the global google object
   styleUrls: ['./about-two.component.css'],
 })
 export class AboutTwoComponent implements AfterViewInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private meta: Meta,
+    private titleService: Title
+  ) {}
 
   map: any;
   mapMarkerIcon: string = './assets/pin.png';
   ngOnInit(): void {
+    this.titleService.setTitle('About Us | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'About Us | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Embracing sustainable innovation and bringing meaningful change in peoples lives. Our products are the reflection of our forward-thinking approach.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Embracing sustainable innovation and bringing meaningful change in peoples lives. Our products are the reflection of our forward-thinking approach.',
+    });
     this.handleMapMumbai();
     const paramValue = this.route.snapshot.paramMap.get('paramName');
     if (paramValue == 'whoWeAre') {

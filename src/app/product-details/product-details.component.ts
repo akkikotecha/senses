@@ -8,6 +8,7 @@ import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { ProductDetailService } from './product-detail.service';
 declare var $: any;
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -20,12 +21,31 @@ export class ProductDetailsComponent {
   constructor(
     private ProductDetailService: ProductDetailService,
     private lazyLoadService: LazyLoadingService,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title
   ) {
     this.productname = localStorage.getItem('productname');
   }
 
   ngOnInit(): void {
+    let metaTitle: any = localStorage.getItem('metaTitle');
+    let metaDescription: any = localStorage.getItem('metaDescription');
+    this.titleService.setTitle(metaTitle);
+    this.meta.updateTag({
+      property: 'og:title',
+      content: metaTitle,
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content: metaDescription,
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content: metaDescription,
+    });
     // var loc = window.location;
 
     // if(loc.pathname == "/products")
@@ -64,16 +84,24 @@ export class ProductDetailsComponent {
 
   // [routerLink]="['/']"
 
-  sub_products(id: any): void {
+  sub_products(id: any, name: string): void {
     localStorage.removeItem('subCategoryId');
-    // localStorage.removeItem("productname");
+    localStorage.removeItem('subProductName');
 
     localStorage.setItem('subCategoryId', id);
-    // localStorage.setItem("productname",name);
-
+    localStorage.setItem('subProductName', name);
+    console.log('name', name);
     // console.log(id)
-    this.router.navigate(['product_detail_two']).then(() => {
-      // window.location.reload();
-    });
+    if (name == 'Kolo') {
+      this.router
+        .navigate(['product', `${name.toLowerCase()}-pods`])
+        .then(() => {
+          // window.location.reload();
+        });
+    } else {
+      this.router.navigate(['product', name.toLowerCase()]).then(() => {
+        // window.location.reload();
+      });
+    }
   }
 }

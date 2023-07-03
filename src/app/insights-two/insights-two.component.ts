@@ -3,7 +3,8 @@ import { LazyLoadingService } from '../lazy-loading.service';
 import { InsightsServiceService } from './insights-service.service';
 declare var $: any;
 import { Router } from '@angular/router';
-
+import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-insights-two',
   templateUrl: './insights-two.component.html',
@@ -20,10 +21,29 @@ export class InsightsTwoComponent {
   constructor(
     private lazyLoadService: LazyLoadingService,
     private InsightsServiceServiceData: InsightsServiceService,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Insights | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Insights | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Browse all latest trends, expert insights, design journeys and captivating stories in the world of acoustics & furniture design. ',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Browse all latest trends, expert insights, design journeys and captivating stories in the world of acoustics & furniture design. ',
+    });
     setTimeout(function () {
       console.log('HELLO');
       $('.header-main').css({

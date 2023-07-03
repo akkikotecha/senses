@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 declare var $: any;
 @Component({
   selector: 'app-termsofuser',
   templateUrl: './termsofuser.component.html',
-  styleUrls: ['./termsofuser.component.css']
+  styleUrls: ['./termsofuser.component.css'],
 })
 export class TermsofuserComponent {
+  constructor(private meta: Meta, private titleService: Title) {}
   ngOnInit(): void {
+    this.titleService.setTitle('Terms of Use | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Products | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Go through our legal terms and conditions before placing an order, interacting with our website or engaging with our resources.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Go through our legal terms and conditions before placing an order, interacting with our website or engaging with our resources.',
+    });
     // var loc = window.location;
 
     // if(loc.pathname == "/products")

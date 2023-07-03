@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 declare var $: any;
 @Component({
   selector: 'app-privacy-policy',
   templateUrl: './privacy-policy.component.html',
-  styleUrls: ['./privacy-policy.component.css']
+  styleUrls: ['./privacy-policy.component.css'],
 })
 export class PrivacyPolicyComponent {
+  constructor(private meta: Meta, private titleService: Title) {}
   ngOnInit(): void {
+    this.titleService.setTitle('Privacy & Cookie Policy | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Privacy & Cookie Policy | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Privacy & Cookie Policy outlines how we collect, use, disclose, and protect your information when you visit our website and interact with our services.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Privacy & Cookie Policy outlines how we collect, use, disclose, and protect your information when you visit our website and interact with our services.',
+    });
     // var loc = window.location;
 
     // if(loc.pathname == "/products")

@@ -278,8 +278,6 @@
               </div>
               <div class="modal-body">
                 <div class="row clearfix">
-                  
-
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
                       <input
@@ -312,10 +310,54 @@
                       ><i class="fa fa-pdf-o" style="font-size: 35px"></i
                     ></a>
                   </div>
-
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
-                      <label>Upload Image <span class="text-red">(322px(W) x 322px(H))</span></label>
+                      <label>Meta Title<span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="edit_title"
+                        id="edit_meta_title"
+                        placeholder="Meta Title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-edit_meta_title"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-edit_meta_title"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        >Meta Description<span class="text-red">*</span></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="edit_meta_description"
+                        id="edit_meta_description"
+                        placeholder="Meta Description"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-edit_meta_description"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-edit_meta_description"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        >Upload Image
+                        <span class="text-red"
+                          >(322px(W) x 322px(H))</span
+                        ></label
+                      >
                       <input
                         type="file"
                         class="form-control"
@@ -413,11 +455,53 @@
                       ></p>
                     </div>
                   </div>
-
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label>Meta Title<span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="edit_title"
+                        id="add_meta_title"
+                        placeholder="Meta Title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add_meta_title"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-edit_meta_title"
+                      ></p>
+                    </div>
+                  </div>
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
                       <label
-                        >Upload Image <span class="text-red">* (322px(W) x 322px(H))</span></label
+                        >Meta Description<span class="text-red">*</span></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="edit_meta_description"
+                        id="add_meta_description"
+                        placeholder="Meta Description"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add_meta_description"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-edit_meta_description"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        >Upload Image
+                        <span class="text-red"
+                          >* (322px(W) x 322px(H))</span
+                        ></label
                       >
                       <input
                         type="file"

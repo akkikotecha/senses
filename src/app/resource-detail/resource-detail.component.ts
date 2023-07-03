@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ResourceService } from './resource.service';
 declare var $: any;
 import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-resource-detail',
@@ -9,11 +10,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./resource-detail.component.css'],
 })
 export class ResourceDetailComponent {
-  constructor(private adminResource: ResourceService, private router: Router) {}
+  constructor(
+    private adminResource: ResourceService,
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title
+  ) {}
   resourceType: any = '';
   resourceSubType: any = '';
   resourceFilterTypeSubTypeData: any = '';
   ngOnInit(): void {
+    this.titleService.setTitle('Resources | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Resources | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Download reports, brochures, spec sheets, swatch cards and other important product documents. Contact us to know more about our products and services.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Download reports, brochures, spec sheets, swatch cards and other important product documents. Contact us to know more about our products and services.',
+    });
     this.adminResource.getAllResourceType().subscribe((res: any) => {
       this.resourceType = JSON.parse(JSON.stringify(res));
       // Insert the removed element at the beginning of the array

@@ -1,11 +1,10 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 declare var $: any;
-
 import { LazyLoadingService } from './lazy-loading.service';
 import { environment } from 'src/environments/environment';
-
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { ProductDetailService } from './product-detail.service';
 
@@ -25,7 +24,9 @@ export class ProductDetailsTwoComponent {
     private lazyLoadService: LazyLoadingService,
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title
   ) {
     // this.productname = localStorage.getItem('productname')
   }
@@ -231,8 +232,23 @@ export class ProductDetailsTwoComponent {
     ).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.Data = res; // Wrap the single object in an array
-        // console.log("JobsiteData", );
-        console.log('data', JSON.stringify(this.Data));
+        console.log('JobsiteData', res);
+        console.log('data', this.Data);
+        this.titleService.setTitle(this.Data[0].metaTitle);
+        this.meta.updateTag({
+          property: 'og:title',
+          content: this.Data[0].metaTitle,
+        });
+
+        // Set the dynamic description
+        this.meta.updateTag({
+          name: 'og:description',
+          content: this.Data[0].metaDescription,
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content: this.Data[0].metaDescription,
+        });
         var related_product_id = this.Data[0].related_product_id;
 
         var shuffledArray = shuffleArray(related_product_id);

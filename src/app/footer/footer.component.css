@@ -24,7 +24,6 @@
 
 .footer a:hover {
   color: #f9c70c;
-  
 }
 
 .footer-rowtop {
@@ -95,35 +94,40 @@ div .forrm {
   width: 90%;
 }
 
-
-.icon_hover_instagram:hover
-{
+.icon_hover_instagram:hover {
   font-size: 36px;
   color: transparent;
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
   -webkit-background-clip: text;
-          /* Also define standard property for compatibility */
-          background-clip: text;
+  /* Also define standard property for compatibility */
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: 0.3s;
 }
 
-.icon_hover_linkedin:hover
-{
+.icon_hover_linkedin:hover {
   font-size: 36px;
-  color:#0A66C2!important;
+  color: #0a66c2 !important;
   transition: 0.3s;
 }
 
-.icon_hover_youtube:hover
-{
+.icon_hover_youtube:hover {
   font-size: 36px;
-  color:#CD201F!important;
+  color: #cd201f !important;
   transition: 0.3s;
 }
 
-.hover_text:hover{
-
-  font-size: 22px!important;
+.hover_text:hover {
+  font-size: 22px !important;
   transform: scale(1.02);
+}
+.hover_effect2:hover {
+  color: #ffcc00 !important;
 }

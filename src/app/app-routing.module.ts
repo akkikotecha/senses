@@ -54,7 +54,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'sub_products/:name',
+    path: 'products/:name',
     component: ProductDetailsComponent,
     runGuardsAndResolvers: 'always',
   },
@@ -114,7 +114,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'product_detail_two',
+    path: 'product/:name',
     component: ProductDetailsTwoComponent,
     runGuardsAndResolvers: 'always',
   },

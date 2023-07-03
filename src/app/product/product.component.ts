@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 declare var $: any;
-
+import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 import { LazyLoadingService } from './lazy-loading.service';
 import { environment } from 'src/environments/environment';
 
@@ -19,11 +20,30 @@ export class ProductComponent {
   constructor(
     private ProductService: ProductService,
     private lazyLoadService: LazyLoadingService,
-    private router: Router
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title
   ) {}
   objectKeys = Object.keys;
   Data: any;
   ngOnInit(): void {
+    this.titleService.setTitle('Products | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Products | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Create a harmonious soundscape with our collection of acoustics and agile furniture solutions. Enhances productivity and focus in a dynamic workspace.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Create a harmonious soundscape with our collection of acoustics and agile furniture solutions. Enhances productivity and focus in a dynamic workspace.',
+    });
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -46,16 +66,30 @@ export class ProductComponent {
     });
   }
 
-  sub_products(id: any, name: any): void {
+  sub_products(id: any, name: any, getData: any): void {
+    console.log('getData', getData);
     localStorage.removeItem('productId');
     localStorage.removeItem('productname');
 
     localStorage.setItem('productId', id);
     localStorage.setItem('productname', name);
+    localStorage.removeItem('metaTitle');
+    localStorage.removeItem('metaDescription');
 
+    localStorage.setItem('metaTitle', getData.metaTitle);
+    localStorage.setItem('metaDescription', getData.metaDescription);
+    console.log('productname', name);
     // console.log(id)
-    this.router.navigate(['sub_products', name]).then(() => {
-      // window.location.reload();
-    });
+    if (name == 'Booths & Pods') {
+      this.router.navigate(['products', 'boots-pods']).then(() => {
+        // window.location.reload();
+      });
+    } else {
+      this.router
+        .navigate(['products', name.toLowerCase().replace(/\s+/g, '-')])
+        .then(() => {
+          // window.location.reload();
+        });
+    }
   }
 }

@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 declare var $: any;
 @Component({
   selector: 'app-warranty',
   templateUrl: './warranty.component.html',
-  styleUrls: ['./warranty.component.css']
+  styleUrls: ['./warranty.component.css'],
 })
 export class WarrantyComponent {
+  constructor(private meta: Meta, private titleService: Title) {}
   ngOnInit(): void {
+    this.titleService.setTitle('Warranty Statement | Senses Akustik');
+    this.meta.updateTag({
+      property: 'og:title',
+      content: 'Warranty Statement | Senses Akustik',
+    });
+
+    // Set the dynamic description
+    this.meta.updateTag({
+      name: 'og:description',
+      content:
+        'Our limited warranty applies to only physical goods purchased from us. We cover defects in material, workmanship, technicalities and transit.',
+    });
+    this.meta.updateTag({
+      name: 'description',
+      content:
+        'Our limited warranty applies to only physical goods purchased from us. We cover defects in material, workmanship, technicalities and transit.',
+    });
     // var loc = window.location;
 
     // if(loc.pathname == "/products")
