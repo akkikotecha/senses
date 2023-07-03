@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 declare var $: any;
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.css'],
 })
 export class FaqComponent {
-  constructor(private meta: Meta, private titleService: Title) {}
+  constructor(
+    private router: Router,
+    private meta: Meta,
+    private titleService: Title
+  ) {}
   ngOnInit(): void {
     this.titleService.setTitle('Frequently Asked Questions | Senses Akustik');
     this.meta.updateTag({
@@ -47,5 +53,27 @@ export class FaqComponent {
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 200);
+  }
+
+  project_case(): void {
+    this.router.navigate(['insights_two']).then(() => {
+      // window.location.reload();
+      localStorage.setItem('project_case', 'project_case');
+      if (localStorage.getItem('project_case') == 'project_case') {
+        setTimeout(() => {
+          this.project_casescroll();
+        }, 1000);
+      }
+    });
+  }
+
+  project_casescroll() {
+    const element = document.getElementById('project_case');
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const offset = rect.top + window.scrollY;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+      localStorage.setItem('project_case', '');
+    }
   }
 }

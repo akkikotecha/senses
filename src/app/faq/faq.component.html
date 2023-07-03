@@ -28,7 +28,7 @@
                         <p class="pl-4">- For any inquiries or assistance, please feel free to reach out to our sales
                             team
                             at:
-                            sales@sensesakustik.com.
+                            <a href="mailto:sales@sensesakustik.com">sales@sensesakustik.com</a>.
                         </p>
 
                     </div>
@@ -38,8 +38,35 @@
                             receiving catalogs?</p>
 
 
-                        <p class="pl-4">To request samples, please fill out this Form or get in touch with our Sales Rep
-                            or Dealer in your location. You can also reach us via email at: info@sensesakustik.com for
+                        <p class="pl-4">To request samples, please fill out this <button data-toggle="modal"
+                                data-target="#myModal" class="link" style="
+                              border: none;
+                              outline: none;
+                              background-color: transparent;
+                              
+                              color: #007bff;
+                            ">
+                                Form
+                            </button> or get in touch with our <button data-toggle="modal" data-target="#myModal"
+                                class="link" style="
+                            border: none;
+                            outline: none;
+                            background-color: transparent;
+                           
+                            color: #007bff;
+                          ">
+                                Sales Rep
+                            </button>
+                            or <button data-toggle="modal" data-target="#myModal" class="link" style="
+                              border: none;
+                              outline: none;
+                              background-color: transparent;
+                              
+                              color: #007bff;
+                            ">
+                                Dealer
+                            </button> in your location. You can also reach us via email at:<a
+                                href="mailto:info@sensesakustik.com"> info@sensesakustik.com</a> for
                             your specific requirements.
                         </p>
 
@@ -51,7 +78,25 @@
 
 
                         <p class="pl-4">- To discuss your exact requirements and address any specific inquiries, we
-                            recommend reaching out to our Sales Rep or Dealer in your location.
+                            recommend reaching out to our <button data-toggle="modal" data-target="#myModal"
+                                class="link" style="
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                       
+                        color: #007bff;
+                      ">
+                                Sales Rep
+                            </button>
+                            or <button data-toggle="modal" data-target="#myModal" class="link" style="
+                          border: none;
+                          outline: none;
+                          background-color: transparent;
+                          
+                          color: #007bff;
+                        ">
+                                Dealer
+                            </button> in your location.
                         </p>
 
                     </div>
@@ -62,7 +107,8 @@
                             other essential documents related to your products?</p>
 
 
-                        <p class="pl-4">- Discover a wealth of information on our website's Resources Page.
+                        <p class="pl-4">- Discover a wealth of information on our website's <a class="cursor-pointer"
+                                [routerLink]="['/resources']" target="_blank">Resources Page</a>.
                         </p>
 
                     </div>
@@ -74,7 +120,16 @@
                         </p>
 
 
-                        <p class="pl-4">- Get inspired by our portfolio of successful Projects.
+                        <p class="pl-4">- Get inspired by our portfolio of successful <button (click)="project_case()"
+                                class="link" style="
+                            border: none;
+                            outline: none;
+                            background-color: transparent;
+                            
+                            color: #007bff;
+                          ">
+                                Projects
+                            </button>.
                         </p>
 
                     </div>
