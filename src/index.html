@@ -6,8 +6,10 @@
   <meta charset="utf-8" />
   <title>Senses Akustik, Innovative Solutions for a Happier, Productive Life</title>
   <meta property="og:title" content="Senses Akustik, Innovative Solutions for a Happier, Productive Life">
-  <meta name="description" content="Experience the positive impact of our innovative furniture solutions. Happiness and productivity enhancer in your daily life.">
-  <meta name="og:description" content="Experience the positive impact of our innovative furniture solutions. Happiness and productivity enhancer in your daily life.">
+  <meta name="description"
+    content="Experience the positive impact of our innovative furniture solutions. Happiness and productivity enhancer in your daily life.">
+  <meta name="og:description"
+    content="Experience the positive impact of our innovative furniture solutions. Happiness and productivity enhancer in your daily life.">
   <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -771,49 +773,65 @@
     console.log("count_val " + $(".get_text_slider.active").attr("data-url"));
 
     setTimeout(function () {
-      if ($(".get_text_slider.active").attr("data-count_val") == "4") {
-        $(".view_all_prj").removeClass("d-none");
-      } else {
-        $(".view_all_prj").addClass("d-none");
-      }
-
+      console.log("HELLO " + $(".get_text_slider.active").attr("data-url"));
       if ($(".get_text_slider.active").attr("data-url") == "#1") {
-        $(".p_text_set").animate({ opacity: 0 }, 1000, function () {
-          $(".p_text_set").addClass("d-none");
-        });
 
-        $(".p_text_button").animate({ opacity: 0 }, 1000, function () {
-          $(".p_text_button").addClass("d-none");
-        });
+        $(".h1_text_set").text(
+          $(".get_text_slider.active").attr("data-text_h1")
+        );
+        $(".p_text_set").addClass("d-none");
+        $(".p_text_button").addClass("d-none");
+
+        $(".text_number_change").text(
+          $(".get_text_slider.active").attr("data-count_val")
+        );
+
+
+        $(".view_all_prj").addClass("d-none");
+        $(".p_text_set").text(
+          $(".get_text_slider.active").attr("data-p_all_text_set")
+        );
+        $(".p_text_button").attr(
+          "href",
+          $(".get_text_slider.active").attr("data-url")
+        );
+        $(".text_number_change").text(
+          $(".get_text_slider.active").attr("data-count_val")
+        );
+
+
       } else {
-        $(".h1_text_set").animate({ opacity: 0 }, 1000, function () {
-          $(".h1_text_set").text(
-            $(".get_text_slider.active").attr("data-text_h1")
-          );
-          $(".h1_text_set").animate({ opacity: 1 }, 1000);
-        });
 
-        $(".p_text_set").animate({ opacity: 0 }, 1000, function () {
-          $(".p_text_set").removeClass("d-none");
-          $(".p_text_set").text(
-            $(".get_text_slider.active").attr("data-p_all_text_set")
-          );
-          $(".p_text_set").animate({ opacity: 1 }, 1000);
-        });
+        if ($(".get_text_slider.active").attr("data-count_val") == "4") {
+          $(".view_all_prj").removeClass("d-none");
+        } else {
+          $(".view_all_prj").addClass("d-none");
+        }
+        $(".p_text_set").removeClass("d-none");
+        $(".h1_text_set").text(
+          $(".get_text_slider.active").attr("data-text_h1")
+        );
 
-        $(".text_number_change").animate({ opacity: 0 }, 1000, function () {
-          $(".text_number_change").text(
-            $(".get_text_slider.active").attr("data-count_val")
-            // $('.get_text_slider.active').attr("data-count")
-          );
-          $(".text_number_change").animate({ opacity: 1 }, 1000);
-        });
+        $(".p_text_button").removeClass("d-none");
+        $(".p_text_set").text(
+          $(".get_text_slider.active").attr("data-p_all_text_set")
+        );
+        $(".text_number_change").text(
+          $(".get_text_slider.active").attr("data-count_val")
+        );
+
+
+        $(".p_text_set").text(
+          $(".get_text_slider.active").attr("data-p_all_text_set")
+        );
+        $(".p_text_button").attr(
+          "href",
+          $(".get_text_slider.active").attr("data-url")
+        );
+        $(".text_number_change").text(
+          $(".get_text_slider.active").attr("data-count_val")
+        );
       }
-      // setTimeout(function(){
-      //   $('.text_number_change').text("HELO : "+$('.get_text.active').attr("data-count"))
-      // },2000)
-      // console.log(":HE::P");
-      //  ;
     }, 1000);
 
     // console.log();
