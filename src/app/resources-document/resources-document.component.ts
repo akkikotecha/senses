@@ -3,7 +3,8 @@ declare var $: any;
 
 import { LazyLoadingService } from './lazy-loading.service';
 import { ResourceDocumentService } from './resources-document.service';
-
+import * as JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-resources-document',
   templateUrl: './resources-document.component.html',
@@ -22,6 +23,68 @@ export class ResourcesDocumentComponent {
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
   ) {}
+  selectedFiles: any[] = [];
+  count: number = 0;
+  // selectedFiles: any[] = [];
+
+  onFileSelect(event: any, document: any) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      this.count = this.count + 1;
+      this.selectedFiles.push(document);
+    } else {
+      const index = this.selectedFiles.findIndex((file) => file === document);
+      if (index !== -1) {
+        this.count = this.count - 1;
+
+        this.selectedFiles.splice(index, 1);
+      }
+    }
+  }
+
+  async downloadFiles() {
+    const zip = new JSZip();
+
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      const document = this.selectedFiles[i];
+      const blob = await this.fetchBlob(document.image);
+      const fileExtension = document.image.split('.').pop(); // Get the file extension
+      const filename = `file${i + 1}.${fileExtension}`; // Append the file extension to the filename
+      zip.file(filename, blob);
+    }
+
+    zip.generateAsync({ type: 'blob' }).then((content: Blob) => {
+      const currentDate = new Date();
+      const dateString = currentDate.toISOString().slice(0, 10); // Get current date in YYYY-MM-DD format
+      const timeString = currentDate
+        .toTimeString()
+        .slice(0, 8)
+        .replace(/:/g, ''); // Get current time in HHMMSS format
+      const filename = `files_${dateString}_${timeString}.zip`; // Add current date and time to the zip file name
+      saveAs(content, filename);
+    });
+  }
+
+  fetchBlob(url: string): Promise<Blob> {
+    const correctedUrl = 'assets/' + url; // Add 'assets/' prefix to the URL
+
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', correctedUrl);
+      xhr.responseType = 'blob';
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          resolve(xhr.response);
+        } else {
+          reject(new Error(`Failed to fetch blob from URL: ${correctedUrl}`));
+        }
+      };
+      xhr.onerror = () => {
+        reject(new Error(`Failed to fetch blob from URL: ${correctedUrl}`));
+      };
+      xhr.send();
+    });
+  }
   ngOnInit(): void {
     console.log('categorySelectedId', this.categorySelectedId);
 
@@ -76,7 +139,7 @@ export class ResourcesDocumentComponent {
       });
     }, 1000);
     setTimeout(function () {
-      console.log('HELLO');
+      // console.log('HELLO');
       $('.header-main').css({
         background: '#fff',
         border: '2px solid #ededed',
@@ -87,6 +150,13 @@ export class ResourcesDocumentComponent {
       $('.search-field').css({
         'background-image': "url('./assets/search.png')",
       });
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);

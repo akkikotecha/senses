@@ -56,7 +56,7 @@ export class FaqComponent {
   }
 
   project_case(): void {
-    this.router.navigate(['insights_two']).then(() => {
+    this.router.navigate(['insights']).then(() => {
       // window.location.reload();
       localStorage.setItem('project_case', 'project_case');
       if (localStorage.getItem('project_case') == 'project_case') {
@@ -75,5 +75,15 @@ export class FaqComponent {
       window.scrollTo({ top: offset, behavior: 'smooth' });
       localStorage.setItem('project_case', '');
     }
+  }
+  DealerFunction() {
+    const baseUrl = '/about-us'; // Replace with your base URL
+    const fragment = 'whoWeAre'; // Replace with your fragment identifier
+    const url = baseUrl + '/' + fragment;
+    window.open(url, '_blank');
+  }
+  handleDownloadSection() {
+    localStorage.setItem('resourceTypeId', '6489ac193b5871e6e15ed0a2');
+    window.open('/resources_document', '_blank');
   }
 }

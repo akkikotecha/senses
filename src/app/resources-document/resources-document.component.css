@@ -1525,3 +1525,6 @@ td {
     padding: 10px;
   }
 }
+.custom-class {
+  height: 500px;
+}

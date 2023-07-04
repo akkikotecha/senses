@@ -19,6 +19,7 @@ export class AdminResouceComponent {
   successfully_login: any = '';
   check_valid: any = '';
   image: any = '';
+  fabricsID: any = '';
   categoryData: any = '';
   productData: any = '';
   resourceType: any = '';
@@ -79,6 +80,20 @@ export class AdminResouceComponent {
         .loadScript('../../assets/assets/table/resource.js')
         .subscribe((_) => {});
     }, 1000);
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 2000);
+  }
+  resourceSubTypeChange(event: any) {
+    this.fabricsID = event.target.value;
+    console.log(event.target.value);
   }
   onChange(event: any) {
     // console.log();
@@ -116,6 +131,7 @@ export class AdminResouceComponent {
             formData.append('product', $('#product').val());
           }
           formData.append('resourceType', $('#resource-type').val());
+          formData.append('fabricsType', $('#fabricsType').val());
           formData.append('resourceSubType', $('#resource-sub-type').val());
 
           //    this.image = file;

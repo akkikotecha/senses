@@ -99,17 +99,17 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'insights',
+    path: 'insights_two',
     component: InsightsComponent,
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'about_us_two/:paramName',
+    path: 'about-us/:paramName',
     component: AboutTwoComponent,
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'insights_two',
+    path: 'insights',
     component: InsightsTwoComponent,
     runGuardsAndResolvers: 'always',
   },
@@ -226,11 +226,11 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'termofuse',
+    path: 'terms-and-conditions',
     component: TermsofuserComponent,
   },
   {
-    path: 'privacy_policy',
+    path: 'privacy-cookie-policy',
     component: PrivacyPolicyComponent,
     runGuardsAndResolvers: 'always',
   },
@@ -240,7 +240,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'warranty',
+    path: 'warranty-statement',
     component: WarrantyComponent,
     runGuardsAndResolvers: 'always',
   },
