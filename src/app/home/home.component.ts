@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private homeService: HomeService,
     private HomeServicesService: HomeServicesService
-  ) {}
+  ) { }
 
   getAllBlogs: any;
 
@@ -211,17 +211,17 @@ export class HomeComponent implements OnInit {
     //   // window.location.reload();
     // });
   }
-  handleFeaturedProduct(id: any) {
+  handleFeaturedProduct(id: any, name: any) {
     console.log('Product Details ID: ' + id);
     localStorage.setItem('subCategoryId', id);
-    window.open('/product_detail_two', '_blank');
+    window.open('/product/' + name, '_blank');
     // this.router.navigate(['product_detail_two']).then(() => {
     //   // window.location.reload();
     // });
   }
 
   project_case(): void {
-    this.router.navigate(['insights_two']).then(() => {
+    this.router.navigate(['insights']).then(() => {
       // window.location.reload();
       localStorage.setItem('project_case', 'project_case');
       if (localStorage.getItem('project_case') == 'project_case') {
@@ -241,5 +241,5 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 }
