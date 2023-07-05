@@ -11,7 +11,7 @@ declare var $: any;
 export class FooterComponent {
   netImage: any = './assets/SENSES LOGO.svg';
   subscribe: boolean = false;
-  constructor(private router: Router, private footerService: FooterService) {}
+  constructor(private router: Router, private footerService: FooterService) { }
 
   homePageSustainability(): void {
     this.router.navigate(['/']).then(() => {
@@ -26,7 +26,7 @@ export class FooterComponent {
   }
 
   logos(): void {
-    this.router.navigate(['insights_two']).then(() => {
+    this.router.navigate(['insights']).then(() => {
       // window.location.reload();
       localStorage.setItem('logos', 'logos');
       if (localStorage.getItem('logos') == 'logos') {
@@ -38,7 +38,7 @@ export class FooterComponent {
   }
 
   blogs(): void {
-    this.router.navigate(['insights_two']).then(() => {
+    this.router.navigate(['insights']).then(() => {
       // window.location.reload();
       localStorage.setItem('blogs', 'blogs');
       if (localStorage.getItem('blogs') == 'blogs') {
@@ -50,7 +50,7 @@ export class FooterComponent {
   }
 
   project_case(): void {
-    this.router.navigate(['insights_two']).then(() => {
+    this.router.navigate(['insights']).then(() => {
       // window.location.reload();
       localStorage.setItem('project_case', 'project_case');
       if (localStorage.getItem('project_case') == 'project_case') {
@@ -100,7 +100,7 @@ export class FooterComponent {
       localStorage.setItem('project_case', '');
     }
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   handleSubmit() {
     console.log($('#newsLetter').val());
     let newsLetter = {

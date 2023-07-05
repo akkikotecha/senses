@@ -23,7 +23,7 @@ export class ResourcesDocumentComponent {
   constructor(
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
-  ) {}
+  ) { }
   selectedFiles: any[] = [];
   count: number = 0;
   catAData: any[] = [];
@@ -208,7 +208,7 @@ export class ResourcesDocumentComponent {
       console.log('CatC', this.catCData);
     } else if (
       id == '648b0bdd3b5871e6e15ed495' ||
-      id == '649c015577e6aa32c9f114e7'
+      id == '649c015577e6aa32c9f114e7' || id == "648b0c343b5871e6e15ed4a9" || id == "648b0c213b5871e6e15ed4a5" || id == "648b0bf63b5871e6e15ed49d"
     ) {
       this.disableSidebarContent = true;
       this.resourceDocument
