@@ -19,12 +19,17 @@ export class ResourcesDocumentComponent {
   categorySelectedId: any = '';
   subCategorySelectedId: any = '';
   disableSidebarContent: any = '';
+  fabrics_id: any = '';
   constructor(
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
   ) {}
   selectedFiles: any[] = [];
   count: number = 0;
+  catAData: any[] = [];
+  catBData: any[] = [];
+  catCData: any[] = [];
+
   // selectedFiles: any[] = [];
 
   onFileSelect(event: any, document: any) {
@@ -162,6 +167,7 @@ export class ResourcesDocumentComponent {
     }, 2000);
   }
   handleClick(id: string) {
+    this.fabrics_id = id;
     console.log('id', id);
 
     if (id === '') {
@@ -177,6 +183,29 @@ export class ResourcesDocumentComponent {
       //     console.error('Invalid response data: expected a single object');
       //   }
       // });
+    } else if (id == '648b0c153b5871e6e15ed4a1') {
+      this.disableSidebarContent = true;
+      this.catAData = this.data.data.filter((res: any) => {
+        if (res.fabricsType == 'catA') {
+          console.log(res);
+          return res;
+        }
+      });
+      this.catBData = this.data.data.filter((res: any) => {
+        if (res.fabricsType == 'catB') {
+          console.log(res);
+          return res;
+        }
+      });
+      this.catCData = this.data.data.filter((res: any) => {
+        if (res.fabricsType == 'catC') {
+          console.log(res);
+          return res;
+        }
+      });
+      console.log('CatA', this.catAData);
+      console.log('CatB', this.catBData);
+      console.log('CatC', this.catCData);
     } else if (
       id == '648b0bdd3b5871e6e15ed495' ||
       id == '649c015577e6aa32c9f114e7'

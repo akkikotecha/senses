@@ -390,7 +390,7 @@ header:hover .owl-next {
 
 .carousel-control-next {
   right: auto;
-  left: 5.2%;
+  left: 7.2%;
 }
 
 .carousel-control-next-icon {
@@ -413,7 +413,7 @@ header:hover .owl-next {
 }
 .carousel-control-prev,
 .carousel-control-next {
-  top: 490px;
+  top: 371px;
 }
 
 .h1_text_set {
@@ -702,7 +702,7 @@ header:hover .owl-next {
   padding-top: 520px;
 }
 .item-img4 {
-  margin-top: 25px;
+  margin-top: 22px;
 }
 @media only screen and (max-width: 600px) {
   .sustainabilityHeader {

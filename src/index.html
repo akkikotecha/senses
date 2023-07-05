@@ -50,7 +50,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
     <link
       rel="stylesheet"
       href="./assets/css/lighbox.css"
@@ -86,25 +85,12 @@
       rel="stylesheet"
       href="https://kendo.cdn.telerik.com/2022.3.1109/styles/kendo.default-ocean-blue.min.css"
     />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    /> -->
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjr4-bfjxvk8ho3JoH6qjnUE1jFmMTdYM"></script>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"
-      integrity="sha512-xQBQYt9UcgblF6aCMrwU1NkVA7HCXaSN2oq0so80KO+y68M+n64FOcqgav4igHe6D5ObBLIf68DWv+gfBowczg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"
-      integrity="sha512-3WaCYjK/lQuL0dVIRt1thLXr84Z/4Yppka6u40yEJT1QulYm9pCxguF6r8V84ndP5K03koI9hV1+zo/bUbgMtA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"
-      referrerpolicy="no-referrer"
-    ></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
@@ -631,7 +617,6 @@
     loading="lazy"
   />
 
-  <script src="./assets/my_js/lighbox.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
@@ -652,6 +637,8 @@
     referrerpolicy="no-referrer"
   ></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/decoupled-document/ckeditor.js"></script>
+  <script src="./assets/my_js/lighbox.js"></script>
+
   <script></script>
 
   <!-- Modal -->
@@ -741,15 +728,15 @@
         }, 200);
 
         if (
-          loc.pathname.includes("/products") ||
           loc.pathname.includes("/product") ||
+          loc.pathname.includes("/products") ||
           loc.pathname.includes("/sub_products") ||
           loc.pathname.includes("/resources") ||
           loc.pathname.includes("/career") ||
           loc.pathname.includes("/not_found") ||
           loc.pathname.includes("/find_dealer") ||
           loc.pathname.includes("/product_detail_two") ||
-          loc.pathname.includes("/insights") ||
+          loc.pathname.includes("/insights_two") ||
           loc.pathname.includes("/zest_product_detail") ||
           loc.pathname.includes("/resources_detail") ||
           loc.pathname.includes("/resources_gallery") ||
@@ -758,10 +745,10 @@
           loc.pathname.includes("/resources_document") ||
           loc.pathname.includes("/about-us") ||
           loc.pathname.includes("/featured_project_view_all") ||
-          loc.pathname.includes("/terms-and-conditions") ||
-          loc.pathname.includes("/privacy-cookie-policy") ||
+          loc.pathname.includes("/termofuse") ||
+          loc.pathname.includes("/privacy_policy") ||
           loc.pathname.includes("/faq") ||
-          loc.pathname.includes("/warranty-statement") ||
+          loc.pathname.includes("/warranty") ||
           loc.pathname.includes("/blog_and_news_show_details")
         ) {
           $(".header-main").css({
@@ -864,49 +851,59 @@
       console.log("count_val " + $(".get_text_slider.active").attr("data-url"));
 
       setTimeout(function () {
-        if ($(".get_text_slider.active").attr("data-count_val") == "4") {
-          $(".view_all_prj").removeClass("d-none");
-        } else {
-          $(".view_all_prj").addClass("d-none");
-        }
-
+        console.log("HELLO " + $(".get_text_slider.active").attr("data-url"));
         if ($(".get_text_slider.active").attr("data-url") == "#1") {
-          $(".p_text_set").animate({ opacity: 0 }, 1000, function () {
-            $(".p_text_set").addClass("d-none");
-          });
+          $(".h1_text_set").text(
+            $(".get_text_slider.active").attr("data-text_h1")
+          );
+          $(".p_text_set").addClass("d-none");
+          $(".p_text_button").addClass("d-none");
 
-          $(".p_text_button").animate({ opacity: 0 }, 1000, function () {
-            $(".p_text_button").addClass("d-none");
-          });
+          $(".text_number_change").text(
+            $(".get_text_slider.active").attr("data-count_val")
+          );
+
+          $(".view_all_prj").addClass("d-none");
+          $(".p_text_set").text(
+            $(".get_text_slider.active").attr("data-p_all_text_set")
+          );
+          $(".p_text_button").attr(
+            "href",
+            $(".get_text_slider.active").attr("data-url")
+          );
+          $(".text_number_change").text(
+            $(".get_text_slider.active").attr("data-count_val")
+          );
         } else {
-          $(".h1_text_set").animate({ opacity: 0 }, 1000, function () {
-            $(".h1_text_set").text(
-              $(".get_text_slider.active").attr("data-text_h1")
-            );
-            $(".h1_text_set").animate({ opacity: 1 }, 1000);
-          });
+          if ($(".get_text_slider.active").attr("data-count_val") == "4") {
+            $(".view_all_prj").removeClass("d-none");
+          } else {
+            $(".view_all_prj").addClass("d-none");
+          }
+          $(".p_text_set").removeClass("d-none");
+          $(".h1_text_set").text(
+            $(".get_text_slider.active").attr("data-text_h1")
+          );
 
-          $(".p_text_set").animate({ opacity: 0 }, 1000, function () {
-            $(".p_text_set").removeClass("d-none");
-            $(".p_text_set").text(
-              $(".get_text_slider.active").attr("data-p_all_text_set")
-            );
-            $(".p_text_set").animate({ opacity: 1 }, 1000);
-          });
+          $(".p_text_button").removeClass("d-none");
+          $(".p_text_set").text(
+            $(".get_text_slider.active").attr("data-p_all_text_set")
+          );
+          $(".text_number_change").text(
+            $(".get_text_slider.active").attr("data-count_val")
+          );
 
-          $(".text_number_change").animate({ opacity: 0 }, 1000, function () {
-            $(".text_number_change").text(
-              $(".get_text_slider.active").attr("data-count_val")
-              // $('.get_text_slider.active').attr("data-count")
-            );
-            $(".text_number_change").animate({ opacity: 1 }, 1000);
-          });
+          $(".p_text_set").text(
+            $(".get_text_slider.active").attr("data-p_all_text_set")
+          );
+          $(".p_text_button").attr(
+            "href",
+            $(".get_text_slider.active").attr("data-url")
+          );
+          $(".text_number_change").text(
+            $(".get_text_slider.active").attr("data-count_val")
+          );
         }
-        // setTimeout(function(){
-        //   $('.text_number_change').text("HELO : "+$('.get_text.active').attr("data-count"))
-        // },2000)
-        // console.log(":HE::P");
-        //  ;
       }, 1000);
 
       // console.log();
