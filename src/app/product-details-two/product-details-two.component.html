@@ -200,6 +200,103 @@
                     <div class="row text-left mt-0 d-flex">
                       <div
                         class="panel-group"
+                        id="accordion_download"
+                        role="tablist"
+                        aria-multiselectable="true"
+                        [ngClass]="{
+                          'custom-class':
+                            catAData.length <= 5 ||
+                            catBData.length <= 5 ||
+                            catBData.length <= 5
+                        }"
+                      >
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                              <a
+                                role="button"
+                                data-toggle="collapse"
+                                data-parent="#accordion_download"
+                                href="#collapseOneOne"
+                                aria-expanded="false"
+                                aria-controls="collapseOneOne"
+                              >
+                                Documents
+                              </a>
+                            </h4>
+                          </div>
+                          <div
+                            id="collapseOneOne"
+                            class="panel-collapse collapse in"
+                            role="tabpanel"
+                            aria-labelledby="headingOne"
+                          >
+                            <tr
+                              *ngFor="
+                                let document of filterResourceData;
+                                let i = index
+                              "
+                              style="width: 1195px"
+                            >
+                              <ng-container
+                                *ngIf="filterResourceData.length != 0"
+                              >
+                                <th style="width: 1200px">
+                                  <span style="font-size: 16px; color: #000">
+                                    <input
+                                      (change)="onFileSelect($event, document)"
+                                      id="wp-comment-cookies-consent"
+                                      name="wp-comment-cookies-consent"
+                                      type="checkbox"
+                                      class="checkbox_design mr-3"
+                                      value="yes"
+                                    />
+                                  </span>
+                                  <span
+                                    class="truncate"
+                                    style="font-weight: 600"
+                                    >{{ document.title }}</span
+                                  >
+                                  <span
+                                    class="download-item-type ml-2"
+                                    style="font-size: 14px; font-weight: 400"
+                                  >
+                                    {{ document.resourceSubTypeData[0].title }}
+                                  </span>
+                                </th>
+                                <th>
+                                  {{
+                                    document.imageSize
+                                      ? (
+                                          document.imageSize /
+                                          (1024 * 1024)
+                                        ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                  }}
+                                </th>
+                                <th class="text-uppercase">
+                                  {{ document.resourceFormat }}
+                                </th>
+                                <th>
+                                  <a
+                                    href="assets/{{
+                                      document.image | htmlToPlaintext
+                                    }}"
+                                    target="_senses"
+                                  >
+                                    <i
+                                      class="fa fa-download"
+                                      style="font-weight: 500"
+                                    ></i>
+                                  </a>
+                                </th>
+                              </ng-container>
+                            </tr>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="panel-group"
                         id="accordion_fabrics"
                         role="tablist"
                         aria-multiselectable="true"
@@ -214,43 +311,47 @@
                           <div
                             class="panel-heading"
                             role="tab"
-                            id="headingOne2"
+                            id="headingOneTwo"
                           >
                             <h4 class="panel-title">
                               <a
                                 role="button"
                                 data-toggle="collapse"
-                                data-parent="#accordion_fabrics"
-                                href="#collapseOne2"
+                                data-parent="#accordion_finishes"
+                                href="#collapseOneTwo"
                                 aria-expanded="false"
-                                aria-controls="collapseOne2"
+                                aria-controls="collapseOneTwo"
                               >
-                                Fabrics Files
+                                Finishes
                               </a>
                             </h4>
                           </div>
                           <div
-                            id="collapseOne2"
+                            id="collapseOneTwo"
                             class="panel-collapse collapse in"
                             role="tabpanel"
-                            aria-labelledby="headingOne2"
+                            aria-labelledby="headingOneTwo"
                           >
                             <div
                               class="panel-group"
-                              id="accordion_fabrics"
+                              id="accordion_finishes"
                               role="tablist"
                               aria-multiselectable="false"
                             >
-                              <div
-                                class="panel panel-default my-3"
-                                style="width: 90%"
-                              >
+                              <div class="panel panel-default my-3">
                                 <div
                                   class="panel-heading2"
                                   role="tab"
                                   id="headingOne"
                                 >
-                                  <h4 class="panel-title">
+                                  <h4
+                                    class="panel-title"
+                                    (click)="
+                                      onAccordionMainClick(
+                                        '648b0c153b5871e6e15ed4a1'
+                                      )
+                                    "
+                                  >
                                     <a
                                       role="button"
                                       data-toggle="collapse"
@@ -259,7 +360,7 @@
                                       aria-expanded="false"
                                       aria-controls="collapseOne"
                                     >
-                                      Cat A
+                                      Fabrics
                                     </a>
                                   </h4>
                                 </div>
@@ -279,7 +380,7 @@
                                       <ng-container
                                         *ngIf="catAData.length != 0"
                                       >
-                                        <th style="width: 995px">
+                                        <th style="width: 1200px">
                                           <span
                                             style="font-size: 16px; color: #000"
                                           >
@@ -343,7 +444,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="panel panel-default my-3">
+                              <div class="panel panel-default my-3 d-none">
                                 <div
                                   class="panel-heading2"
                                   role="tab"
@@ -359,7 +460,7 @@
                                       aria-expanded="false"
                                       aria-controls="collapseTwo"
                                     >
-                                      Cat B
+                                      Colour Options
                                     </a>
                                   </h4>
                                 </div>
@@ -379,7 +480,253 @@
                                       <ng-container
                                         *ngIf="catBData.length != 0"
                                       >
-                                        <th style="width: 995px">
+                                        <th style="width: 1200px">
+                                          <span
+                                            style="font-size: 16px; color: #000"
+                                          >
+                                            <input
+                                              (change)="
+                                                onFileSelect($event, document)
+                                              "
+                                              id="wp-comment-cookies-consent"
+                                              name="wp-comment-cookies-consent"
+                                              type="checkbox"
+                                              class="checkbox_design"
+                                              value="yes"
+                                            />
+                                          </span>
+                                          <span
+                                            class="truncate"
+                                            style="font-weight: 600"
+                                            >{{ document.title }}</span
+                                          >
+                                          <span
+                                            class="download-item-type ml-2"
+                                            style="
+                                              font-size: 14px;
+                                              font-weight: 400;
+                                            "
+                                          >
+                                            {{
+                                              document.resourceSubTypeData[0]
+                                                .title
+                                            }}
+                                          </span>
+                                        </th>
+                                        <th>
+                                          {{
+                                            document.imageSize
+                                              ? (
+                                                  document.imageSize /
+                                                  (1024 * 1024)
+                                                ).toFixed(2) + " MB"
+                                              : "7 MB"
+                                          }}
+                                        </th>
+                                        <th class="text-uppercase">
+                                          {{ document.resourceFormat }}
+                                        </th>
+                                        <th>
+                                          <a
+                                            href="assets/{{
+                                              document.image | htmlToPlaintext
+                                            }}"
+                                            target="_senses"
+                                          >
+                                            <i
+                                              class="fa fa-download"
+                                              style="font-weight: 500"
+                                            ></i>
+                                          </a>
+                                        </th>
+                                      </ng-container>
+                                    </tr>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="panel-group"
+                        id="accordion_fabrics"
+                        role="tablist"
+                        aria-multiselectable="true"
+                        [ngClass]="{
+                          'custom-class':
+                            catAData.length <= 5 ||
+                            catBData.length <= 5 ||
+                            catBData.length <= 5
+                        }"
+                      >
+                        <div class="panel panel-default">
+                          <div
+                            class="panel-heading"
+                            role="tab"
+                            id="headingOne2"
+                          >
+                            <h4 class="panel-title">
+                              <a
+                                role="button"
+                                data-toggle="collapse"
+                                data-parent="#accordion_certifications"
+                                href="#collapseOneThree"
+                                aria-expanded="false"
+                                aria-controls="collapseOneThree"
+                              >
+                                Certifications
+                              </a>
+                            </h4>
+                          </div>
+                          <div
+                            id="collapseOneThree"
+                            class="panel-collapse collapse in"
+                            role="tabpanel"
+                            aria-labelledby="headingOne2"
+                          >
+                            <div
+                              class="panel-group"
+                              id="accordion_certifications"
+                              role="tablist"
+                              aria-multiselectable="false"
+                            >
+                              <div class="panel panel-default my-3">
+                                <div
+                                  class="panel-heading2"
+                                  role="tab"
+                                  id="headingOne"
+                                >
+                                  <h4 class="panel-title">
+                                    <a
+                                      role="button"
+                                      data-toggle="collapse"
+                                      data-parent="#accordion"
+                                      href="#collapseOne"
+                                      aria-expanded="false"
+                                      aria-controls="collapseOne"
+                                    >
+                                      Reports
+                                    </a>
+                                  </h4>
+                                </div>
+                                <div
+                                  id="collapseOne"
+                                  class="panel-collapse collapse in"
+                                  role="tabpanel"
+                                  aria-labelledby="headingOne"
+                                >
+                                  <div class="panel-body">
+                                    <tr
+                                      *ngFor="
+                                        let document of catAData;
+                                        let i = index
+                                      "
+                                    >
+                                      <ng-container
+                                        *ngIf="catAData.length != 0"
+                                      >
+                                        <th style="width: 1200px">
+                                          <span
+                                            style="font-size: 16px; color: #000"
+                                          >
+                                            <input
+                                              (change)="
+                                                onFileSelect($event, document)
+                                              "
+                                              id="wp-comment-cookies-consent"
+                                              name="wp-comment-cookies-consent"
+                                              type="checkbox"
+                                              class="checkbox_design"
+                                              value="yes"
+                                            />
+                                          </span>
+                                          <span
+                                            class="truncate"
+                                            style="font-weight: 600"
+                                            >{{ document.title }}</span
+                                          >
+                                          <span
+                                            class="download-item-type ml-2"
+                                            style="
+                                              font-size: 14px;
+                                              font-weight: 400;
+                                            "
+                                          >
+                                            {{
+                                              document.resourceSubTypeData[0]
+                                                .title
+                                            }}
+                                          </span>
+                                        </th>
+                                        <th>
+                                          {{
+                                            document.imageSize
+                                              ? (
+                                                  document.imageSize /
+                                                  (1024 * 1024)
+                                                ).toFixed(2) + " MB"
+                                              : "7 MB"
+                                          }}
+                                        </th>
+                                        <th class="text-uppercase">
+                                          {{ document.resourceFormat }}
+                                        </th>
+                                        <th>
+                                          <a
+                                            href="assets/{{
+                                              document.image | htmlToPlaintext
+                                            }}"
+                                            target="_senses"
+                                          >
+                                            <i
+                                              class="fa fa-download"
+                                              style="font-weight: 500"
+                                            ></i>
+                                          </a>
+                                        </th>
+                                      </ng-container>
+                                    </tr>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="panel panel-default my-3 d-none">
+                                <div
+                                  class="panel-heading2"
+                                  role="tab"
+                                  id="headingTwo"
+                                >
+                                  <h4 class="panel-title">
+                                    <a
+                                      class="collapsed"
+                                      role="button"
+                                      data-toggle="collapse"
+                                      data-parent="#accordion"
+                                      href="#collapseTwo"
+                                      aria-expanded="false"
+                                      aria-controls="collapseTwo"
+                                    >
+                                      Awards
+                                    </a>
+                                  </h4>
+                                </div>
+                                <div
+                                  id="collapseTwo"
+                                  class="panel-collapse collapse"
+                                  role="tabpanel"
+                                  aria-labelledby="headingTwo"
+                                >
+                                  <div class="panel-body">
+                                    <tr
+                                      *ngFor="
+                                        let document of catBData;
+                                        let i = index
+                                      "
+                                    >
+                                      <ng-container
+                                        *ngIf="catBData.length != 0"
+                                      >
+                                        <th style="width: 1200px">
                                           <span
                                             style="font-size: 16px; color: #000"
                                           >
@@ -459,7 +806,7 @@
                                       aria-expanded="false"
                                       aria-controls="collapseThree"
                                     >
-                                      Cat C
+                                      Certifications
                                     </a>
                                   </h4>
                                 </div>
@@ -479,7 +826,153 @@
                                       <ng-container
                                         *ngIf="catCData.length != 0"
                                       >
-                                        <th style="width: 995px">
+                                        <th style="width: 1200px">
+                                          <span
+                                            style="font-size: 16px; color: #000"
+                                          >
+                                            <input
+                                              (change)="
+                                                onFileSelect($event, document)
+                                              "
+                                              id="wp-comment-cookies-consent"
+                                              name="wp-comment-cookies-consent"
+                                              type="checkbox"
+                                              class="checkbox_design"
+                                              value="yes"
+                                            />
+                                          </span>
+                                          <span
+                                            class="truncate"
+                                            style="font-weight: 600"
+                                            >{{ document.title }}</span
+                                          >
+                                          <span
+                                            class="download-item-type ml-2"
+                                            style="
+                                              font-size: 14px;
+                                              font-weight: 400;
+                                            "
+                                          >
+                                            {{
+                                              document.resourceSubTypeData[0]
+                                                .title
+                                            }}
+                                          </span>
+                                        </th>
+                                        <th>
+                                          {{
+                                            document.imageSize
+                                              ? (
+                                                  document.imageSize /
+                                                  (1024 * 1024)
+                                                ).toFixed(2) + " MB"
+                                              : "7 MB"
+                                          }}
+                                        </th>
+                                        <th class="text-uppercase">
+                                          {{ document.resourceFormat }}
+                                        </th>
+                                        <th>
+                                          <a
+                                            href="assets/{{
+                                              document.image | htmlToPlaintext
+                                            }}"
+                                            target="_senses"
+                                          >
+                                            <i
+                                              class="fa fa-download"
+                                              style="font-weight: 500"
+                                            ></i>
+                                          </a>
+                                        </th>
+                                      </ng-container>
+                                    </tr>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="panel-group"
+                        id="accordion_fabrics"
+                        role="tablist"
+                        aria-multiselectable="true"
+                        [ngClass]="{
+                          'custom-class':
+                            catAData.length <= 5 ||
+                            catBData.length <= 5 ||
+                            catBData.length <= 5
+                        }"
+                      >
+                        <div class="panel panel-default">
+                          <div
+                            class="panel-heading"
+                            role="tab"
+                            id="headingOne2"
+                          >
+                            <h4 class="panel-title">
+                              <a
+                                role="button"
+                                data-toggle="collapse"
+                                data-parent="#accordion_fabrics"
+                                href="#collapseOne2"
+                                aria-expanded="false"
+                                aria-controls="collapseOne2"
+                              >
+                                CAD Files
+                              </a>
+                            </h4>
+                          </div>
+                          <div
+                            id="collapseOne2"
+                            class="panel-collapse collapse in"
+                            role="tabpanel"
+                            aria-labelledby="headingOne2"
+                          >
+                            <div
+                              class="panel-group"
+                              id="accordion_fabrics"
+                              role="tablist"
+                              aria-multiselectable="false"
+                            >
+                              <div class="panel panel-default my-3">
+                                <div
+                                  class="panel-heading2"
+                                  role="tab"
+                                  id="headingOne"
+                                >
+                                  <h4 class="panel-title">
+                                    <a
+                                      role="button"
+                                      data-toggle="collapse"
+                                      data-parent="#accordion"
+                                      href="#collapseOne"
+                                      aria-expanded="false"
+                                      aria-controls="collapseOne"
+                                    >
+                                      All drawing files
+                                    </a>
+                                  </h4>
+                                </div>
+                                <div
+                                  id="collapseOne"
+                                  class="panel-collapse collapse in"
+                                  role="tabpanel"
+                                  aria-labelledby="headingOne"
+                                >
+                                  <div class="panel-body">
+                                    <tr
+                                      *ngFor="
+                                        let document of catAData;
+                                        let i = index
+                                      "
+                                    >
+                                      <ng-container
+                                        *ngIf="catAData.length != 0"
+                                      >
+                                        <th style="width: 1200px">
                                           <span
                                             style="font-size: 16px; color: #000"
                                           >
@@ -548,6 +1041,24 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="selectedFiles.length > 1" id="downloadButtonDiv">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="ml-lg-5 mt-2">{{ count }} selected item</p>
+                  </div>
+                  <div class="col-md-6 text-end">
+                    <button
+                      *ngIf="selectedFiles.length > 1"
+                      class=""
+                      style="width: auto"
+                      (click)="downloadFiles()"
+                    >
+                      <i class="fa fa-download" aria-hidden="true"></i> Download
+                      ZIP
+                    </button>
                   </div>
                 </div>
               </div>

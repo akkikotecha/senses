@@ -15,11 +15,17 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./product-details-two.component.css'],
 })
 export class ProductDetailsTwoComponent {
+  data: any = '';
+  filterResourceData: any = '';
+  filterResourceData2: any = '';
   selectedFiles: any[] = [];
   count: number = 0;
   catAData: any[] = [];
   catBData: any[] = [];
   catCData: any[] = [];
+  filterLookbookData: any[] = [];
+  filterTearSheetsData: any[] = [];
+  filterInstallationManualsData: any[] = [];
   @ViewChild('target', { static: false }) targetElement!: ElementRef;
   scroll(target: HTMLElement) {
     this.targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -169,6 +175,12 @@ export class ProductDetailsTwoComponent {
       $('.search-field').css({
         'background-image': "url('./assets/search.png')",
       });
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);
@@ -273,6 +285,31 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+
+    this.ProductDetailService.getAllResourceDataByFilter(
+      localStorage.getItem('productId'),
+      localStorage.getItem('subCategoryId'),
+      '6489ac193b5871e6e15ed0a2'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.filterResourceData = this.data.data; // Wrap the single object in an array
+        this.filterResourceData = this.data.data.filter((res: any) => {
+          if (res.resourceSubType != '649c015577e6aa32c9f114e7') {
+            console.log(res);
+            return res;
+          }
+        });
+
+        console.log(this.filterLookbookData);
+        console.log(this.filterTearSheetsData);
+        console.log(this.filterInstallationManualsData);
+
+        console.log('filterResourceData', this.data.data);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
   }
   onFileSelect(event: any, document: any) {
     const isChecked = event.target.checked;
@@ -342,5 +379,38 @@ export class ProductDetailsTwoComponent {
     // this.router.navigate(['product_detail_two']).then(() => {
     //   // window.location.reload();
     // });
+  }
+  onAccordionClick(id: any) {
+    this.ProductDetailService.getResourceImageDataBySubTypeID(id).subscribe(
+      (res) => {
+        if (res && typeof res === 'object') {
+          this.data = res; // Wrap the single object in an array
+          this.filterResourceData2 = this.data.data; // Wrap the single object in an array
+
+          console.log(this.filterResourceData2);
+
+          console.log('filterResourceData', this.data.data);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      }
+    );
+  }
+  onAccordionMainClick(id: any) {
+    console.log('id', id);
+    this.ProductDetailService.getAllResourceDataByFilter(
+      localStorage.getItem('productId'),
+      localStorage.getItem('subCategoryId'),
+      id
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+        console.log('filterResourceData', this.data.data);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
   }
 }
