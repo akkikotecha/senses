@@ -7,13 +7,19 @@ import { LazyLoadingService } from './lazy-loading.service';
 import { environment } from 'src/environments/environment';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { ProductDetailService } from './product-detail.service';
-
+import * as JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-product-details-two',
   templateUrl: './product-details-two.component.html',
   styleUrls: ['./product-details-two.component.css'],
 })
 export class ProductDetailsTwoComponent {
+  selectedFiles: any[] = [];
+  count: number = 0;
+  catAData: any[] = [];
+  catBData: any[] = [];
+  catCData: any[] = [];
   @ViewChild('target', { static: false }) targetElement!: ElementRef;
   scroll(target: HTMLElement) {
     this.targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -266,6 +272,64 @@ export class ProductDetailsTwoComponent {
       } else {
         console.error('Invalid response data: expected a single object');
       }
+    });
+  }
+  onFileSelect(event: any, document: any) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      this.count = this.count + 1;
+      this.selectedFiles.push(document);
+    } else {
+      const index = this.selectedFiles.findIndex((file) => file === document);
+      if (index !== -1) {
+        this.count = this.count - 1;
+
+        this.selectedFiles.splice(index, 1);
+      }
+    }
+  }
+
+  async downloadFiles() {
+    const zip = new JSZip();
+
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      const document = this.selectedFiles[i];
+      const blob = await this.fetchBlob(document.image);
+      const fileExtension = document.image.split('.').pop(); // Get the file extension
+      const filename = `file${i + 1}.${fileExtension}`; // Append the file extension to the filename
+      zip.file(filename, blob);
+    }
+
+    zip.generateAsync({ type: 'blob' }).then((content: Blob) => {
+      const currentDate = new Date();
+      const dateString = currentDate.toISOString().slice(0, 10); // Get current date in YYYY-MM-DD format
+      const timeString = currentDate
+        .toTimeString()
+        .slice(0, 8)
+        .replace(/:/g, ''); // Get current time in HHMMSS format
+      const filename = `files_${dateString}_${timeString}.zip`; // Add current date and time to the zip file name
+      saveAs(content, filename);
+    });
+  }
+
+  fetchBlob(url: string): Promise<Blob> {
+    const correctedUrl = 'assets/' + url; // Add 'assets/' prefix to the URL
+
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', correctedUrl);
+      xhr.responseType = 'blob';
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          resolve(xhr.response);
+        } else {
+          reject(new Error(`Failed to fetch blob from URL: ${correctedUrl}`));
+        }
+      };
+      xhr.onerror = () => {
+        reject(new Error(`Failed to fetch blob from URL: ${correctedUrl}`));
+      };
+      xhr.send();
     });
   }
 

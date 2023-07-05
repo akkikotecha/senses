@@ -1491,7 +1491,7 @@ td {
   color: rgb(0, 0, 0);
   /* border: 0; */
   outline: none;
-  padding: 10px 16px;
+  padding: 10px 8px;
   border-radius: 6px;
 }
 .filterButton:hover {
@@ -1499,7 +1499,7 @@ td {
   color: #fecc00;
   border: 0;
   outline: none;
-  padding: 10px 16px;
+  padding: 10px 8px;
   border-radius: 6px;
 }
 .filterButtonReset {
@@ -1507,7 +1507,7 @@ td {
   color: #000000;
   border: 1px solid black;
   outline: none;
-  padding: 10px 16px;
+  padding: 10px 8px;
   border-radius: 6px;
 }
 .filterButtonReset:hover {
@@ -1515,7 +1515,7 @@ td {
   color: #fecc00;
   border: 0;
   outline: none;
-  padding: 10px 16px;
+  padding: 10px 8px;
   border-radius: 6px;
 }
 
@@ -1524,4 +1524,81 @@ td {
   .filterButtonReset {
     padding: 10px;
   }
+}
+.custom-class {
+  height: 500px;
+}
+
+/* */
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #e4e5e7;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.panel-default > .panel-heading a,
+.panel-default > .panel-heading2 a {
+  display: block;
+  background-color: #eee;
+  color: #000000;
+  padding: 10px 15px;
+}
+.panel-default > .panel-heading a:hover,
+.panel-default > .panel-heading2 a:hover {
+  color: #fecc00;
+}
+
+.panel-default > .panel-heading a:after {
+  content: "";
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  float: right;
+  transition: transform 0.25s linear;
+  -webkit-transition: -webkit-transform 0.25s linear;
+}
+
+.panel-default > .panel-heading a[aria-expanded="true"] {
+  background-color: #eee;
+  /* color: #fecc00; */
+}
+.panel-default > .panel-heading2 a[aria-expanded="true"]:before {
+  content: "\2212";
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.panel-default > .panel-heading2 a[aria-expanded="false"]:before {
+  content: "\002b";
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.panel-default > .panel-heading a[aria-expanded="true"]:after {
+  content: "\2304"; /* Font Awesome icon for arrow-up */
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+
+  top: 10px;
+  font-size: 42px;
+}
+
+.panel-default > .panel-heading a[aria-expanded="false"]:after {
+  content: "\2304"; /* Font Awesome icon for arrow-down */
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+
+  top: -21px;
+  font-size: 42px;
 }

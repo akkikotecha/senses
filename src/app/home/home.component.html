@@ -1,23 +1,46 @@
 <app-header> </app-header>
 <header>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="position: relative">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-ride="carousel"
+    style="position: relative"
+  >
     <ol class="carousel-indicators home_caro">
-      <li *ngFor="let image of Data.data; let i = index" [attr.data-target]="'#carouselExampleIndicators'"
-        [attr.data-slide-to]="i" [class.active]="i === 0"
-        [@carouselAnimation]="currentImageIndex === i ? 'active' : 'inactive'"></li>
+      <li
+        *ngFor="let image of Data.data; let i = index"
+        [attr.data-target]="'#carouselExampleIndicators'"
+        [attr.data-slide-to]="i"
+        [class.active]="i === 0"
+        [@carouselAnimation]="currentImageIndex === i ? 'active' : 'inactive'"
+      ></li>
     </ol>
     <div class="carousel-inner">
-      <div class="carousel-item get_text active" *ngFor="let getData of Data.data; let i = index"
-        [class.active]="i === 0">
-        <img class="d-block w-100" src="assets/{{ getData.image | htmlToPlaintext }}" style="height: 700px" />
-        <div class="carousel-caption d-none d-md-block" style="text-align: initial">
+      <div
+        class="carousel-item get_text active"
+        *ngFor="let getData of Data.data; let i = index"
+        [class.active]="i === 0"
+      >
+        <img
+          class="d-block w-100"
+          src="assets/{{ getData.image | htmlToPlaintext }}"
+          style="height: 700px"
+        />
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="text-align: initial"
+        >
           <h3 style="font-weight: 500; font-size: 36px" class="text-left">
             {{ getData.title }}
           </h3>
           <p style="font-size: 20px; width: 52% mb-3" class="text-left">
             {{ getData.description }}
           </p>
-          <a (click)="handleFeaturedProduct(getData.productId)" class="btn btn_set_css2 mt-3 text-left">Learn More</a>
+          <a
+            (click)="handleFeaturedProduct(getData.productId)"
+            class="btn btn_set_css2 mt-3 text-left"
+            >Learn More</a
+          >
         </div>
       </div>
     </div>
@@ -55,10 +78,16 @@
         <div class="col-lg-4 mb-2 text-center">
           <div class="con_design">
             <a (click)="handleFeaturedProduct(firstFeaturedProduct.productId)">
-              <img src="assets/{{ firstFeaturedProduct.image }}" class="item-img"
-                style="width: 100%; border-radius: 15px" />
+              <img
+                src="assets/{{ firstFeaturedProduct.image }}"
+                class="item-img"
+                style="width: 100%; border-radius: 15px"
+              />
               <div class="overlay" style="font-weight: 700">
-                <p class="customParagraphMB" [innerHTML]="firstFeaturedProduct.description"></p>
+                <p
+                  class="customParagraphMB"
+                  [innerHTML]="firstFeaturedProduct.description"
+                ></p>
                 <!-- {{ firstFeaturedProduct.description }} -->
               </div>
               <div class="overlay2" style="font-weight: 800">
@@ -72,13 +101,21 @@
           <div class="row">
             <div class="col-lg-6 mb-2">
               <div class="con_design">
-                <div (click)="
+                <div
+                  (click)="
                     handleFeaturedProduct(secondFeaturedProduct.productId)
-                  ">
-                  <img src="assets/{{ secondFeaturedProduct.image }}" class="item-img"
-                    style="width: 100%; border-radius: 15px" />
+                  "
+                >
+                  <img
+                    src="assets/{{ secondFeaturedProduct.image }}"
+                    class="item-img"
+                    style="width: 100%; border-radius: 15px"
+                  />
                   <div class="overlay">
-                    <p class="customParagraphMB" [innerHTML]="secondFeaturedProduct.description"></p>
+                    <p
+                      class="customParagraphMB"
+                      [innerHTML]="secondFeaturedProduct.description"
+                    ></p>
                     <!-- {{ secondFeaturedProduct.description }} -->
                   </div>
                   <div class="overlay2">
@@ -90,13 +127,21 @@
             </div>
             <div class="col-lg-6 mb-2">
               <div class="con_design">
-                <a (click)="
+                <a
+                  (click)="
                     handleFeaturedProduct(thirdFeaturedProduct.productId)
-                  ">
-                  <img src="assets/{{ thirdFeaturedProduct.image }}" class="item-img"
-                    style="width: 100%; border-radius: 15px" />
+                  "
+                >
+                  <img
+                    src="assets/{{ thirdFeaturedProduct.image }}"
+                    class="item-img"
+                    style="width: 100%; border-radius: 15px"
+                  />
                   <div class="overlay">
-                    <p class="customParagraphMB" [innerHTML]="thirdFeaturedProduct.description"></p>
+                    <p
+                      class="customParagraphMB"
+                      [innerHTML]="thirdFeaturedProduct.description"
+                    ></p>
                     <!-- {{ thirdFeaturedProduct.description }} -->
                   </div>
                   <div class="overlay2Punch">
@@ -109,11 +154,19 @@
           </div>
           <div class="text-center">
             <div class="con_design">
-              <a (click)="handleFeaturedProduct(fourthFeaturedProduct.productId)">
-                <img src="assets/{{ fourthFeaturedProduct.image }}" class="item-img4"
-                  style="width: 100%; border-radius: 15px" />
+              <a
+                (click)="handleFeaturedProduct(fourthFeaturedProduct.productId)"
+              >
+                <img
+                  src="assets/{{ fourthFeaturedProduct.image }}"
+                  class="item-img4"
+                  style="width: 100%; border-radius: 15px"
+                />
                 <div class="overlay">
-                  <p class="customParagraphMB" [innerHTML]="fourthFeaturedProduct.description"></p>
+                  <p
+                    class="customParagraphMB"
+                    [innerHTML]="fourthFeaturedProduct.description"
+                  ></p>
                   <!-- {{ fourthFeaturedProduct.description }} -->
                 </div>
                 <div class="orderIndex4">
@@ -128,49 +181,89 @@
     </div>
   </div>
   <div class="d-flex justify-content-center d-none">
-    <a target="_blank" [routerLink]="['/products']" class="btn_set_css mt-3">View All Products</a>
+    <a target="_blank" [routerLink]="['/products']" class="btn_set_css mt-3"
+      >View All Products</a
+    >
   </div>
 </section>
 <section class="process">
-  <div id="carouselExampleIndicators_new" class="carousel slide" data-ride="carousel" style="position: relative">
+  <div
+    id="carouselExampleIndicators_new"
+    class="carousel slide"
+    data-ride="carousel"
+    style="position: relative"
+  >
     <ol class="carousel-indicators"></ol>
     <div class="carousel-inner">
-      <div class="carousel-item get_text_slider active" data-count_val="1"
+      <div
+        class="carousel-item get_text_slider active"
+        data-count_val="1"
         data-text_h1="From Concept to Reality: A Look at Our Featured Projects"
         data-p_all_text_set="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
-        data-url="#1">
-        <img class="d-block w-100" src="assets/Collage.webp" alt="First slide"
-          style="height: 600px; width: 65% !important; margin-left: auto" />
+        data-url="#1"
+      >
+        <img
+          class="d-block w-100"
+          src="assets/Collage.webp"
+          alt="First slide"
+          style="height: 600px; width: 65% !important; margin-left: auto"
+        />
       </div>
-      <div class="carousel-item get_text_slider" [attr.data-count_val]="i + 2" [attr.data-text_h1]="dataProject.title"
-        [attr.data-id]="dataProject._id" [attr.data-p_all_text_set]="
+      <div
+        class="carousel-item get_text_slider"
+        [attr.data-count_val]="i + 2"
+        [attr.data-text_h1]="dataProject.title"
+        [attr.data-id]="dataProject._id"
+        [attr.data-p_all_text_set]="
           dataProject.slide_discription.substr(0, 30) + '...'
-        " [attr.data-url]="'#' + i + 2" *ngFor="let dataProject of FeaturedProjectdata; let i = index">
-        <img class="d-block w-100" src="assets/{{ dataProject.image }}" alt="Second slide"
-          style="height: 600; width: 65% !important; margin-left: auto" />
+        "
+        [attr.data-url]="'#' + i + 2"
+        *ngFor="let dataProject of FeaturedProjectdata; let i = index"
+      >
+        <img
+          class="d-block w-100"
+          src="assets/{{ dataProject.image }}"
+          alt="Second slide"
+          style="height: 600px; width: 65% !important; margin-left: auto"
+        />
       </div>
     </div>
-    <a class="carousel-control-prev left_right_click" href="#carouselExampleIndicators_new" role="button"
-      data-slide="prev">
+    <a
+      class="carousel-control-prev left_right_click"
+      href="#carouselExampleIndicators_new"
+      role="button"
+      data-slide="prev"
+    >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <span class="p_all_text_set" style="
+    <span
+      class="p_all_text_set"
+      style="
         position: relative;
         top: -114px;
         padding: 15px;
         left: 6.7%;
         font-size: 26px;
         letter-spacing: 11px;
-      "><span class="text_number_change">1</span>/4</span>
+      "
+      ><span class="text_number_change">1</span>/4</span
+    >
 
-    <a class="carousel-control-next left_right_click" href="#carouselExampleIndicators_new" role="button"
-      data-slide="next">
+    <a
+      class="carousel-control-next left_right_click"
+      href="#carouselExampleIndicators_new"
+      role="button"
+      data-slide="next"
+    >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
     <div class="row col-lg-4 bg-transparent featureSlider p-4">
-      <p class="p_all_text_set h1_text_set" style="font-size: 28px; width: 80%; line-height: 61px">
+      <p
+        class="p_all_text_set h1_text_set"
+        style="font-size: 28px; width: 80%; line-height: 61px"
+      >
         From Concept to Reality: A Look at Our Featured Projects
       </p>
       <p class="p_all_text_set p_text_set" style="font-size: 18px">
@@ -179,23 +272,33 @@
       </p>
 
       <p class="p_all_text_set mt-3">
-        <a class="set_link p_text_button view_project"><button class="btn btn-success" style="
+        <a class="set_link p_text_button view_project"
+          ><button
+            class="btn btn-success"
+            style="
               background: transparent !important;
               border: 2px solid #000;
               color: black;
               font-size: 20px;
-            ">
+            "
+          >
             View Project
-          </button></a>
+          </button></a
+        >
 
-        <a class="view_all_prj ml-3 d-none" (click)="project_case()"><button class="btn btn-success" style="
+        <a class="view_all_prj ml-3 d-none" (click)="project_case()"
+          ><button
+            class="btn btn-success"
+            style="
               background: transparent !important;
               border: 2px solid #000;
               color: black;
               font-size: 20px;
-            ">
+            "
+          >
             View All Projects
-          </button></a>
+          </button></a
+        >
       </p>
     </div>
   </div>
@@ -222,27 +325,49 @@
     </div>
     <div class="row mt-3">
       <div class="col-lg-4 image-container text-center mb-3">
-        <img src="assets/1.webp" class="item-img" style="width: 100%; border-radius: 15px" />
+        <img
+          src="assets/1.webp"
+          class="item-img"
+          style="width: 100%; border-radius: 15px"
+        />
         <div class="image-overlay"></div>
         <!-- <p class="p_all_text_set mt-4"></p> -->
       </div>
       <div class="col-lg-4 image-container text-center mb-3">
-        <img src="assets/2.webp" class="item-img" style="width: 100%; border-radius: 15px" />
+        <img
+          src="assets/2.webp"
+          class="item-img"
+          style="width: 100%; border-radius: 15px"
+        />
         <div class="image-overlay"></div>
       </div>
       <div class="col-lg-4 image-container text-center">
-        <img src="assets/3.webp" class="item-img" style="width: 100%; border-radius: 15px" />
+        <img
+          src="assets/3.webp"
+          class="item-img"
+          style="width: 100%; border-radius: 15px"
+        />
         <div class="image-overlay2"></div>
       </div>
     </div>
   </div>
   <div class="d-flex mt-3 justify-content-center">
-    <button (click)="handleViewAllImage()" target="_blank" [routerLink]="['/products']" class="btn_set_css">
+    <button
+      (click)="handleViewAllImage()"
+      target="_blank"
+      [routerLink]="['/products']"
+      class="btn_set_css"
+    >
       View More
     </button>
   </div>
 </section>
-<section class="process sustainabilityHeader" #Sustainability id="Sustainability" style="scroll-margin-top: 30%">
+<section
+  class="process sustainabilityHeader"
+  #Sustainability
+  id="Sustainability"
+  style="scroll-margin-top: 30%"
+>
   <div class="container">
     <div class="row">
       <div class="title-page-white text-center w-100">
@@ -251,7 +376,9 @@
             <h2 class="title_set text-left text-white" style="font-weight: 500">
               Sustainability
             </h2>
-            <div class="col-lg-12 text-center mb-2 d-flex justify-content-left pl-0">
+            <div
+              class="col-lg-12 text-center mb-2 d-flex justify-content-left pl-0"
+            >
               <hr class="hr_draw_Sustainability text-white" />
             </div>
             <p class="p_all_text_set text-left text-white">
@@ -270,15 +397,20 @@
               <br />responsible production, smart design, and mindful living.
             </p>
           </div>
-          <div class="col-lg-3 d-flex justify-content-center align-items-end sustainabilityDownloadButton">
+          <div
+            class="col-lg-3 d-flex justify-content-center align-items-end sustainabilityDownloadButton"
+          >
             <a href="./assets/SA_Sustainability_Report23.pdf" target="_blank">
               <p class="p_all_text_set mt-5" style="text-align: end">
-                <button class="btn btn-success" style="
+                <button
+                  class="btn btn-success"
+                  style="
                     background: transparent !important;
                     border: 2px solid #fff !important;
                     color: white !important;
                     font-size: 22px;
-                  ">
+                  "
+                >
                   <i class="fa fa-book"></i> Sustainability Report 2023
                 </button>
               </p>
@@ -300,63 +432,123 @@
       <div class="row w-100 mb-4 pt-2">
         <div class="box col-lg-2 text-center">
           <a href="https://www.amazon.com" target="_blank">
-            <img src="assets/logo/Amazon.svg" alt="Owl Image" class="box__image" style="width: 80%" />
+            <img
+              src="assets/logo/Amazon.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.cisco.com" target="_blank">
-            <img src="assets/logo/Cisco.svg" alt="Owl Image" class="box__image" style="width: 80%" />
+            <img
+              src="assets/logo/Cisco.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.dbs.com" target="_blank">
-            <img src="assets/logo/DBS.svg" alt="Owl Image" class="box__image" style="width: 80%" />
+            <img
+              src="assets/logo/DBS.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www2.deloitte.com/" target="_blank">
-            <img src="assets/logo/Deloitte.svg" alt="Owl Image" class="box__image" style="width: 80%" />
+            <img
+              src="assets/logo/Deloitte.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.here.com" target="_blank">
-            <img src="assets/logo/Here Solutions.svg" alt="Owl Image" class="box__image" style="width: 80%" />
+            <img
+              src="assets/logo/Here Solutions.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://anatomyit.com/" target="_blank">
-            <img src="assets/logo/Ice.svg" alt="Owl Image" class="box__image" style="width: 80%" />
+            <img
+              src="assets/logo/Ice.svg"
+              alt="Owl Image"
+              class="box__image"
+              style="width: 80%"
+            />
           </a>
         </div>
 
         <div class="box col-lg-2 text-center">
           <a href="https://kpmg.com/xx/en/home.html" target="_blank">
-            <img class="box__image" src="assets/logo/KPMG.svg" alt="Owl Image" style="width: 80%" />
+            <img
+              class="box__image"
+              src="assets/logo/KPMG.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.sc.com/in/" target="_blank">
-            <img class="box__image" src="assets/logo/Standard Chartered.svg" alt="Owl Image" style="width: 80%" />
+            <img
+              class="box__image"
+              src="assets/logo/Standard Chartered.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.telstra.com.au" target="_blank">
-            <img class="box__image" src="assets/logo/Telstra.svg" alt="Owl Image" style="width: 80%" />
+            <img
+              class="box__image"
+              src="assets/logo/Telstra.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.wellsfargo.com/" target="_blank">
-            <img class="box__image" src="assets/logo/Wells Fargo.svg" alt="Owl Image" style="width: 80%" />
+            <img
+              class="box__image"
+              src="assets/logo/Wells Fargo.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.wework.com/en-GB" target="_blank">
-            <img class="box__image" src="assets/logo/WeWork.svg" alt="Owl Image" style="width: 80%" />
+            <img
+              class="box__image"
+              src="assets/logo/WeWork.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
           </a>
         </div>
         <div class="box col-lg-2 text-center">
           <a href="https://www.wipro.com" target="_blank">
-            <img class="box__image" src="assets/logo/Wipro.svg" alt="Owl Image" style="width: 80%" />
+            <img
+              class="box__image"
+              src="assets/logo/Wipro.svg"
+              alt="Owl Image"
+              style="width: 80%"
+            />
           </a>
         </div>
       </div>
@@ -395,24 +587,43 @@
           </div> -->
           <!-- </div> -->
 
-          <div class="item blogCardShadow" *ngFor="let getData of getAllBlogs.data">
+          <div
+            class="item blogCardShadow"
+            *ngFor="let getData of getAllBlogs.data"
+          >
             <!-- <div class="row justify-content-between mt-0"> -->
             <!-- <div class="col-lg-12" > -->
-            <a (click)="blog_news_click(getData._id, getData.title)" style="cursor: pointer">
+            <a
+              (click)="blog_news_click(getData._id, getData.title)"
+              style="cursor: pointer"
+            >
               <div class="card">
-                <img src="assets/{{ getData.image }}" class="card-img-top" alt="..." />
+                <img
+                  src="assets/{{ getData.image }}"
+                  class="card-img-top"
+                  alt="..."
+                />
                 <div class="card-body" style="height: 168px">
                   <div class="text-container">
-                    <h5 class="card-title p_all_text_set text-left"
-                      style="font-weight: 600 !important; font-size: 18px">
+                    <h5
+                      class="card-title p_all_text_set text-left"
+                      style="font-weight: 600 !important; font-size: 18px"
+                    >
                       {{ getData.title }}
                     </h5>
                   </div>
-                  <p class="card-text mt-2 text-left p_all_text_set" style="font-size: 18px"
-                    [innerHtml]="getData.Description.substr(0, 60) + '...'"></p>
+                  <p
+                    class="card-text mt-2 text-left p_all_text_set"
+                    style="font-size: 18px"
+                    [innerHtml]="getData.Description.substr(0, 60) + '...'"
+                  ></p>
 
                   <p class="card-text text-left p_all_text_set">
-                    <a class="set_link viewMoreLink" (click)="blog_news_click(getData._id, getData.title)">View More</a>
+                    <a
+                      class="set_link viewMoreLink"
+                      (click)="blog_news_click(getData._id, getData.title)"
+                      >View More</a
+                    >
                   </p>
                 </div>
                 <!-- </div> -->

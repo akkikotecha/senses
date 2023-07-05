@@ -92,17 +92,7 @@ export class AboutTwoComponent implements AfterViewInit {
       },
     };
 
-    const marker = new google.maps.Marker(markerOptions);
-    const markerOptions1 = {
-      position: { lat: 19.1450465, lng: 72.8338796 }, // Set the marker position coordinates
-      map: this.map, // Set the map to which the marker should be added
-      title: 'Marker Title', // Set the title of the marker (optional)
-      icon: {
-        url: this.mapMarkerIcon, // Path to the marker icon image
-        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
-      },
-    };
-    const marker1 = new google.maps.Marker(markerOptions1);
+    new google.maps.Marker(markerOptions);
 
     // Marker 2
     const markerOptions2 = {
@@ -115,15 +105,7 @@ export class AboutTwoComponent implements AfterViewInit {
       },
     };
     const marker2 = new google.maps.Marker(markerOptions2);
-  }
-  handleMapSingapore() {
-    const mapOptions = {
-      center: { lat: 1.3345125, lng: 103.7398654 }, // Set the initial map center coordinates
-      zoom: 10, // Set the initial zoom level
-    };
-
-    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    const markerOptions = {
+    const markerOptions23 = {
       position: { lat: 1.3344923, lng: 103.740258 }, // Set the marker position coordinates
       map: this.map, // Set the map to which the marker should be added
       title: 'Marker Title', // Set the title of the marker (optional)
@@ -134,16 +116,8 @@ export class AboutTwoComponent implements AfterViewInit {
       },
     };
 
-    const marker = new google.maps.Marker(markerOptions);
-  }
-  handleMapUSA() {
-    const mapOptions = {
-      center: { lat: 42.1913535, lng: -71.8614438 }, // Set the initial map center coordinates
-      zoom: 10, // Set the initial zoom level
-    };
-
-    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    const markerOptions = {
+    const marker23 = new google.maps.Marker(markerOptions23);
+    const markerOptions24 = {
       position: { lat: 42.1913535, lng: -71.8614438 }, // Set the marker position coordinates
       map: this.map, // Set the map to which the marker should be added
       title: 'Marker Title', // Set the title of the marker (optional)
@@ -153,6 +127,114 @@ export class AboutTwoComponent implements AfterViewInit {
       },
     };
 
-    const marker = new google.maps.Marker(markerOptions);
+    const marker = new google.maps.Marker(markerOptions24);
+  }
+  handleMapSingapore() {
+    const mapOptions = {
+      center: { lat: 1.3345125, lng: 103.7398654 }, // Set the initial map center coordinates
+      zoom: 10, // Set the initial zoom level
+    };
+
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    const markerOptions = {
+      position: { lat: 19.1450465, lng: 72.8338796 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    new google.maps.Marker(markerOptions);
+
+    // Marker 2
+    const markerOptions2 = {
+      position: { lat: 12.9748669, lng: 77.6138136 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+    const marker2 = new google.maps.Marker(markerOptions2);
+    const markerOptions23 = {
+      position: { lat: 1.3344923, lng: 103.740258 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      // icon: this.mapMarkerIcon,
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    const marker23 = new google.maps.Marker(markerOptions23);
+    const markerOptions24 = {
+      position: { lat: 42.1913535, lng: -71.8614438 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    const marker = new google.maps.Marker(markerOptions24);
+  }
+  handleMapUSA() {
+    const mapOptions = {
+      center: { lat: 42.1913535, lng: -71.8614438 }, // Set the initial map center coordinates
+      zoom: 10, // Set the initial zoom level
+    };
+
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    const markerOptions = {
+      position: { lat: 19.1450465, lng: 72.8338796 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    new google.maps.Marker(markerOptions);
+
+    // Marker 2
+    const markerOptions2 = {
+      position: { lat: 12.9748669, lng: 77.6138136 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+    const marker2 = new google.maps.Marker(markerOptions2);
+    const markerOptions23 = {
+      position: { lat: 1.3344923, lng: 103.740258 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      // icon: this.mapMarkerIcon,
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    const marker23 = new google.maps.Marker(markerOptions23);
+    const markerOptions24 = {
+      position: { lat: 42.1913535, lng: -71.8614438 }, // Set the marker position coordinates
+      map: this.map, // Set the map to which the marker should be added
+      title: 'Marker Title', // Set the title of the marker (optional)
+      icon: {
+        url: this.mapMarkerIcon, // Path to the marker icon image
+        scaledSize: new google.maps.Size(32, 32), // Set the desired width and height
+      },
+    };
+
+    const marker = new google.maps.Marker(markerOptions24);
   }
 }

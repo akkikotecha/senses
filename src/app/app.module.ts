@@ -62,7 +62,7 @@ import { WarrantyComponent } from './warranty/warranty.component';
 import { MapComponent } from './map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
+import { LightboxModule } from 'ngx-lightbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,7 +127,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FormsModule,
     RecaptchaModule,
     GoogleMapsModule,
-
+    LightboxModule,
     // CKEditorModule,
   ],
   providers: [],

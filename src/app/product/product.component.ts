@@ -57,7 +57,7 @@ export class ProductComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 200);
+    }, 2000);
 
     // console.log("ID : "+localStorage.getItem('CategoryDetailId'));
     this.ProductService.getAllCategory().subscribe((res) => {

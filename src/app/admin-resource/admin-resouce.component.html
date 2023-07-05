@@ -531,6 +531,7 @@
                         class="form-control category"
                         name="category"
                         id="resource-sub-type"
+                        (change)="resourceSubTypeChange($event)"
                         data-parsley-required-message="This field is required"
                         data-parsley-trigger-after-failure="change"
                         data-parsley-errors-container="#error-add-resource-sub-type"
@@ -550,6 +551,34 @@
                       <p
                         class="text-danger mb-0 text-left f-12 mt-2"
                         id="error-add-resource-sub-type"
+                      ></p>
+                    </div>
+                  </div>
+                  <div
+                    class="col-md-12 col-sm-12"
+                    [style.display]="
+                      fabricsID === '648b0c153b5871e6e15ed4a1'
+                        ? 'block'
+                        : 'none'
+                    "
+                  >
+                    <div class="form-group">
+                      <label
+                        >Fabrics Type <span class="text-red">*</span></label
+                      >
+                      <select
+                        class="form-control category"
+                        name="category"
+                        id="fabricsType"
+                      >
+                        <option value="">Select</option>
+                        <option value="catA">Cat A</option>
+                        <option value="catB">Cat B</option>
+                        <option value="catC">Cat C</option>
+                      </select>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-fabrics-type"
                       ></p>
                     </div>
                   </div>
