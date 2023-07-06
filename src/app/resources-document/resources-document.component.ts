@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 declare var $: any;
 
 import { LazyLoadingService } from './lazy-loading.service';
@@ -11,6 +11,7 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./resources-document.component.css'],
 })
 export class ResourcesDocumentComponent {
+  @ViewChild('categorySelect') categorySelect: any;
   data: any = '';
   filterData: any = '';
   filterResourceData: any = '';
@@ -23,7 +24,7 @@ export class ResourcesDocumentComponent {
   constructor(
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
-  ) { }
+  ) {}
   selectedFiles: any[] = [];
   count: number = 0;
   catAData: any[] = [];
@@ -208,7 +209,10 @@ export class ResourcesDocumentComponent {
       console.log('CatC', this.catCData);
     } else if (
       id == '648b0bdd3b5871e6e15ed495' ||
-      id == '649c015577e6aa32c9f114e7' || id == "648b0c343b5871e6e15ed4a9" || id == "648b0c213b5871e6e15ed4a5" || id == "648b0bf63b5871e6e15ed49d"
+      id == '649c015577e6aa32c9f114e7' ||
+      id == '648b0c343b5871e6e15ed4a9' ||
+      id == '648b0c213b5871e6e15ed4a5' ||
+      id == '648b0bf63b5871e6e15ed49d'
     ) {
       this.disableSidebarContent = true;
       this.resourceDocument
@@ -311,6 +315,7 @@ export class ResourcesDocumentComponent {
     console.log('categoryID');
   }
   handleResetButton() {
+    console.log('I am click or not');
     this.resourceDocument
       .getResourceTypeData(localStorage.getItem('resourceTypeId'))
       .subscribe((res) => {

@@ -102,11 +102,11 @@ export class ProductDetailsComponent {
       this.router
         .navigate(['product', `${name.toLowerCase()}-pods`])
         .then(() => {
-          // window.location.reload();
+          window.location.reload();
         });
     } else {
       this.router.navigate(['product', name.toLowerCase()]).then(() => {
-        // window.location.reload();
+        window.location.reload();
       });
     }
   }

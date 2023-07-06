@@ -109,7 +109,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'insights',
+    path: 'insights/:paramName',
     component: InsightsTwoComponent,
     runGuardsAndResolvers: 'always',
   },

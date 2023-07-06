@@ -69,9 +69,16 @@ export class AboutTwoComponent implements AfterViewInit {
   scroll() {
     const element = document.getElementById('whoWeAre');
     if (element) {
-      const rect = element.getBoundingClientRect();
-      const offset = rect.top + window.scrollY;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
+      // const rect = element.getBoundingClientRect();
+      // const offset = rect.top + window.scrollY;
+      // window.scrollTo({ top: offset, behavior: 'smooth' });
+      const offset = 100; // Adjust the offset value as needed
+      const topOffset =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topOffset - offset,
+        behavior: 'smooth',
+      });
     }
   }
 

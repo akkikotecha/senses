@@ -413,7 +413,7 @@ header:hover .owl-next {
 }
 .carousel-control-prev,
 .carousel-control-next {
-  top: 371px;
+  top: 473px;
 }
 
 .h1_text_set {
@@ -787,4 +787,3 @@ header:hover .owl-next {
 .blogCardShadow:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-

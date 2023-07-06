@@ -132,7 +132,7 @@ export class ProductDetailsTwoComponent {
                 items: 2,
               },
               1000: {
-                items: 3,
+                items: 4,
               },
             },
           });
@@ -242,7 +242,7 @@ export class ProductDetailsTwoComponent {
 
           // });
         });
-    }, 1000);
+    }, 2000);
 
     // console.log("ID : "+localStorage.getItem('productId'));
     this.ProductDetailService.getAllSubCategory(
@@ -370,12 +370,13 @@ export class ProductDetailsTwoComponent {
     });
   }
 
-  handleFeaturedProduct(id: any) {
+  handleFeaturedProduct(id: any, productName?: string) {
     localStorage.removeItem('subCategoryId');
-    // localStorage.removeItem("productname");
+    localStorage.removeItem('productName');
 
     localStorage.setItem('subCategoryId', id);
-    window.open('/product_detail_two', '_blank');
+    // localStorage.removeItem("productName");
+    window.open(`/product/${productName?.toLowerCase()}`, '_blank');
     // this.router.navigate(['product_detail_two']).then(() => {
     //   // window.location.reload();
     // });

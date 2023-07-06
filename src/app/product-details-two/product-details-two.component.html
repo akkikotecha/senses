@@ -1363,6 +1363,7 @@
         Interested in learning more about our products?
 
         <a
+          class="link"
           [routerLink]="['/about-us', 'whoWeAre']"
           style="
             border: none;
@@ -1404,7 +1405,12 @@
                   <!-- <div class="col-lg-12" > -->
                   <a
                     class="set_link"
-                    (click)="handleFeaturedProduct(getData._id)"
+                    (click)="
+                      handleFeaturedProduct(
+                        getData._id,
+                        getData.subCategoryName
+                      )
+                    "
                     style="cursor: pointer"
                   >
                     <div class="card">

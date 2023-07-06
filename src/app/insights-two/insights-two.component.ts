@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { LazyLoadingService } from '../lazy-loading.service';
 import { InsightsServiceService } from './insights-service.service';
 declare var $: any;
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Meta } from '@angular/platform-browser';
 @Component({
@@ -23,10 +23,28 @@ export class InsightsTwoComponent {
     private InsightsServiceServiceData: InsightsServiceService,
     private router: Router,
     private meta: Meta,
-    private titleService: Title
+    private titleService: Title,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    const paramValue = this.route.snapshot.paramMap.get('paramName');
+    if (paramValue == 'clientele') {
+      setTimeout(() => {
+        this.scroll();
+      }, 1000);
+    }
+    if (paramValue == 'blog') {
+      setTimeout(() => {
+        this.scrollBlog();
+      }, 1000);
+    }
+    if (paramValue == 'projectCase') {
+      setTimeout(() => {
+        this.scrollProjectCase();
+      }, 1000);
+    }
+
     this.titleService.setTitle('Insights | Senses Akustik');
     this.meta.updateTag({
       property: 'og:title',
@@ -160,6 +178,51 @@ export class InsightsTwoComponent {
           });
         });
     }, 1000);
+  }
+  scroll() {
+    const element = document.getElementById('clientele');
+    if (element) {
+      // const rect = element.getBoundingClientRect();
+      // const offset = rect.top + window.scrollY;
+      // window.scrollTo({ top: offset, behavior: 'smooth' });
+      const offset = 130; // Adjust the offset value as needed
+      const topOffset =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topOffset - offset,
+        behavior: 'smooth',
+      });
+    }
+  }
+  scrollBlog() {
+    const element = document.getElementById('blogs');
+    if (element) {
+      // const rect = element.getBoundingClientRect();
+      // const offset = rect.top + window.scrollY + 10;
+      // window.scrollTo({ top: offset, behavior: 'smooth' });
+      const offset = 130; // Adjust the offset value as needed
+      const topOffset =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topOffset - offset,
+        behavior: 'smooth',
+      });
+    }
+  }
+  scrollProjectCase() {
+    const element = document.getElementById('projectCase');
+    if (element) {
+      // const rect = element.getBoundingClientRect();
+      // const offset = rect.top + window.scrollY;
+      // window.scrollTo({ top: offset, behavior: 'smooth' });
+      const offset = 130; // Adjust the offset value as needed
+      const topOffset =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: topOffset - offset,
+        behavior: 'smooth',
+      });
+    }
   }
   blog_news_click(id: any, name: any): void {
     localStorage.removeItem('blogs_id');

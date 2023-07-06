@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private homeService: HomeService,
     private HomeServicesService: HomeServicesService
-  ) { }
+  ) {}
 
   getAllBlogs: any;
 
@@ -214,7 +214,8 @@ export class HomeComponent implements OnInit {
   handleFeaturedProduct(id: any, name: any) {
     console.log('Product Details ID: ' + id);
     localStorage.setItem('subCategoryId', id);
-    window.open('/product/' + name, '_blank');
+    console.log(name);
+    window.open(`/product/${name.toLowerCase()}`, '_blank');
     // this.router.navigate(['product_detail_two']).then(() => {
     //   // window.location.reload();
     // });
@@ -225,6 +226,7 @@ export class HomeComponent implements OnInit {
       // window.location.reload();
       localStorage.setItem('project_case', 'project_case');
       if (localStorage.getItem('project_case') == 'project_case') {
+        // window.location
         setTimeout(() => {
           this.project_casescroll();
         }, 1000);
@@ -241,5 +243,5 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {}
 }

@@ -1,55 +1,91 @@
 <app-header> </app-header>
-<section class="process mt-0 pt-3 pb-2">
+<section class="process pt-3 pb-2" style="margin-top: 4rem">
   <div class="container">
     <div class="row">
       <div class="title-page-white text-center w-100">
-        
         <div class="row justify-content-between mt-5">
-            <p class="mb-1 text-left" style="color:#3da2ac!important;font-weight: 600;font-size: 15px;">PROJECT</p>
-          <h1 class="mb-4  text-left" style="font-weight: 700;font-size: 40px;"> {{FeaturedProjectdata[0].title}}</h1>
-          <img src="assets/{{FeaturedProjectdata[0].image}}" class="card-img-top" alt="...">
-		
-          <div class="row text-left mt-4 " style="border: 1xp solid #000!important;margin-left: 0px;">
-            <hr style="width: 98.6%;">
-            <div class="col-lg-4">
-                <b>Architect:</b> <span style="font-weight: 500;color:#000"> {{FeaturedProjectdata[0].Architect}}</span>
-            </div>
-            <div class="col-lg-4">
-                <b>Client:</b> <span style="font-weight: 500;color:#000"> {{FeaturedProjectdata[0].Client}}</span>
-            </div>
-            <div class="col-lg-4">
-                <b>Product Used:</b> <span style="font-weight: 500;color:#000"> {{FeaturedProjectdata[0].Product}}</span>
-            </div>
-            <div class="col-lg-4 mt-4 mb-4">
-                <b>Location:</b> <span style="font-weight: 500;color:#000"> {{FeaturedProjectdata[0].Location}}</span>
-            </div>
-            <div class="col-lg-4 mt-4 mb-4">
-            <b>Completion:</b> <span style="font-weight: 500;color:#000"> {{FeaturedProjectdata[0].Completion}}</span>
-            </div>
-            <hr style="width: 98.6%;">
-          </div>
+          <p
+            class="mb-1 text-left"
+            style="color: #3da2ac !important; font-weight: 600; font-size: 15px"
+          >
+            PROJECT
+          </p>
+          <h1 class="mb-4 text-left" style="font-weight: 700; font-size: 40px">
+            {{ FeaturedProjectdata[0].title }}
+          </h1>
+          <img
+            src="assets/{{ FeaturedProjectdata[0].image }}"
+            class="card-img-top"
+            alt="..."
+          />
 
-          <div class="mt-4" [innerHTML]="FeaturedProjectdata[0].Description"></div>
-
-
-          <div class="row text-left mt-4 " style="border: 1xp solid #000!important;margin-left: 0px;">
-          <a href="./assets/{{FeaturedProjectdata[0].download_url}}" download="">
-            <p class=" mt-5" style="text-align: center">
-              <button
-                class="btn btn-success"
-                style="
-                  background: transparent !important;
-                  border: 2px solid #000 !important;
-                  color: #000 !important;
-                  font-size: 18px;
-                "
+          <div
+            class="row text-left mt-4"
+            style="border: 1xp solid #000 !important; margin-left: 0px"
+          >
+            <hr style="width: 98.6%" />
+            <div class="col-lg-4">
+              <b>Architect:</b>
+              <span style="font-weight: 500; color: #000">
+                {{ FeaturedProjectdata[0].Architect }}</span
               >
-                 Download
-              </button>
-            </p>
-          </a>
+            </div>
+            <div class="col-lg-4">
+              <b>Client:</b>
+              <span style="font-weight: 500; color: #000">
+                {{ FeaturedProjectdata[0].Client }}</span
+              >
+            </div>
+            <div class="col-lg-4">
+              <b>Product Used:</b>
+              <span style="font-weight: 500; color: #000">
+                {{ FeaturedProjectdata[0].Product }}</span
+              >
+            </div>
+            <div class="col-lg-4 mt-4 mb-4">
+              <b>Location:</b>
+              <span style="font-weight: 500; color: #000">
+                {{ FeaturedProjectdata[0].Location }}</span
+              >
+            </div>
+            <div class="col-lg-4 mt-4 mb-4">
+              <b>Completion:</b>
+              <span style="font-weight: 500; color: #000">
+                {{ FeaturedProjectdata[0].Completion }}</span
+              >
+            </div>
+            <hr style="width: 98.6%" />
           </div>
-            <!-- <div class="col-lg-3 ">
+
+          <div
+            class="mt-4"
+            [innerHTML]="FeaturedProjectdata[0].Description"
+          ></div>
+
+          <div
+            class="row text-left mt-4"
+            style="border: 1xp solid #000 !important; margin-left: 0px"
+          >
+            <a
+              href="./assets/{{ FeaturedProjectdata[0].download_url }}"
+              download=""
+            >
+              <p class="mt-5" style="text-align: center">
+                <button
+                  class="btn btn-success"
+                  style="
+                    background: transparent !important;
+                    border: 2px solid #000 !important;
+                    color: #000 !important;
+                    font-size: 18px;
+                  "
+                >
+                  Download
+                </button>
+              </p>
+            </a>
+          </div>
+          <!-- <div class="col-lg-3 ">
 				<a [routerLink]="['/sub_products']"><div class="card">
 				<img src="assets/2-Space-Dividers.webp" class="card-img-top" alt="...">
 				<div class="card-body">

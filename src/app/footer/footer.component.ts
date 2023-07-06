@@ -11,7 +11,7 @@ declare var $: any;
 export class FooterComponent {
   netImage: any = './assets/SENSES LOGO.svg';
   subscribe: boolean = false;
-  constructor(private router: Router, private footerService: FooterService) { }
+  constructor(private router: Router, private footerService: FooterService) {}
 
   homePageSustainability(): void {
     this.router.navigate(['/']).then(() => {
@@ -38,15 +38,23 @@ export class FooterComponent {
   }
 
   blogs(): void {
-    this.router.navigate(['insights']).then(() => {
-      // window.location.reload();
-      localStorage.setItem('blogs', 'blogs');
-      if (localStorage.getItem('blogs') == 'blogs') {
-        setTimeout(() => {
-          this.blogsscroll();
-        }, 1000);
-      }
-    });
+    // this.router.navigate(['insights']).then(() => {
+    //   // window.location.reload();
+    //   localStorage.setItem('blogs', 'blogs');
+    //   if (localStorage.getItem('blogs') == 'blogs') {
+    //     setTimeout(() => {
+    //       this.blogsscroll();
+    //     }, 1000);
+    //   }
+    // });
+    const newTab: any = window.open('/insights', '_blank');
+    newTab.focus();
+    localStorage.setItem('blogs', 'blogs');
+    if (localStorage.getItem('blogs') === 'blogs') {
+      setTimeout(() => {
+        this.blogsscroll();
+      }, 1000);
+    }
   }
 
   project_case(): void {
@@ -100,7 +108,7 @@ export class FooterComponent {
       localStorage.setItem('project_case', '');
     }
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {}
   handleSubmit() {
     console.log($('#newsLetter').val());
     let newsLetter = {
@@ -117,7 +125,7 @@ export class FooterComponent {
         this.subscribe = true;
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 2000);
       }
     });
   }

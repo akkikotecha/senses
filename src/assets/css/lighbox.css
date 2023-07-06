@@ -129,6 +129,7 @@ body:after {
 .lb-prev {
   left: 0;
   float: left;
+  background: url(../img/prev.png) left 48% no-repeat;
 }
 /* line 87, ../sass/lightbox.sass */
 .lb-prev:hover {
@@ -139,6 +140,7 @@ body:after {
 .lb-next {
   right: 0;
   float: right;
+  background: url(../img/next.png) right 48% no-repeat;
 }
 /* line 93, ../sass/lightbox.sass */
 .lb-next:hover {
@@ -193,6 +195,9 @@ body:after {
 }
 /* line 121, ../sass/lightbox.sass */
 .lb-data .lb-close {
+  top: -40px;
+  position: absolute;
+  right: 400px;
   display: block;
   float: right;
   width: 30px;

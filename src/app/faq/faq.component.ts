@@ -52,7 +52,7 @@ export class FaqComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 200);
+    }, 2000);
   }
 
   project_case(): void {
