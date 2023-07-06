@@ -1,10 +1,10 @@
 <app-header> </app-header>
-<header>
+<header style="padding-bottom: 40px">
   <div
     id="carouselExampleIndicators"
     class="carousel slide"
     data-ride="carousel"
-    style="position: relative; padding-bottom: 40px"
+    style="position: relative"
   >
     <ol class="carousel-indicators home_caro">
       <li
@@ -75,11 +75,11 @@
 <section class="process">
   <div class="container">
     <div class="title-page-white text-center w-100">
-      <h2 class="title_set hover_effect" style="font-weight: 500">
+      <h2 class="title_set hover_effect mb-3" style="font-weight: 500">
         Our Top Picks for the Modern Workspace
       </h2>
 
-      <div class="row ml-auto mr-auto mt-4" style="width: 100%">
+      <div class="row ml-auto mr-auto" style="width: 100%">
         <div class="col-lg-4 mb-2 text-center">
           <div class="con_design">
             <a
@@ -209,7 +209,7 @@
     >
   </div>
 </section>
-<section class="process">
+<section class="process pb-0">
   <div
     id="carouselExampleIndicators_new"
     class="carousel slide"
@@ -379,7 +379,7 @@
       </div>
     </div>
   </div>
-  <div class="d-flex mt-3 justify-content-center">
+  <div class="d-flex justify-content-center">
     <button (click)="handleViewAllImage()" target="_blank" class="btn_set_css">
       View More
     </button>
@@ -389,7 +389,7 @@
   class="process sustainabilityHeader"
   #Sustainability
   id="Sustainability"
-  style="scroll-margin-top: 30%"
+  style="margin-top: 30px; margin-bottom: 40px"
 >
   <div class="container">
     <div class="row">
@@ -445,14 +445,14 @@
   </div>
 </section>
 
-<section class="process mt-4">
+<section class="process pb-0">
   <div class="container">
     <div class="title-page-white text-center w-100">
       <h2 class="title_set hover_effect" style="font-weight: 500">
         Trusted By Brands
       </h2>
 
-      <div class="row w-100 mb-4 pt-2">
+      <div class="row w-100 mb-4">
         <div class="box col-lg-2 text-center">
           <a href="https://www.amazon.com" target="_blank">
             <img
@@ -585,7 +585,7 @@
       <h2 class="title_set hover_effect mb-3" style="font-weight: 500">
         Blogs & News
       </h2>
-      <div class="row ml-auto mr-auto mt-5">
+      <div class="row ml-auto mr-auto">
         <div id="owl-demo-new" class="owl-carousel owl-theme owl-theme-blog">
           <!-- <div class="carousel-inner"> -->
           <!-- <div class="item" *ngFor="let chunk of chunkArray(getAllBlogs.data, 3); let i = index" [ngClass]="{ 'active': i === 0 }">
