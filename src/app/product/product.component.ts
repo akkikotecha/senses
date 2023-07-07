@@ -81,7 +81,7 @@ export class ProductComponent {
     console.log('productname', name);
     // console.log(id)
     if (name == 'Booths & Pods') {
-      this.router.navigate(['products', 'boots-pods']).then(() => {
+      this.router.navigate(['products', 'booths-pods']).then(() => {
         // window.location.reload();
       });
     } else {
