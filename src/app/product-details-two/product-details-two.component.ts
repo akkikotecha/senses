@@ -17,15 +17,24 @@ import { saveAs } from 'file-saver';
 export class ProductDetailsTwoComponent {
   data: any = '';
   filterResourceData: any = '';
+  filterResourceDataByResourceSubId: any = '';
+  CADFiles: any = '';
   filterResourceData2: any = '';
   selectedFiles: any[] = [];
   count: number = 0;
-  catAData: any[] = [];
-  catBData: any[] = [];
+  reportsData: any[] = [];
+  certificationsData: any[] = [];
+  catAData: any;
+  catBData: any;
   catCData: any[] = [];
+  colorLineData: any[] = [];
+  feltsData: any[] = [];
+  commonData: any[] = [];
+  fabricsData: any = '';
   filterLookbookData: any[] = [];
   filterTearSheetsData: any[] = [];
   filterInstallationManualsData: any[] = [];
+  isLoading: boolean = true;
   @ViewChild('target', { static: false }) targetElement!: ElementRef;
   scroll(target: HTMLElement) {
     this.targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -106,7 +115,9 @@ export class ProductDetailsTwoComponent {
 
       return array;
     }
-
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
     setTimeout(() => {
       this.lazyLoadService
         .loadScript(
@@ -245,13 +256,79 @@ export class ProductDetailsTwoComponent {
     }, 2000);
 
     // console.log("ID : "+localStorage.getItem('productId'));
+    this.ProductDetailService.getResourceTypeData(
+      localStorage.getItem('subCategoryId')
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.fabricsData = res; // Wrap the single object in an array
+        console.log('fabricsData', res);
+        console.log('fabricsData', this.fabricsData);
+        this.catAData = this.fabricsData.data.filter((res: any) => {
+          if (res.fabricsType == 'catA') {
+            if (
+              localStorage.getItem('subCategoryId') ==
+                '64807a1339df987ec930571c' ||
+              '64807a2d39df987ec9305720' ||
+              '64807a4a39df987ec9305724'
+            ) {
+              return res.title != 'SA_CAT A_Tweed';
+            }
+            // console.log(res);
+            return res;
+          }
+        });
+        console.log('this.catAData', this.catAData);
+        this.catBData = this.fabricsData.data.filter((res: any) => {
+          if (res.fabricsType == 'catB') {
+            // console.log(res);
+            if (
+              localStorage.getItem('subCategoryId') ==
+              '64807a1339df987ec930571c'
+            ) {
+              return res;
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+                '64807a2d39df987ec9305720' ||
+              '64807a4a39df987ec9305724'
+            ) {
+              return res.title == 'SA_CAT B_Dolly';
+            } else {
+              return res;
+            }
+          }
+        });
+        console.log('this.catBData', this.catBData);
+        this.catCData = this.fabricsData.data.filter((res: any) => {
+          if (res.fabricsType == 'catC') {
+            if (
+              localStorage.getItem('subCategoryId') ==
+              '64807a1339df987ec930571c'
+            ) {
+              return res;
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+                '64807a2d39df987ec9305720' ||
+              '64807a4a39df987ec9305724'
+            ) {
+              return res.title != 'SA_CAT C_Mode';
+            } else {
+              return res;
+            }
+          }
+        });
+        console.log('this.catCData', this.catCData);
+        // console.log("shuffledArray " +shuffledArray);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
     this.ProductDetailService.getAllSubCategory(
       localStorage.getItem('subCategoryId')
     ).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.Data = res; // Wrap the single object in an array
         console.log('JobsiteData', res);
-        console.log('data', this.Data);
+        console.log('data[0]', this.Data[0]);
         this.titleService.setTitle(this.Data[0].metaTitle);
         this.meta.updateTag({
           property: 'og:title',
@@ -285,6 +362,49 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+    this.ProductDetailService.getResourceSubTypeCommonData(
+      '648b0c343b5871e6e15ed4a9'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.colorLineData = this.data.data; // Wrap the single object in an array
+        console.log('JobsiteData', res);
+        console.log('data', this.Data);
+
+        // console.log("shuffledArray " +shuffledArray);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.ProductDetailService.getResourceSubTypeCommonData(
+      '648b0c213b5871e6e15ed4a5'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.feltsData = this.data.data; // Wrap the single object in an array
+        console.log('JobsiteData', res);
+        console.log('data', this.Data);
+
+        // console.log("shuffledArray " +shuffledArray);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+
+    this.ProductDetailService.getResourceSubTypeCommonData(
+      '648b0bdd3b5871e6e15ed495'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.certificationsData = this.data.data; // Wrap the single object in an array
+        console.log('JobsiteData', res);
+        console.log('data', this.Data);
+
+        // console.log("shuffledArray " +shuffledArray);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
 
     this.ProductDetailService.getAllResourceDataByFilter(
       localStorage.getItem('productId'),
@@ -306,6 +426,61 @@ export class ProductDetailsTwoComponent {
         console.log(this.filterInstallationManualsData);
 
         console.log('filterResourceData', this.data.data);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.ProductDetailService.getAllResourceDataByResourceSubIdFilter(
+      localStorage.getItem('productId'),
+      localStorage.getItem('subCategoryId'),
+      '648b0c5d3b5871e6e15ed4ad'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.CADFiles = this.data.data; // Wrap the single object in an array
+
+        console.log(this.filterLookbookData);
+        console.log(this.filterTearSheetsData);
+        console.log(this.filterInstallationManualsData);
+
+        console.log('filterResourceData', this.data.data);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.ProductDetailService.getAllResourceDataByResourceSubIdFilter(
+      localStorage.getItem('productId'),
+      localStorage.getItem('subCategoryId'),
+      '648b0beb3b5871e6e15ed499'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.reportsData = this.data.data; // Wrap the single object in an array
+
+        console.log('filterResourceData', this.data.data);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.ProductDetailService.getAllResourceDataByResourceSubIdFilter(
+      localStorage.getItem('productId'),
+      localStorage.getItem('subCategoryId'),
+      '648b0c5d3b5871e6e15ed4ad'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.filterResourceDataByResourceSubId = this.data.data; // Wrap the single object in an array
+
+        console.log('filterResourceData', this.data.data);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.ProductDetailService.getResourceAllCommonData().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.commonData = this.data.data; // Wrap the single object in an array
+        console.log('this.commonData', this.commonData);
       } else {
         console.error('Invalid response data: expected a single object');
       }

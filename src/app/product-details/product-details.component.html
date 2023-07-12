@@ -1,76 +1,82 @@
-<app-header> </app-header>
-<section class="process" style="margin-top: 80px !important">
-  <div class="container">
-    <div class="row">
-      <div class="title-page-white w-100 pt-4">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="breadcrumb-links"
-            ><a [routerLink]="['/']">Home</a> &nbsp; &gt; &nbsp;
-            <a [routerLink]="['/products']">Products</a> &nbsp; &gt; &nbsp;
-            {{ productname }}
-          </span>
+<ng-container *ngIf="isLoading; else normalScreen">
+  <app-loader-products></app-loader-products>
+</ng-container>
+
+<ng-template #normalScreen>
+  <app-header> </app-header>
+  <section class="process" style="margin-top: 80px !important">
+    <div class="container">
+      <div class="row">
+        <div class="title-page-white w-100 pt-4">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <span class="breadcrumb-links"
+              ><a [routerLink]="['/']">Home</a> &nbsp; &gt; &nbsp;
+              <a [routerLink]="['/products']">Products</a> &nbsp; &gt; &nbsp;
+              {{ productname }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="process pt-0">
-  <div class="container">
-    <div class="title-page-white text-center w-100">
-      <h2 class="title_set mt-n3" style="font-weight: 500">
-        {{ productname }}
-      </h2>
+  </section>
+  <section class="process pt-0">
+    <div class="container">
+      <div class="title-page-white text-center w-100">
+        <h2 class="title_set mt-n3 hover_effect" style="font-weight: 500">
+          {{ productname }}
+        </h2>
 
-      <p class="p_all_text_set mb-4" style="font-size: 19px">
-        Upgrade your office with our booths and pods designed for private<br />
-        conversations and meetings. Meticulously crafted with high-quality<br />
-        materials, our collection offers versatile and functional solutions
-        that<br />
-        seamlessly blend style and functionality.
-        <!-- {{Data.data}} -->
-      </p>
-      <div class="row justify-content-center mt-5">
-        <div class="col-lg-3" *ngFor="let getData of Data.data">
-          <a (click)="sub_products(getData._id, getData.subCategoryName)">
-            <div class="card" style="cursor: pointer">
-              <div class="image-container text-center">
-                <img
-                  src="assets/{{ getData.images[0] }}"
-                  class="card-img-top"
-                  alt="..."
-                />
+        <p class="p_all_text_set mb-4" style="font-size: 19px">
+          Upgrade your office with our booths and pods designed for private<br />
+          conversations and meetings. Meticulously crafted with high-quality<br />
+          materials, our collection offers versatile and functional solutions
+          that<br />
+          seamlessly blend style and functionality.
+          <!-- {{Data.data}} -->
+        </p>
+        <div class="row justify-content-center mt-5">
+          <div class="col-lg-3" *ngFor="let getData of Data.data">
+            <a (click)="sub_products(getData._id, getData.subCategoryName)">
+              <div class="card" style="cursor: pointer">
+                <div class="image-container text-center">
+                  <img
+                    src="assets/{{ getData.images[0] }}"
+                    class="card-img-top"
+                    alt="..."
+                  />
 
-                <div class="image-overlay"></div>
+                  <div class="image-overlay"></div>
+                </div>
+                <div class="card-body">
+                  <h5
+                    class="card-title hover_effect p_all_text_set card_header text-center text-capitalize"
+                  >
+                    {{ getData.subCategoryName }}
+                  </h5>
+
+                  <p class="card-text text-left p_all_text_set d-none">
+                    <a href="#" class="set_link">BLOG</a>
+                  </p>
+                </div>
               </div>
-              <div class="card-body">
-                <h5
-                  class="card-title p_all_text_set card_header text-center text-capitalize"
-                >
-                  {{ getData.subCategoryName }}
-                </h5>
+            </a>
+          </div>
+        </div>
 
-                <p class="card-text text-left p_all_text_set d-none">
-                  <a href="#" class="set_link">BLOG</a>
-                </p>
-              </div>
-            </div>
-          </a>
+        <!-- <div class="col-lg-3 ">
+          <a [routerLink]="['/zest_product_detail']"><div class="card">
+          <img src="assets/Zest.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h5 class="card-title p_all_text_set card_header" >Zest</h5>
+          <p class="card-text text-center p_all_text_set">Telephone Booth</p>
+          <p class="card-text text-left p_all_text_set d-none"><a href="#" class="set_link" >BLOG</a>
+          </p>
         </div>
       </div>
-
-      <!-- <div class="col-lg-3 ">
-				<a [routerLink]="['/zest_product_detail']"><div class="card">
-				<img src="assets/Zest.webp" class="card-img-top" alt="...">
-				<div class="card-body">
-				<h5 class="card-title p_all_text_set card_header" >Zest</h5>
-				<p class="card-text text-center p_all_text_set">Telephone Booth</p>
-				<p class="card-text text-left p_all_text_set d-none"><a href="#" class="set_link" >BLOG</a>
-				</p>
-			</div>
-		</div>
-		</a>
-	</div> -->
+      </a>
+    </div> -->
+      </div>
     </div>
-  </div>
-</section>
-<app-footer> </app-footer>
+  </section>
+  <app-footer> </app-footer>
+</ng-template>

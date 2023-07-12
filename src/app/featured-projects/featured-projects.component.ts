@@ -572,6 +572,10 @@ export class FeaturedProjectsComponent {
             formData.append('Client', $('#Client').val() as string);
 
             formData.append('Description', this.description_value_1);
+            formData.append(
+              'short_description',
+              $('#AddShortDescription').val()
+            );
             formData.append('Product', $('#Product').val() as string);
             formData.append('Location', $('#Location').val());
             formData.append('Completion', $('#Completion').val() as string);

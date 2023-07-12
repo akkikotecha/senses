@@ -63,6 +63,8 @@ import { MapComponent } from './map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { LightboxModule } from 'ngx-lightbox';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderProductsComponent } from './loader-products/loader-products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +118,8 @@ import { LightboxModule } from 'ngx-lightbox';
     FaqComponent,
     WarrantyComponent,
     MapComponent,
+    LoaderComponent,
+    LoaderProductsComponent,
   ],
   imports: [
     BrowserModule,

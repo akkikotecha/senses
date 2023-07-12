@@ -74,7 +74,11 @@ export class ResourceDetailComponent {
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);
   }
+  activeIndex = 0; // Initially set the first accordion item as active
 
+  toggleAccordion(index: number) {
+    this.activeIndex = index === this.activeIndex ? -1 : index;
+  }
   resourceTypeClick(id: any, name: any): void {
     console.log('resourceTypeClick', id);
     setTimeout(() => {

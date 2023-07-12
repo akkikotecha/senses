@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
   readyToLive: boolean = true;
   // currentImageIndex = 0;
   currentImageIndex = 0;
+  isLoading: boolean = true;
   private destroy$ = new Subject<void>();
   @ViewChild('carousel', { static: true }) carousel: any;
   constructor(
@@ -62,7 +63,9 @@ export class HomeComponent implements OnInit {
       .subscribe(() => {
         this.nextImage();
       });
-
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
     this.homeService.getAllFeaturedProduct().subscribe((res: any) => {
       console.log('Featured Products', res.data);
       res.data.map((product: any) => {
@@ -167,7 +170,7 @@ export class HomeComponent implements OnInit {
 
           // });
         });
-    }, 1000);
+    }, 4000);
   }
   ngOnDestroy() {
     this.destroy$.next();

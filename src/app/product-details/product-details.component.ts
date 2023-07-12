@@ -18,6 +18,7 @@ export class ProductDetailsComponent {
   data_description: any;
   Data: any;
   productname: any;
+  isLoading: boolean = true;
   constructor(
     private ProductDetailService: ProductDetailService,
     private lazyLoadService: LazyLoadingService,
@@ -52,7 +53,9 @@ export class ProductDetailsComponent {
     // {
     //   data_description = "Upgrade your office with our booths and pods designed for private conversations and meetings. Meticulously crafted with high-quality materials, our collection offers versatile and functional solutions that seamlessly blend style and functionality. "
     // }
-
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',

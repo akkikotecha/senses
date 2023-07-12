@@ -320,6 +320,14 @@ export class ResourcesDocumentComponent {
       .getResourceTypeData(localStorage.getItem('resourceTypeId'))
       .subscribe((res) => {
         if (res && typeof res === 'object') {
+          const categorySelect = document.getElementById(
+            'categoryID'
+          ) as HTMLSelectElement;
+          const subCategorySelect = document.getElementById(
+            'subCategoryID'
+          ) as HTMLSelectElement;
+          categorySelect.value = '';
+          subCategorySelect.value = '';
           this.data = res; // Wrap the single object in an array
           this.filterResourceData = this.data.data; // Wrap the single object in an array
           console.log('ResourceTypeDataReset', this.data);

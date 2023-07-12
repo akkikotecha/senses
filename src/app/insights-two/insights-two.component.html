@@ -57,9 +57,7 @@
         [attr.data-count_val]="i + 2"
         [attr.data-text_h1]="dataProject.title"
         [attr.data-id]="dataProject._id"
-        [attr.data-p_all_text_set]="
-          dataProject.slide_discription.substr(0, 30) + '...'
-        "
+        [attr.data-p_all_text_set]="dataProject.short_description"
         [attr.data-url]="'#' + i + 2"
         *ngFor="let dataProject of FeaturedProjectdata; let i = index"
       >
@@ -107,7 +105,7 @@
     <div class="row col-lg-4 bg-transparent featureSlider p-4">
       <p
         class="p_all_text_set h1_text_set"
-        style="font-size: 28px; width: 80%; line-height: 61px"
+        style="font-size: 25px; width: 80%; line-height: 55px"
       >
         From Concept to Reality: A Look at Our Featured Projects
       </p>

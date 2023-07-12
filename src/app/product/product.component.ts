@@ -26,6 +26,7 @@ export class ProductComponent {
   ) {}
   objectKeys = Object.keys;
   Data: any;
+  isLoading: boolean = true;
   ngOnInit(): void {
     this.titleService.setTitle('Products | Senses Akustik');
     this.meta.updateTag({
@@ -57,9 +58,12 @@ export class ProductComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
+    }, 3000);
 
     // console.log("ID : "+localStorage.getItem('CategoryDetailId'));
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
     this.ProductService.getAllCategory().subscribe((res) => {
       this.Data = JSON.parse(JSON.stringify(res));
       console.log('JobsiteData ' + this.Data);
