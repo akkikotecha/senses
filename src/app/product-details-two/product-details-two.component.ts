@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Meta } from '@angular/platform-browser';
 declare var $: any;
@@ -34,7 +34,9 @@ export class ProductDetailsTwoComponent {
   filterLookbookData: any[] = [];
   filterTearSheetsData: any[] = [];
   filterInstallationManualsData: any[] = [];
+  filterOtherData: any[] = [];
   isLoading: boolean = true;
+  commonDataTest: any[] = [];
   @ViewChild('target', { static: false }) targetElement!: ElementRef;
   scroll(target: HTMLElement) {
     this.targetElement.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -47,7 +49,8 @@ export class ProductDetailsTwoComponent {
     private renderer: Renderer2,
     private router: Router,
     private meta: Meta,
-    private titleService: Title
+    private titleService: Title,
+    private route: ActivatedRoute
   ) {
     // this.productname = localStorage.getItem('productname')
   }
@@ -262,9 +265,26 @@ export class ProductDetailsTwoComponent {
       if (res && typeof res === 'object') {
         this.fabricsData = res; // Wrap the single object in an array
         console.log('fabricsData', res);
+        const paramValue = this.route.snapshot.paramMap.get('name');
         console.log('fabricsData', this.fabricsData);
         this.catAData = this.fabricsData.data.filter((res: any) => {
           if (res.fabricsType == 'catA') {
+            if (
+              localStorage.getItem('subCategoryId') ==
+                '64807a8239df987ec9305731' ||
+              localStorage.getItem('subCategoryId') ==
+                '64807ab539df987ec9305739'
+            ) {
+              console.log('CATA RES', res.title);
+              return (
+                res.title != 'SA_CAT A_Quartz' && res.title != 'SA_CAT A_Soho'
+              );
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+              '64807a9c39df987ec9305735'
+            ) {
+              return res.title != 'SA_CAT A_Chelsea';
+            }
             if (
               localStorage.getItem('subCategoryId') ==
                 '64807a1339df987ec930571c' ||
@@ -273,7 +293,7 @@ export class ProductDetailsTwoComponent {
             ) {
               return res.title != 'SA_CAT A_Tweed';
             }
-            // console.log(res);
+
             return res;
           }
         });
@@ -281,6 +301,22 @@ export class ProductDetailsTwoComponent {
         this.catBData = this.fabricsData.data.filter((res: any) => {
           if (res.fabricsType == 'catB') {
             // console.log(res);
+            if (
+              localStorage.getItem('subCategoryId') ==
+              '64807a8239df987ec9305731'
+            ) {
+              return res.title != 'SA_CAT B_Beachcomber';
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+              '64807ab539df987ec9305739'
+            ) {
+              return res.title != 'SA_CAT B_Beachcomber';
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+              '64807a9c39df987ec9305735'
+            ) {
+              return res;
+            }
             if (
               localStorage.getItem('subCategoryId') ==
               '64807a1339df987ec930571c'
@@ -305,6 +341,18 @@ export class ProductDetailsTwoComponent {
               '64807a1339df987ec930571c'
             ) {
               return res;
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+              '64807a8239df987ec9305731'
+            ) {
+              return res.title != 'SA_CAT C_Mode';
+            } else if (
+              localStorage.getItem('subCategoryId') ==
+                '64807a9c39df987ec9305735' ||
+              localStorage.getItem('subCategoryId') ==
+                '64807ab539df987ec9305739'
+            ) {
+              return res.title != 'SA_CAT C_Mica';
             } else if (
               localStorage.getItem('subCategoryId') ==
                 '64807a2d39df987ec9305720' ||
@@ -362,13 +410,24 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+
+    //colorLine Data
     this.ProductDetailService.getResourceSubTypeCommonData(
       '648b0c343b5871e6e15ed4a9'
     ).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
-        this.colorLineData = this.data.data; // Wrap the single object in an array
-        console.log('JobsiteData', res);
+        const paramValue = this.route.snapshot.paramMap.get('name');
+        if (
+          paramValue == 'plush' ||
+          paramValue == 'breeze' ||
+          paramValue == 'cara'
+        ) {
+          this.colorLineData = []; // Wrap the single object in an array
+        } else {
+          this.colorLineData = this.data.data; // Wrap the single object in an array
+        }
+        console.log('colorLineData', res);
         console.log('data', this.Data);
 
         // console.log("shuffledArray " +shuffledArray);
@@ -376,12 +435,22 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+    //Felts Data
     this.ProductDetailService.getResourceSubTypeCommonData(
       '648b0c213b5871e6e15ed4a5'
     ).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
-        this.feltsData = this.data.data; // Wrap the single object in an array
+        const paramValue = this.route.snapshot.paramMap.get('name');
+        if (
+          paramValue == 'plush' ||
+          paramValue == 'breeze' ||
+          paramValue == 'cara'
+        ) {
+          this.feltsData = []; // Wrap the single object in an array
+        } else {
+          this.feltsData = this.data.data; // Wrap the single object in an array
+        }
         console.log('JobsiteData', res);
         console.log('data', this.Data);
 
@@ -390,7 +459,7 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
-
+    //certifications Data
     this.ProductDetailService.getResourceSubTypeCommonData(
       '648b0bdd3b5871e6e15ed495'
     ).subscribe((res) => {
@@ -405,23 +474,59 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+    this.ProductDetailService.getResourceParticularData(
+      '64afe8558dcf20bfd4b01e43'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.commonDataTest = this.data.data; // Wrap the single object in an array
+        console.log('commonDataTest', this.data.data);
+        // console.log('commonDataTest', this.Data);
 
+        // console.log("shuffledArray " +shuffledArray);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    //Download Data
     this.ProductDetailService.getAllResourceDataByFilter(
       localStorage.getItem('productId'),
       localStorage.getItem('subCategoryId'),
       '6489ac193b5871e6e15ed0a2'
     ).subscribe((res) => {
       if (res && typeof res === 'object') {
+        this.filterLookbookData = [];
+        this.filterTearSheetsData = [];
+        this.filterInstallationManualsData = [];
+        this.filterOtherData = [];
         this.data = res; // Wrap the single object in an array
         this.filterResourceData = this.data.data; // Wrap the single object in an array
         this.filterResourceData = this.data.data.filter((res: any) => {
-          if (res.resourceSubType != '649c015577e6aa32c9f114e7') {
-            console.log(res);
-            return res;
+          if (res.resourceSubType == '649c015577e6aa32c9f114e7') {
+            this.filterOtherData.push(res);
+          }
+        });
+        //Project LookBook
+        this.filterResourceData = this.data.data.filter((res: any) => {
+          if (res.resourceSubType == '6489ace73b5871e6e15ed0a8') {
+            this.filterLookbookData.push(res);
+          }
+        });
+        // tear sheet
+        this.filterResourceData = this.data.data.filter((res: any) => {
+          if (res.resourceSubType == '6489acfc3b5871e6e15ed0ac') {
+            this.filterTearSheetsData.push(res);
+          }
+        });
+        // Installation Manual
+        this.data.data.filter((res: any) => {
+          if (res.resourceSubType == '6489ad1d3b5871e6e15ed0b0') {
+            console.log('this.filterInsta', res);
+            this.filterInstallationManualsData.push(res);
           }
         });
 
-        console.log(this.filterLookbookData);
+        console.log('this.filterLookbookData', this.filterLookbookData);
         console.log(this.filterTearSheetsData);
         console.log(this.filterInstallationManualsData);
 
@@ -438,12 +543,6 @@ export class ProductDetailsTwoComponent {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
         this.CADFiles = this.data.data; // Wrap the single object in an array
-
-        console.log(this.filterLookbookData);
-        console.log(this.filterTearSheetsData);
-        console.log(this.filterInstallationManualsData);
-
-        console.log('filterResourceData', this.data.data);
       } else {
         console.error('Invalid response data: expected a single object');
       }
@@ -456,8 +555,7 @@ export class ProductDetailsTwoComponent {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
         this.reportsData = this.data.data; // Wrap the single object in an array
-
-        console.log('filterResourceData', this.data.data);
+        console.log('reportsData', this.reportsData);
       } else {
         console.error('Invalid response data: expected a single object');
       }
@@ -470,8 +568,6 @@ export class ProductDetailsTwoComponent {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
         this.filterResourceDataByResourceSubId = this.data.data; // Wrap the single object in an array
-
-        console.log('filterResourceData', this.data.data);
       } else {
         console.error('Invalid response data: expected a single object');
       }
@@ -564,8 +660,6 @@ export class ProductDetailsTwoComponent {
           this.filterResourceData2 = this.data.data; // Wrap the single object in an array
 
           console.log(this.filterResourceData2);
-
-          console.log('filterResourceData', this.data.data);
         } else {
           console.error('Invalid response data: expected a single object');
         }
@@ -582,8 +676,6 @@ export class ProductDetailsTwoComponent {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
         this.filterResourceData = this.data.data; // Wrap the single object in an array
-
-        console.log('filterResourceData', this.data.data);
       } else {
         console.error('Invalid response data: expected a single object');
       }

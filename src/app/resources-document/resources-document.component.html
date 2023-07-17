@@ -20,10 +20,12 @@
               (click)="handleClick('')"
               data-type="all"
               style=""
+              (click)="handleAllData()"
               >All</a
             >
           </li>
           <li
+            (click)="handleAllCommonData()"
             class="filter"
             [attr.data-filter]="'.color-' + documentTypeIndex"
             *ngFor="
@@ -376,6 +378,50 @@
                 </th>
               </ng-container>
             </tr>
+            <ng-container *ngIf="handleCommonData">
+              <tr *ngFor="let document of commonOtherData; let i = index">
+                <ng-container *ngIf="commonOtherData.length != 0">
+                  <th style="width: 80%">
+                    <span style="font-size: 16px; color: #000">
+                      <input
+                        (change)="onFileSelect($event, document)"
+                        id="wp-comment-cookies-consent"
+                        name="wp-comment-cookies-consent"
+                        type="checkbox"
+                        class="checkbox_design"
+                        value="yes"
+                      />
+                    </span>
+                    <span class="truncate" style="font-weight: 600">{{
+                      document.title
+                    }}</span>
+                    <span
+                      class="download-item-type ml-2"
+                      style="font-size: 14px; font-weight: 400"
+                    >
+                      {{ document.resourceSubTypeData[0].title }}
+                    </span>
+                  </th>
+                  <th>
+                    {{
+                      document.imageSize
+                        ? (document.imageSize / (1024 * 1024)).toFixed(2) +
+                          " MB"
+                        : "7 MB"
+                    }}
+                  </th>
+                  <th class="text-uppercase">{{ document.resourceFormat }}</th>
+                  <th>
+                    <a
+                      href="assets/{{ document.image | htmlToPlaintext }}"
+                      target="_senses"
+                    >
+                      <i class="fa fa-download" style="font-weight: 500"></i>
+                    </a>
+                  </th>
+                </ng-container>
+              </tr>
+            </ng-container>
           </ng-container>
         </table>
       </form>

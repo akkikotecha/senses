@@ -10,8 +10,25 @@ declare var $: any;
 })
 export class FooterComponent {
   netImage: any = './assets/SENSES LOGO.svg';
+  getScreenWidth: any;
+  isMobile: any;
+  Data: any;
+  resourceData: any;
+  isLaptop: any;
   subscribe: boolean = false;
-  constructor(private router: Router, private footerService: FooterService) {}
+  constructor(private router: Router, private footerService: FooterService) {
+    this.getScreenWidth = window.innerWidth;
+    console.log(this.getScreenWidth);
+
+    if (this.getScreenWidth <= 780) {
+      this.isMobile = true;
+      this.isLaptop = false;
+      //   console.log("AK ")
+    } else {
+      this.isLaptop = true;
+      this.isMobile = false;
+    }
+  }
 
   homePageSustainability(): void {
     this.router.navigate(['/']).then(() => {

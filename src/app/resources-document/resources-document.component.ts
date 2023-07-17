@@ -13,6 +13,7 @@ import { saveAs } from 'file-saver';
 export class ResourcesDocumentComponent {
   @ViewChild('categorySelect') categorySelect: any;
   data: any = '';
+  handleCommonData: boolean = true;
   filterData: any = '';
   filterResourceData: any = '';
   categoryData: any = '';
@@ -26,6 +27,7 @@ export class ResourcesDocumentComponent {
     private resourceDocument: ResourceDocumentService
   ) {}
   selectedFiles: any[] = [];
+  commonOtherData: any[] = [];
   count: number = 0;
   catAData: any[] = [];
   catBData: any[] = [];
@@ -112,7 +114,10 @@ export class ResourcesDocumentComponent {
           this.data = null;
           if (res && typeof res === 'object') {
             this.data = res; // Wrap the single object in an array
-            this.filterResourceData = this.data.data; // Wrap the single object in an array
+            this.filterResourceData = this.data.data.filter((res: any) => {
+              console.log('filterResourceData', res);
+              return res._id != '649c024077e6aa32c9f114f8';
+            }); // Wrap the single object in an array
             console.log('ResourceTypeData', this.data);
             console.log('filterResourceData', this.filterResourceData);
           } else {
@@ -166,6 +171,20 @@ export class ResourcesDocumentComponent {
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 2000);
+    this.resourceDocument
+      .getResourceParticularData('649c024077e6aa32c9f114f8')
+      .subscribe((res) => {
+        if (res && typeof res === 'object') {
+          this.data = res; // Wrap the single object in an array
+          this.commonOtherData = this.data.data; // Wrap the single object in an array
+          console.log('commonOtherData', this.data.data);
+          // console.log('commonDataTest', this.Data);
+
+          // console.log("shuffledArray " +shuffledArray);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
   }
   handleClick(id: string) {
     this.fabrics_id = id;
@@ -177,7 +196,10 @@ export class ResourcesDocumentComponent {
       // this.resourceDocument.getResourceTypeData().subscribe((res) => {
       //   if (res && typeof res === 'object') {
       // this.data = res;
-      this.filterResourceData = this.data.data; // Wrap the single object in an array
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        console.log('filterResourceData', res);
+        return res.title != 'Care & Maintenance Guide';
+      }); // Wrap the single object in an array
       // Wrap the single object in an array
       console.log('JobsiteData', this.data);
       //   } else {
@@ -232,7 +254,6 @@ export class ResourcesDocumentComponent {
               }
             );
             console.log('this.data', this.data);
-            console.log('this.filterResourceData', this.filterResourceData);
           } else {
             console.error('Invalid response data: expected a single object');
           }
@@ -284,7 +305,10 @@ export class ResourcesDocumentComponent {
         .subscribe((res) => {
           if (res && typeof res === 'object') {
             this.data = res; // Wrap the single object in an array
-            this.filterResourceData = this.data.data; // Wrap the single object in an array
+            this.filterResourceData = this.data.data.filter((res: any) => {
+              console.log('filterResourceData', res);
+              return res._id != '649c024077e6aa32c9f114f8';
+            });
 
             console.log('filterResourceData', this.data);
           } else {
@@ -336,5 +360,11 @@ export class ResourcesDocumentComponent {
           console.error('Invalid response data: expected a single object');
         }
       });
+  }
+  handleAllData() {
+    this.handleCommonData = true;
+  }
+  handleAllCommonData() {
+    this.handleCommonData = false;
   }
 }

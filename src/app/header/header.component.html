@@ -181,26 +181,37 @@
           <div id="head-mobile"></div>
           <div class="button"></div>
           <ul class="rightside">
-            <li class="active d-none">
-              <!-- <form role="search" method="get" class="search-form" action="">
-							<label>
-						
-								<input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:" />
-							</label>
-							<input type="submit" class="search-submit" value="Search" />
-						</form> -->
+            <li class="active">
+              <form role="search" method="get" class="search-form" action="">
+                <label class="d-none">
+                  <input
+                    type="search"
+                    class="search-field"
+                    placeholder="Search …"
+                    value=""
+                    name="s"
+                    title="Search for:"
+                  />
+                </label>
+                <input type="submit" class="search-submit" value="Search" />
+              </form>
 
-              <a class="ml-0 sticky_color"
+              <a
+                class="ml-0 sticky_color"
+                style="margin-top: -3px; margin-right: -3px"
                 ><span
                   ><i
+                    (click)="handleClose()"
+                    style="cursor: pointer"
                     class="fa fa-solid fa-close btn_click d-none close_btn sticky_color"
                   ></i
                   ><i
-                    class="fa fa-solid fa-search btn_click search_btn sticky_color"
+                    class="fa fa-solid fa-search btn_click search_btn sticky_color searchHover"
+                    style="cursor: pointer"
                   ></i></span
               ></a>
             </li>
-            <li class="d-none">
+            <li class="">
               <a class="ml-0 pl-2 sticky_color"
                 ><span><i class="fa fa-solid fa-globe sticky_color"></i></span>
                 EN</a
@@ -231,6 +242,7 @@
                   border-top-right-radius: 8px;
                   border-bottom-right-radius: 8px;
                 "
+                (input)="handleSearch($event)"
               />
               <i
                 class="fa fa-search search_box d-none"
@@ -248,9 +260,173 @@
                   border-bottom-left-radius: 8px;
                 "
               ></i>
+              <ng-container *ngIf="isDataFound">
+                <div
+                  class="bg-white mt-5 p-3"
+                  style="
+                    border-bottom-right-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    position: absolute;
+                    width: 43.5%;
+                    right: -66px;
+                    top: 0px;
+                  "
+                >
+                  <div *ngIf="Data.categories.length > 0">
+                    <a
+                      target="_blacka"
+                      [routerLink]="['/products']"
+                      class="fs-6 link"
+                      style="
+                        color: #000;
+                        text-decoration: underline;
+                        margin: 10px 0;
+                      "
+                    >
+                      Products
+                    </a>
+
+                    <div
+                      class="row my-2"
+                      style="cursor: pointer"
+                      *ngFor="let image of Data.categories; let i = index"
+                      (click)="
+                        handleProductClick(
+                          image?.subCategoryId,
+                          image?.subcategoriesData[0].subCategoryName
+                        )
+                      "
+                    >
+                      <div class="col-md-5">
+                        <img
+                          style="width: 100%; height: 130px; border-radius: 6px"
+                          src="assets/{{
+                            image.subcategoriesData[0].images[0]
+                              | htmlToPlaintext
+                          }}"
+                        />
+                      </div>
+                      <div class="col-md-7">
+                        <h5>
+                          {{ image.subcategoriesData[0].subCategoryName }}
+                        </h5>
+                        <p style="color: #000">
+                          {{ image.subcategoriesData[0].subCategoryDesc }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="Data.categories.length == 0">
+                    <p style="color: #000; font-weight: bold; font-size: 13px">
+                      No Product found
+                    </p>
+                  </div>
+                  <div *ngIf="pdfArray.length > 0">
+                    <a
+                      target="_black"
+                      [routerLink]="['/resources']"
+                      class="fs-6 mt-1 link"
+                      style="color: #000; text-decoration: underline"
+                    >
+                      Resources
+                    </a>
+
+                    <div class="row pl-1 my-2">
+                      <p *ngFor="let image of pdfArray.slice(0, 3)">
+                        <span
+                          style="
+                            color: #000;
+                            font-weight: bold;
+                            font-size: 13px;
+                          "
+                        >
+                          {{ image.title }}</span
+                        >
+
+                        <span class="ml-3">
+                          <a
+                            href="assets/{{ image.image | htmlToPlaintext }}"
+                            target="_senses"
+                          >
+                            <i
+                              class="fa fa-download"
+                              style="font-weight: 500"
+                            ></i>
+                          </a>
+                        </span>
+                      </p>
+
+                      <p
+                        (click)="handleResourcesDocument()"
+                        style="
+                          color: #000;
+                          width: 96%;
+                          font-weight: bold;
+                          font-size: 13px;
+                          text-decoration-line: underline;
+                          text-decoration-thickness: 2px;
+                          /* border-bottom: 2px solid #000; */
+                          cursor: pointer;
+                        "
+                      >
+                        View More
+                      </p>
+                    </div>
+                  </div>
+                  <div *ngIf="pdfArray.length == 0">
+                    <p style="color: #000; font-weight: bold; font-size: 13px">
+                      No Resources found
+                    </p>
+                  </div>
+                  <div *ngIf="imageArray.length > 0">
+                    <a
+                      target="_black"
+                      [routerLink]="['/resources']"
+                      class="fs-6 mt-1 link"
+                      style="color: #000; text-decoration: underline"
+                    >
+                      Images
+                    </a>
+
+                    <div
+                      class="row pl-1justify-content-center align-items-center"
+                    >
+                      <div
+                        class="col-md-3"
+                        *ngFor="let image of imageArray.slice(0, 3)"
+                      >
+                        <img src="assets/{{ image.image | htmlToPlaintext }}" />
+                      </div>
+
+                      <div class="col-md-3">
+                        <p
+                          (click)="handleResourcesImage()"
+                          style="
+                            color: #000;
+                            width: 96%;
+                            font-weight: bold;
+                            font-size: 13px;
+                            text-decoration: underline;
+                            text-decoration-thickness: 2px;
+                            /* border-bottom: 2px solid #000; */
+                            cursor: pointer;
+                          "
+                        >
+                          View More
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="imageArray.length == 0">
+                    <p style="color: #000; font-weight: bold; font-size: 13px">
+                      No Images found
+                    </p>
+                  </div>
+                </div>
+              </ng-container>
               <ul
                 class="ruby-menu"
-                style="float: right !important; margin-right: -7%"
+                style="margin-right: -55px; float: right !important"
               >
                 <li class="ruby-active-menu-item d-none">
                   <a href="#" class="sticky_color">Home</a>
@@ -1427,7 +1603,7 @@
                   </ul>
                   <span class="ruby-dropdown-toggle"> </span>
                 </li>
-                <li class="ruby-active-menu-item">
+                <li class="ruby-active-menu-item d-none">
                   <a class="ml-0 pl-2 sticky_color"
                     ><span
                       ><i class="fa fa-solid fa-globe sticky_color"></i

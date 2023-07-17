@@ -401,7 +401,7 @@ header:hover .owl-next {
   background-image: url("../../assets/new_left.svg") !important;
 }
 .carousel-control-prev {
-  left: -50px !important;
+  left: -50px;
 }
 
 .carousel-control-prev-icon,
@@ -415,7 +415,36 @@ header:hover .owl-next {
 .carousel-control-next {
   top: 473px;
 }
-
+@media screen and (max-width: 600px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: 40%;
+  }
+  .carousel-control-next {
+    right: 0;
+    left: unset;
+    background-color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    /* left: 7.2%; */
+  }
+  .carousel-control-next span {
+    width: 24px;
+  }
+  .carousel-control-prev {
+    right: unset;
+    left: 1px;
+    background-color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    /* left: 7.2%; */
+  }
+  .carousel-control-prev span {
+    width: 24px;
+  }
+}
 .h1_text_set {
   color: #1c1417;
   font-size: 24px;
@@ -717,7 +746,7 @@ header:hover .owl-next {
   }
   .p_all_text_set br {
     display: none;
-    text-align: left;
+    /* text-align: left; */
   }
   .item-img4 {
     margin-top: 0;
@@ -783,7 +812,24 @@ header:hover .owl-next {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border-radius: 9px;
   margin: 0px 10px;
+  width: 100%;
 }
 .blogCardShadow:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.cardBodyHeight {
+  height: 168px;
+}
+@media screen and (max-width: 600px) {
+  .cardBodyHeight {
+    height: 200px;
+  }
+}
+.numberIcon {
+  display: block;
+}
+@media screen and (max-width: 600px) {
+  .numberIcon {
+    display: none;
+  }
 }

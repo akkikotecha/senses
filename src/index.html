@@ -22,6 +22,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.css"
+      integrity="sha512-uq8QcHBpT8VQcWfwrVcH/n/B6ELDwKAdX4S/I3rYSwYldLVTs7iII2p6ieGCM13QTPEKZvItaNKBin9/3cjPAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"
     />
     <link
@@ -638,7 +645,39 @@
   ></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/decoupled-document/ckeditor.js"></script>
   <script src="./assets/my_js/lighbox.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"
+    integrity="sha512-TToQDr91fBeG4RE5RjMl/tqNAo35hSRR4cbIFasiV2AAMQ6yKXXYhdSdEpUcRE6bqsTiB+FPLPls4ZAFMoK5WA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script>
+    $(function () {
+      function log(message) {
+        $("<div>").text(message).prependTo("#log");
+        $("#log").scrollTop(0);
+      }
 
+      $("#results").autocomplete({
+        source: function (request, response) {
+          $.ajax({
+            url: "search.php",
+            dataType: "jsonp",
+            data: {
+              term: request.term,
+            },
+            success: function (data) {
+              response(data);
+            },
+          });
+        },
+        minLength: 2,
+        select: function (event, ui) {
+          log("Selected: " + ui.item.value + " aka " + ui.item.id);
+        },
+      });
+    });
+  </script>
   <script></script>
   <script>
     setTimeout(function () {
@@ -1078,6 +1117,7 @@ ckfinder: {
     $(document).on("click", ".close_btn", function () {
       $(".search_box").fadeOut(1000);
       $(".ruby-menu").fadeIn(1000);
+      $(".search_box").val("");
       $(".search_box").addClass("d-none");
       $(".ruby-menu").removeClass("d-none");
       $(".search_btn").removeClass("d-none");

@@ -3527,3 +3527,7 @@ span.ruby-c-content {
 .link:hover .popUpWord {
   mix-blend-mode: multiply;
 }
+
+.searchHover:hover {
+  color: #fecc00 !important;
+}

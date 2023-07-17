@@ -124,10 +124,6 @@ div .forrm {
   transition: 0.3s;
 }
 
-.hover_text:hover {
-  font-size: 22px !important;
-  transform: scale(1.02);
-}
 .hover_effect2:hover {
   color: #ffcc00 !important;
 }

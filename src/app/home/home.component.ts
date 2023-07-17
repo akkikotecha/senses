@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
       });
     setTimeout(() => {
       this.isLoading = false;
-    }, 3000);
+    }, 3500);
     this.homeService.getAllFeaturedProduct().subscribe((res: any) => {
       console.log('Featured Products', res.data);
       res.data.map((product: any) => {
@@ -122,6 +122,7 @@ export class HomeComponent implements OnInit {
             loop: false,
             margin: 4,
             dots: true,
+            stagePadding: 30,
             nav: false,
             mouseDrag: true,
             autoplay: true,

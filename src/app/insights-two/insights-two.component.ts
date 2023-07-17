@@ -108,6 +108,7 @@ export class InsightsTwoComponent {
           $('.owl-carousel').owlCarousel({
             loop: false,
             margin: 10,
+            stagePadding: 30,
             dots: true,
             nav: false,
             mouseDrag: true,

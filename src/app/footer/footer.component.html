@@ -1,167 +1,331 @@
 <div class="footer">
   <div class="container footer-rowtop pb-0">
-    <div class="row w-100">
-      <div class="col-sm-2 footer-links">
-        <a target="_senseas" [routerLink]="['/about-us', 'whatwedo']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            About
-          </h4>
-        </a>
-        <a target="_sensess" [routerLink]="['/career']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Careers
-          </h4>
-        </a>
-        <a target="_sensesd" [routerLink]="['/about-us', 'whoWeAre']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Locations
-          </h4>
-        </a>
-        <a
-          href="./assets/SA_Sustainability_Report23.pdf"
-          target="_blank"
-          style="cursor: pointer"
-        >
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Sustainability
-          </h4>
-        </a>
-      </div>
-      <div class="col-sm-1"></div>
-      <div class="col-sm-2 footer-links">
-        <a target="_sensesf" target="_senses" [routerLink]="['/resources']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Resources
-          </h4>
-        </a>
-        <a target="_sensesg" [routerLink]="['/faq']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            FAQs
-          </h4>
-        </a>
-        <a target="_sensesh" [routerLink]="['/terms-and-conditions']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Terms of Use
-          </h4>
-        </a>
-        <a target="_sensesj" [routerLink]="['/warranty-statement']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Warranty Statement
-          </h4>
-        </a>
-        <a target="_sensesk" [routerLink]="['/privacy-cookie-policy']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Privacy and Cookie Policy
-          </h4>
-        </a>
-      </div>
-      <div class="col-sm-1"></div>
-      <div class="col-sm-2 footer-links">
-        <a target="_sensesl" [routerLink]="['/insights/intro']">
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Insights
-          </h4>
-        </a>
-        <a
-          target="_sensesq"
-          [routerLink]="['/insights/clientele']"
-          style="cursor: pointer"
-        >
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Clientele
-          </h4>
-        </a>
-        <a
-          target="_senssesw"
-          [routerLink]="['/insights/blog']"
-          style="cursor: pointer"
-        >
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Blogs
-          </h4>
-        </a>
-        <a
-          target="_sensescsdce"
-          [routerLink]="['/insights', 'projectCase']"
-          style="cursor: pointer"
-        >
-          <h4 class="hover_text hover_effect2" style="font-weight: 500">
-            Project Cases
-          </h4>
-        </a>
-      </div>
-      <div class="col-sm-1"></div>
-      <div class="col-sm-3 footer-links">
-        <h5
-          class="bottom_header mb-3 hover_effect2"
-          style="font-weight: 700; font-size: 19px; color: #000"
-        >
-          Newsletter
-        </h5>
-        <h4>Get the latest on Senses Akustik right to your inbox.</h4>
-        <div class="forrm" style="margin-top: -4%">
-          <form action="/action_page.php">
-            <input
-              type="text"
-              id="newsLetter"
-              name="firstname"
-              placeholder="Enter your email"
-            />
-            <button type="submit" (click)="handleSubmit()" class="button_set">
-              <i class="fa fa-long-arrow-right"> </i>
-            </button>
-            <div class="alert alert-success" role="alert" *ngIf="subscribe">
-              Thanks for subscribing our Newsletter.
-            </div>
-          </form>
+    <ng-template [ngIf]="isLaptop">
+      <div class="row w-100">
+        <div class="col-sm-2 footer-links">
+          <a target="_senseas" [routerLink]="['/about-us', 'whatwedo']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              About
+            </h4>
+          </a>
+          <a target="_sensess" [routerLink]="['/career']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Careers
+            </h4>
+          </a>
+          <a target="_sensesd" [routerLink]="['/about-us', 'whoWeAre']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Locations
+            </h4>
+          </a>
+          <a
+            href="./assets/SA_Sustainability_Report23.pdf"
+            target="_blank"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Sustainability
+            </h4>
+          </a>
         </div>
-        <ul class="list-unstyled list-inline mt-4">
-          <li class="list-inline-item" style="margin-right: 1rem">
-            <a
-              target="_blank"
-              href="https://www.instagram.com/sensesakustik/"
-              target="_blank"
-              class="sbtn btn-large mx-1"
-              title="Instagram"
-            >
-              <i
-                class="fa fa-instagram fa-2x icon_hover_instagram"
-                style="color: #3d3d3d; font-weight: 800"
-              ></i>
-            </a>
-          </li>
-          <li class="list-inline-item" style="margin-right: 1rem">
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/company/senses-akustik/"
-              target="_blank"
-              class="sbtn btn-large mx-1"
-              title="LinkedIn"
-            >
-              <i
-                class="fab fa-linkedin fa-2x icon_hover_linkedin"
-                style="color: #3d3d3d; font-weight: 800"
-              ></i>
-            </a>
-          </li>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 footer-links">
+          <a target="_sensesf" target="_senses" [routerLink]="['/resources']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Resources
+            </h4>
+          </a>
+          <a target="_sensesg" [routerLink]="['/faq']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              FAQs
+            </h4>
+          </a>
+          <a target="_sensesh" [routerLink]="['/terms-and-conditions']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Terms of Use
+            </h4>
+          </a>
+          <a target="_sensesj" [routerLink]="['/warranty-statement']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Warranty Statement
+            </h4>
+          </a>
+          <a target="_sensesk" [routerLink]="['/privacy-cookie-policy']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Privacy and Cookie Policy
+            </h4>
+          </a>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 footer-links">
+          <a target="_sensesl" [routerLink]="['/insights/intro']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Insights
+            </h4>
+          </a>
+          <a
+            target="_sensesq"
+            [routerLink]="['/insights/clientele']"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Clientele
+            </h4>
+          </a>
+          <a
+            target="_senssesw"
+            [routerLink]="['/insights/blog']"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Blogs
+            </h4>
+          </a>
+          <a
+            target="_sensescsdce"
+            [routerLink]="['/insights', 'projectCase']"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Project Cases
+            </h4>
+          </a>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3 footer-links">
+          <h5
+            class="bottom_header mb-3 hover_effect2"
+            style="font-weight: 700; font-size: 19px; color: #000"
+          >
+            Newsletter
+          </h5>
+          <h4>Get the latest on Senses Akustik right to your inbox.</h4>
+          <div class="forrm" style="margin-top: -4%">
+            <form action="/action_page.php">
+              <input
+                type="text"
+                id="newsLetter"
+                name="firstname"
+                placeholder="Enter your email"
+              />
+              <button type="submit" (click)="handleSubmit()" class="button_set">
+                <i class="fa fa-long-arrow-right"> </i>
+              </button>
+              <div class="alert alert-success" role="alert" *ngIf="subscribe">
+                Thanks for subscribing our Newsletter.
+              </div>
+            </form>
+          </div>
+          <ul class="list-unstyled list-inline mt-4">
+            <li class="list-inline-item" style="margin-right: 1rem">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/sensesakustik/"
+                target="_blank"
+                class="sbtn btn-large mx-1"
+                title="Instagram"
+              >
+                <i
+                  class="fa fa-instagram fa-2x icon_hover_instagram"
+                  style="color: #3d3d3d; font-weight: 800"
+                ></i>
+              </a>
+            </li>
+            <li class="list-inline-item" style="margin-right: 1rem">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/company/senses-akustik/"
+                target="_blank"
+                class="sbtn btn-large mx-1"
+                title="LinkedIn"
+              >
+                <i
+                  class="fab fa-linkedin fa-2x icon_hover_linkedin"
+                  style="color: #3d3d3d; font-weight: 800"
+                ></i>
+              </a>
+            </li>
 
-          <li class="list-inline-item" style="margin-right: 1rem">
-            <a
-              target="_blank"
-              href="https://in.pinterest.com/sensesakustik/"
-              target="_blank"
-              class="sbtn btn-large mx-1"
-              title="Pinterest"
-            >
-              <i
-                class="fa fa-pinterest fa-2x icon_hover_youtube"
-                style="color: #3d3d3d; font-weight: 800"
-              ></i>
-            </a>
-          </li>
-        </ul>
+            <li class="list-inline-item" style="margin-right: 1rem">
+              <a
+                target="_blank"
+                href="https://in.pinterest.com/sensesakustik/"
+                target="_blank"
+                class="sbtn btn-large mx-1"
+                title="Pinterest"
+              >
+                <i
+                  class="fa fa-pinterest fa-2x icon_hover_youtube"
+                  style="color: #3d3d3d; font-weight: 800"
+                ></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </ng-template>
+    <ng-template [ngIf]="isMobile">
+      <div class="row w-100">
+        <div class="col-md-6 col-6 footer-links">
+          <a target="_senseas" [routerLink]="['/about-us', 'whatwedo']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              About
+            </h4>
+          </a>
+          <a target="_sensess" [routerLink]="['/career']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Careers
+            </h4>
+          </a>
+          <a target="_sensesd" [routerLink]="['/about-us', 'whoWeAre']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Locations
+            </h4>
+          </a>
+          <a
+            href="./assets/SA_Sustainability_Report23.pdf"
+            target="_blank"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Sustainability
+            </h4>
+          </a>
+
+          <a target="_sensesf" target="_senses" [routerLink]="['/resources']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Resources
+            </h4>
+          </a>
+          <a target="_sensesg" [routerLink]="['/faq']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              FAQs
+            </h4>
+          </a>
+          <a target="_sensesh" [routerLink]="['/terms-and-conditions']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Terms of Use
+            </h4>
+          </a>
+        </div>
+        <!-- <div class="col-sm-1"></div> -->
+        <div class="col-md-6 col-6 footer-links">
+          <a target="_sensesj" [routerLink]="['/warranty-statement']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Warranty Statement
+            </h4>
+          </a>
+          <a target="_sensesk" [routerLink]="['/privacy-cookie-policy']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Privacy and Cookie Policy
+            </h4>
+          </a>
+          <a target="_sensesl" [routerLink]="['/insights/intro']">
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Insights
+            </h4>
+          </a>
+          <a
+            target="_sensesq"
+            [routerLink]="['/insights/clientele']"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Clientele
+            </h4>
+          </a>
+          <a
+            target="_senssesw"
+            [routerLink]="['/insights/blog']"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Blogs
+            </h4>
+          </a>
+          <a
+            target="_sensescsdce"
+            [routerLink]="['/insights', 'projectCase']"
+            style="cursor: pointer"
+          >
+            <h4 class="hover_text hover_effect2" style="font-weight: 500">
+              Project Cases
+            </h4>
+          </a>
+        </div>
+
+        <div class="col-sm-3 mt-lg-0 mt-3 text-center footer-links">
+          <h5
+            class="bottom_header mb-3 hover_effect2"
+            style="font-weight: 700; font-size: 19px; color: #000"
+          >
+            Newsletter
+          </h5>
+          <h4>Get the latest on Senses Akustik right to your inbox.</h4>
+          <div class="forrm" style="margin-top: -4%">
+            <form action="/action_page.php">
+              <input
+                type="text"
+                id="newsLetter"
+                name="firstname"
+                placeholder="Enter your email"
+              />
+              <button type="submit" (click)="handleSubmit()" class="button_set">
+                <i class="fa fa-long-arrow-right"> </i>
+              </button>
+              <div class="alert alert-success" role="alert" *ngIf="subscribe">
+                Thanks for subscribing our Newsletter.
+              </div>
+            </form>
+          </div>
+          <ul class="list-unstyled list-inline mt-4">
+            <li class="list-inline-item" style="margin-right: 1rem">
+              <a
+                target="_blank"
+                href="https://www.instagram.com/sensesakustik/"
+                target="_blank"
+                class="sbtn btn-large mx-1"
+                title="Instagram"
+              >
+                <i
+                  class="fa fa-instagram fa-2x icon_hover_instagram"
+                  style="color: #3d3d3d; font-weight: 800"
+                ></i>
+              </a>
+            </li>
+            <li class="list-inline-item" style="margin-right: 1rem">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/company/senses-akustik/"
+                target="_blank"
+                class="sbtn btn-large mx-1"
+                title="LinkedIn"
+              >
+                <i
+                  class="fab fa-linkedin fa-2x icon_hover_linkedin"
+                  style="color: #3d3d3d; font-weight: 800"
+                ></i>
+              </a>
+            </li>
+
+            <li class="list-inline-item" style="margin-right: 1rem">
+              <a
+                target="_blank"
+                href="https://in.pinterest.com/sensesakustik/"
+                target="_blank"
+                class="sbtn btn-large mx-1"
+                title="Pinterest"
+              >
+                <i
+                  class="fa fa-pinterest fa-2x icon_hover_youtube"
+                  style="color: #3d3d3d; font-weight: 800"
+                ></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
     <div class="d-flex mt-3 justify-content-center mb-0">
       <h4 style="font-weight: 500">
         Copyright © Senses Akustik Pvt. Ltd. All rights reserved.

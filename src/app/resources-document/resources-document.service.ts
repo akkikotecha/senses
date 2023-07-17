@@ -58,4 +58,9 @@ export class ResourceDocumentService {
       resourceId;
     return this.http.get(url);
   }
+  getResourceParticularData(id: any) {
+    let url = environment.base_url + 'getAllResourceParticularData/' + id;
+    console.log(url);
+    return this.http.get(url);
+  }
 }

@@ -438,7 +438,7 @@ td {
   text-align: left;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
-  padding-top: 30px;
+  /* padding-top: 30px; */
 }
 .btn_set_css_new:hover {
   display: inline-block;
