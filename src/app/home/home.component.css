@@ -826,9 +826,18 @@ header:hover .owl-next {
   }
 }
 .numberIcon {
-  display: block;
+  position: relative;
+  top: -114px;
+  padding: 15px;
+  left: 6.7%;
+  font-size: 26px;
+  letter-spacing: 11px;
 }
 @media screen and (max-width: 600px) {
+  .sustainabilityHeaderRow {
+    margin: 0;
+    padding: 0;
+  }
   .numberIcon {
     display: none;
   }

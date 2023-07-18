@@ -31,11 +31,13 @@ export class ProductDetailsTwoComponent {
   feltsData: any[] = [];
   commonData: any[] = [];
   fabricsData: any = '';
+  paramsValue: any = '';
   filterLookbookData: any[] = [];
   filterTearSheetsData: any[] = [];
   filterInstallationManualsData: any[] = [];
   filterOtherData: any[] = [];
   isLoading: boolean = true;
+  koloPodsFinishesData: any[] = [];
   commonDataTest: any[] = [];
   @ViewChild('target', { static: false }) targetElement!: ElementRef;
   scroll(target: HTMLElement) {
@@ -258,6 +260,7 @@ export class ProductDetailsTwoComponent {
         });
     }, 2000);
 
+    this.paramsValue = this.route.snapshot.paramMap.get('name');
     // console.log("ID : "+localStorage.getItem('productId'));
     this.ProductDetailService.getResourceTypeData(
       localStorage.getItem('subCategoryId')
@@ -270,98 +273,69 @@ export class ProductDetailsTwoComponent {
         this.catAData = this.fabricsData.data.filter((res: any) => {
           if (res.fabricsType == 'catA') {
             if (
-              localStorage.getItem('subCategoryId') ==
-                '64807a8239df987ec9305731' ||
-              localStorage.getItem('subCategoryId') ==
-                '64807ab539df987ec9305739'
+              paramValue == 'cara' ||
+              paramValue == 'punch' ||
+              paramValue == 'hex'
             ) {
-              console.log('CATA RES', res.title);
               return (
                 res.title != 'SA_CAT A_Quartz' && res.title != 'SA_CAT A_Soho'
               );
-            } else if (
-              localStorage.getItem('subCategoryId') ==
-              '64807a9c39df987ec9305735'
-            ) {
+            } else if (paramValue == 'plush') {
               return res.title != 'SA_CAT A_Chelsea';
+            } else if (paramValue == 'breeze') {
+              return (
+                res.title != 'SA_CAT A_Shetland' && res.title != 'SA_CAT A_Soho'
+              );
+            } else if (paramValue == 'petal') {
+              return res.title != 'SA_CAT A_Soho';
+            } else if (paramValue == 'nexus') {
+              return {};
             }
-            if (
-              localStorage.getItem('subCategoryId') ==
-                '64807a1339df987ec930571c' ||
-              '64807a2d39df987ec9305720' ||
-              '64807a4a39df987ec9305724'
-            ) {
-              return res.title != 'SA_CAT A_Tweed';
-            }
-
             return res;
           }
         });
         console.log('this.catAData', this.catAData);
         this.catBData = this.fabricsData.data.filter((res: any) => {
           if (res.fabricsType == 'catB') {
-            // console.log(res);
             if (
-              localStorage.getItem('subCategoryId') ==
-              '64807a8239df987ec9305731'
+              paramValue == 'cara' ||
+              paramValue == 'breeze' ||
+              paramValue == 'petal'
             ) {
               return res.title != 'SA_CAT B_Beachcomber';
+            } else if (paramValue == 'punch' || paramValue == 'hex') {
+              return (
+                res.title != 'SA_CAT B_Beachcomber' &&
+                res.title != 'SA_CAT B_Elton'
+              );
             } else if (
-              localStorage.getItem('subCategoryId') ==
-              '64807ab539df987ec9305739'
+              paramValue === 'nexus' ||
+              paramValue === 'spark' ||
+              paramValue === 'instill'
             ) {
-              return res.title != 'SA_CAT B_Beachcomber';
-            } else if (
-              localStorage.getItem('subCategoryId') ==
-              '64807a9c39df987ec9305735'
-            ) {
-              return res;
+              this.catBData = [];
             }
-            if (
-              localStorage.getItem('subCategoryId') ==
-              '64807a1339df987ec930571c'
-            ) {
-              return res;
-            } else if (
-              localStorage.getItem('subCategoryId') ==
-                '64807a2d39df987ec9305720' ||
-              '64807a4a39df987ec9305724'
-            ) {
-              return res.title == 'SA_CAT B_Dolly';
-            } else {
-              return res;
-            }
+            return res;
           }
         });
+
         console.log('this.catBData', this.catBData);
         this.catCData = this.fabricsData.data.filter((res: any) => {
           if (res.fabricsType == 'catC') {
             if (
-              localStorage.getItem('subCategoryId') ==
-              '64807a1339df987ec930571c'
-            ) {
-              return res;
-            } else if (
-              localStorage.getItem('subCategoryId') ==
-              '64807a8239df987ec9305731'
+              paramValue == 'cara' ||
+              paramValue == 'punch' ||
+              paramValue == 'hex'
             ) {
               return res.title != 'SA_CAT C_Mode';
             } else if (
-              localStorage.getItem('subCategoryId') ==
-                '64807a9c39df987ec9305735' ||
-              localStorage.getItem('subCategoryId') ==
-                '64807ab539df987ec9305739'
+              paramValue == 'plush' ||
+              paramValue == 'breeze' ||
+              paramValue == 'petal'
             ) {
               return res.title != 'SA_CAT C_Mica';
-            } else if (
-              localStorage.getItem('subCategoryId') ==
-                '64807a2d39df987ec9305720' ||
-              '64807a4a39df987ec9305724'
-            ) {
-              return res.title != 'SA_CAT C_Mode';
-            } else {
-              return res;
             }
+            return res;
           }
         });
         console.log('this.catCData', this.catCData);
@@ -421,7 +395,14 @@ export class ProductDetailsTwoComponent {
         if (
           paramValue == 'plush' ||
           paramValue == 'breeze' ||
-          paramValue == 'cara'
+          paramValue == 'cara' ||
+          paramValue == 'petal' ||
+          paramValue == 'punch' ||
+          paramValue == 'hex' ||
+          paramValue == 'nexus' ||
+          paramValue == 'spark' ||
+          paramValue == 'instill' ||
+          paramValue == 'kolo-pods'
         ) {
           this.colorLineData = []; // Wrap the single object in an array
         } else {
@@ -445,9 +426,17 @@ export class ProductDetailsTwoComponent {
         if (
           paramValue == 'plush' ||
           paramValue == 'breeze' ||
-          paramValue == 'cara'
+          paramValue == 'cara' ||
+          paramValue == 'petal' ||
+          paramValue == 'spark' ||
+          paramValue == 'instill' ||
+          paramValue == 'kolo-pods'
         ) {
           this.feltsData = []; // Wrap the single object in an array
+        } else if (paramValue == 'nexus') {
+          this.feltsData = this.data.data.filter((res: any) => {
+            return res.title == 'SA_Felt 2.5 MM';
+          }); // Wrap the single object in an array
         } else {
           this.feltsData = this.data.data; // Wrap the single object in an array
         }
@@ -474,20 +463,41 @@ export class ProductDetailsTwoComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
-    this.ProductDetailService.getResourceParticularData(
-      '64afe8558dcf20bfd4b01e43'
-    ).subscribe((res) => {
-      if (res && typeof res === 'object') {
-        this.data = res; // Wrap the single object in an array
-        this.commonDataTest = this.data.data; // Wrap the single object in an array
-        console.log('commonDataTest', this.data.data);
-        // console.log('commonDataTest', this.Data);
+    if (this.paramsValue == 'spark') {
+      // Spark Finished Data
+      this.ProductDetailService.getResourceParticularData(
+        '64afe23c8dcf20bfd4b01ca2'
+      ).subscribe((res) => {
+        if (res && typeof res === 'object') {
+          this.data = res; // Wrap the single object in an array
+          this.commonDataTest = this.data.data; // Wrap the single object in an array
+          console.log('commonDataTest', this.data.data);
+          // console.log('commonDataTest', this.Data);
 
-        // console.log("shuffledArray " +shuffledArray);
-      } else {
-        console.error('Invalid response data: expected a single object');
-      }
-    });
+          // console.log("shuffledArray " +shuffledArray);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
+    }
+    if (this.paramsValue == 'instill') {
+      // Instill Finished Data
+      this.ProductDetailService.getResourceParticularData(
+        '64afe2688dcf20bfd4b01caa'
+      ).subscribe((res) => {
+        if (res && typeof res === 'object') {
+          this.data = res; // Wrap the single object in an array
+          this.commonDataTest = this.data.data; // Wrap the single object in an array
+          console.log('commonDataTest', this.data.data);
+          // console.log('commonDataTest', this.Data);
+
+          // console.log("shuffledArray " +shuffledArray);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
+    }
+
     //Download Data
     this.ProductDetailService.getAllResourceDataByFilter(
       localStorage.getItem('productId'),
@@ -568,6 +578,20 @@ export class ProductDetailsTwoComponent {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
         this.filterResourceDataByResourceSubId = this.data.data; // Wrap the single object in an array
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+
+    // Kolo Pods Finishes Data
+    this.ProductDetailService.getAllResourceDataByResourceSubIdFilter(
+      localStorage.getItem('productId'),
+      localStorage.getItem('subCategoryId'),
+      '64afd7778dcf20bfd4b01b1c'
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.data = res; // Wrap the single object in an array
+        this.koloPodsFinishesData = this.data.data.reverse(); // Wrap the single object in an array
       } else {
         console.error('Invalid response data: expected a single object');
       }

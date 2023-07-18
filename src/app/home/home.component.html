@@ -231,10 +231,9 @@
           data-url="#1"
         >
           <img
-            class="d-block w-100"
+            class="d-block projectImage"
             src="assets/Collage.webp"
             alt="First slide"
-            style="height: 600px; width: 65% !important; margin-left: auto"
           />
         </div>
         <div
@@ -247,10 +246,9 @@
           *ngFor="let dataProject of FeaturedProjectdata; let i = index"
         >
           <img
-            class="d-block w-100"
+            class="d-block projectImage"
             src="assets/{{ dataProject.image }}"
             alt="Second slide"
-            style="height: 600px; width: 65% !important; margin-left: auto"
           />
         </div>
       </div>
@@ -264,16 +262,7 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <span
-        class="p_all_text_set"
-        style="
-          position: relative;
-          top: -114px;
-          padding: 15px;
-          left: 6.7%;
-          font-size: 26px;
-          letter-spacing: 11px;
-        "
+      <span class="p_all_text_set numberIcon"
         ><span class="text_number_change">1</span>/4</span
       >
 
@@ -288,18 +277,15 @@
         <span class="sr-only">Next</span>
       </a>
       <div class="row col-lg-4 bg-transparent featureSlider p-4">
-        <p
-          class="p_all_text_set h1_text_set"
-          style="font-size: 28px; width: 80%; line-height: 61px"
-        >
+        <p class="p_all_text_set h1_text_set projectHeading">
           From Concept to Reality: A Look at Our Featured Projects
         </p>
-        <p class="p_all_text_set p_text_set" style="font-size: 18px">
+        <p class="p_all_text_set p_text_set projectPara">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor.
         </p>
 
-        <p class="p_all_text_set mt-3">
+        <p class="p_all_text_set mt-3 viewProjectProjectsButton">
           <a class="p_text_button view_project"
             ><button
               class="btn btn-success"
@@ -335,7 +321,7 @@
     </div>
   </section>
   <section class="process">
-    <div class="container">
+    <div class="container projectMargin">
       <div class="title-page-white text-center w-100">
         <h2 class="title_set hover_effect mb-3" style="font-weight: 500">
           Design & Culture
@@ -355,7 +341,7 @@
         </p>
       </div>
       <div class="row mt-3">
-        <div class="col-lg-4 image-container text-center">
+        <div class="col-lg-4 mb-2 mb-lg-0 image-container text-center">
           <img
             src="assets/1.webp"
             class="item-img"
@@ -364,7 +350,7 @@
           <div class="image-overlay"></div>
           <!-- <p class="p_all_text_set mt-4"></p> -->
         </div>
-        <div class="col-lg-4 image-container text-center">
+        <div class="col-lg-4 mb-2 mb-lg-0 image-container text-center">
           <img
             src="assets/2.webp"
             class="item-img"
@@ -400,22 +386,22 @@
     style="margin-top: 30px; margin-bottom: 40px"
   >
     <div class="container">
-      <div class="row">
+      <div class="row w-100 sustainabilityHeaderRow">
         <div class="title-page-white text-center w-100">
-          <div class="row mt-3 d-flex">
+          <div class="row w-100 mt-3 d-flex">
             <div class="col-lg-9">
               <h2
-                class="title_set text-left text-white"
+                class="title_set text-center text-lg-left text-white"
                 style="font-weight: 500"
               >
                 Sustainability
               </h2>
               <div
-                class="col-lg-12 text-center mb-2 d-flex justify-content-left pl-0"
+                class="col-lg-12 text-center mb-2 d-flex justify-content-center justify-content-lg-left pl-0"
               >
                 <hr class="hr_draw_Sustainability text-white" />
               </div>
-              <p class="p_all_text_set text-left text-white">
+              <p class="p_all_text_set text-center text-lg-left text-white">
                 At our core, sustainability is a way of life. We strive to
                 minimise our<br />
                 environmental impact not just through responsible sourcing and
@@ -468,7 +454,7 @@
         </h2>
 
         <div class="row w-100 mb-4">
-          <div class="box col-lg-2 text-center">
+          <div class="box col-lg-2 col-6 text-center">
             <a href="https://www.amazon.com" target="_blank">
               <img
                 src="assets/logo/Amazon.svg"
@@ -478,7 +464,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.cisco.com" target="_blank">
               <img
                 src="assets/logo/Cisco.svg"
@@ -488,7 +474,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.dbs.com" target="_blank">
               <img
                 src="assets/logo/DBS.svg"
@@ -498,7 +484,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www2.deloitte.com/" target="_blank">
               <img
                 src="assets/logo/Deloitte.svg"
@@ -508,7 +494,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.here.com" target="_blank">
               <img
                 src="assets/logo/Here Solutions.svg"
@@ -518,7 +504,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://anatomyit.com/" target="_blank">
               <img
                 src="assets/logo/Ice.svg"
@@ -529,7 +515,7 @@
             </a>
           </div>
 
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://kpmg.com/xx/en/home.html" target="_blank">
               <img
                 class="box__image"
@@ -539,7 +525,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.sc.com/in/" target="_blank">
               <img
                 class="box__image"
@@ -549,7 +535,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.telstra.com.au" target="_blank">
               <img
                 class="box__image"
@@ -559,7 +545,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.wellsfargo.com/" target="_blank">
               <img
                 class="box__image"
@@ -569,7 +555,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.wework.com/en-GB" target="_blank">
               <img
                 class="box__image"
@@ -579,7 +565,7 @@
               />
             </a>
           </div>
-          <div class="box col-lg-2 text-center">
+          <div class="box col-6 col-lg-2 text-center">
             <a href="https://www.wipro.com" target="_blank">
               <img
                 class="box__image"

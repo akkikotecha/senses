@@ -31,7 +31,7 @@ body {
 /* Project Images */
 .projectImage {
   height: 600px;
-  width: 65% !important;
+  width: 65%;
   margin-left: auto;
 }
 .projectHeading {
@@ -44,16 +44,22 @@ body {
   width: 80%;
   line-height: 61px;
 }
+.projectMargin {
+  margin-top: 0px;
+}
 @media only screen and (max-width: 600px) {
+  .projectMargin {
+    margin-top: 150px;
+  }
   .projectImage {
     height: 250px;
-    width: 100% !important;
+    width: 100%;
     /* margin-left: auto; */
   }
   .projectHeading {
     width: auto !important;
     font-size: 18px !important;
-    width: 93%;
+    width: 93% !important;
     line-height: 1.4;
     position: absolute;
     top: 240px;
@@ -65,7 +71,7 @@ body {
   .viewProjectProjectsButton {
     position: absolute;
     top: 310px;
-    width: auto;
+    width: 93% !important;
   }
 }
 .box {

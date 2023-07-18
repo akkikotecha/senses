@@ -489,10 +489,84 @@
                                 aria-multiselectable="false"
                               >
                                 <!-- Fabrics Data patch start -->
+                                <!-- KOLO Pods Fabrics Data -->
+                                <ng-container
+                                  *ngIf="paramsValue == 'kolo-pods'"
+                                >
+                                  <tr
+                                    *ngFor="
+                                      let document of koloPodsFinishesData;
+                                      let i = index
+                                    "
+                                    style="width: 1195px"
+                                  >
+                                    <ng-container>
+                                      <th style="width: 1200px">
+                                        <span
+                                          style="font-size: 16px; color: #000"
+                                        >
+                                          <input
+                                            (change)="
+                                              onFileSelect($event, document)
+                                            "
+                                            id="wp-comment-cookies-consent"
+                                            name="wp-comment-cookies-consent"
+                                            type="checkbox"
+                                            class="checkbox_design mr-3"
+                                            value="yes"
+                                          />
+                                        </span>
+                                        <span
+                                          class="truncate"
+                                          style="font-weight: 600"
+                                          >{{ document.title }}</span
+                                        >
+                                        <span
+                                          class="download-item-type ml-2"
+                                          style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            text-transform: uppercase;
+                                          "
+                                        >
+                                          {{ document.fabricsType }}
+                                        </span>
+                                      </th>
+                                      <th>
+                                        {{
+                                          document.imageSize
+                                            ? (
+                                                document.imageSize /
+                                                (1024 * 1024)
+                                              ).toFixed(2) + " MB"
+                                            : "7 MB"
+                                        }}
+                                      </th>
+                                      <th class="text-uppercase">
+                                        {{ document.resourceFormat }}
+                                      </th>
+                                      <th>
+                                        <a
+                                          href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}"
+                                          target="_senses"
+                                        >
+                                          <i
+                                            class="fa fa-download"
+                                            style="font-weight: 500"
+                                          ></i>
+                                        </a>
+                                      </th>
+                                    </ng-container>
+                                  </tr>
+                                </ng-container>
                                 <ng-container
                                   *ngIf="
-                                    this.Data[0].subcategoriesdata[0]
-                                      .subCategoryName == 'Zest'
+                                    paramsValue != 'nexus' &&
+                                    paramsValue != 'spark' &&
+                                    paramsValue != 'instill' &&
+                                    paramsValue != 'kolo-pods'
                                   "
                                 >
                                   <tr
@@ -699,773 +773,13 @@
                                 </ng-container>
                                 <ng-container
                                   *ngIf="
-                                    this.Data[0].subcategoriesdata[0]
-                                      .subCategoryName == 'Cara'
+                                    paramsValue == 'spark' ||
+                                    paramsValue == 'instill'
                                   "
                                 >
                                   <tr
                                     *ngFor="
-                                      let document of catAData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catBData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catCData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                </ng-container>
-                                <ng-container
-                                  *ngIf="
-                                    this.Data[0].subcategoriesdata[0]
-                                      .subCategoryName == 'Breeze'
-                                  "
-                                >
-                                  <tr
-                                    *ngFor="
-                                      let document of catAData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catBData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catCData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                </ng-container>
-                                <ng-container
-                                  *ngIf="
-                                    this.Data[0].subcategoriesdata[0]
-                                      .subCategoryName == 'Plush'
-                                  "
-                                >
-                                  <tr
-                                    *ngFor="
-                                      let document of catAData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catBData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catCData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                </ng-container>
-                                <ng-container
-                                  *ngIf="
-                                    this.Data[0].subcategoriesdata[0]
-                                      .subCategoryName == 'Hex' ||
-                                    this.Data[0].subcategoriesdata[0]
-                                      .subCategoryName == 'Punch'
-                                  "
-                                >
-                                  <tr
-                                    *ngFor="
-                                      let document of catAData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catBData;
-                                      let i = index
-                                    "
-                                    style="width: 1195px"
-                                  >
-                                    <ng-container>
-                                      <th style="width: 1200px">
-                                        <span
-                                          style="font-size: 16px; color: #000"
-                                        >
-                                          <input
-                                            (change)="
-                                              onFileSelect($event, document)
-                                            "
-                                            id="wp-comment-cookies-consent"
-                                            name="wp-comment-cookies-consent"
-                                            type="checkbox"
-                                            class="checkbox_design mr-3"
-                                            value="yes"
-                                          />
-                                        </span>
-                                        <span
-                                          class="truncate"
-                                          style="font-weight: 600"
-                                          >{{ document.title }}</span
-                                        >
-                                        <span
-                                          class="download-item-type ml-2"
-                                          style="
-                                            font-size: 14px;
-                                            font-weight: 400;
-                                            text-transform: uppercase;
-                                          "
-                                        >
-                                          {{ document.fabricsType }}
-                                        </span>
-                                      </th>
-                                      <th>
-                                        {{
-                                          document.imageSize
-                                            ? (
-                                                document.imageSize /
-                                                (1024 * 1024)
-                                              ).toFixed(2) + " MB"
-                                            : "7 MB"
-                                        }}
-                                      </th>
-                                      <th class="text-uppercase">
-                                        {{ document.resourceFormat }}
-                                      </th>
-                                      <th>
-                                        <a
-                                          href="assets/{{
-                                            document.image | htmlToPlaintext
-                                          }}"
-                                          target="_senses"
-                                        >
-                                          <i
-                                            class="fa fa-download"
-                                            style="font-weight: 500"
-                                          ></i>
-                                        </a>
-                                      </th>
-                                    </ng-container>
-                                  </tr>
-                                  <tr
-                                    *ngFor="
-                                      let document of catCData;
+                                      let document of commonDataTest;
                                       let i = index
                                     "
                                     style="width: 1195px"

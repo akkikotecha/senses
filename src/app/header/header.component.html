@@ -88,14 +88,36 @@
         <nav id="cssmenu">
           <div
             id="head-mobile"
+            class="d-flex"
             style="padding-top: 0px !important; padding-bottom: 4px !important"
           >
-            <a href="#"
-              ><img
-                [src]="netImage"
-                class="logo_style"
-                style="width: 30% !important"
-            /></a>
+            <div class="logoDiv w-100">
+              <a href="#"
+                ><img
+                  [src]="netImage"
+                  class="logo_style"
+                  style="width: 30% !important"
+              /></a>
+            </div>
+            <div class="filter">
+              <a
+                class="ml-0 sticky_color"
+                style="margin-top: -3px; margin-right: -3px"
+                ><span
+                  ><i
+                    (click)="handleClose()"
+                    style="cursor: pointer"
+                    class="fa fa-solid fa-close btn_click d-none close_btn sticky_color"
+                  ></i
+                  ><i
+                    class="fa fa-solid fa-search btn_click search_btn sticky_color searchHover"
+                    style="cursor: pointer"
+                  ></i></span
+              ></a>
+              <a class="ml-0 pl-2 sticky_color"
+                ><span><i class="fa fa-solid fa-globe sticky_color"></i></span>
+              </a>
+            </div>
           </div>
           <a
             href="javascript:void(0);"
