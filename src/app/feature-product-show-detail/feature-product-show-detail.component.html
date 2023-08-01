@@ -58,31 +58,35 @@
           </div>
 
           <div
-            class="mt-4"
+            class="mt-0"
             [innerHTML]="FeaturedProjectdata[0].Description"
           ></div>
 
           <div
-            class="row text-left mt-4"
-            style="border: 1xp solid #000 !important; margin-left: 0px"
+            class="row mt-4"
+            style="
+              border: 1xp solid #000 !important;
+              text-align: center;
+              margin-left: 0px;
+            "
           >
             <a
               href="./assets/{{ FeaturedProjectdata[0].download_url }}"
               download=""
             >
-              <p class="mt-5" style="text-align: center">
-                <button
-                  class="btn btn-success"
-                  style="
-                    background: transparent !important;
-                    border: 2px solid #000 !important;
-                    color: #000 !important;
-                    font-size: 18px;
-                  "
-                >
-                  Download
-                </button>
-              </p>
+              <!-- <p class="mt-0" style="text-align: center"> -->
+              <button
+                class="btn btn-success"
+                style="
+                  background: transparent !important;
+                  border: 2px solid #000 !important;
+                  color: #000 !important;
+                  font-size: 18px;
+                "
+              >
+                Download
+              </button>
+              <!-- </p> -->
             </a>
           </div>
           <!-- <div class="col-lg-3 ">

@@ -63,6 +63,12 @@ export class HeaderComponent implements OnInit {
   handleClose() {
     this.isDataFound = false;
   }
+  handleMap(): void {
+    const baseUrl = '/locate-us';
+    localStorage.setItem('mapClick', 'whoWeAre');
+    const url = baseUrl + '/';
+    window.open(url, '_blank');
+  }
   handleResourcesDocument() {
     localStorage.setItem('resourceTypeId', '6489ac193b5871e6e15ed0a2');
     window.open('/resources_document', '_vsvgrfdf');

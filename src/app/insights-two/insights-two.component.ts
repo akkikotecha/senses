@@ -17,6 +17,8 @@ export class InsightsTwoComponent {
   FeaturedProjectdata: any;
   lengthCount: any;
   getAllBlogs: any;
+  isLoading: boolean = true;
+
   @ViewChild('carousel', { static: true }) carousel: any;
   constructor(
     private lazyLoadService: LazyLoadingService,
@@ -29,21 +31,6 @@ export class InsightsTwoComponent {
 
   ngOnInit(): void {
     const paramValue = this.route.snapshot.paramMap.get('paramName');
-    if (paramValue == 'clientele') {
-      setTimeout(() => {
-        this.scroll();
-      }, 1000);
-    }
-    if (paramValue == 'blog') {
-      setTimeout(() => {
-        this.scrollBlog();
-      }, 1000);
-    }
-    if (paramValue == 'projectCase') {
-      setTimeout(() => {
-        this.scrollProjectCase();
-      }, 1000);
-    }
 
     this.titleService.setTitle('Insights | Senses Akustik');
     this.meta.updateTag({
@@ -62,6 +49,24 @@ export class InsightsTwoComponent {
       content:
         'Browse all latest trends, expert insights, design journeys and captivating stories in the world of acoustics & furniture design. ',
     });
+    setTimeout(() => {
+      this.isLoading = false;
+      if (paramValue == 'clientele') {
+        setTimeout(() => {
+          this.scroll();
+        }, 1000);
+      }
+      if (paramValue == 'blog') {
+        setTimeout(() => {
+          this.scrollBlog();
+        }, 1000);
+      }
+      if (paramValue == 'projectCase') {
+        setTimeout(() => {
+          this.scrollProjectCase();
+        }, 1000);
+      }
+    }, 1000);
     setTimeout(function () {
       console.log('HELLO');
       $('.header-main').css({
@@ -76,7 +81,7 @@ export class InsightsTwoComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
+    }, 1100);
 
     this.InsightsServiceServiceData.getAllBlogs().subscribe((res: any) => {
       console.log('getAllBlogs', res.data);
@@ -108,12 +113,12 @@ export class InsightsTwoComponent {
           $('.owl-carousel').owlCarousel({
             loop: false,
             margin: 10,
-            stagePadding: 30,
             dots: true,
+            stagePadding: 30,
             nav: false,
             mouseDrag: true,
             autoplay: true,
-            items: 3,
+            // items:3,
             // animateOut: "animate__animated animate__slideOutDown",
             // animateIn: "animate__animated animate__flipInX",
             smartSpeed: 450,
@@ -132,7 +137,7 @@ export class InsightsTwoComponent {
 
           $('#owl-demo').owlCarousel({
             loop: true,
-            margin: 10,
+            margin: 4,
             dots: true,
             nav: false,
             mouseDrag: true,
@@ -186,7 +191,7 @@ export class InsightsTwoComponent {
       // const rect = element.getBoundingClientRect();
       // const offset = rect.top + window.scrollY;
       // window.scrollTo({ top: offset, behavior: 'smooth' });
-      const offset = 130; // Adjust the offset value as needed
+      const offset = 10; // Adjust the offset value as needed
       const topOffset =
         element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({

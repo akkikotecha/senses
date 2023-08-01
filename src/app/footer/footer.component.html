@@ -13,7 +13,7 @@
               Careers
             </h4>
           </a>
-          <a target="_sensesd" [routerLink]="['/about-us', 'whoWeAre']">
+          <a target="_sensesd" style="cursor: pointer" (click)="handleMap()">
             <h4 class="hover_text hover_effect2" style="font-weight: 500">
               Locations
             </h4>
@@ -58,7 +58,7 @@
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-2 footer-links">
-          <a target="_sensesl" [routerLink]="['/insights/intro']">
+          <a target="_sensesl" [routerLink]="['/insights']">
             <h4 class="hover_text hover_effect2" style="font-weight: 500">
               Insights
             </h4>
@@ -220,7 +220,7 @@
               Privacy and Cookie Policy
             </h4>
           </a>
-          <a target="_sensesl" [routerLink]="['/insights/intro']">
+          <a target="_sensesl" [routerLink]="['/insights']">
             <h4 class="hover_text hover_effect2" style="font-weight: 500">
               Insights
             </h4>

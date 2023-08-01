@@ -85,6 +85,12 @@ export class FooterComponent {
       }
     });
   }
+  handleMap():void{
+    const baseUrl = '/locate-us';
+    localStorage.setItem("mapClick", "whoWeAre")
+    const url = baseUrl + '/';
+    window.open(url, '_blank');
+  }
 
   scroll() {
     const element = document.getElementById('Sustainability');

@@ -102,6 +102,7 @@ export class AdminCategoryComponent {
           // fd.append('select_category',"Announcement");
           // fd.append('select_date',$('#select_date').val());
           fd.append('categoryName', $('#title').val());
+          fd.append('categoryDescription', $('#description').val());
           fd.append('metaTitle', $('#add_meta_title').val());
           fd.append('metaDescription', $('#add_meta_description').val());
 

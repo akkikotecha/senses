@@ -1526,7 +1526,13 @@ td {
   }
 }
 .custom-class {
+  height: auto;
+}
+.custom-class1 {
   height: 500px;
+}
+.custom-class2 {
+  height: 1000px;
 }
 
 /* */

@@ -308,7 +308,11 @@ header:hover .owl-next {
   font-weight: 400;
   width: 100%;
 }
-
+@media screen and (max-width: 600px) {
+  .p_all_text_set {
+    font-size: 17px;
+  }
+}
 .set_link {
   font-weight: 600;
   text-align: left !important;
@@ -735,7 +739,7 @@ header:hover .owl-next {
 }
 @media only screen and (max-width: 600px) {
   .sustainabilityHeader {
-    height: 800px;
+    height: auto;
     padding: 20px 0;
   }
   .sustainabilityDownloadButton {
@@ -791,8 +795,9 @@ header:hover .owl-next {
 }
 
 @media screen and (max-width: 600px) {
-  .process .image-overlay2 {
-    width: 93%;
+  .process .image-overlay2,
+  .process .image-overlay {
+    width: 92%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
@@ -833,7 +838,20 @@ header:hover .owl-next {
   font-size: 26px;
   letter-spacing: 11px;
 }
+
+.sustainabilityPDFButton {
+  background: transparent !important;
+  border: 2px solid #fff !important;
+  color: white !important;
+  font-size: 22px;
+}
 @media screen and (max-width: 600px) {
+  .sustainabilityPDFButton {
+    background: transparent !important;
+    border: 2px solid #fff !important;
+    color: white !important;
+    font-size: 16px;
+  }
   .sustainabilityHeaderRow {
     margin: 0;
     padding: 0;

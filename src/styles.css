@@ -47,10 +47,26 @@ body {
 .projectMargin {
   margin-top: 0px;
 }
+.viewProjectProjectsButton a button {
+  background: transparent !important;
+  border: 2px solid #000;
+  color: black;
+  font-size: 20px;
+}
+.viewProjectProjectsButton a button:hover {
+  background: transparent !important;
+  border: 2px solid #000;
+  color: black;
+  font-size: 20px;
+}
 @media only screen and (max-width: 600px) {
   .projectMargin {
     margin-top: 150px;
   }
+  .marginMobileRemove {
+    margin: 0 !important;
+  }
+
   .projectImage {
     height: 250px;
     width: 100%;
@@ -60,7 +76,7 @@ body {
     width: auto !important;
     font-size: 18px !important;
     width: 93% !important;
-    line-height: 1.4;
+    line-height: 30px !important;
     position: absolute;
     top: 240px;
   }
@@ -70,8 +86,17 @@ body {
   }
   .viewProjectProjectsButton {
     position: absolute;
-    top: 310px;
+    top: 340px;
     width: 93% !important;
+  }
+  .viewProjectProjectsButton a:first-child button {
+    margin-right: 10px;
+  }
+  .viewProjectProjectsButton a button {
+    font-size: 15px;
+  }
+  .viewProjectProjectsButton a button:hover {
+    font-size: 15px;
   }
 }
 .box {
@@ -152,7 +177,7 @@ body {
   }
   .box {
     margin: 15px 10px;
-    height: 200px;
+    height: 150px;
   }
   .box:after {
     height: calc(100% + 6px);
@@ -335,6 +360,12 @@ placed on the editor margins. */
   height: 100%;
 }
 @media screen and (max-width: 600px) {
+  .title_set {
+    font-size: 24px;
+  }
+  .p_all_text_set {
+    font-size: 20px;
+  }
   .process {
     padding-top: 30px !important;
     padding-bottom: 40px !important;

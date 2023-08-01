@@ -18,6 +18,7 @@ export class ProductDetailsComponent {
   data_description: any;
   Data: any;
   productname: any;
+  productDesc: any;
   isLoading: boolean = true;
   constructor(
     private ProductDetailService: ProductDetailService,
@@ -27,6 +28,7 @@ export class ProductDetailsComponent {
     private titleService: Title
   ) {
     this.productname = localStorage.getItem('productname');
+    this.productDesc = localStorage.getItem('productDesc');
   }
 
   ngOnInit(): void {
@@ -75,7 +77,7 @@ export class ProductDetailsComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
+    }, 1500);
 
     // console.log("ID : "+localStorage.getItem('productId'));
     this.ProductDetailService.getAllSubCategory(

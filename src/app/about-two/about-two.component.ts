@@ -14,7 +14,36 @@ export class AboutTwoComponent implements AfterViewInit {
     private route: ActivatedRoute,
     private meta: Meta,
     private titleService: Title
-  ) {}
+  ) {
+    setTimeout(() => {
+      this.isLoading = false;
+
+      const paramValue = localStorage.getItem('mapClick');
+      if (paramValue == 'whoWeAre') {
+        setTimeout(() => {
+          this.scroll();
+          localStorage.removeItem('mapClick');
+        }, 1000);
+      }
+      console.log('false');
+    }, 1000);
+    setTimeout(function () {
+      $('.header-main').css({
+        background: '#fff',
+        border: '2px solid #ededed',
+        padding: '9px 0px 11px 0px',
+      });
+      $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
+      $('.sticky_color').addClass('sticky_add_color');
+      $('.search-field').css({
+        'background-image': "url('./assets/search.png')",
+      });
+      $('.logo img').css({ 'max-width': '170px' });
+      $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
+      $('#mumbaiMap').click();
+    }, 1100);
+  }
+  isLoading: boolean = true;
 
   map: any;
   mapMarkerIcon: string = './assets/pin.png';
@@ -36,28 +65,6 @@ export class AboutTwoComponent implements AfterViewInit {
       content:
         'Embracing sustainable innovation and bringing meaningful change in peoples lives. Our products are the reflection of our forward-thinking approach.',
     });
-    this.handleMapMumbai();
-    const paramValue = this.route.snapshot.paramMap.get('paramName');
-    if (paramValue == 'whoWeAre') {
-      setTimeout(() => {
-        this.scroll();
-      }, 1000);
-    }
-
-    setTimeout(function () {
-      $('.header-main').css({
-        background: '#fff',
-        border: '2px solid #ededed',
-        padding: '9px 0px 11px 0px',
-      });
-      $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
-      $('.sticky_color').addClass('sticky_add_color');
-      $('.search-field').css({
-        'background-image': "url('./assets/search.png')",
-      });
-      $('.logo img').css({ 'max-width': '170px' });
-      $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 200);
   }
 
   ngAfterViewInit(): void {

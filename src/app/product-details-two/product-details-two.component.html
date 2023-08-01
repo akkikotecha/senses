@@ -37,9 +37,8 @@
               [class.active]="i === 0"
             >
               <img
-                class="d-block w-100"
+                class="d-block w-100 productSlider"
                 src="assets/{{ this.getData | htmlToPlaintext }}"
-                style="height: 700px"
               />
               <div
                 class="carousel-caption d-none d-md-block"
@@ -299,7 +298,7 @@
                                         href="assets/{{
                                           document.image | htmlToPlaintext
                                         }}"
-                                        target="_senses"
+                                        target="{{ document.image }}"
                                       >
                                         <i
                                           class="fa fa-download"
@@ -368,7 +367,7 @@
                                         href="assets/{{
                                           document.image | htmlToPlaintext
                                         }}"
-                                        target="_senses"
+                                        target="{{ document.image }}"
                                       >
                                         <i
                                           class="fa fa-download"
@@ -437,7 +436,7 @@
                                         href="assets/{{
                                           document.image | htmlToPlaintext
                                         }}"
-                                        target="_senses"
+                                        target="{{ document.image }}"
                                       >
                                         <i
                                           class="fa fa-download"
@@ -550,7 +549,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -566,7 +565,8 @@
                                     paramsValue != 'nexus' &&
                                     paramsValue != 'spark' &&
                                     paramsValue != 'instill' &&
-                                    paramsValue != 'kolo-pods'
+                                    paramsValue != 'kolo-pods' &&
+                                    paramsValue != 'dome'
                                   "
                                 >
                                   <tr
@@ -626,7 +626,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -693,7 +693,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -760,7 +760,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -834,7 +834,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -916,7 +916,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -990,7 +990,7 @@
                                           href="assets/{{
                                             document.image | htmlToPlaintext
                                           }}"
-                                          target="_senses"
+                                          target="{{ document.image }}"
                                         >
                                           <i
                                             class="fa fa-download"
@@ -1076,7 +1076,7 @@
                                             href="assets/{{
                                               document.image | htmlToPlaintext
                                             }}"
-                                            target="_senses"
+                                            target="{{ document.image }}"
                                           >
                                             <i
                                               class="fa fa-download"
@@ -1145,7 +1145,7 @@
                                             href="assets/{{
                                               document.image | htmlToPlaintext
                                             }}"
-                                            target="_senses"
+                                            target="{{ document.image }}"
                                           >
                                             <i
                                               class="fa fa-download"
@@ -1275,7 +1275,7 @@
                                         href="assets/{{
                                           document.image | htmlToPlaintext
                                         }}"
-                                        target="_senses"
+                                        target="{{ document.image }}"
                                       >
                                         <i
                                           class="fa fa-download"
@@ -1347,7 +1347,7 @@
                                         href="assets/{{
                                           document.image | htmlToPlaintext
                                         }}"
-                                        target="_senses"
+                                        target="{{document.image}}"
                                       >
                                         <i
                                           class="fa fa-download"
@@ -1459,7 +1459,7 @@
                                         href="assets/{{
                                           document.image | htmlToPlaintext
                                         }}"
-                                        target="_senses"
+                                        target="{{ document.image }}"
                                       >
                                         <i
                                           class="fa fa-download"

@@ -19,6 +19,7 @@ export class ResourceDetailComponent {
   resourceType: any = '';
   resourceSubType: any = '';
   resourceFilterTypeSubTypeData: any = '';
+  isLoading: boolean = true;
   ngOnInit(): void {
     this.titleService.setTitle('Resources | Senses Akustik');
     this.meta.updateTag({
@@ -58,7 +59,9 @@ export class ResourceDetailComponent {
       this.resourceFilterTypeSubTypeData.data.unshift(secondPositionData[0]);
     });
     const array = [1, 2, 3, 4, 5];
-
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -72,7 +75,7 @@ export class ResourceDetailComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
+    }, 1100);
   }
   activeIndex = 0; // Initially set the first accordion item as active
 

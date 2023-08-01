@@ -5,6 +5,8 @@
     <title>
       Senses Akustik, Innovative Solutions for a Happier, Productive Life
     </title>
+    <meta name="robots" content="index, follow" />
+
     <meta
       property="og:title"
       content="Senses Akustik, Innovative Solutions for a Happier, Productive Life"
@@ -570,6 +572,24 @@
         border: 1px solid lightgrey !important;
       }
     </style>
+    <script
+      src="https://www.sensesakustik.com/wp-content/themes/custom/js/jquery-2.1.0.js"
+      defer
+      async
+    ></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-9JQ27TSK64"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-9JQ27TSK64");
+    </script>
   </head>
 
   <body>
@@ -577,6 +597,7 @@
 
     <!-- <button class="back-to-top" type="button"></button> -->
     <button class="back-to-top" type="button"></button>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"
       integrity="sha512-xQBQYt9UcgblF6aCMrwU1NkVA7HCXaSN2oq0so80KO+y68M+n64FOcqgav4igHe6D5ObBLIf68DWv+gfBowczg=="
@@ -712,8 +733,8 @@
       const newTab = window.open("", "_blank");
       newTab.location.href =
         window.location.origin +
-        "/featured_project_view_all_detail/" +
-        $(".get_text_slider.active").attr("data-text_h1");
+        "/project-case/" +
+        $(".get_text_slider.active").attr("data-text_h1").replace(/\s+/g, "-");
       // console.log("HELLO "+);
     });
 
@@ -849,6 +870,7 @@ ckfinder: {
 
         if (
           loc.pathname.includes("/product") ||
+          loc.pathname.includes("/404") ||
           loc.pathname.includes("/products") ||
           loc.pathname.includes("/sub_products") ||
           loc.pathname.includes("/resources") ||

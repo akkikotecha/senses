@@ -16,7 +16,7 @@ import { OnDestroy } from '@angular/core';
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 declare var $: any;
-
+import { InitialLoadService } from './InitialLoad.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -52,67 +52,41 @@ export class HomeComponent implements OnInit {
     private lazyLoadService: LazyLoadingService,
     private router: Router,
     private homeService: HomeService,
-    private HomeServicesService: HomeServicesService
-  ) {}
+    private HomeServicesService: HomeServicesService,
+    private initialLoadService: InitialLoadService
+  ) {
+    // const isFirstLoad = sessionStorage.getItem('isFirstLoad') === null;
+    // if (isFirstLoad) {
+    //   this.isLoading = true;
+    //   sessionStorage.setItem('isFirstLoad', 'false'); // Set a flag in sessionStorage
+    //   console.log('I am calling isFirstLoad');
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3500);
+    // } else {
+    //   console.log('I am calling isFirstLoad2');
+    //   console.log('dvrdbgvrfv');
+    //   this.isLoading = false;
+    // }
+  }
 
   getAllBlogs: any;
-
+  autoSlideCarousel() {
+    setInterval(() => {
+      this.currentImageIndex =
+        (this.currentImageIndex + 1) % this.Data.data.length;
+    }, 1000); // Change the interval value (in milliseconds) to control the slide speed
+  }
   ngOnInit(): void {
+    this.autoSlideCarousel();
     interval(500)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.nextImage();
       });
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3500);
-    this.homeService.getAllFeaturedProduct().subscribe((res: any) => {
-      console.log('Featured Products', res.data);
-      res.data.map((product: any) => {
-        if (product.orderIndex === 1) {
-          this.firstFeaturedProduct = product;
-        } else if (product.orderIndex === 2) {
-          this.secondFeaturedProduct = product;
-        } else if (product.orderIndex === 3) {
-          this.thirdFeaturedProduct = product;
-        } else if (product.orderIndex === 4) {
-          this.fourthFeaturedProduct = product;
-        }
-      });
-      console.log('firstFeaturedProduct', this.firstFeaturedProduct);
-      console.log('secondFeaturedProduct', this.secondFeaturedProduct);
-      console.log('thirdFeaturedProduct', this.thirdFeaturedProduct);
-      console.log('fourthFeaturedProduct', this.fourthFeaturedProduct);
-    });
-
-    this.homeService.getThreeFeaturedProjects().subscribe((res: any) => {
-      console.log('Featured Project', res.data);
-      this.FeaturedProjectdata = res.data;
-      // console.log("firstFeaturedProduct", this.firstFeaturedProduct)
-      // console.log("secondFeaturedProduct", this.secondFeaturedProduct)
-      // console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
-      // console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
-    });
-
-    this.homeService.getAllBlogs().subscribe((res: any) => {
-      console.log('getAllBlogs', res.data);
-      this.getAllBlogs = res;
-      // console.log("firstFeaturedProduct", this.firstFeaturedProduct)
-      // console.log("secondFeaturedProduct", this.secondFeaturedProduct)
-      // console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
-      // console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
-    });
-
-    this.HomeServicesService.getHomeBanner().subscribe((res) => {
-      if (res && typeof res === 'object') {
-        this.Data = res; // Wrap the single object in an array
-        console.log('JobsiteData', this.Data);
-      } else {
-        console.error('Invalid response data: expected a single object');
-      }
-    });
 
     setTimeout(() => {
+      $('.carousel').carousel(1000);
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js'
@@ -120,7 +94,7 @@ export class HomeComponent implements OnInit {
         .subscribe((_) => {
           $('.owl-carousel').owlCarousel({
             loop: false,
-            margin: 4,
+            margin: 10,
             dots: true,
             stagePadding: 30,
             nav: false,
@@ -172,7 +146,56 @@ export class HomeComponent implements OnInit {
           // });
         });
     }, 4000);
+    this.HomeServicesService.getHomeBanner().subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.isLoading = true;
+        this.Data = res; // Wrap the single object in an array
+        console.log('JobsiteData', this.Data);
+        // setTimeout(() => {
+        // }, 3500);
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
+    this.homeService.getAllFeaturedProduct().subscribe((res: any) => {
+      console.log('Featured Products', res.data);
+      res.data.map((product: any) => {
+        if (product.orderIndex === 1) {
+          this.firstFeaturedProduct = product;
+        } else if (product.orderIndex === 2) {
+          this.secondFeaturedProduct = product;
+        } else if (product.orderIndex === 3) {
+          this.thirdFeaturedProduct = product;
+        } else if (product.orderIndex === 4) {
+          this.fourthFeaturedProduct = product;
+        }
+      });
+      console.log('firstFeaturedProduct', this.firstFeaturedProduct);
+      console.log('secondFeaturedProduct', this.secondFeaturedProduct);
+      console.log('thirdFeaturedProduct', this.thirdFeaturedProduct);
+      console.log('fourthFeaturedProduct', this.fourthFeaturedProduct);
+    });
+
+    this.homeService.getThreeFeaturedProjects().subscribe((res: any) => {
+      console.log('Featured Project', res.data);
+      this.FeaturedProjectdata = res.data;
+      // console.log("firstFeaturedProduct", this.firstFeaturedProduct)
+      // console.log("secondFeaturedProduct", this.secondFeaturedProduct)
+      // console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
+      // console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
+    });
+
+    this.homeService.getAllBlogs().subscribe((res: any) => {
+      console.log('getAllBlogs', res.data);
+      this.getAllBlogs = res;
+      // console.log("firstFeaturedProduct", this.firstFeaturedProduct)
+      // console.log("secondFeaturedProduct", this.secondFeaturedProduct)
+      // console.log("thirdFeaturedProduct", this.thirdFeaturedProduct)
+      // console.log("fourthFeaturedProduct", this.fourthFeaturedProduct)
+    });
+    // this.isLoading = false;
   }
+
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
@@ -209,7 +232,7 @@ export class HomeComponent implements OnInit {
 
     localStorage.setItem('blogs_id', id);
     localStorage.setItem('blogs_title', name);
-    window.open(`/blog_and_news_show_details/${name}`, '_blank');
+    window.open(`/blogs/${name.replace(/\s+/g, '-')}`, '_blank');
     // console.log(id)
     // this.router.navigate(['blog_and_news_show_details', name]).then(() => {
     //   // window.location.reload();
@@ -247,5 +270,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit() {}
+  // ngAfterViewInit() {
+  //   setTimeout(() => {
+  //     this.isLoading = false;
+  //   }, 4000);
+  // }
 }

@@ -45,6 +45,9 @@ export class ProductComponent {
       content:
         'Create a harmonious soundscape with our collection of acoustics and agile furniture solutions. Enhances productivity and focus in a dynamic workspace.',
     });
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -58,12 +61,10 @@ export class ProductComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 3000);
+    }, 1200);
 
     // console.log("ID : "+localStorage.getItem('CategoryDetailId'));
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
+
     this.ProductService.getAllCategory().subscribe((res) => {
       this.Data = JSON.parse(JSON.stringify(res));
       console.log('JobsiteData ' + this.Data);
@@ -77,6 +78,7 @@ export class ProductComponent {
 
     localStorage.setItem('productId', id);
     localStorage.setItem('productname', name);
+    localStorage.setItem('productDesc', getData.categoryDescription);
     localStorage.removeItem('metaTitle');
     localStorage.removeItem('metaDescription');
 

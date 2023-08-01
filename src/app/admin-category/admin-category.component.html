@@ -457,6 +457,25 @@
                   </div>
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
+                      <label>Description <span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="description"
+                        id="description"
+                        placeholder="Description"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-description"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-Title"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
                       <label>Meta Title<span class="text-red">*</span></label>
                       <input
                         type="text"

@@ -72,8 +72,13 @@
   background-color: unset;
   transform: scale(1.02);
 }
-
+.productDesc {
+  width: 50%;
+}
 @media screen and (max-width: 600px) {
+  .productDesc {
+    width: 100%;
+  }
   .process .image-overlay {
     width: 100%;
     height: 100%;

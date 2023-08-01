@@ -65,6 +65,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { LightboxModule } from 'ngx-lightbox';
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderProductsComponent } from './loader-products/loader-products.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ImageLazyLoadModule } from './image-lazy-load/image-lazy-load.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -120,6 +122,7 @@ import { LoaderProductsComponent } from './loader-products/loader-products.compo
     MapComponent,
     LoaderComponent,
     LoaderProductsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,6 +135,7 @@ import { LoaderProductsComponent } from './loader-products/loader-products.compo
     RecaptchaModule,
     GoogleMapsModule,
     LightboxModule,
+    ImageLazyLoadModule,
     // CKEditorModule,
   ],
   providers: [],

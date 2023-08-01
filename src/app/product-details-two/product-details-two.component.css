@@ -622,3 +622,13 @@ td {
   font-size: 30px;
   color: #808080;
 }
+
+.productSlider {
+  height: 700px;
+}
+@media screen and (max-width: 768px) {
+  .productSlider {
+    height: 250px;
+    margin-top: 96px;
+  }
+}

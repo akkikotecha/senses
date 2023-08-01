@@ -3531,3 +3531,13 @@ span.ruby-c-content {
 .searchHover:hover {
   color: #fecc00 !important;
 }
+
+.headerMarginRightSearch {
+  margin-right: -55px !important;
+}
+@media screen and (max-width: 1397px) {
+  /* Add your media query styles here */
+  .headerMarginRightSearch {
+    margin-right: 0px !important;
+  }
+}

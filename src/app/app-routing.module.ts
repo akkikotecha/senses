@@ -41,6 +41,7 @@ import { WarrantyComponent } from './warranty/warranty.component';
 import { FaqComponent } from './faq/faq.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsofuserComponent } from './termsofuser/termsofuser.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -58,54 +59,64 @@ const routes: Routes = [
     component: ProductDetailsComponent,
     runGuardsAndResolvers: 'always',
   },
-  {
-    path: 'product_details',
-    component: ProductDataComponent,
-    runGuardsAndResolvers: 'always',
-  },
-  {
-    path: 'about_us',
-    component: AboutUsComponent,
-    runGuardsAndResolvers: 'always',
-  },
+  // {
+  //   path: 'product_details',
+  //   component: ProductDataComponent,
+  //   runGuardsAndResolvers: 'always',
+  // },
+  // {
+  //   path: 'about_us',
+  //   component: AboutUsComponent,
+  //   runGuardsAndResolvers: 'always',
+  // },
   {
     path: 'resources',
     component: ResourceDetailComponent,
     runGuardsAndResolvers: 'always',
   },
+  // {
+  //   path: 'resources_detail',
+  //   component: ResourcesComponent,
+  //   runGuardsAndResolvers: 'always',
+  // },
   {
-    path: 'resources_detail',
-    component: ResourcesComponent,
-    runGuardsAndResolvers: 'always',
-  },
-  {
-    path: 'resources_gallery',
+    path: 'resources-gallery',
     component: ResourcesGalleryComponent,
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'resources_certificate',
-    component: ResourcesCertificateComponent,
-    runGuardsAndResolvers: 'always',
-  },
-  {
-    path: 'resources_material',
-    component: ResourcesMaterialComponent,
-    runGuardsAndResolvers: 'always',
-  },
-  {
-    path: 'resources_document',
+    path: 'resources-certifications',
     component: ResourcesDocumentComponent,
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'insights_two',
-    component: InsightsComponent,
+    path: 'resources-materials',
+    component: ResourcesDocumentComponent,
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'about-us/:paramName',
+    path: 'resources-documents',
+    component: ResourcesDocumentComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  // {
+  //   path: 'insights_two',
+  //   component: InsightsComponent,
+  //   runGuardsAndResolvers: 'always',
+  // },
+  {
+    path: 'about-us',
     component: AboutTwoComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'locate-us',
+    component: AboutTwoComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'insights',
+    component: InsightsTwoComponent,
     runGuardsAndResolvers: 'always',
   },
   {
@@ -118,11 +129,11 @@ const routes: Routes = [
     component: ProductDetailsTwoComponent,
     runGuardsAndResolvers: 'always',
   },
-  {
-    path: 'zest_product_detail',
-    component: ZestPorudctDetailsComponent,
-    runGuardsAndResolvers: 'always',
-  },
+  // {
+  //   path: 'zest_product_detail',
+  //   component: ZestPorudctDetailsComponent,
+  //   runGuardsAndResolvers: 'always',
+  // },
   {
     path: 'career',
     component: CareerComponent,
@@ -205,7 +216,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'featured_project_view_all_detail/:name',
+    path: 'project-case/:name',
     component: FeatureProductShowDetailComponent,
     runGuardsAndResolvers: 'always',
   },
@@ -215,7 +226,7 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'blog_and_news_show_details/:name',
+    path: 'blogs/:name',
     component: BlogAndNewsShowDetailsComponent,
     runGuardsAndResolvers: 'always',
   },
@@ -244,6 +255,8 @@ const routes: Routes = [
     component: WarrantyComponent,
     runGuardsAndResolvers: 'always',
   },
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404' }, // Wildcard route, must be the last one
 ];
 
 @NgModule({

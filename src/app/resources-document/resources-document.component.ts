@@ -14,6 +14,7 @@ export class ResourcesDocumentComponent {
   @ViewChild('categorySelect') categorySelect: any;
   data: any = '';
   handleCommonData: boolean = true;
+  documentFilter: boolean = false;
   filterData: any = '';
   filterResourceData: any = '';
   categoryData: any = '';
@@ -22,6 +23,10 @@ export class ResourcesDocumentComponent {
   subCategorySelectedId: any = '';
   disableSidebarContent: any = '';
   fabrics_id: any = '';
+  commonButtonClick: boolean = false;
+  productLookBook: any = '';
+  tearSheets: any = '';
+  installationManuals: any = '';
   constructor(
     private lazyLoadService: LazyLoadingService,
     private resourceDocument: ResourceDocumentService
@@ -32,9 +37,23 @@ export class ResourcesDocumentComponent {
   catAData: any[] = [];
   catBData: any[] = [];
   catCData: any[] = [];
-
+  handleLongData: boolean = false;
   // selectedFiles: any[] = [];
+  removeFirstNumber(inputString: string): string {
+    const firstDigitIndex = inputString.search(/\d/); // Find the index of the first digit
+    if (firstDigitIndex !== -1) {
+      return (
+        inputString.substring(0, firstDigitIndex) +
+        inputString.substring(firstDigitIndex + 1)
+      );
+    }
+    return inputString;
+  }
 
+  getPdfUrl(imagePath: string): string {
+    const modifiedFileName = this.removeFirstNumber(imagePath);
+    return 'assets/' + modifiedFileName;
+  }
   onFileSelect(event: any, document: any) {
     const isChecked = event.target.checked;
     if (isChecked) {
@@ -55,9 +74,10 @@ export class ResourcesDocumentComponent {
 
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const document = this.selectedFiles[i];
+      // console.log('Document', document);
       const blob = await this.fetchBlob(document.image);
       const fileExtension = document.image.split('.').pop(); // Get the file extension
-      const filename = `file${i + 1}.${fileExtension}`; // Append the file extension to the filename
+      const filename = `${document.title}.${fileExtension}`; // Append the file extension to the filename
       zip.file(filename, blob);
     }
 
@@ -114,10 +134,40 @@ export class ResourcesDocumentComponent {
           this.data = null;
           if (res && typeof res === 'object') {
             this.data = res; // Wrap the single object in an array
-            this.filterResourceData = this.data.data.filter((res: any) => {
-              console.log('filterResourceData', res);
-              return res._id != '649c024077e6aa32c9f114f8';
-            }); // Wrap the single object in an array
+            if (
+              localStorage.getItem('resourceTypeId') ==
+              '6489ac193b5871e6e15ed0a2'
+            ) {
+              this.documentFilter = true;
+              this.filterResourceData = this.data.data.filter((res: any) => {
+                console.log('filterResourceData', res);
+                return res._id != '649c024077e6aa32c9f114f8';
+              }); // Wrap the single object in an array
+              this.productLookBook = this.data.data.filter((res: any) => {
+                console.log('filterResourceData', res);
+                return (
+                  res.resourceSubTypeData[0]._id == '6489ace73b5871e6e15ed0a8'
+                );
+              }); // Wrap the single object in an array
+
+              this.tearSheets = this.data.data.filter((res: any) => {
+                console.log('filterResourceData', res);
+                return (
+                  res.resourceSubTypeData[0]._id == '6489acfc3b5871e6e15ed0ac'
+                );
+              }); // Wrap the single object in an array
+              this.installationManuals = this.data.data.filter((res: any) => {
+                console.log('filterResourceData', res);
+                return (
+                  res.resourceSubTypeData[0]._id == '6489ad1d3b5871e6e15ed0b0'
+                );
+              }); // Wrap the single object in an array
+            } else {
+              this.filterResourceData = this.data.data.filter((res: any) => {
+                console.log('filterResourceData', res);
+                return res._id != '649c024077e6aa32c9f114f8';
+              });
+            }
             console.log('ResourceTypeData', this.data);
             console.log('filterResourceData', this.filterResourceData);
           } else {
@@ -186,11 +236,57 @@ export class ResourcesDocumentComponent {
         }
       });
   }
-  handleClick(id: string) {
-    this.fabrics_id = id;
-    console.log('id', id);
+  handleClick(id: string, name?: string) {
+    console.log('Name', id);
+    if (id == '648b0c153b5871e6e15ed4a1') {
+      this.fabrics_id = id;
+      this.filterResourceData = [];
+    } else {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == id) {
+          console.log(res);
+          return res;
+        }
+      });
+    }
+    if (id == '649c015577e6aa32c9f114e7') {
+      this.fabrics_id = null;
+      this.disableSidebarContent = false;
+      this.commonButtonClick = true;
+      this.commonOtherData = this.data.data.filter((res: any) => {
+        return res.resourceSubTypeData[0]._id == '649c015577e6aa32c9f114e7';
+      });
+      this.installationManuals = [];
+      this.productLookBook = [];
+      this.tearSheets = [];
+      console.log('Can I am Call or not', this.data);
+      console.log('this.filterResourcedwadsdcsData', this.filterResourceData);
+    }
+    if (name == 'Felts' || name == 'Colorline') {
+      setTimeout(() => {
+        $('#download_form').addClass('custom-class1');
+      }, 50);
+    }
 
     if (id === '') {
+      if (
+        localStorage.getItem('resourceTypeId') == '6489ac193b5871e6e15ed0a2'
+      ) {
+        this.productLookBook = this.data.data.filter((res: any) => {
+          console.log('filterResourceData', res);
+          return res.resourceSubTypeData[0]._id == '6489ace73b5871e6e15ed0a8';
+        }); // Wrap the single object in an array
+
+        this.tearSheets = this.data.data.filter((res: any) => {
+          console.log('filterResourceData', res);
+          return res.resourceSubTypeData[0]._id == '6489acfc3b5871e6e15ed0ac';
+        }); // Wrap the single object in an array
+        this.installationManuals = this.data.data.filter((res: any) => {
+          console.log('filterResourceData', res);
+          return res.resourceSubTypeData[0]._id == '6489ad1d3b5871e6e15ed0b0';
+        });
+      }
       this.disableSidebarContent = false;
 
       // this.resourceDocument.getResourceTypeData().subscribe((res) => {
@@ -206,8 +302,38 @@ export class ResourcesDocumentComponent {
       //     console.error('Invalid response data: expected a single object');
       //   }
       // });
+    } else if (id == '648b0c5d3b5871e6e15ed4ad') {
+      this.handleLongData = true;
+    } else if (id == '6489ace73b5871e6e15ed0a8') {
+      this.productLookBook = this.data.data.filter((res: any) => {
+        // console.log('filterResourceDataProduct', res);
+        return res.resourceSubTypeData[0]._id == '6489ace73b5871e6e15ed0a8';
+      });
+      this.tearSheets = [];
+      this.installationManuals = [];
+      console.log('filterResourceDataProduct', this.productLookBook);
+    } else if (id == '6489acfc3b5871e6e15ed0ac') {
+      this.tearSheets = this.data.data.filter((res: any) => {
+        // console.log('filterResourceDataProduct', res);
+        return res.resourceSubTypeData[0]._id == '6489acfc3b5871e6e15ed0ac';
+      });
+      this.productLookBook = [];
+      this.installationManuals = [];
+      console.log('filterResourceDataProduct', this.productLookBook);
+    } else if (id == '6489ad1d3b5871e6e15ed0b0') {
+      this.installationManuals = this.data.data.filter((res: any) => {
+        // console.log('filterResourceDataProduct', res);
+        return res.resourceSubTypeData[0]._id == '6489ad1d3b5871e6e15ed0b0';
+      });
+      this.productLookBook = [];
+      this.tearSheets = [];
+      console.log('filterResourceDataProduct', this.productLookBook);
     } else if (id == '648b0c153b5871e6e15ed4a1') {
+      setTimeout(() => {
+        $('#download_form').removeClass('custom-class1');
+      }, 500);
       this.disableSidebarContent = true;
+      // $('.cd-gallery form').css({ height: 'auto' });
       this.catAData = this.data.data.filter((res: any) => {
         if (res.fabricsType == 'catA') {
           console.log(res);
@@ -226,6 +352,7 @@ export class ResourcesDocumentComponent {
           return res;
         }
       });
+      this.handleLongData = true;
       console.log('CatA', this.catAData);
       console.log('CatB', this.catBData);
       console.log('CatC', this.catCData);
@@ -309,6 +436,26 @@ export class ResourcesDocumentComponent {
               console.log('filterResourceData', res);
               return res._id != '649c024077e6aa32c9f114f8';
             });
+            this.productLookBook = this.data.data.filter((res: any) => {
+              console.log('filterResourceData', res);
+              return (
+                res.resourceSubTypeData[0]._id == '6489ace73b5871e6e15ed0a8'
+              );
+            }); // Wrap the single object in an array
+
+            this.tearSheets = this.data.data.filter((res: any) => {
+              console.log('filterResourceData', res);
+              return (
+                res.resourceSubTypeData[0]._id == '6489acfc3b5871e6e15ed0ac'
+              );
+            }); // Wrap the single object in an array
+            this.installationManuals = this.data.data.filter((res: any) => {
+              console.log('filterResourceData', res);
+              return (
+                res.resourceSubTypeData[0]._id == '6489ad1d3b5871e6e15ed0b0'
+              );
+            });
+            console.log('filterResourceData23', this.filterResourceData);
 
             console.log('filterResourceData', this.data);
           } else {
@@ -327,6 +474,7 @@ export class ResourcesDocumentComponent {
             this.data = res; // Wrap the single object in an array
             this.filterResourceData = this.data.data; // Wrap the single object in an array
 
+            console.log('filterResourceData2', this.filterResourceData);
             console.log('filterResourceData', this.data);
           } else {
             console.error('Invalid response data: expected a single object');

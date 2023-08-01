@@ -42,9 +42,10 @@ export class ResourcesGalleryComponent {
 
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const document = this.selectedFiles[i];
+      // console.log('Document', document);
       const blob = await this.fetchBlob(document.image);
       const fileExtension = document.image.split('.').pop(); // Get the file extension
-      const filename = `file${i + 1}.${fileExtension}`; // Append the file extension to the filename
+      const filename = `${document.title}.${fileExtension}`; // Append the file extension to the filename
       zip.file(filename, blob);
     }
 

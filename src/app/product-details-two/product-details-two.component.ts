@@ -199,7 +199,7 @@ export class ProductDetailsTwoComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
+    }, 1500);
     setTimeout(() => {
       this.lazyLoadService
         .loadScript(
@@ -290,6 +290,8 @@ export class ProductDetailsTwoComponent {
               return res.title != 'SA_CAT A_Soho';
             } else if (paramValue == 'nexus') {
               return {};
+            } else if (paramValue == 'zest') {
+              return res.title != 'SA_CAT A_Tweed';
             }
             return res;
           }
@@ -402,9 +404,14 @@ export class ProductDetailsTwoComponent {
           paramValue == 'nexus' ||
           paramValue == 'spark' ||
           paramValue == 'instill' ||
-          paramValue == 'kolo-pods'
+          paramValue == 'kolo-pods' ||
+          paramValue == 'zest'
         ) {
           this.colorLineData = []; // Wrap the single object in an array
+        } else if (paramValue == 'dome') {
+          this.colorLineData = this.data.data.filter((res: any) => {
+            return res.title == 'SA_Colorline 6 MM';
+          }); // Wrap the single object in an array
         } else {
           this.colorLineData = this.data.data; // Wrap the single object in an array
         }
@@ -430,10 +437,15 @@ export class ProductDetailsTwoComponent {
           paramValue == 'petal' ||
           paramValue == 'spark' ||
           paramValue == 'instill' ||
-          paramValue == 'kolo-pods'
+          paramValue == 'kolo-pods' ||
+          paramValue == 'zest'
         ) {
           this.feltsData = []; // Wrap the single object in an array
         } else if (paramValue == 'nexus') {
+          this.feltsData = this.data.data.filter((res: any) => {
+            return res.title == 'SA_Felt 2.5 MM';
+          }); // Wrap the single object in an array
+        } else if (paramValue == 'dome') {
           this.feltsData = this.data.data.filter((res: any) => {
             return res.title == 'SA_Felt 2.5 MM';
           }); // Wrap the single object in an array
@@ -626,9 +638,10 @@ export class ProductDetailsTwoComponent {
 
     for (let i = 0; i < this.selectedFiles.length; i++) {
       const document = this.selectedFiles[i];
+      // console.log('Document', document);
       const blob = await this.fetchBlob(document.image);
       const fileExtension = document.image.split('.').pop(); // Get the file extension
-      const filename = `file${i + 1}.${fileExtension}`; // Append the file extension to the filename
+      const filename = `${document.title}.${fileExtension}`; // Append the file extension to the filename
       zip.file(filename, blob);
     }
 

@@ -37,7 +37,7 @@ export class BlogAndNewsShowDetailsComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
+    }, 100);
 
     this.ViewAllProjectServiceAll.getBlogsDetails(
       localStorage.getItem('blogs_id')

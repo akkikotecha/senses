@@ -34,9 +34,11 @@ export class FeatureProductShowDetailComponent {
         'background-image': "url('./assets/search.png')",
       });
       $('.logo img').css({ 'max-width': '170px' });
+      // $('span img').css({ width: '38.7%' });
+      $('p').css({ 'text-align': 'left' });
+      $('p').css({ margin: '30px 0' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 2000);
-
+    }, 100);
     this.ViewAllProjectServiceAll.getFeaturedProjectsDetails(
       localStorage.getItem('feature_project_Id')
     ).subscribe((res: any) => {
