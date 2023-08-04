@@ -42,6 +42,16 @@ export class AdminletstalkComponent {
   objectKeys = Object.keys;
 
   ngOnInit(): void {
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 2000);
     this.AdminCategoryService.getAllSubCategory().subscribe((res) => {
       this.JobsiteData = JSON.parse(JSON.stringify(res));
       console.log(this.JobsiteData);

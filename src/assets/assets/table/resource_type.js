@@ -70,7 +70,7 @@ $(document).ready(function () {
   var items = [];
   //var ResponseData=[];
   $.ajax({
-    url: window.localStorage.getItem("BaseURLAPI") + "getAllResourceType",
+    url: window.localStorage.getItem("BaseURLAPI") + "getAllResourceTypeAdmin",
     method: "GET",
     // data:x,_token:"{{ csrf_token() }}",
     headers: {
@@ -83,6 +83,7 @@ $(document).ready(function () {
           resource_type_name: val.title,
           resource_type_image: val.image,
           ID: val._id,
+          status: val.status,
           // full_name: val.full_name,
           // email: val.email,
           // mobile_no: val.mobile_no,
@@ -139,9 +140,21 @@ $(document).ready(function () {
           {
             title: "Action",
             template:
-              "<button class='btn btn-warning  view_data' data-id='#:ID#'   title='View' ><i class='fa fa-eye text-white'></i></button><button class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  title='Edit' ><i class='fa fa-edit text-white'></i></button><button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>",
+              "<button style='width: 4.5rem;color:white; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-warning  view_data' data-id='#:ID#'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  title='Edit' >Edit</button>",
             width: 180,
             // field: "ID",
+            // <i class='fa fa-eye text-white'></i>    <i class='fa fa-edit text-white'></i><button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
+          },
+
+          {
+            field: "status",
+            title: "Status",
+            template: function (dataItem) {
+              var statusText = dataItem.status === 1 ? "Active" : "Inactive";
+              var statusColor = dataItem.status === 1 ? "green" : "red";
+              var borderRadius = "2rem";
+              return `<div class="status-button" style="background-color: ${statusColor}; color: white;width:6rem; border-radius: ${borderRadius}; padding: 5px; text-align: center;">${statusText}</div>`;
+            },
           },
         ],
         dataBound: function () {
@@ -231,44 +244,118 @@ function returnFalse() {
   return false;
 }
 
-$("#grid").on("click", "button.removeData", function () {
-  var id = $(this).attr("data-val");
+// $("#grid").on("click", "button.removeData", function () {
+//   var id = $(this).attr("data-val");
+//   Swal.fire({
+//     title: "Are you Sure?",
+//     text: "",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#fd7e14",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes",
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       //   console.log(window.localStorage.getItem('BaseURLAPI')+"deleteProjectManager/"+id);
+//       $.ajax({
+//         url:
+//           window.localStorage.getItem("BaseURLAPI") +
+//           "deleteOrginizationAnnouncement/" +
+//           id,
+//         method: "GET",
+//         // data:x,_token:"{{ csrf_token() }}",
+//         headers: {
+//           "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+//         },
+//         success: function (result) {
+//           Swal.fire({
+//             title: "Organization Announcement Remove Successfully...",
+//             text: "",
+//             icon: "success",
+//             confirmButtonText: "ok",
+//             confirmButtonColor: "#fd7e14",
+//           });
+
+//           window.location.reload();
+//         },
+//       });
+//     }
+//   });
+//   //      console.log("HELLLLOO O "+$(this).attr('data-val'));
+// });
+
+$("#grid").on("click", ".status-button", function (e) {
+  e.stopPropagation(); // Prevent the click event from propagating to the grid cell
+  var grid = $("#grid").data("kendoGrid");
+  var dataItem = grid.dataItem($(this).closest("tr"));
+  var statusText = dataItem.status === 1 ? "active" : "inactive";
+
   Swal.fire({
-    title: "Are you Sure?",
-    text: "",
+    title: "Update Status",
+    text: "Current Status: " + statusText,
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#fd7e14",
+    confirmButtonColor: "#ffcc00",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes",
+    confirmButtonText: "Update",
+    cancelButtonText: "Cancel",
   }).then((result) => {
     if (result.isConfirmed) {
-      //   console.log(window.localStorage.getItem('BaseURLAPI')+"deleteProjectManager/"+id);
+      var newStatus = dataItem.status === 1 ? 0 : 1;
+      var productId = dataItem.ID;
+      console.log("banner id is ", productId);
+
       $.ajax({
         url:
           window.localStorage.getItem("BaseURLAPI") +
-          "deleteOrginizationAnnouncement/" +
-          id,
-        method: "GET",
-        // data:x,_token:"{{ csrf_token() }}",
+          "statusChangeResourceType/" +
+          productId,
+        method: "PUT",
         headers: {
           "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
-        success: function (result) {
-          Swal.fire({
-            title: "Organization Announcement Remove Successfully...",
-            text: "",
-            icon: "success",
-            confirmButtonText: "ok",
-            confirmButtonColor: "#fd7e14",
-          });
-
-          window.location.reload();
+        success: function (response) {
+          // Update the dataItem with the new status
+          dataItem.set("status", newStatus);
+          grid.refresh(); // Refresh the grid to reflect the changes
+          Swal.fire(
+            "Updated Successfully",
+            "Status has been updated.",
+            "success"
+          );
+        },
+        error: function (error) {
+          Swal.fire("Update Failed", "Failed to update the status.", "error");
         },
       });
+      // Assuming you have an API to update the status, you can make an AJAX call here
+      // $.ajax({
+      //   url: "your-update-status-api",
+      //   method: "POST",
+      //   data: { id: dataItem.ID, status: newStatus },
+      //   success: function (result) {
+      //     // Update the dataItem with the new status
+      //     dataItem.set("status", newStatus);
+      //     grid.refresh(); // Refresh the grid to reflect the changes
+      //     Swal.fire("Updated Successfully", "Status has been updated.", "success");
+      //   },
+      //   error: function (error) {
+      //     Swal.fire("Update Failed", "Failed to update the status.", "error");
+      //   }
+      // });
+
+      // For demonstration purposes, we'll just update the dataItem locally without making an AJAX call
+      dataItem.set("status", newStatus);
+      grid.refresh(); // Refresh the grid to reflect the changes
+      Swal.fire("Updated Successfully", "Status has been updated.", "success");
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire(
+        "Action Canceled",
+        "No changes were made to the status.",
+        "error"
+      );
     }
   });
-  //      console.log("HELLLLOO O "+$(this).attr('data-val'));
 });
 
 function clientCategoryEditor(container, options) {

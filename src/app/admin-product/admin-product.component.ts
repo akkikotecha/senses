@@ -43,7 +43,16 @@ export class AdminProductComponent {
   objectKeys = Object.keys;
 
   ngOnInit(): void {
+    setTimeout(function () {
+      // console.log('HELLO');
 
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 2000);
     
   this.AdminCategoryService.getAllCategory().subscribe((res)=>{
 

@@ -90,6 +90,7 @@ $(document).ready(function () {
           description: val.description,
           image: val.image,
           orderIndex: val.orderIndex,
+          status: val.status,
         });
       });
 
@@ -149,10 +150,29 @@ $(document).ready(function () {
             field: "description",
             title: "Description",
           },
+
           {
             field: "orderIndex",
             title: "Order Index",
           },
+          {
+            template:
+              "<button style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary edit_data' data-id='#:ID#' data-title='#:title#' data-discription='#:description#' title='Edit'>Edit</button>",
+            width: 140,
+            // field: "ID",
+            // edit icon <i class='fa fa-edit text-white'></i>  <button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
+          },
+
+          // {
+          //   field: "status",
+          //   title: "Status",
+          //   template: function (dataItem) {
+          //     var statusText = dataItem.status === 1 ? "Active" : "Inactive";
+          //     var statusColor = dataItem.status === 1 ? "green" : "red";
+          //     var borderRadius = "2rem";
+          //     return `<div class="status-button" style="background-color: ${statusColor}; color: white;width:6rem; border-radius: ${borderRadius}; padding: 5px; text-align: center;">${statusText}</div>`;
+          //   },
+          // },
         ],
         dataBound: function () {
           $(".k-grid-myDelete span").addClass("k-icon k-delete");
@@ -241,42 +261,116 @@ function returnFalse() {
   return false;
 }
 
-$("#grid").on("click", "button.removeData", function () {
-  var id = $(this).attr("data-val");
+// $("#grid").on("click", "button.removeData", function () {
+//   var id = $(this).attr("data-val");
+//   Swal.fire({
+//     title: "Are you Sure?",
+//     text: "",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#fd7e14",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes",
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       //   console.log(window.localStorage.getItem('BaseURLAPI')+"deleteProjectManager/"+id);
+//       $.ajax({
+//         url:
+//           window.localStorage.getItem("BaseURLAPI") + "deleteCareerJob/" + id,
+//         method: "GET",
+//         // data:x,_token:"{{ csrf_token() }}",
+//         headers: {
+//           "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+//         },
+//         success: function (result) {
+//           Swal.fire({
+//             title: "Career Job Remove Successfully...",
+//             text: "",
+//             icon: "success",
+//             confirmButtonText: "ok",
+//             confirmButtonColor: "#fd7e14",
+//           });
+
+//           window.location.reload();
+//         },
+//       });
+//     }
+//   });
+//   //      console.log("HELLLLOO O "+$(this).attr('data-val'));
+// });
+
+$("#grid").on("click", ".status-button", function (e) {
+  e.stopPropagation(); // Prevent the click event from propagating to the grid cell
+  var grid = $("#grid").data("kendoGrid");
+  var dataItem = grid.dataItem($(this).closest("tr"));
+  var statusText = dataItem.status === 1 ? "active" : "inactive";
+
   Swal.fire({
-    title: "Are you Sure?",
-    text: "",
+    title: "Update Status",
+    text: "Current Status: " + statusText,
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#fd7e14",
+    confirmButtonColor: "#ffcc00",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes",
+    confirmButtonText: "Update",
+    cancelButtonText: "Cancel",
   }).then((result) => {
     if (result.isConfirmed) {
-      //   console.log(window.localStorage.getItem('BaseURLAPI')+"deleteProjectManager/"+id);
+      var newStatus = dataItem.status === 1 ? 0 : 1;
+      var productId = dataItem.ID;
+      console.log("banner id is ", productId);
+
       $.ajax({
         url:
-          window.localStorage.getItem("BaseURLAPI") + "deleteCareerJob/" + id,
-        method: "GET",
-        // data:x,_token:"{{ csrf_token() }}",
+          window.localStorage.getItem("BaseURLAPI") +
+          "statusChangeFeaturedProduct/" +
+          productId,
+        method: "PUT",
         headers: {
           "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
-        success: function (result) {
-          Swal.fire({
-            title: "Career Job Remove Successfully...",
-            text: "",
-            icon: "success",
-            confirmButtonText: "ok",
-            confirmButtonColor: "#fd7e14",
-          });
-
-          window.location.reload();
+        success: function (response) {
+          // Update the dataItem with the new status
+          dataItem.set("status", newStatus);
+          grid.refresh(); // Refresh the grid to reflect the changes
+          Swal.fire(
+            "Updated Successfully",
+            "Status has been updated.",
+            "success"
+          );
+        },
+        error: function (error) {
+          Swal.fire("Update Failed", "Failed to update the status.", "error");
         },
       });
+      // Assuming you have an API to update the status, you can make an AJAX call here
+      // $.ajax({
+      //   url: "your-update-status-api",
+      //   method: "POST",
+      //   data: { id: dataItem.ID, status: newStatus },
+      //   success: function (result) {
+      //     // Update the dataItem with the new status
+      //     dataItem.set("status", newStatus);
+      //     grid.refresh(); // Refresh the grid to reflect the changes
+      //     Swal.fire("Updated Successfully", "Status has been updated.", "success");
+      //   },
+      //   error: function (error) {
+      //     Swal.fire("Update Failed", "Failed to update the status.", "error");
+      //   }
+      // });
+
+      // For demonstration purposes, we'll just update the dataItem locally without making an AJAX call
+      dataItem.set("status", newStatus);
+      grid.refresh(); // Refresh the grid to reflect the changes
+      Swal.fire("Updated Successfully", "Status has been updated.", "success");
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire(
+        "Action Canceled",
+        "No changes were made to the status.",
+        "error"
+      );
     }
   });
-  //      console.log("HELLLLOO O "+$(this).attr('data-val'));
 });
 
 function clientCategoryEditor(container, options) {

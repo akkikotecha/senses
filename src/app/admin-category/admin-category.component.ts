@@ -35,6 +35,16 @@ export class AdminCategoryComponent {
   objectKeys = Object.keys;
 
   ngOnInit(): void {
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 2000);
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/js/sweetalert.js')

@@ -20,6 +20,16 @@ export class AdminResourceSubtypeComponent {
   image: any = '';
   JobsiteData: any = '';
   ngOnInit(): void {
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 2000);
     this.adminResourceSubType.getAllResourceType().subscribe((res: any) => {
       console.log(res);
       this.JobsiteData = JSON.parse(JSON.stringify(res));

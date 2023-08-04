@@ -84,6 +84,16 @@ export class AdminProductDetailComponent {
   objectKeys = Object.keys;
 
   ngOnInit(): void {
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 2000);
     this.AdminCategoryService.getAllCategory().subscribe((res) => {
       this.JobsiteData = JSON.parse(JSON.stringify(res));
       // this.related_product = JSON.parse(JSON.stringify(res));

@@ -17,6 +17,7 @@ export class AdminDashboardComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+   
   }
 }

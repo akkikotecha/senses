@@ -22,6 +22,16 @@ export class AdminLoginComponent {
   constructor(private router: Router,private loginAuth:AdminLoginServiceService) { }
 
   ngOnInit(): void {
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 100);
     $('#myHeader').css({"display":"none"});
     $('#foot').css({"display":"none"});
     $('.mlctr-underlayer').remove();
