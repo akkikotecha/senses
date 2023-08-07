@@ -3,7 +3,7 @@ import { LazyLoadingService } from './lazy-loading.service';
 import { AppService } from './app.service';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 declare var $: any;
-
+import { BrowserService } from './browser.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,13 +12,16 @@ declare var $: any;
 export class AppComponent {
   title = 'frontend';
   token: string | undefined;
+  windowWidth: number;
   recatchaVerification: any = null;
   public isCaptchaValidated: boolean = false; //for self loading
 
   constructor(
     private AppService: AppService,
-    private lazyLoadService: LazyLoadingService
+    private lazyLoadService: LazyLoadingService,
+    private browserService: BrowserService
   ) {
+    this.windowWidth = this.browserService.getWindowWidth();
     this.token = undefined;
   }
   handleRecaptchaResolved(token: string): void {

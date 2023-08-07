@@ -67,6 +67,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderProductsComponent } from './loader-products/loader-products.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ImageLazyLoadModule } from './image-lazy-load/image-lazy-load.module';
+import { ServerModule } from '@angular/platform-server';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,8 +126,9 @@ import { ImageLazyLoadModule } from './image-lazy-load/image-lazy-load.module';
     PageNotFoundComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'frontend' }),
     AppRoutingModule,
+    ServerModule
     CarouselModule,
     BrowserAnimationsModule,
     HttpClientModule,
