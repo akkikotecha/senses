@@ -18,7 +18,7 @@ export class FeaturedProjectService {
   }
 
   EditOrganizationData(data: any) {
-    let url = environment.base_url + 'EditOrganizationDataAnnouncement';
+    let url = environment.base_url + 'editFeaturedProduct';
     console.log('AK : ' + JSON.stringify(data));
     return this.http.post(url, data);
   }

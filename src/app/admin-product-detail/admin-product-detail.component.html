@@ -233,7 +233,7 @@
         </div>
       </div>
 
-      <div
+      <!-- <div
         class="modal fade"
         id="editOrgCSR"
         tabindex="-1"
@@ -365,7 +365,7 @@
             </div>
           </div>
         </form>
-      </div>
+      </div> -->
       <!-- Create Product Details Modal -->
       <div
         class="modal fade"
@@ -838,7 +838,7 @@
           enctype="multipart/form-data"
           class="parsleyjs"
           data-parsley-priority-enabled="false"
-          (ngSubmit)="submit()"
+          (ngSubmit)="submitEditData()"
         >
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -882,7 +882,7 @@
                       <select
                         class="form-control sub_category"
                         name="sub_category"
-                        id="sub_category"
+                        id="edit_sub_category"
                       >
                         <option value="">Select</option>
                         <option
@@ -1016,13 +1016,15 @@
                       <label
                         >featured One Title<span class="text-red"
                           >*</span
-                        ></label
+                          
+                        >
+                        </label
                       >
                       <input
                         type="text"
                         class="form-control"
                         name="featuredOneTitle"
-                        id="featuredOneTitle"
+                        id="edit_featuredOneTitle"
                         placeholder="Featured One Title"
                         data-parsley-trigger-after-failure="change"
                         data-parsley-errors-container="#error-add-featuredOneTitle"
@@ -1042,11 +1044,12 @@
                           >*</span
                         ></label
                       >
+                      <input type="hidden" id="edit_id"  />
                       <input
                         type="text"
                         class="form-control"
-                        name="featuredTwoTitle"
-                        id="featuredTwoTitle"
+                        name="edit_featuredTwoTitle"
+                        id="edit_featuredTwoTitle"
                         placeholder="Featured Two Title"
                         data-parsley-trigger-after-failure="change"
                         data-parsley-errors-container="#error-add-featuredTwoTitle"
@@ -1070,7 +1073,7 @@
                         type="text"
                         class="form-control"
                         name="featuredThreeTitle"
-                        id="featuredThreeTitle"
+                        id="edit_featuredThreeTitle"
                         placeholder="Featured Three Title"
                         data-parsley-trigger-after-failure="change"
                         data-parsley-errors-container="#error-add-featuredThreeTitle"
@@ -1092,7 +1095,7 @@
                       >
                       <div
                         #featureOneDescription
-                        id="featureOneDescription"
+                        id="edit_featureOneDescription"
                         contenteditable="true"
                       ></div>
                     </div>
@@ -1107,7 +1110,7 @@
                       >
                       <div
                         #featureTwoDescription
-                        id="featureTwoDescription"
+                        id="edit_featureTwoDescription"
                         contenteditable="true"
                       ></div>
                     </div>
@@ -1122,7 +1125,7 @@
                       >
                       <div
                         #featureThreeDescription
-                        id="featureThreeDescription"
+                        id="edit_featureThreeDescription"
                         contenteditable="true"
                       ></div>
                     </div>

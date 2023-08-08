@@ -127,4 +127,61 @@ export class AdminResourceSubtypeComponent {
       });
     }
   }
+  editSubmit() {
+    if ($('#edit-basic-form').parsley().validate()) {
+      Swal.fire({
+        title: 'Do you want to add the product?',
+        text: '',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#fd7e14',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const requestData = {
+            title: $('#edit_resource-sub-type').val(),
+            resourceType: $('#edit_resource-type').val(),
+            edit_id: $('#edit_id').val(),
+          };
+          // Send the form data to the server
+          console.log(JSON.stringify(requestData));
+          this.adminResourceSubType
+            .EditOrganizationData(requestData)
+            .subscribe((res: any) => {
+              console.log('Result ', res);
+              const ra = JSON.stringify(res);
+              const Authdata = JSON.parse(ra);
+
+              if (Authdata.message == 'Resource Type updated successfully') {
+                Swal.fire({
+                  title: 'Admin Resource Type Added Successfully...',
+                  text: '',
+                  icon: 'success',
+                  confirmButtonText: 'ok',
+                  confirmButtonColor: '#fd7e14',
+                });
+
+                this.color = 'success';
+                this.successfully_login =
+                  'Admin Resource Type Added Successfully...';
+                window.location.reload();
+              } else {
+                Swal.fire({
+                  title: 'Admin Resource Type Not Added!!!',
+                  text: '',
+                  icon: 'error',
+                  confirmButtonText: 'ok',
+                  confirmButtonColor: '#fd7e14',
+                });
+
+                this.color = 'danger';
+                this.successfully_login = 'Admin Resource Type Not Added!!!';
+              }
+              this.check_valid = true;
+            });
+        }
+      });
+    }
+  }
 }

@@ -172,6 +172,7 @@ export class AdminCategoryComponent {
   }
 
   submitEditData() {
+    console.log("I am click?")
     if ($('#edit_basic-form').parsley().validate()) {
       // console.log($('#basic-form').serializeArray());
 
@@ -192,20 +193,18 @@ export class AdminCategoryComponent {
 
           fda.append('image', file);
 
-          fda.append('select_category', 'Announcement');
-          fda.append('select_date', $('#edit_select_date').val());
-          fda.append('title', $('#edit_title').val());
+          // fda.append('select_category', 'Announcement');
+          // fda.append('select_date', $('#edit_select_date').val());
+          // fda.append('title', $('#edit_title').val());
+          // fda.append('edit_id', $('#edit_id').val());
+
+          fda.append('categoryName', $('#edit_title').val());
+          fda.append('metaTitle', $('#edit_meta_title').val());
+          fda.append('metaDescription', $('#edit_meta_description').val());
+          fda.append('categoryDescription', $('#description').val());
           fda.append('edit_id', $('#edit_id').val());
 
-          console.log(
-            file +
-              ' ' +
-              $('#edit_select_date').val() +
-              ' ' +
-              $('#edit_title').val() +
-              ' ' +
-              $('#edit_id').val()
-          );
+          
           this.AdminCategoryService.EditCategoryData(fda).subscribe((res) => {
             console.log('Result ', res);
             const ra = JSON.stringify(res);

@@ -155,6 +155,16 @@ $(document).ready(function () {
             field: "Description",
             title: "Description",
           },
+
+          {
+            title: "Action",
+            template:
+              "<button style='width: 4.5rem;color:white; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-warning  view_data'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data ml-2'  data-id='#:ID#'  data-title='#:title#' data-sub-title='#:sub_title#'  title='Edit' >Edit</button>",
+            width: 180,
+            // field: "ID",
+            // <i class='fa fa-eye text-white'></i>    <i class='fa fa-edit text-white'></i><button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
+          },
+
           {
             field: "status",
             title: "Status",
@@ -162,7 +172,7 @@ $(document).ready(function () {
               var statusText = dataItem.status === 1 ? "Active" : "Inactive";
               var statusColor = dataItem.status === 1 ? "green" : "red";
               var borderRadius = "2rem";
-              return `<div class="status-button" style="background-color: ${statusColor}; color: white;width:6rem; border-radius: ${borderRadius}; padding: 5px; text-align: center;">${statusText}</div>`;
+              return `<div class="status-button" style="background-color: ${statusColor}; color: white;width:6rem; border-radius: ${borderRadius}; padding: 5px; text-align: center;">${statusText}</div> `;
             },
           },
         ],
@@ -441,9 +451,10 @@ $("#grid").on("click", "button.view_data", function () {
 });
 
 $("#grid").on("click", "button.edit_data", function () {
-  $("#edit_title").val($(this).attr("data-title"));
+  $("#editTitle").val($(this).attr("data-title"));
   $("#edit_descrirption").val($(this).attr("data-discription"));
   $("#edit_id").val($(this).attr("data-id"));
+  $("#editSubTitle").val($(this).attr("data-sub-title"));
   $("#editProductModal").modal("show");
 });
 

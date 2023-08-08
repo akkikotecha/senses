@@ -478,6 +478,123 @@ export class AdminBlogNewsComponent {
       .catch((error: any) => {
         console.error('Editor initialization error.', error);
       });
+    ClassicEditor.create(document.querySelector('#editfeatureOneDescription'), {
+      image: {
+        styles: {
+          // Defining custom styling options for the images.
+          options: [
+            {
+              name: 'side',
+              // icon: 'fa fa-image',
+              title: 'Side image',
+              className: 'image-side',
+              modelElements: ['imageBlock'],
+            },
+            {
+              name: 'margin-left',
+              // icon: 'fa fa-align-left',
+              title: 'Image on left margin',
+              className: 'image-margin-left',
+              modelElements: ['imageInline'],
+            },
+            {
+              name: 'margin-right',
+              // icon: 'fa fa-image',
+              title: 'Image on right margin',
+              className: 'image-margin-right',
+              modelElements: ['imageInline'],
+            },
+            // Modifying icons and titles of the default inline and
+            // block image styles to reflect its real appearance.
+            {
+              name: 'inline',
+              // icon: 'fa fa-image'
+            },
+            {
+              name: 'block',
+              title: 'Centered image',
+              // icon: 'fa fa-image'
+            },
+          ],
+        },
+        toolbar: [
+          {
+            // Grouping the buttons for the icon-like image styling
+            // into one drop-down.
+            name: 'imageStyle:icons',
+            title: 'Alignment',
+            items: [
+              'imageStyle:margin-left',
+              'imageStyle:margin-right',
+              'imageStyle:inline',
+            ],
+            defaultItem: 'imageStyle:margin-left',
+          },
+          {
+            // Grouping the buttons for the regular
+            // picture-like image styling into one drop-down.
+            name: 'imageStyle:pictures',
+            title: 'Style',
+            items: ['imageStyle:block', 'imageStyle:side'],
+            defaultItem: 'imageStyle:block',
+          },
+          '|',
+          'toggleImageCaption',
+          'linkImage',
+        ],
+      },
+      // toolbar: [
+      //   'undo',
+      //   'redo',
+      //   'heading',
+      //   'fontfamily',
+      //   'fontsize',
+      //   'fontColor',
+      //   'fontBackgroundColor',
+      //   'bold',
+      //   'italic',
+      //   'strikethrough',
+      //   'alignment',
+      //   'subscript',
+      //   'superscript',
+      //   'code',
+      //   'link',
+
+      //   'blockQuote',
+      //   'codeBlock',
+      //   'alignment',
+      //   'bulletedList',
+      //   'numberedList',
+      //   'todoList',
+      //   'outdent',
+      //   'indent',
+      //   'imageUpload',
+      // ],
+      ckfinder: {
+        uploadUrl: environment.base_url + 'ckeEditorImageUpload',
+      },
+    })
+      .then(
+        (editor: {
+          model: {
+            document: {
+              on: (arg0: string, arg1: (evt: any, data: any) => void) => void;
+            };
+          };
+          getData: () => any;
+        }) => {
+          console.log('Editor initialized.');
+
+          editor.model.document.on('change:data', (evt, data) => {
+            // Code to run when the document's data changes
+            this.description_value_2 = editor.getData();
+            console.log(editor.getData());
+          });
+        }
+      )
+      .catch((error: any) => {
+        console.error('Editor initialization error.', error);
+      });
 
     ClassicEditor.create(document.querySelector('#editor'), {
       // More of editor's config.
@@ -656,12 +773,17 @@ export class AdminBlogNewsComponent {
 
           const fda = new FormData();
 
-          fda.append('myFile', file);
+          // fda.append('myFile', file);
+          this.addFeaturedThreeImage.forEach((file, index) => {
+            fda.append('image', file);
+          });
 
-          fda.append('select_category', 'Announcement');
-          fda.append('select_date', $('#edit_select_date').val());
-          fda.append('title', $('#edit_title').val());
+          // fda.append('select_category', 'Announcement');
+          // fda.append('select_date', $('#edit_select_date').val());
+          fda.append('title', $('#editTitle').val());
           fda.append('edit_id', $('#edit_id').val());
+          fda.append('sub_title', $('#editSubTitle').val() as string);
+          fda.append('Description', this.description_value_2);
 
           console.log(
             file +

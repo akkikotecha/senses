@@ -116,20 +116,20 @@ this.image.forEach((file, index) => {
 });
 
 // formData.append('subCategoryName', $('#subCategoryName').val());
-formData.append('subCategoryDesc', $('#description').val());
-formData.append('overview', $('#overview').val());
-formData.append('featuredOneTitle', $('#featuredOneTitle').val());
-formData.append('featuredOneDesc', $('#featuredOneDesc').val());
-formData.append('featuredTwoTitle', $('#featuredTwoTitle').val());
-formData.append('featuredTwoDesc', $('#featuredTwoDesc').val());
-formData.append('featuredThreeTitle', $('#featuredThreeTitle').val());
-formData.append('featuredThreeDesc', $('#featuredThreeDesc').val());
+formData.append('subCategoryDesc', $('#addDescription').val());
+// formData.append('overview', $('#overview').val());
+// formData.append('featuredOneTitle', $('#featuredOneTitle').val());
+// formData.append('featuredOneDesc', $('#featuredOneDesc').val());
+// formData.append('featuredTwoTitle', $('#featuredTwoTitle').val());
+// formData.append('featuredTwoDesc', $('#featuredTwoDesc').val());
+// formData.append('featuredThreeTitle', $('#featuredThreeTitle').val());
+// formData.append('featuredThreeDesc', $('#featuredThreeDesc').val());
 
 
 // Add other form data fields
 formData.append('select_category', "Announcement");
-formData.append('category', $('#category').val());
-formData.append('subCategoryName', $('#title').val());
+formData.append('categoryId', $('#category').val());
+formData.append('subCategoryName', $('#addTitle').val());
 
 
         // Send the form data to the server
@@ -192,19 +192,26 @@ formData.append('subCategoryName', $('#title').val());
           if (result.isConfirmed) {
       
   
-            const file = this.imageUpdate;
+            // const file = this.imageUpdate;
+            
         //    this.image = file; 
         
             const fda =new FormData();
 
-            fda.append('myFile',file);
+            // fda.append('image',file);
+            this.image.forEach((file, index) => {
+              fda.append("image", file);
+            });
             
-             fda.append('select_category',"Announcement");
-             fda.append('select_date',$('#edit_select_date').val());
+            //  fda.append('select_category',"Announcement");
+            //  fda.append('select_date',$('#edit_select_date').val());
              fda.append('title',$('#edit_title').val());
+             fda.append('subCategoryDesc',$('#edit_description').val());
              fda.append('edit_id',$('#edit_id').val());
+             fda.append('categoryId',$('#edit_category').val());
+
             
-        console.log(file+" "+$('#edit_select_date').val()+" "+$('#edit_title').val()+" "+$('#edit_id').val());
+        // console.log(file+" "+$('#edit_select_date').val()+" "+$('#edit_title').val()+" "+$('#edit_id').val());
             this.AdminCategoryService.EditOrganizationData(fda).subscribe((res)=>{
   
             console.log("Result ",res);
@@ -214,7 +221,7 @@ formData.append('subCategoryName', $('#title').val());
             
           //  console.log(Authdata.data[0].User[0].first_name);
   
-          if(Authdata.message == "Added")
+          if(Authdata.message == "Data Uploaded Successfully")
           {
             Swal.fire({
               title: 'Organization Announcement Updated Successfully...',
@@ -227,7 +234,7 @@ formData.append('subCategoryName', $('#title').val());
             this.color = "success";
             this.successfully_login = "Organization Announcement Updated Successfully...";
            //  this.get_data();
-             window.location.reload();
+            //  window.location.reload();
             
           }else{
             Swal.fire({

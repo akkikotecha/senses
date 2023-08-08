@@ -90,6 +90,14 @@ $(document).ready(function () {
           sub_category: val.subcategoriesdata[0].subCategoryName,
           overview: plainTextOverview,
           status: val.status,
+          subProduct: val.subCategoryId,
+          overview: val.overview,
+          featureOneTitle: val.featuredOneTitle,
+          featureTwoTitle: val.featuredTwoTitle,
+          featureThreeTitle: val.featuredThreeTitle,
+          featureOneDescription: val.featuredOneDesc,
+          featureTwoDescription: val.featuredTwoDesc,
+          featureThreeDescription: val.featuredThreeDesc,
         });
       });
 
@@ -150,7 +158,8 @@ $(document).ready(function () {
 
           {
             template:
-              "<button style='width: 4.5rem; color:white; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-warning  view_data' data-id='#:ID#'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-title='#:category#' data-discription='#:category#' title='Edit' >Edit</button>",
+              "<button style='width: 4.5rem; color:white; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-warning  view_data' data-id='#:ID#'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-overview='#:overview#' data-subProductId='#:subProduct#' data-featuredOneTitle='#:featureOneTitle#'  data-featuredTwoTitle='#:featureTwoTitle#'  data-featuredThreeTitle='#:featureThreeTitle#' data-featuredOneDescription='#:featureOneDescription#' data-featuredTwoDescription='#:featureTwoDescription#' data-featuredThreeDescription='#:featureThreeDescription#'     data-title='#:category#' data-discription='#:category#' title='Edit' >Edit</button>",
+
             width: 180,
             // <i class='fa fa-eye text-white'></i> <button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
             // field: "ID",
@@ -442,9 +451,24 @@ $("#grid").on("click", "button.view_data", function () {
 });
 
 $("#grid").on("click", "button.edit_data", function () {
-  $("#edit_title").val($(this).attr("data-title"));
-  $("#edit_descrirption").val($(this).attr("data-discription"));
+  // $("#edit_title").val($(this).attr("data-title"));
+  // $("#edit_descrirption").val($(this).attr("data-discription"));
   $("#edit_id").val($(this).attr("data-id"));
+
+  // data-id='#:ID#'  data-overview='#:overview#' data-subProductId='#:subProduct#' data-featuredOneTitle='#:featureOneTitle#'  data-featuredTwoTitle='#:featureTwoTitle#'  data-featuredThreeTitle='#:featureThreeTitle#' data-featuredOneDescription='#:featureOneDescription#' data-featuredTwoDescription='#:featureTwoDescription#' data-featuredThreeDescription='#:featureThreeDescription#'     data-title='#:category#' data-discription='#:category#' title='Edit'
+  var subProduct = $(this).attr("data-subProductId");
+  var overview = $(this).attr("data-overview");
+  var featureOneTitle = $(this).attr("data-featuredOneTitle");
+  var featureTwoTitle = $(this).attr("data-featuredTwoTitle");
+  var featureThreeTitle = $(this).attr("data-featuredThreeTitle");
+
+  $("#edit_sub_category").val(subProduct);
+  $("#editEditor").val(overview);
+
+  $("#edit_featuredOneTitle").val(featureOneTitle);
+  $("#edit_featuredTwoTitle").val(featureTwoTitle);
+  $("#edit_featuredThreeTitle").val(featureThreeTitle);
+
   $("#editProductModal").modal("show");
 });
 

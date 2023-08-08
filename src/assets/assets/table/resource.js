@@ -103,6 +103,10 @@ $(document).ready(function () {
           // resource_type: val.categoriesData[0].categoryName,
           ID: val._id,
           status: val.status,
+          selectCategory: val.category,
+          selectProduct: val.product,
+          selectResourceType: val.resourceType,
+          selectResourceSubType: val.resourceSubType,
         });
       });
 
@@ -166,7 +170,8 @@ $(document).ready(function () {
           {
             title: "Action",
             template:
-              "<button style='width: 4.5rem;color:white; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-title='#:category#' data-discription='#:category#' title='Edit' >  Edit</button>",
+              "<button style='width: 4.5rem;color:white; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-title='#:resourceTitle#' data-discription='#:category#'  data-selectedCategory='#:selectCategory#' data-selectedProduct='#:selectProduct#' data-selectedResourceType='#:selectResourceType#' data-selectedSubResourceType='#:selectResourceSubType#' title='Edit' >  Edit</button>",
+
             width: 180,
             // field: "ID",
             // <i class='fa fa-edit text-white'></i><button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
@@ -461,6 +466,13 @@ $("#grid").on("click", "button.edit_data", function () {
   $("#edit_title").val($(this).attr("data-title"));
   $("#mobile_number").val($(this).attr("data-upload_data"));
   $("#edit_id").val($(this).attr("data-id"));
+
+  $("#edit_category").val($(this).attr("data-selectedCategory"));
+  $("#edit_product").val($(this).attr("data-selectedProduct"));
+  $("#edit_resource-type").val($(this).attr("data-selectedResourceType"));
+  $("#edit_resource-sub-type").val(
+    $(this).attr("data-selectedSubResourceType")
+  );
   $("#editOrgCSR").modal("show");
 });
 

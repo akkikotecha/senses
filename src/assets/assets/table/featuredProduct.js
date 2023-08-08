@@ -90,6 +90,7 @@ $(document).ready(function () {
           description: val.description,
           image: val.image,
           orderIndex: val.orderIndex,
+          selectedProduct: val.productId,
           status: val.status,
         });
       });
@@ -157,7 +158,7 @@ $(document).ready(function () {
           },
           {
             template:
-              "<button style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary edit_data' data-id='#:ID#' data-title='#:title#' data-discription='#:description#' title='Edit'>Edit</button>",
+              "<button style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary edit_data' data-id='#:ID#' data-title='#:title#' data-discription='#:description#'  data-selectedProduct='#:selectedProduct#' data-selectedIndex='#:orderIndex#'    title='Edit'>Edit</button>",
             width: 140,
             // field: "ID",
             // edit icon <i class='fa fa-edit text-white'></i>  <button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
@@ -450,8 +451,12 @@ $("#grid").on("click", "button.view_data", function () {
 });
 
 $("#grid").on("click", "button.edit_data", function () {
-  $("#edit_title").val($(this).attr("data-title"));
-  $("#edit_descrirption").val($(this).attr("data-discription"));
+  $("#editTitle").val($(this).attr("data-title"));
+  // $("#edit_descrirption").val($(this).attr("data-discription"));
+  $("#editfeatureOneDescription").val($(this).attr("data-discription"));
+
+  $("#edit_order_index").val($(this).attr("data-selectedIndex"));
+  $("#edit_sub_category").val($(this).attr("data-selectedProduct"));
   $("#edit_id").val($(this).attr("data-id"));
   $("#editProductModal").modal("show");
 });

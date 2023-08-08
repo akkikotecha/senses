@@ -401,8 +401,58 @@ export class AdminProductDetailComponent {
       .catch((error: any) => {
         console.error('Editor initialization error.', error);
       });
+    ClassicEditor.create(document.querySelector('#edit_featureOneDescription'))
+      .then(
+        (editor: {
+          on: (arg0: string, arg1: { (): void; (): void }) => void;
+          model: {
+            document: {
+              on: (arg0: string, arg1: (evt: any, data: any) => void) => void;
+            };
+          };
+          getData: () => any;
+        }) => {
+          // Initialization code
+          console.log('Editor initialized.');
 
-    ClassicEditor.create(document.querySelector('#featureTwoDescription'))
+          editor.model.document.on('change:data', (_evt, _data) => {
+            // Code to run when the document's data changes
+            this.description_value_1 = editor.getData();
+
+            console.log(editor.getData());
+          });
+        }
+      )
+      .catch((error: any) => {
+        console.error('Editor initialization error.', error);
+      });
+    ClassicEditor.create(document.querySelector('#edit_featureTwoDescription'))
+      .then(
+        (editor: {
+          on: (arg0: string, arg1: { (): void; (): void }) => void;
+          model: {
+            document: {
+              on: (arg0: string, arg1: (evt: any, data: any) => void) => void;
+            };
+          };
+          getData: () => any;
+        }) => {
+          // Initialization code
+          console.log('Editor initialized.');
+
+          editor.model.document.on('change:data', (_evt, _data) => {
+            // Code to run when the document's data changes
+            this.description_value_1 = editor.getData();
+
+            console.log(editor.getData());
+          });
+        }
+      )
+      .catch((error: any) => {
+        console.error('Editor initialization error.', error);
+      });
+
+    ClassicEditor.create(document.querySelector('#edit_featureThreeDescription'))
       .then(
         (editor: {
           on: (arg0: string, arg1: { (): void; (): void }) => void;
@@ -629,82 +679,251 @@ export class AdminProductDetailComponent {
   }
 
   submitEditData() {
+    // if ($('#edit_basic-form').parsley().validate()) {
+    //   // console.log($('#basic-form').serializeArray());
+
+    //   Swal.fire({
+    //     title: 'Are you Sure?',
+    //     text: '',
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#fd7e14',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Yes',
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       const file = this.imageUpdate;
+    //       //    this.image = file;
+
+    //       const fda = new FormData();
+
+    //       fda.append('myFile', file);
+
+    //       fda.append('select_category', 'Announcement');
+    //       fda.append('select_date', $('#edit_select_date').val());
+    //       fda.append('title', $('#edit_title').val());
+    //       fda.append('edit_id', $('#edit_id').val());
+
+    //       console.log(
+    //         file +
+    //           ' ' +
+    //           $('#edit_select_date').val() +
+    //           ' ' +
+    //           $('#edit_title').val() +
+    //           ' ' +
+    //           $('#edit_id').val()
+    //       );
+    //       this.AdminCategoryService.EditOrganizationData(fda).subscribe(
+    //         (res) => {
+    //           console.log('Result ', res);
+    //           const ra = JSON.stringify(res);
+
+    //           const Authdata = JSON.parse(ra);
+
+    //           //  console.log(Authdata.data[0].User[0].first_name);
+
+    //           if (Authdata.message == 'Added') {
+    //             Swal.fire({
+    //               title: 'Organization Announcement Updated Successfully...',
+    //               text: '',
+    //               icon: 'success',
+    //               confirmButtonText: 'ok',
+    //               confirmButtonColor: '#fd7e14',
+    //             });
+
+    //             this.color = 'success';
+    //             this.successfully_login =
+    //               'Organization Announcement Updated Successfully...';
+    //             //  this.get_data();
+    //             window.location.reload();
+    //           } else {
+    //             Swal.fire({
+    //               title: 'Organization Announcement Not Added!!!',
+    //               text: '',
+    //               icon: 'error',
+    //               confirmButtonText: 'ok',
+    //               confirmButtonColor: '#fd7e14',
+    //             });
+
+    //             this.color = 'danger';
+    //             this.successfully_login =
+    //               'Organization Announcement Not Added!!!';
+    //           }
+
+    //           this.check_valid = true;
+    //         }
+    //       );
+    //     }
+    //   });
+    // }
+
     if ($('#edit_basic-form').parsley().validate()) {
-      // console.log($('#basic-form').serializeArray());
+      console.log('before if', this.overview_text);
+      if (
+        this.overview_text === 'null' ||
+        this.overview_text === undefined ||
+        this.overview_text === ''
+      ) {
+        console.log(this.overview_text);
+        this.overviewValidation = true;
+      } else if (
+        this.description_value_1 === 'null' ||
+        this.description_value_1 === undefined ||
+        this.description_value_1 === ''
+      ) {
+        console.log(this.description_value_1);
+        this.featuredOneDescValidation = true;
+      } else if (
+        this.description_value_2 === 'null' ||
+        this.description_value_2 === undefined ||
+        this.description_value_2 === ''
+      ) {
+        console.log(this.description_value_2);
+        this.featuredTwoDescValidation = true;
+      } else if (
+        this.description_value_3 === 'null' ||
+        this.description_value_3 === undefined ||
+        this.description_value_3 === ''
+      ) {
+        console.log(this.description_value_3);
+        this.featuredThreeDescValidation = true;
+      } else {
+        Swal.fire({
+          title: 'Are you Sure?',
+          text: '',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#fd7e14',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const formData = new FormData();
 
-      Swal.fire({
-        title: 'Are you Sure?',
-        text: '',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#fd7e14',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const file = this.imageUpdate;
-          //    this.image = file;
+            // Populate image files
+            this.image.forEach((file, index) => {
+              formData.append('image', file);
+            });
 
-          const fda = new FormData();
+            this.addFeaturedOneImage.forEach((file, index) => {
+              formData.append('featuredOneImage', file);
+            });
 
-          fda.append('myFile', file);
+            this.addFeaturedTwoImage.forEach((file, index) => {
+              formData.append('featuredTwoImage', file);
+            });
 
-          fda.append('select_category', 'Announcement');
-          fda.append('select_date', $('#edit_select_date').val());
-          fda.append('title', $('#edit_title').val());
-          fda.append('edit_id', $('#edit_id').val());
+            this.addFeaturedThreeImage.forEach((file, index) => {
+              formData.append('featuredThreeImage', file);
+            });
 
-          console.log(
-            file +
-              ' ' +
-              $('#edit_select_date').val() +
-              ' ' +
-              $('#edit_title').val() +
-              ' ' +
-              $('#edit_id').val()
-          );
-          this.AdminCategoryService.EditOrganizationData(fda).subscribe(
-            (res) => {
-              console.log('Result ', res);
-              const ra = JSON.stringify(res);
+            this.addsnap.forEach((file, index) => {
+              formData.append('snapShots', file);
+            });
+            // const featureOneDescriptionValue = this.editorElementRef_1.nativeElement.getData();
+            // console.log('Feature One Description:', featureOneDescriptionValue);
 
-              const Authdata = JSON.parse(ra);
+            // // console.log("HE:LO "+this.overview_text.getData());
+            // ClassicEditor
+            //   .create(this.editorElementRef_1.nativeElement)
+            //   .then((editor: any) => {
+            //     this.editorInstance = editor;
 
-              //  console.log(Authdata.data[0].User[0].first_name);
+            //     editor.on('ready', () => {
+            //       console.log(editor);
+            //       const content = editor.getData();
+            //       formData.append('featuredOneDesc', content);
+            //       console.log("featuredOneDesc "+content); // Verify the retrieved content here
+            //     });
+            //   })
+            //   .catch((error: any) => {
+            //     console.error(error);
+            // });
+            formData.append('overview', this.overview_text);
+            formData.append(
+              'featuredOneTitle',
+              $('#featuredOneTitle').val() as string
+            );
+            formData.append('featuredOneDesc', this.description_value_1);
+            formData.append(
+              'featuredTwoTitle',
+              $('#featuredTwoTitle').val() as string
+            );
+            formData.append('featuredTwoDesc', this.description_value_2);
+            formData.append(
+              'featuredThreeTitle',
+              $('#featuredThreeTitle').val() as string
+            );
+            formData.append('featuredThreeDesc', this.description_value_3);
 
-              if (Authdata.message == 'Added') {
-                Swal.fire({
-                  title: 'Organization Announcement Updated Successfully...',
-                  text: '',
-                  icon: 'success',
-                  confirmButtonText: 'ok',
-                  confirmButtonColor: '#fd7e14',
-                });
-
-                this.color = 'success';
-                this.successfully_login =
-                  'Organization Announcement Updated Successfully...';
-                //  this.get_data();
-                window.location.reload();
-              } else {
-                Swal.fire({
-                  title: 'Organization Announcement Not Added!!!',
-                  text: '',
-                  icon: 'error',
-                  confirmButtonText: 'ok',
-                  confirmButtonColor: '#fd7e14',
-                });
-
-                this.color = 'danger';
-                this.successfully_login =
-                  'Organization Announcement Not Added!!!';
+            formData.append('category', $('#category').val());
+            formData.append('subCategory', $('#sub_category').val());
+            formData.append(
+              'metaTitle',
+              $('#productMetaTitle').val() as string
+            );
+            formData.append(
+              'metaDescription',
+              $('#productMetaDescription').val() as string
+            );
+            formData.append(
+              'edit_id',
+              $('#edit_id').val() as string
+            );
+            var ResponseData = '';
+            var strVal = '';
+            $.each(
+              $('.select_multiple_data').val(),
+              function (indexes: any, values: any) {
+                //console.log("values : "+values);
+                ResponseData += values + ',';
               }
+            );
+            strVal = ResponseData.slice(0, -1);
+            // console.log("multi : "+multi);
+            // });
+            formData.append('related_product', strVal);
+            // var multi = ;
 
-              this.check_valid = true;
-            }
-          );
-        }
-      });
+            console.log(JSON.stringify(formData));
+            // Send the form data to the server
+            this.AdminCategoryService.CategoryDetailAdd(formData).subscribe(
+              (res) => {
+                console.log('Result ', res);
+                const ra = JSON.stringify(res);
+                const Authdata = JSON.parse(ra);
+
+                if (Authdata.message == 'Data Updated Successfully') {
+                  Swal.fire({
+                    title: 'Product Detail Added Successfully...',
+                    text: '',
+                    icon: 'success',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: '#fd7e14',
+                  });
+
+                  this.color = 'success';
+                  this.successfully_login =
+                    'Product Detail Added Successfully...';
+                  window.location.reload();
+                } else {
+                  Swal.fire({
+                    title: 'Product Detail Not Added!!!',
+                    text: '',
+                    icon: 'error',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: '#fd7e14',
+                  });
+
+                  this.color = 'danger';
+                  this.successfully_login = 'Product Detail Not Added!!!';
+                }
+                this.check_valid = true;
+              }
+            );
+          }
+        });
+      }
     }
 
     // this.color = "success";

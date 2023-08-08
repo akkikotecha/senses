@@ -84,9 +84,12 @@ $(document).ready(function () {
           title: val.categoryName,
           description: val.image,
           status: val.status,
+          metaDescription: val.metaDescription,
+          metaTitle: val.metaTitle,
+          categoryDescription: val.categoryDescription,
         });
       });
-
+      console.log("Product items ", items);
       $("#grid").kendoGrid({
         dataSource: items,
         height: 680,
@@ -139,7 +142,7 @@ $(document).ready(function () {
 
           {
             template:
-              "<button  style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data' data-id='#:ID#'  data-title='#:title#' data-discription='#:description#' title='Edit' >Edit</button>",
+              "<button  style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data' data-id='#:ID#'  data-title='#:title#' data-discription='#:description#' data-meta-title='#:metaTitle#' data-meta-description='#:metaDescription#' data-category-description='#:categoryDescription#'  title='Edit' >Edit</button>",
             width: 140,
             // field: "ID",
             //  <i class='fa fa-edit text-white'></i>  <button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
@@ -423,9 +426,23 @@ var categories = [
 ];
 
 $("#grid").on("click", "button.edit_data", function () {
-  $("#edit_title").val($(this).attr("data-title"));
-  $("#edit_descrirption").val($(this).attr("data-discription"));
+  // $("#edit_title").val($(this).attr("data-title"));
+  // $("#edit_descrirption").val($(this).attr("data-discription"));
   $("#edit_id").val($(this).attr("data-id"));
+  // data-discription='#:description#' data-meta-title='#:metaTitle#' data-meta-description='#:metaDescription#'
+
+  var title = $(this).attr("data-title");
+  var description = $(this).attr("data-category-description");
+  // var id = $(this).attr("data-id");
+  var metaTitle = $(this).attr("data-meta-title");
+  var metaDescription = $(this).attr("data-meta-description");
+
+  $("#edit_title").val(title);
+  $("#description").val(description);
+  $("#edit_description").val(description);
+  $("#edit_meta_title").val(metaTitle);
+  $("#edit_meta_description").val(metaDescription);
+
   $("#editOrgCSR").modal("show");
 });
 

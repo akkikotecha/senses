@@ -24,7 +24,7 @@ export class AdminBlogNewsService {
   {
 
 
-    let url = environment.base_url+"EditOrganizationDataAnnouncement";
+    let url = environment.base_url+"editPostBlogs";
     console.log("AK : "+JSON.stringify(data));
     return this.http.post(url,data);
   }

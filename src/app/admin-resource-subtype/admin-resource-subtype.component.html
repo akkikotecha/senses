@@ -243,14 +243,15 @@
       >
         <form
           method="POST"
-          id="edit_basic-form"
+          id="edit-basic-form"
           class="parsleyjs"
           data-parsley-priority-enabled="false"
+          (ngSubmit)="editSubmit()"
         >
           <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModa">Edit Announcement</h5>
+                <h5 class="modal-title" id="exampleModa">Edit Sub Resource Type</h5>
                 <button
                   type="button"
                   class="close"
@@ -261,12 +262,12 @@
                 </button>
               </div>
               <div>
-                <button
+                <!-- <button
                   type="button"
                   class="close"
                   data-dismiss="alert"
                   aria-label="Close"
-                ></button>
+                ></button> -->
                 <h6 class="alert-heading font-size-h4 font-w400 mb-0">
                   <!-- {{ edit_successfully_login }} -->
                 </h6>
@@ -275,72 +276,57 @@
                 <div class="row clearfix">
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
-                      <input
-                        type="hidden"
-                        class="form-control"
-                        name="edit_id"
-                        id="edit_id"
-                        placeholder="Select Date"
-                      />
-
-                      <label>Select Date<span class="text-red">*</span></label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        name="edit_select_date"
-                        id="edit_select_date"
-                        placeholder="Select Date"
+                      <label
+                        >Select Category <span class="text-red">*</span></label
+                      >
+                      <select
+                        class="form-control category"
+                        name="category"
+                        id="edit_resource-type"
+                        data-parsley-required-message="This field is required"
                         data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-select_date"
+                        data-parsley-errors-container="#error-add-resource-type"
                         data-parsley-required
-                      />
+                      >
+                        <option value="">Select</option>
+                        <option
+                          value="{{ jobData._id }}"
+                          *ngFor="
+                            let jobData of JobsiteData.data;
+                            let i = index
+                          "
+                        >
+                          {{ jobData.title }}
+                        </option>
+                      </select>
                       <p
                         class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-select_date"
+                        id="error-add-resource-type"
                       ></p>
                     </div>
                   </div>
 
                   <div class="col-md-12 col-sm-12">
                     <div class="form-group">
-                      <label>Title<span class="text-red">*</span></label>
+                      <label
+                        >Resource Sub Type
+                        <span class="text-red">*</span></label
+                      >
+                      <input type="hidden" id="edit_id" />
                       <input
                         type="text"
                         class="form-control"
-                        name="edit_title"
-                        id="edit_title"
+                        name="title"
+                        id="edit_resource-sub-type"
                         placeholder="Title"
+                        data-parsley-required-message="This field is required"
                         data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-title"
+                        data-parsley-errors-container="#error-add-resource-sub-type-title"
                         data-parsley-required
                       />
                       <p
                         class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-title"
-                      ></p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <a href="" target="_blank"
-                      ><i class="fa fa-pdf-o" style="font-size: 35px"></i
-                    ></a>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label>Upload PDF</label>
-                      <input
-                        type="file"
-                        class="form-control"
-                        name="edit_myFile"
-                        id="edit_myFileData"
-                        accept="application/pdf"
-                        style="padding-left: 0px; border: none"
-                      />
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-upload_pdf"
+                        id="error-add-resource-sub-type-title"
                       ></p>
                     </div>
                   </div>
@@ -393,12 +379,12 @@
                 </button>
               </div>
               <div>
-                <button
+                <!-- <button
                   type="button"
                   class="close"
                   data-dismiss="alert"
                   aria-label="Close"
-                ></button>
+                ></button> -->
                 <h6 class="alert-heading font-size-h4 font-w400 mb-0">
                   <!-- {{ successfully_login }} -->
                 </h6>

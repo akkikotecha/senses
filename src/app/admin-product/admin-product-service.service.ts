@@ -24,7 +24,8 @@ export class AdminProductServiceService {
   {
 
 
-    let url = environment.base_url+"EditOrganizationDataAnnouncement";
+    // let url = environment.base_url+"EditOrganizationDataAnnouncement";
+    let url = environment.base_url+"editSubCategoryData";
     console.log("AK : "+JSON.stringify(data));
     return this.http.post(url,data);
   }

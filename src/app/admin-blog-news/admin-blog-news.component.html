@@ -251,7 +251,7 @@
           <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModa">Edit Announcement</h5>
+                <h5 class="modal-title" id="exampleModa">Edit Blogs & News</h5>
                 <button
                   type="button"
                   class="close"
@@ -278,76 +278,100 @@
               </div>
               <div class="modal-body">
                 <div class="row clearfix">
-                  <div class="col-md-12 col-sm-12">
+                  <div class="col-md-12">
                     <div class="form-group">
-                      <input
-                        type="hidden"
-                        class="form-control"
-                        name="edit_id"
-                        id="edit_id"
-                        placeholder="Select Date"
-                      />
-
-                      <label>Select Date<span class="text-red">*</span></label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        name="edit_select_date"
-                        id="edit_select_date"
-                        placeholder="Select Date"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-select_date"
-                        data-parsley-required
-                      />
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-select_date"
-                      ></p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label>Title<span class="text-red">*</span></label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        name="edit_title"
-                        id="edit_title"
-                        placeholder="Title"
-                        data-parsley-trigger-after-failure="change"
-                        data-parsley-errors-container="#error-add-title"
-                        data-parsley-required
-                      />
-                      <p
-                        class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-title"
-                      ></p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <a href="" target="_blank"
-                      ><i class="fa fa-pdf-o" style="font-size: 35px"></i
-                    ></a>
-                  </div>
-
-                  <div class="col-md-12 col-sm-12">
-                    <div class="form-group">
-                      <label>Upload PDF</label>
+                      <label
+                        >Banner Image <span class="text-red">*</span></label
+                      >
                       <input
                         type="file"
                         class="form-control"
-                        name="edit_myFile"
-                        id="edit_myFileData"
-                        (change)="onChangeUpdate($event)"
-                        accept="application/pdf"
+                        name="myFile"
+                        id="myFileData"
+                        (change)="featuredThreeImageChange($event)"
                         style="padding-left: 0px; border: none"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-featureThreeImage"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                        accept="image/*"
                       />
                       <p
                         class="text-danger mb-0 text-left f-12 mt-2"
-                        id="error-add-upload_pdf"
+                        id="error-add-featureThreeImage"
                       ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Title<span class="text-red">*</span></label>
+                      <input type="hidden"  id="edit_id">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="AddTitle"
+                        id="editTitle"
+                        placeholder="Title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-AddTitle"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-AddTitle"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Sub Title<span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="subTitle"
+                        id="editSubTitle"
+                        placeholder="sub title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-subTitle"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-subTitle"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description<span class="text-red">*</span></label>
+                      <div
+                        #editfeatureOneDescription
+                        id="editfeatureOneDescription"
+                        contenteditable="true"
+                      ></div>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        *ngIf="featuredOneDescValidation"
+                      >
+                        This field is required
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 d-none">
+                    <div class="form-group">
+                      <label>Description2<span class="text-red">*</span></label>
+                      <div #editEditor id="editEditor" contenteditable="true"></div>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        *ngIf="featuredOneDescValidation"
+                      >
+                        This field is required
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -387,7 +411,7 @@
             <div class="modal-content">
               <div class="modal-header" style="padding-bottom: 0px">
                 <h5 class="modal-title" id="exampleModalLabel">
-                  Add Product Detail
+                  Add Blogs & News Detail
                 </h5>
                 <button
                   type="button"
@@ -498,7 +522,7 @@
                       </p>
                     </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-12 d-none">
                     <div class="form-group">
                       <label>Description2<span class="text-red">*</span></label>
                       <div #editor id="editor" contenteditable="true"></div>

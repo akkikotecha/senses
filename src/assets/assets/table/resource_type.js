@@ -95,6 +95,7 @@ $(document).ready(function () {
           // upload_data: val.upload_data,
         });
       });
+      console.log(items);
 
       $("#grid").kendoGrid({
         dataSource: items,
@@ -140,7 +141,7 @@ $(document).ready(function () {
           {
             title: "Action",
             template:
-              "<button style='width: 4.5rem;color:white; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-warning  view_data' data-id='#:ID#'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  title='Edit' >Edit</button>",
+              "<button style='width: 4.5rem;color:white; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-warning  view_data'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary  edit_data ml-2'  data-id='#:ID#'  data-name='#:resource_type_name#'  title='Edit' >Edit</button>",
             width: 180,
             // field: "ID",
             // <i class='fa fa-eye text-white'></i>    <i class='fa fa-edit text-white'></i><button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
@@ -431,11 +432,12 @@ $("#grid").on("click", "button.edit_data", function () {
   var select_date = moment($(this).attr("data-select_date")).format(
     "YYYY-MM-DD"
   );
-  console.log(select_date);
+  // console.log(select_date);
   $("#edit_select_date").val(select_date);
-  $("#edit_title").val($(this).attr("data-title"));
+  $("#edit_resource-type").val($(this).attr("data-name"));
   $("#mobile_number").val($(this).attr("data-upload_data"));
   $("#edit_id").val($(this).attr("data-id"));
+
   $("#editOrgCSR").modal("show");
 });
 

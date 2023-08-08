@@ -86,9 +86,10 @@ $(document).ready(function () {
           description: val.description,
           image: val.image,
           status: val.status,
+          productID: val.productId,
         });
       });
-
+      console.log("Items Are ", items);
       $("#grid").kendoGrid({
         dataSource: items,
         height: 680,
@@ -145,7 +146,7 @@ $(document).ready(function () {
 
           {
             template:
-              "<button style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary edit_data' data-id='#:ID#' data-title='#:title#' data-discription='#:description#' title='Edit'>Edit</button>",
+              "<button style='width: 5rem; border-radius: 1.5rem; font-size: 0.9rem;' class='btn btn-primary edit_data' data-id='#:ID#' data-title='#:title#' data-discription='#:description#' sub-product-id='#:productID#' title='Edit'>Edit</button>",
             width: 140,
             // field: "ID",
             // edit icon <i class='fa fa-edit text-white'></i>  <button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
@@ -438,10 +439,29 @@ var categories = [
   },
 ];
 
+// $("#grid").on("click", "button.edit_data", function () {
+//   $("#edit_title").val($(this).attr("data-title"));
+//   $("#edit_description").text($(this).attr("data-discription"));
+//   $("#edit_id").val($(this).attr("data-id"));
+//   $("#editOrgCSR").modal("show");
+// });
+
 $("#grid").on("click", "button.edit_data", function () {
-  $("#edit_title").val($(this).attr("data-title"));
-  $("#edit_description").text($(this).attr("data-discription"));
-  $("#edit_id").val($(this).attr("data-id"));
+  var title = $(this).attr("data-title");
+  var description = $(this).attr("data-discription");
+  var id = $(this).attr("data-id");
+  var subProduct = $(this).attr("sub-product-id");
+  console.log("ID is ", id);
+  console.log("Sub Product ID is ", subProduct);
+
+  // Populate the fields in the modal
+  $("#edit_title").val(title);
+  $("#sub_category").val(subProduct);
+  $("#edit_description").val(description);
+
+  $("#edit_id").val(id);
+
+  // Show the modal
   $("#editOrgCSR").modal("show");
 });
 
