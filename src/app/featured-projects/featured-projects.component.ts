@@ -81,10 +81,7 @@ export class FeaturedProjectsComponent {
     private AdminCategoryService: FeaturedProjectService,
     private lazyLoadService: LazyLoadingService,
     private cdRef: ChangeDetectorRef
-  ) {}
-  objectKeys = Object.keys;
-
-  ngOnInit(): void {
+  ) {
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -94,7 +91,12 @@ export class FeaturedProjectsComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+  }
+  objectKeys = Object.keys;
+
+  ngOnInit(): void {
+  
     this.AdminCategoryService.getAllCategory().subscribe((res) => {
       this.JobsiteData = JSON.parse(JSON.stringify(res));
       // this.related_product = JSON.parse(JSON.stringify(res));

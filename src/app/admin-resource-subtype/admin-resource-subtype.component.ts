@@ -13,13 +13,8 @@ export class AdminResourceSubtypeComponent {
   constructor(
     private lazyLoadService: LazyLoadingService,
     private adminResourceSubType: AdminResourceSubTypeServiceService
-  ) {}
-  color: any = '';
-  successfully_login: any = '';
-  check_valid: any = '';
-  image: any = '';
-  JobsiteData: any = '';
-  ngOnInit(): void {
+  ) {
+
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -29,7 +24,15 @@ export class AdminResourceSubtypeComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    },100);
+  }
+  color: any = '';
+  successfully_login: any = '';
+  check_valid: any = '';
+  image: any = '';
+  JobsiteData: any = '';
+  ngOnInit(): void {
+    
     this.adminResourceSubType.getAllResourceType().subscribe((res: any) => {
       console.log(res);
       this.JobsiteData = JSON.parse(JSON.stringify(res));

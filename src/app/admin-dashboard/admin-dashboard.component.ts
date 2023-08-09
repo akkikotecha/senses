@@ -7,7 +7,7 @@ declare var $: any;
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent {
-  ngOnInit() {
+  constructor(){
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -18,6 +18,10 @@ export class AdminDashboardComponent {
         display: 'none',
       });
     }, 100);
+
+  }
+  ngOnInit() {
+    
    
   }
 }

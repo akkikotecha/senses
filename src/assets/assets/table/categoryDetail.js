@@ -158,8 +158,8 @@ $(document).ready(function () {
 
           {
             template:
-              "<button style='width: 4.5rem; color:white; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-warning  view_data' data-id='#:ID#'   title='View' >View</button><button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-overview='#:overview#' data-subProductId='#:subProduct#' data-featuredOneTitle='#:featureOneTitle#'  data-featuredTwoTitle='#:featureTwoTitle#'  data-featuredThreeTitle='#:featureThreeTitle#' data-featuredOneDescription='#:featureOneDescription#' data-featuredTwoDescription='#:featureTwoDescription#' data-featuredThreeDescription='#:featureThreeDescription#'     data-title='#:category#' data-discription='#:category#' title='Edit' >Edit</button>",
-
+              "<button style='width: 4.5rem; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-primary  edit_data ml-2' data-id='#:ID#'  data-overview='#:overview#' data-subProductId='#:subProduct#' data-featuredOneTitle='#:featureOneTitle#'  data-featuredTwoTitle='#:featureTwoTitle#'  data-featuredThreeTitle='#:featureThreeTitle#' data-featuredOneDescription='#:featureOneDescription#' data-featuredTwoDescription='#:featureTwoDescription#' data-featuredThreeDescription='#:featureThreeDescription#'     data-title='#:category#' data-discription='#:category#' title='Edit' >Edit</button>",
+            // <button style='width: 4.5rem; color:white; border-radius: 1.5rem; font-size: 0.9rem;'  class='btn btn-warning  view_data' data-id='#:ID#'   title='View' >View</button>
             width: 180,
             // <i class='fa fa-eye text-white'></i> <button class='btn btn-warning removeData ml-2' data-val=#: ID # title='Delete' ><i class='fa fa-trash text-white'></i></button>
             // field: "ID",
@@ -461,6 +461,21 @@ $("#grid").on("click", "button.edit_data", function () {
   var featureOneTitle = $(this).attr("data-featuredOneTitle");
   var featureTwoTitle = $(this).attr("data-featuredTwoTitle");
   var featureThreeTitle = $(this).attr("data-featuredThreeTitle");
+
+  var overview = $(this).attr("data-overview");
+  sessionStorage.setItem("productDetailsOverview", overview);
+
+  var featureOneDesc = $(this).attr("data-featuredOneDescription");
+  sessionStorage.setItem("productDetailsFeatureOneDescription", featureOneDesc);
+
+  var featureTwoDesc = $(this).attr("data-featuredTwoDescription");
+  sessionStorage.setItem("productDetailsFeatureTwoDescription", featureTwoDesc);
+
+  var featureThreeDesc = $(this).attr("data-featuredThreeDescription");
+  sessionStorage.setItem(
+    "productDetailsFeatureThreeDescription",
+    featureThreeDesc
+  );
 
   $("#edit_sub_category").val(subProduct);
   $("#editEditor").val(overview);

@@ -38,10 +38,8 @@ export class AdminletstalkComponent {
   constructor(
     private AdminCategoryService: HomeBannerService,
     private lazyLoadService: LazyLoadingService
-  ) {}
-  objectKeys = Object.keys;
+  ) {
 
-  ngOnInit(): void {
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -51,7 +49,12 @@ export class AdminletstalkComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+  }
+  objectKeys = Object.keys;
+
+  ngOnInit(): void {
+   
     this.AdminCategoryService.getAllSubCategory().subscribe((res) => {
       this.JobsiteData = JSON.parse(JSON.stringify(res));
       console.log(this.JobsiteData);

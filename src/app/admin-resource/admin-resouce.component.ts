@@ -14,7 +14,19 @@ export class AdminResouceComponent {
   constructor(
     private lazyLoadService: LazyLoadingService,
     private adminResource: AdminResourceService
-  ) {}
+  ) {
+
+    setTimeout(function () {
+      // console.log('HELLO');
+
+      $('.lightboxOverlay').css({
+        display: 'none',
+      });
+      $('.lightbox').css({
+        display: 'none',
+      });
+    }, 100);
+  }
   color: any = '';
   successfully_login: any = '';
   check_valid: any = '';
@@ -25,16 +37,7 @@ export class AdminResouceComponent {
   resourceType: any = '';
   resourceSubType: any = '';
   ngOnInit(): void {
-    setTimeout(function () {
-      // console.log('HELLO');
-
-      $('.lightboxOverlay').css({
-        display: 'none',
-      });
-      $('.lightbox').css({
-        display: 'none',
-      });
-    }, 2000);
+   
     this.adminResource.getAllCategory().subscribe((res: any) => {
       console.log(res);
       this.categoryData = JSON.parse(JSON.stringify(res));

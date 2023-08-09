@@ -79,10 +79,8 @@ export class AdminBlogNewsComponent {
     private AdminCategoryService: AdminBlogNewsService,
     private lazyLoadService: LazyLoadingService,
     private cdRef: ChangeDetectorRef
-  ) {}
-  objectKeys = Object.keys;
+  ) {
 
-  ngOnInit(): void {
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -92,7 +90,12 @@ export class AdminBlogNewsComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+  }
+  objectKeys = Object.keys;
+
+  ngOnInit(): void {
+   
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/js/sweetalert.js')
@@ -478,6 +481,12 @@ export class AdminBlogNewsComponent {
       .catch((error: any) => {
         console.error('Editor initialization error.', error);
       });
+      // const initialContent = document.querySelector('#editfeatureOneDescription').innerHTML;
+
+      // const initialData = $('#editfeatureOneDescription').html();
+      // console.log($('#editfeatureOneDescription').html())
+      const initialData = sessionStorage.getItem("editfeatureOneDescription");
+      
     ClassicEditor.create(document.querySelector('#editfeatureOneDescription'), {
       image: {
         styles: {
@@ -573,17 +582,25 @@ export class AdminBlogNewsComponent {
       ckfinder: {
         uploadUrl: environment.base_url + 'ckeEditorImageUpload',
       },
+      
+      initialData: initialData,
+      
     })
       .then(
         (editor: {
+          
           model: {
             document: {
               on: (arg0: string, arg1: (evt: any, data: any) => void) => void;
             };
           };
           getData: () => any;
+          
+          
+          
         }) => {
           console.log('Editor initialized.');
+          
 
           editor.model.document.on('change:data', (evt, data) => {
             // Code to run when the document's data changes

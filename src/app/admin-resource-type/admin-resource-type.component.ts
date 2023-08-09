@@ -17,9 +17,7 @@ export class AdminResourceTypeComponent {
   constructor(
     private lazyLoadService: LazyLoadingService,
     private AdminResourceType: AdminResourceTypeServiceService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -29,7 +27,11 @@ export class AdminResourceTypeComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+  }
+
+  ngOnInit(): void {
+    
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/js/sweetalert.js')

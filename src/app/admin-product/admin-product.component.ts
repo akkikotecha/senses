@@ -39,10 +39,7 @@ export class AdminProductComponent {
 
 
   
-  constructor(private AdminCategoryService:AdminProductServiceService,private lazyLoadService:LazyLoadingService) { }
-  objectKeys = Object.keys;
-
-  ngOnInit(): void {
+  constructor(private AdminCategoryService:AdminProductServiceService,private lazyLoadService:LazyLoadingService) {
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -52,7 +49,12 @@ export class AdminProductComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+   }
+  objectKeys = Object.keys;
+
+  ngOnInit(): void {
+   
     
   this.AdminCategoryService.getAllCategory().subscribe((res)=>{
 

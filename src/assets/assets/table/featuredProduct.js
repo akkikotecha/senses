@@ -454,6 +454,8 @@ $("#grid").on("click", "button.edit_data", function () {
   $("#editTitle").val($(this).attr("data-title"));
   // $("#edit_descrirption").val($(this).attr("data-discription"));
   $("#editfeatureOneDescription").val($(this).attr("data-discription"));
+  var desc = $(this).attr("data-discription");
+  sessionStorage.setItem("editfeatureProductOneDescription", desc);
 
   $("#edit_order_index").val($(this).attr("data-selectedIndex"));
   $("#edit_sub_category").val($(this).attr("data-selectedProduct"));

@@ -80,10 +80,7 @@ export class AdminProductDetailComponent {
     private AdminCategoryService: AdminProductDetailService,
     private lazyLoadService: LazyLoadingService,
     private cdRef: ChangeDetectorRef
-  ) {}
-  objectKeys = Object.keys;
-
-  ngOnInit(): void {
+  ) {
     setTimeout(function () {
       // console.log('HELLO');
 
@@ -93,7 +90,12 @@ export class AdminProductDetailComponent {
       $('.lightbox').css({
         display: 'none',
       });
-    }, 2000);
+    }, 100);
+  }
+  objectKeys = Object.keys;
+
+  ngOnInit(): void {
+   
     this.AdminCategoryService.getAllCategory().subscribe((res) => {
       this.JobsiteData = JSON.parse(JSON.stringify(res));
       // this.related_product = JSON.parse(JSON.stringify(res));
@@ -350,7 +352,11 @@ export class AdminProductDetailComponent {
       .catch((error: any) => {
         console.error('Editor initialization error.', error);
       });
-    ClassicEditor.create(document.querySelector('#editEditor'))
+
+      const initialData = sessionStorage.getItem("productDetailsOverview");
+    ClassicEditor.create(document.querySelector('#editEditor'),{
+      initialData:initialData
+    })
       .then(
         (editor: {
           on: (arg0: string, arg1: { (): void; (): void }) => void;
@@ -401,7 +407,10 @@ export class AdminProductDetailComponent {
       .catch((error: any) => {
         console.error('Editor initialization error.', error);
       });
-    ClassicEditor.create(document.querySelector('#edit_featureOneDescription'))
+      const initiaDataFeatureOne = sessionStorage.getItem("productDetailsFeatureOneDescription");
+    ClassicEditor.create(document.querySelector('#edit_featureOneDescription'),{
+      initialData:initiaDataFeatureOne
+    })
       .then(
         (editor: {
           on: (arg0: string, arg1: { (): void; (): void }) => void;
@@ -426,7 +435,10 @@ export class AdminProductDetailComponent {
       .catch((error: any) => {
         console.error('Editor initialization error.', error);
       });
-    ClassicEditor.create(document.querySelector('#edit_featureTwoDescription'))
+      const initiaDataFeatureTwo = sessionStorage.getItem("productDetailsFeatureTwoDescription");
+    ClassicEditor.create(document.querySelector('#edit_featureTwoDescription'),{
+      initialData:initiaDataFeatureTwo
+    })
       .then(
         (editor: {
           on: (arg0: string, arg1: { (): void; (): void }) => void;
@@ -452,7 +464,10 @@ export class AdminProductDetailComponent {
         console.error('Editor initialization error.', error);
       });
 
-    ClassicEditor.create(document.querySelector('#edit_featureThreeDescription'))
+      const initiaDataFeatureThree = sessionStorage.getItem("productDetailsFeatureTwoDescription");
+    ClassicEditor.create(document.querySelector('#edit_featureThreeDescription'),{
+      initialData:initiaDataFeatureThree
+    })
       .then(
         (editor: {
           on: (arg0: string, arg1: { (): void; (): void }) => void;
