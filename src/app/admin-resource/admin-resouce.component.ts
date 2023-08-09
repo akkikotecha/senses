@@ -43,11 +43,12 @@ export class AdminResouceComponent {
       this.categoryData = JSON.parse(JSON.stringify(res));
       console.log(this.categoryData);
     });
-    this.adminResource.getAllProducts().subscribe((res: any) => {
-      console.log(res);
-      this.productData = JSON.parse(JSON.stringify(res));
-      console.log(this.categoryData);
-    });
+    // const defaultCategoryId = sessionStorage.getItem('productDetailsFeatureOneDescription') 
+    // this.adminResource.getAllProducts(defaultCategoryId).subscribe((res: any) => {
+    //   console.log(res);
+    //   this.productData = JSON.parse(JSON.stringify(res));
+    //   console.log(this.categoryData);
+    // });
     this.adminResource.getAllResourceType().subscribe((res: any) => {
       console.log(res);
       this.resourceType = JSON.parse(JSON.stringify(res));
@@ -112,6 +113,47 @@ export class AdminResouceComponent {
     // console.log();
     this.image = event.target.files[0];
     console.log('HELLO ' + JSON.stringify(event.target.files[0]));
+  }
+  handleChange(event: any) {
+    const selectedValue = event?.target?.value;
+    if (selectedValue) {
+      // Function logic here
+      console.log('Selected value:', selectedValue);
+      this.adminResource.getAllProducts(selectedValue).subscribe((res) => {
+        if (res && typeof res === 'object') {
+          // this.adminResource = res; // Wrap the single object in an array
+
+          // console.log('subCategoryData', this.subCategoryData);
+          this.productData = JSON.parse(JSON.stringify(res));
+          // console.log(this.categoryData);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
+      // Additional code you want to execute
+    }
+  }
+
+  
+  EdithandleChange(event: any) {
+    
+    const selectedValue = event?.target?.value;
+    if (selectedValue) {
+      // Function logic here
+      console.log('Selected value:', selectedValue);
+      this.adminResource.getAllProducts(selectedValue).subscribe((res) => {
+        if (res && typeof res === 'object') {
+          // this.adminResource = res; // Wrap the single object in an array
+
+          // console.log('subCategoryData', this.subCategoryData);
+          this.productData = JSON.parse(JSON.stringify(res));
+          console.log(this.categoryData);
+        } else {
+          console.error('Invalid response data: expected a single object');
+        }
+      });
+      // Additional code you want to execute
+    }
   }
   submit() {
     if ($('#add-form').parsley().validate()) {

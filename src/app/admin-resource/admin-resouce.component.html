@@ -306,6 +306,8 @@
                         class="form-control category"
                         name="category"
                         id="edit_category"
+                        (change)="EdithandleChange($event)"
+                        
                         data-parsley-required-message="This field is required"
                         data-parsley-trigger-after-failure="change"
                         data-parsley-errors-container="#error-add-category"
@@ -571,6 +573,7 @@
                         id="category"
                         data-parsley-required-message="This field is required"
                         data-parsley-trigger-after-failure="change"
+                        (change)="handleChange($event)"
                         data-parsley-errors-container="#error-add-category"
                       >
                         <option value="">Select</option>

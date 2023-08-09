@@ -467,6 +467,12 @@ $("#grid").on("click", "button.edit_data", function () {
   $("#mobile_number").val($(this).attr("data-upload_data"));
   $("#edit_id").val($(this).attr("data-id"));
 
+  // var resourceselectedId = $(this).attr("data-selectedCategory");
+  // sessionStorage.setItem(
+  //   "productDetailsFeatureOneDescription",
+  //   resourceselectedId
+  // );
+
   $("#edit_category").val($(this).attr("data-selectedCategory"));
   $("#edit_product").val($(this).attr("data-selectedProduct"));
   $("#edit_resource-type").val($(this).attr("data-selectedResourceType"));

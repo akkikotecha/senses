@@ -26,8 +26,8 @@ export class AdminResourceService {
     let url = environment.base_url + 'getAllCategory';
     return this.http.get(url);
   }
-  getAllProducts() {
-    let url = environment.base_url + 'getSubCategories';
+  getAllProducts(id: string) {
+    let url = environment.base_url + 'getSubCategoryIdData/' + id;
     return this.http.get(url);
   }
   getAllResourceType() {
