@@ -1,0 +1,15 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.metismenu ul a::before {
+  content: none !important;
+}
+.color-icon {
+  color: #fed284;
+}
+
+.active-tab {
+  background-color: #ff0000; /* Change this color to your desired color */
+  color: #ffffff; /* Change this color to your desired text color */
+}

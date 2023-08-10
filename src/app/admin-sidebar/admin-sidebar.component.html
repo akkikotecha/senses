@@ -699,7 +699,7 @@
 
   <div id="left-sidebar" class="sidebar">
     <h6 class="brand-name">
-      Admin
+Masters
       <a href="javascript:void(0)" class="menu_option float-right d-none"
         ><i
           class="icon-grid font-16"
@@ -712,122 +712,183 @@
     <nav id="left-sidebar-nav" class="sidebar-nav">
       <ul class="metismenu">
         <ul>
+
           <li class="active">
+            <!-- <i
+                    class="fa fa-id-card-o"></i> -->
+            <a href="javascript:void(0)" class="has-arrow arrow-c cursor-pointer  "><i class="fa-brands fa-product-hunt me-2"></i><span>Product</span></a>
+            <ul class="sub-menu">
+                <li><a (click)="CategoryRoute()" class="cursor-pointer"><span><i class="fa-solid fa-file-circle-plus me-2 "></i>Category</span></a></li>
+                <li><a (click)="SubCategoryRoute()" class="cursor-pointer"><span><i class="fa-solid fa-square-plus me-2"></i>Sub Category</span></a></li>
+                <li><a (click)="AddProductRoute()" class="cursor-pointer"><span><i class="fa-solid fa-folder-plus me-2"></i>Add Product</span></a></li>
+                <!-- <li><a (click)="ShiftDurationCallRoute()" class="cursor-pointer"><span>Shift Duration</span></a></li> -->
+
+
+            </ul>
+        </li>
+        <li class="active">
+          <a href="javascript:void(0)" class="has-arrow arrow-c cursor-pointer "><i class="fa-solid fa-square-poll-horizontal me-2"></i><span>Resource</span></a>
+          <ul class="sub-menu">
+              <li><a (click)="ResourceRoute()" class="cursor-pointer"><span><i class="fa-solid fa-file me-2"></i>Type</span></a></li>
+              <li><a (click)="SubResourceRoute()" class="cursor-pointer"><i class="fa-solid fa-folder-tree me-2"></i><span>Sub Type</span></a></li>
+              <li><a (click)="AddResourceRoute()" class="cursor-pointer"><i class="fa-solid fa-file-circle-plus me-2"></i><span>Add Resource</span></a></li>
+              <!-- <li><a (click)="ShiftDurationCallRoute()" class="cursor-pointer"><span>Shift Duration</span></a></li> -->
+
+
+          </ul>
+      </li>
+      <li class="active">
+        <a href="javascript:void(0)" class="has-arrow arrow-c cursor-pointer "><i class="fa-solid fa-house me-2"></i><span>Home Page</span></a>
+        <ul class="sub-menu">
+            <li><a (click)="BannerRoute()" class="cursor-pointer"><i class="fa-solid fa-image me-2"></i><span>Banner</span></a></li>
+            <li><a (click)="FeaturedProductRoute()" class="cursor-pointer"><i class="fa-solid fa-star me-2"></i><span>Featured Product</span></a></li>
+            <!-- <li><a (click)="AddResourceRoute()" class="cursor-pointer"><span>Add Resource</span></a></li> -->
+            <!-- <li><a (click)="ShiftDurationCallRoute()" class="cursor-pointer"><span>Shift Duration</span></a></li> -->
+
+
+        </ul>
+    </li>
+    <li class="active">
+      <a href="javascript:void(0)" class="has-arrow arrow-c cursor-pointer "><i class="fa-solid fa-file-pen me-2"></i><span>Projects & Blogs</span></a>
+      <ul class="sub-menu">
+          <li><a (click)="ProjectsRoute()" class="cursor-pointer"><i class="fa-solid fa-folder-plus me-2"></i><span>Add Project</span></a></li>
+          <li><a (click)="BlogsRoute()" class="cursor-pointer"><i class="fa-solid fa-circle-plus me-2"></i><span> Add Blog</span></a></li>
+          <!-- <li><a (click)="AddResourceRoute()" class="cursor-pointer"><span>Add Resource</span></a></li> -->
+          <!-- <li><a (click)="ShiftDurationCallRoute()" class="cursor-pointer"><span>Shift Duration</span></a></li> -->
+
+
+      </ul>
+  </li>
+    <li class="active">
+      <a href="javascript:void(0)" class="has-arrow arrow-c cursor-pointer "><i class="fa-solid fa-headset me-2"></i><span>Contact Inquiries</span></a>
+      <ul class="sub-menu">
+          <li><a (click)="InquiriesRoute()" class="cursor-pointer"><i class="fa-regular fa-comments me-2"></i><span>View Inquiries</span></a></li>
+          <!-- <li><a (click)="BlogsRoute()" class="cursor-pointer"><span> Add Blog</span></a></li> -->
+          <!-- <li><a (click)="AddResourceRoute()" class="cursor-pointer"><span>Add Resource</span></a></li> -->
+          <!-- <li><a (click)="ShiftDurationCallRoute()" class="cursor-pointer"><span>Shift Duration</span></a></li> -->
+
+
+      </ul>
+  </li>
+
+          <!-- <li>
             <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_home_banner']"
+              style="padding-left: 11%"
+              ><span>Home Banner</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_product']"
+              style="padding-left: 11%"
+              ><span>Category</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_sub_product']"
+              style="padding-left: 11%"
+              ><span>Sub Category</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_product_detail']"
+              style="padding-left: 11%"
+              ><span>Add Product</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_resource_type']"
+              style="padding-left: 11%"
+              ><span>Resource Type</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_resource_sub_type']"
+              style="padding-left: 11%"
+              ><span>Resource Sub Type</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_resource']"
+              style="padding-left: 11%"
+              ><span>Resource </span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_featured_project']"
+              style="padding-left: 11%"
+              ><span>Featured Project </span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_featured_product']"
+              style="padding-left: 11%"
+              ><span>Featured Product </span></a
+            >
+          </li>
+
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_blog_news']"
+              style="padding-left: 11%"
+              ><span>Blogs And News</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_lets_talk']"
+              style="padding-left: 11%"
+              ><span>Lets' Talk</span></a
+            >
+          </li>
+        </ul>
+      </li>
+
+      <li class="mt-3 d-none">
+        <a
+          [routerLink]="['/admin_product']"
+          class="has-arrow arrow-c cursor-pointer"
+          ><span>Sub Products</span></a
+        >
+        <ul class="d-none">
+          <li>
+            <a
+              class="cursor-pointer"
+              [routerLink]="['/admin_home_banner']"
+              style="padding-left: 11%"
+              ><span>Products</span></a
+            >
+          </li> -->
+        </ul>
+        <ul>
+          <!-- <li class="active">
+            <a
+            (click)="MastersRoute()"
               href="javascript:void(0)"
               class="has-arrow arrow-c cursor-pointer"
               ><i class="icon-rocket mr-2"></i><span> Masters</span></a
             >
-            <ul>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_home_banner']"
-                  style="padding-left: 11%"
-                  ><span>Home Banner</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_product']"
-                  style="padding-left: 11%"
-                  ><span>Product</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_sub_product']"
-                  style="padding-left: 11%"
-                  ><span>Sub Product</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_product_detail']"
-                  style="padding-left: 11%"
-                  ><span>Product Detail</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_resource_type']"
-                  style="padding-left: 11%"
-                  ><span>Resource Type</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_resource_sub_type']"
-                  style="padding-left: 11%"
-                  ><span>Resource Sub Type</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_resource']"
-                  style="padding-left: 11%"
-                  ><span>Resource </span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_featured_project']"
-                  style="padding-left: 11%"
-                  ><span>Featured Project </span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_featured_product']"
-                  style="padding-left: 11%"
-                  ><span>Featured Product </span></a
-                >
-              </li>
-
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_blog_news']"
-                  style="padding-left: 11%"
-                  ><span>Blogs And News</span></a
-                >
-              </li>
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_lets_talk']"
-                  style="padding-left: 11%"
-                  ><span>Lets' Talk</span></a
-                >
-              </li>
-            </ul>
-          </li>
-
-          <li class="mt-3 d-none">
-            <a
-              [routerLink]="['/admin_product']"
-              class="has-arrow arrow-c cursor-pointer"
-              ><span>Sub Products</span></a
-            >
-            <ul class="d-none">
-              <li>
-                <a
-                  class="cursor-pointer"
-                  [routerLink]="['/admin_home_banner']"
-                  style="padding-left: 11%"
-                  ><span>Products</span></a
-                >
-              </li>
-            </ul>
-          </li>
+          
+          </li> -->
         </ul>
       </ul>
     </nav>

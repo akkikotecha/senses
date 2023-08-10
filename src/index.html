@@ -1152,5 +1152,41 @@ ckfinder: {
         $("#editor").ckeditor();
       }, 2000);
     });
+
+  
+  // $(document).ready(function() {
+  //   // Initially hide the sub-menu items
+  //   $(".sub-menu").hide();
+    
+  //   // Toggle sub-menu items on click
+  //   $(".has-arrow").click(function() {
+  //     // Close all open sub-menus except the clicked one
+  //     $(".has-arrow").not(this).removeClass("active").next(".sub-menu").slideUp("slow");
+      
+  //     // Toggle the clicked sub-menu
+  //     $(this).toggleClass("active").next(".sub-menu").slideToggle("slow");
+  //   });
+  // });
+  $(document).ready(function() {
+    // Initially hide the sub-menu items
+    $(".sub-menu").hide();
+    
+    // Toggle sub-menu items on click
+    $(".has-arrow").click(function() {
+      // Close all open sub-menus except the clicked one
+      $(".has-arrow").not(this).removeClass("active").next(".sub-menu").slideUp("slow");
+      
+      // Toggle the clicked sub-menu
+      $(this).toggleClass("active").next(".sub-menu").slideToggle("slow");
+      
+      // Remove "active" class from all sub-menu items
+      // $(".sub-menu li").removeClass("active");
+      
+      // Add "active" class to the clicked sub-menu items
+      $(this).next(".sub-menu").find("li").eq(0).addClass("active");
+    });
+  });
+
+
   </script>
 </html>

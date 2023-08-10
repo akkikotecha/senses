@@ -737,7 +737,13 @@ header:hover .owl-next {
 .item-img4 {
   margin-top: 22px;
 }
+.sustainabilityHR{
+  justify-content: left;
+}
 @media only screen and (max-width: 600px) {
+  .sustainabilityHR{
+    justify-content: center;
+  }
   .sustainabilityHeader {
     height: auto;
     padding: 20px 0;
