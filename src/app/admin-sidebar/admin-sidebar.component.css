@@ -13,3 +13,7 @@
   background-color: #ff0000; /* Change this color to your desired color */
   color: #ffffff; /* Change this color to your desired text color */
 }
+
+.font-weith-submenu {
+  font-weight: 400 !important;
+}
