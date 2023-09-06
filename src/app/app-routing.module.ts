@@ -42,6 +42,9 @@ import { FaqComponent } from './faq/faq.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsofuserComponent } from './termsofuser/termsofuser.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdminCareersComponent } from './admin-careers/admin-careers.component';
+import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-details/admin-carerrs-job-form-details.component';
+
 
 const routes: Routes = [
   {
@@ -175,8 +178,13 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'admin_product_detail_show',
-    component: AdminProductDetailShowComponent,
+    path: 'admin_carrers',
+    component: AdminCareersComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'admin_carrers_details',
+    component: AdminCarerrsJobFormDetailsComponent,
     runGuardsAndResolvers: 'always',
   },
   {

@@ -92,6 +92,20 @@ export class AdminSidebarComponent {
       // });
 
   }
+  CarrereJob(): void {
+    this.router.navigate(['admin_carrers'])
+      // .then(() => {
+      //   window.location.reload();
+      // });
+
+  }
+  CarrereJobDetails(): void {
+    this.router.navigate(['admin_carrers_details'])
+      // .then(() => {
+      //   window.location.reload();
+      // });
+
+  }
   MastersRoute(): void {
     this.router.navigate(['admin_dashboard'])
       // .then(() => {
