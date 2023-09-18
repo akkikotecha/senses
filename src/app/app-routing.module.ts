@@ -104,6 +104,11 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
+    path: 'resources-materials/:name',
+    component: ResourcesMaterialComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
     path: 'resources-materials',
     component: ResourcesDocumentComponent,
     runGuardsAndResolvers: 'always',
@@ -292,4 +297,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
