@@ -94,6 +94,11 @@ const routes: Routes = [
   //   runGuardsAndResolvers: 'always',
   // },
   {
+    path: 'resources-gallery/:name',
+    component: ResourcesGalleryComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
     path: 'resources-gallery',
     component: ResourcesGalleryComponent,
     runGuardsAndResolvers: 'always',
@@ -110,6 +115,11 @@ const routes: Routes = [
   },
   {
     path: 'resources-materials',
+    component: ResourcesDocumentComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'resources-documents/:name',
     component: ResourcesDocumentComponent,
     runGuardsAndResolvers: 'always',
   },

@@ -106,20 +106,32 @@ export class ResourceDetailComponent {
 
       localStorage.setItem('resourceTypeIdSub', id);
       localStorage.setItem('ResourceTypeNameSub', name);
+
       // console.log(id)
       let routePath: string;
 
       switch (name) {
         case 'Products':
+          routePath = '/resources-gallery/products';
+          break;
         case 'BTS':
-        case 'Projcts':
-          routePath = '/resources-gallery';
+          routePath = '/resources-gallery/bts';
+          break;
+        case 'Projects':
+          routePath = '/resources-gallery/projects';
           break;
         case 'Product Lookbooks':
+          routePath = '/resources-documents/Lookbooks';
+          break;
         case 'Tear Sheets':
+          routePath = '/resources-documents/TearSheets';
+          break;
         case 'Installation Manuals':
+          routePath = '/resources-documents/InstallationManuals';
+          break;
         case 'Other':
-          routePath = '/resources-documents';
+          routePath = '/resources-documents/others';
+
           break;
         case 'Fabrics':
           routePath = '/resources-materials/Fabrics';
