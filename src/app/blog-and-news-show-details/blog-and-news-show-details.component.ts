@@ -23,6 +23,8 @@ export class BlogAndNewsShowDetailsComponent {
   objectKeys = Object.keys;
   Data: any;
   blogsNews: any;
+  blogLink: any;
+  blogUrl = 'https://example.com/your-blog-post';
   ngOnInit(): void {
     setTimeout(function () {
       $('.header-main').css({
@@ -37,7 +39,7 @@ export class BlogAndNewsShowDetailsComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 100);
+    }, 1000);
 
     this.ViewAllProjectServiceAll.getBlogsDetails(
       localStorage.getItem('blogs_id')
@@ -62,6 +64,75 @@ export class BlogAndNewsShowDetailsComponent {
     setTimeout(function () {
       $('h1, h2, h3, h4, h5, h6').css('text-align', 'center');
       $('.image').css('text-align', 'center');
-    }, 2000);
+    }, 1000);
+  }
+  shareOnFacebook() {
+    // Open the Facebook share dialog with your blog URL
+    const currentUrl = window.location.href;
+
+    // Split the URL by '4200/'
+    const parts = currentUrl.split('.com/');
+
+    // Get the text after '4200/'
+    const textAfter4200 = parts[1];
+
+    // Do something with the text, e.g., display it in the console
+    console.log('Text after 4200:', textAfter4200);
+    // Do something with the URL, e.g., display it in the console
+    console.log('Current URL:', currentUrl);
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        `https://sensesakustik.com/${textAfter4200}`
+      )}`,
+      '_blank'
+    );
+  }
+  shareOnTwitter() {
+    // Customize the tweet text as needed
+    const twitterText = 'Check out this link:';
+    const currentUrl = window.location.href;
+
+    // Split the URL by '4200/'
+    const parts = currentUrl.split('.com/');
+
+    // Get the text after '4200/'
+    const textAfter4200 = parts[1];
+
+    // Do something with the text, e.g., display it in the console
+    console.log('Text after 4200:', textAfter4200);
+    // Do something with the URL, e.g., display it in the console
+    console.log('Current URL:', currentUrl);
+    // Open the Twitter share dialog with your blog URL and tweet text
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        twitterText
+      )}&url=${encodeURIComponent(
+        `https://sensesakustik.com/${textAfter4200}`
+      )}`,
+      '_blank'
+    );
+  }
+  shareOnWhatsApp() {
+    // Construct the WhatsApp share text with the blog URL
+    const whatsappText = `Check out this link: ${this.blogUrl}`;
+    // Open the WhatsApp share dialog with the share text
+    // window.open(
+    //   `whatsapp://send?text=${encodeURIComponent(whatsappText)}`,
+    //   '_blank'
+    // );
+    const currentUrl = window.location.href;
+
+    // Split the URL by '4200/'
+    const parts = currentUrl.split('.com/');
+
+    // Get the text after '4200/'
+    const textAfter4200 = parts[1];
+    const whatsappLink = `https://api.whatsapp.com/send?text=https://sensesakustik.com/${textAfter4200}`;
+
+    // Redirect to the WhatsApp link
+    // window.location.href = w/hatsappLink;
+    window.open(whatsappLink, '_blank');
+    // Do something with the text, e.g., display it in the console
+    console.log('Text after 4200:', textAfter4200);
   }
 }

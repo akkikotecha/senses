@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { CareerService } from './career.service';
 declare var $: any;
 
 @Component({
@@ -8,8 +9,20 @@ declare var $: any;
   styleUrls: ['./career.component.css'],
 })
 export class CareerComponent {
-  constructor(private meta: Meta, private titleService: Title) {}
+  jsonData: any[] = []; // Define an array to store fetched data
+
+  constructor(private meta: Meta, private titleService: Title, private careerService: CareerService) { }
   ngOnInit(): void {
+
+    this.careerService.GetCareer().subscribe(
+      (data: any) => {
+        this.jsonData = data.data; // Assuming "data" is the response object
+      },
+      (error) => {
+        console.error('Error fetching career data:', error);
+      }
+    );
+
     this.titleService.setTitle(
       'Join our team of passionate thinkers and makers driving well-being at work. Discover open positions. '
     );
@@ -41,7 +54,8 @@ export class CareerComponent {
       $('.search-field').css({
         'background-image': "url('./assets/search.png')",
       });
+      $(".logo_style").attr("src", "./assets/SENSES LOGO.svg");
       $('.logo img').css({ 'max-width': '170px' });
-    }, 200);
+    }, 500);
   }
 }

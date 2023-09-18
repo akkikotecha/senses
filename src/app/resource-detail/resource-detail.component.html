@@ -57,7 +57,13 @@
                 <div class="panel-body">
                   <!-- Your content here -->
                   <p
-                    class="p_all_text_set_new"
+                    (click)="
+                      resourceTypeClickSub(
+                        subtypeDataFilter._id,
+                        subtypeDataFilter.title
+                      )
+                    "
+                    class="p_all_text_set_new button-sub-data"
                     *ngFor="
                       let subtypeDataFilter of document.resourceSubTypeData
                     "
@@ -87,7 +93,7 @@
                         ? '/resources-documents'
                         : image.title === 'Materials'
                         ? '/resources-materials'
-                        : '/resources-certifications'
+                        : '/resources-certifications/all'
                     )
                   "
                 >

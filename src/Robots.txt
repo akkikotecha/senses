@@ -1,4 +1,46 @@
 User-agent: *
-Allow: /
 
 Sitemap: https://sensesakustik.com/sitemap.xml
+
+
+Disallow: /products/acoustic-walls
+Disallow: /products/acoustic-ceilings
+Disallow: /resources_certitificate
+Disallow: /zest_product_detail
+Disallow: /featured_project_view_all
+Disallow: /resources_document
+Disallow: /hexa
+Disallow: /product/sync
+Disallow: /product/desire
+Disallow: /case-studies/reimagining-schools-for-the-future
+Disallow: /case-studies/expanding-a-trendy-investment-campus
+Disallow: /case-studies/celebrating-colors-in-a-people-centric-workspace
+Disallow: /case-studies/blurring-the-lines-between-working-and-fun/
+Disallow: /case-studies/blending-versatile-design-with-color-and-collaboration/
+Disallow: /case-studies/connecting-people-and-culture-together-to-create-a-wholesome-working-environment/
+Disallow: /wp-content/uploads/downloads/sa-walls-sculpt-maintainance-guide.pdf
+Disallow: /wp-content/uploads/2022/07/Senses_FELT_2.5_PDF.pdf
+Disallow: /wp-content/uploads/downloads/sa-case-studies-creating-a-cosy-comfortable-workspace-for-creative-people.pdf
+Disallow: /wp-content/uploads/downloads/sa-dividers-screens-installation-manual.pdf
+Disallow: /wp-content/uploads/downloads/sa-ceilings-echo-band-tear-sheet.pdf
+Disallow: /wp-content/uploads/downloads/sa-dividers-echo-hush-installation-manual.pdf
+Disallow: /wp-content/uploads/downloads/sa-sync-declaration-conformity.pdf
+Disallow: /wp-content/uploads/downloads/sa-walls-echo-brick-tear-sheet.pdf
+Disallow: /wp-content/uploads/downloads/sa-ceilings-echo-punch-test-report.pdf
+Disallow: /wp-content/uploads/downloads/sa-dividers-echo-hush-dwg-file.pdf
+Disallow: /product/smug
+Disallow: /product/octa
+Disallow: /product/cluster
+Disallow: /product/scale
+Disallow: /product/sculpt
+Disallow: /product/arc-stick
+Disallow: /product/echo-band
+Disallow: /product/felt-panels
+Disallow: /product/echo-hush
+Disallow: /product/acoustic-screens
+Disallow: /products/acoustic-pendants
+Disallow: /inspiration/wall-concept/
+Disallow: /inspiration/craft-ceilings/
+Disallow: /inspiration/space-dividers/
+Disallow: /contact/
+Disallow: /products/layer

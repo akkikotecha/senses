@@ -67,8 +67,11 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderProductsComponent } from './loader-products/loader-products.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ImageLazyLoadModule } from './image-lazy-load/image-lazy-load.module';
+import { CareerNewComponent } from './career-new/career-new.component';
 import { AdminCareersComponent } from './admin-careers/admin-careers.component';
 import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-details/admin-carerrs-job-form-details.component';
+import { CareerFormComponent } from './career-form/career-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,8 +128,10 @@ import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-de
     LoaderComponent,
     LoaderProductsComponent,
     PageNotFoundComponent,
+    CareerNewComponent,
     AdminCareersComponent,
     AdminCarerrsJobFormDetailsComponent,
+    CareerFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -146,4 +151,4 @@ import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-de
 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

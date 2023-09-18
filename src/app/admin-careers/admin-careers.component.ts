@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { LazyLoadingService } from './lazy-loading.service'; 
+import { LazyLoadingService } from './lazy-loading.service';
 import { AdminCarerrsService } from './admin-carerrs.service';
 import { environment } from 'src/environments/environment';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 declare var $: any;
-
 
 @Component({
   selector: 'app-admin-careers',
@@ -41,7 +40,7 @@ export class AdminCareersComponent {
     private AdminCarerrsService: AdminCarerrsService,
     private lazyLoadService: LazyLoadingService
   ) {
-      setTimeout(function () {
+    setTimeout(function () {
       // console.log('HELLO');
 
       $('.lightboxOverlay').css({
@@ -51,52 +50,52 @@ export class AdminCareersComponent {
         display: 'none',
       });
     }, 100);
-    
+
   }
 
   ngOnInit(): void {
-  
+
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/js/sweetalert.js')
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
 
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
 
       this.lazyLoadService
         .loadScript('../../assets/assets/table/career_data.js')
-        .subscribe((_) => {});
+        .subscribe((_) => { });
     }, 1000);
   }
 
   submit() {
     if ($('#add-form').parsley().validate()) {
       Swal.fire({
-        title: 'Do you want to add the home banner?',
+        title: 'Do you want to add the Careers?',
         text: '',
         icon: 'warning',
         showCancelButton: true,
@@ -107,12 +106,12 @@ export class AdminCareersComponent {
         if (result.isConfirmed) {
           const formData = new FormData();
 
-          
 
-          
+
+
           formData.append('title', $('#title').val());
           formData.append('description', $('#addCarrerDescription').val());
-         
+
 
           // Send the form data to the server
           this.AdminCarerrsService.createCareer($('#add-form').serializeArray()).subscribe(
@@ -167,7 +166,7 @@ export class AdminCareersComponent {
   editSubmit() {
     if ($('#edit_basic-form').parsley().validate()) {
       Swal.fire({
-        title: 'Do you want to add the home banner?',
+        title: 'Do you want to update the Careers?',
         text: '',
         icon: 'warning',
         showCancelButton: true,
@@ -178,13 +177,13 @@ export class AdminCareersComponent {
         if (result.isConfirmed) {
           // const formData = new FormData();
 
-          
 
-          
+
+
           // formData.append('_id', $('#edit_id').val());
           // formData.append('title', $('#edit_title').val());
           // formData.append('description', $('#edit_CarrerDescription').val());
-         
+
 
           // Send the form data to the server
           this.AdminCarerrsService.EditCareer($('#edit_basic-form').serializeArray()).subscribe(

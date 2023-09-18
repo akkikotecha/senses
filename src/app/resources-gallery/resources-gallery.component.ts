@@ -92,6 +92,10 @@ export class ResourcesGalleryComponent {
         console.error('Invalid response data: expected a single object');
       }
     });
+
+  
+
+
     this.resourceGallery.getResourceSubTypeDataByTypeID().subscribe((res) => {
       if (res && typeof res === 'object') {
         this.filterData = res; // Wrap the single object in an array

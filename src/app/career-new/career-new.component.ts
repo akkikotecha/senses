@@ -1,21 +1,16 @@
 import { Component } from '@angular/core';
-import { ResourceService } from './resource.service';
 declare var $: any;
 
 @Component({
-  selector: 'app-resources',
-  templateUrl: './resources.component.html',
-  styleUrls: ['./resources.component.css'],
+  selector: 'app-career-new',
+  templateUrl: './career-new.component.html',
+  styleUrls: ['./career-new.component.css']
 })
-export class ResourcesComponent {
-  constructor(private adminResource: ResourceService) { }
+export class CareerNewComponent {
+  constructor() { }
   resourceType: any = '';
   ngOnInit(): void {
-    this.adminResource.getAllResourceType().subscribe((res: any) => {
-      console.log(res);
-      this.resourceType = JSON.parse(JSON.stringify(res));
-      console.log(this.resourceType);
-    });
+
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -32,3 +27,4 @@ export class ResourcesComponent {
     }, 2000);
   }
 }
+

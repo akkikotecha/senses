@@ -4,6 +4,7 @@ import {
   ViewChild,
   AfterViewInit,
   ElementRef,
+  Renderer2
 } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { LazyLoadingService } from './lazy-loading.service';
@@ -33,6 +34,8 @@ import { InitialLoadService } from './InitialLoad.service';
 })
 export class HomeComponent implements OnInit {
   //carousel: any;
+  @ViewChild('carousel') carousel: ElementRef;
+
   slides_new_two = Array();
   slides = Array();
   firstFeaturedProduct: any;
@@ -47,13 +50,15 @@ export class HomeComponent implements OnInit {
   currentImageIndex = 0;
   isLoading: boolean = true;
   private destroy$ = new Subject<void>();
-  @ViewChild('carousel', { static: true }) carousel: any;
+  // @ViewChild('carousel', { static: true }) carousel: any;
   constructor(
     private lazyLoadService: LazyLoadingService,
     private router: Router,
     private homeService: HomeService,
     private HomeServicesService: HomeServicesService,
-    private initialLoadService: InitialLoadService
+    private initialLoadService: InitialLoadService,
+    private el: ElementRef,
+    private renderer: Renderer2
   ) {
     // const isFirstLoad = sessionStorage.getItem('isFirstLoad') === null;
     // if (isFirstLoad) {
@@ -78,7 +83,7 @@ export class HomeComponent implements OnInit {
     }, 1000); // Change the interval value (in milliseconds) to control the slide speed
   }
   ngOnInit(): void {
-    this.autoSlideCarousel();
+    // this.autoSlideCarousel();
     interval(500)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
@@ -86,7 +91,7 @@ export class HomeComponent implements OnInit {
       });
 
     setTimeout(() => {
-      $('.carousel').carousel(1000);
+      // $('.carousel').carousel(1000);
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js'
@@ -270,9 +275,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // ngAfterViewInit() {
-  //   setTimeout(() => {
-  //     this.isLoading = false;
-  //   }, 4000);
-  // }
+
+
 }

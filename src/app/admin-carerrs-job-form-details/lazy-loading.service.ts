@@ -12,22 +12,22 @@ export class LazyLoadingService {
   constructor(@Inject(DOCUMENT) private readonly document: Document) { }
 
   loadScript(url: string): Observable<void> {
-      if (this.loadedLibraries[url]) {
-          return this.loadedLibraries[url].asObservable();
-      }
-
-      this.loadedLibraries[url] = new ReplaySubject();
-
-      const script = this.document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = url;
-      script.onload = () => {
-          this.loadedLibraries[url].next();
-          this.loadedLibraries[url].complete();
-      };
-
-      this.document.body.appendChild(script);
-
+    if (this.loadedLibraries[url]) {
       return this.loadedLibraries[url].asObservable();
+    }
+
+    this.loadedLibraries[url] = new ReplaySubject();
+
+    const script = this.document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.onload = () => {
+      this.loadedLibraries[url].next();
+      this.loadedLibraries[url].complete();
+    };
+
+    this.document.body.appendChild(script);
+
+    return this.loadedLibraries[url].asObservable();
   }
 }

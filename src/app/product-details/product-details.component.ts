@@ -29,6 +29,17 @@ export class ProductDetailsComponent {
   ) {
     this.productname = localStorage.getItem('productname');
     this.productDesc = localStorage.getItem('productDesc');
+    this.ProductDetailService.getAllSubCategory(
+      localStorage.getItem('productId')
+    ).subscribe((res) => {
+      if (res && typeof res === 'object') {
+        this.Data = res; // Wrap the single object in an array
+
+        console.log('productDetailService', JSON.stringify(this.Data));
+      } else {
+        console.error('Invalid response data: expected a single object');
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -57,7 +68,7 @@ export class ProductDetailsComponent {
     // }
     setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 2000);
     setTimeout(function () {
       $('.header-main').css({
         background: '#fff',
@@ -77,20 +88,10 @@ export class ProductDetailsComponent {
       });
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 1500);
+    }, 2500);
 
     // console.log("ID : "+localStorage.getItem('productId'));
-    this.ProductDetailService.getAllSubCategory(
-      localStorage.getItem('productId')
-    ).subscribe((res) => {
-      if (res && typeof res === 'object') {
-        this.Data = res; // Wrap the single object in an array
 
-        console.log('productDetailService', JSON.stringify(this.Data));
-      } else {
-        console.error('Invalid response data: expected a single object');
-      }
-    });
   }
 
   // [routerLink]="['/']"

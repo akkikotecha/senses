@@ -2,20 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CareerService {
+export class CareerFormService {
 
+  fd: any;
 
   constructor(private http: HttpClient) { }
-  GetCareer() {
-    let url = environment.base_url + 'CareerJob';
-    // console.log("AK : "+JSON.stringify(data));
-    return this.http.get(url);
+
+  addFormData(data: any) {
+
+
+    let url = environment.base_url + "addCarerrsFormData";
+    console.log("AK : " + JSON.stringify(data));
+    return this.http.post(url, data);
   }
-
-
 }

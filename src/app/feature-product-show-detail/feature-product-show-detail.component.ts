@@ -38,7 +38,7 @@ export class FeatureProductShowDetailComponent {
       $('p').css({ 'text-align': 'left' });
       $('p').css({ margin: '30px 0' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
-    }, 100);
+    }, 1000);
     this.ViewAllProjectServiceAll.getFeaturedProjectsDetails(
       localStorage.getItem('feature_project_Id')
     ).subscribe((res: any) => {

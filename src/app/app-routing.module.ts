@@ -42,9 +42,10 @@ import { FaqComponent } from './faq/faq.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsofuserComponent } from './termsofuser/termsofuser.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CareerNewComponent } from './career-new/career-new.component';
 import { AdminCareersComponent } from './admin-careers/admin-careers.component';
 import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-details/admin-carerrs-job-form-details.component';
-
+import { CareerFormComponent } from './career-form/career-form.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,16 @@ const routes: Routes = [
   {
     path: 'products/:name',
     component: ProductDetailsComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'admin_carrers',
+    component: AdminCareersComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'admin_carrers_details',
+    component: AdminCarerrsJobFormDetailsComponent,
     runGuardsAndResolvers: 'always',
   },
   // {
@@ -88,8 +99,8 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'resources-certifications',
-    component: ResourcesDocumentComponent,
+    path: 'resources-certifications/:name',
+    component: ResourcesCertificateComponent,
     runGuardsAndResolvers: 'always',
   },
   {
@@ -142,6 +153,16 @@ const routes: Routes = [
     component: CareerComponent,
     runGuardsAndResolvers: 'always',
   },
+  // {
+  //   path: 'career_new',
+  //   component: CareerComponent,
+  //   runGuardsAndResolvers: 'always',
+  // },
+  {
+    path: 'careerForm/:id',
+    component: CareerFormComponent,
+    runGuardsAndResolvers: 'always',
+  },
   {
     path: 'not_found',
     component: NotFoundComponent,
@@ -178,13 +199,8 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
   },
   {
-    path: 'admin_carrers',
-    component: AdminCareersComponent,
-    runGuardsAndResolvers: 'always',
-  },
-  {
-    path: 'admin_carrers_details',
-    component: AdminCarerrsJobFormDetailsComponent,
+    path: 'admin_product_detail_show',
+    component: AdminProductDetailShowComponent,
     runGuardsAndResolvers: 'always',
   },
   {
@@ -276,4 +292,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

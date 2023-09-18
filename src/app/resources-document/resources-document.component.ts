@@ -398,6 +398,68 @@ export class ResourcesDocumentComponent {
       console.log('this.filterResourceData', this.filterResourceData);
     }
   }
+  handleCertificateData(id: string, name?: string){
+    this.disableSidebarContent = true;
+      this.resourceDocument
+        .getResourceTypeData(localStorage.getItem('resourceTypeIdSub'))
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('handleClick id', id);
+            this.filterResourceData = this.filterResourceData.filter(
+              (res: any) => {
+                if (res.resourceSubType == id) {
+                  console.log(res);
+                  return res;
+                }
+              }
+            );
+            console.log('this.data', this.data);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+  }
+  handleReportsData (id: string, name?: string)
+  {
+    this.disableSidebarContent = false;
+
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == id) {
+          console.log(res);
+          return res;
+        }
+      });
+      console.log('this.data', this.data);
+      console.log('this.filterResourceData', this.filterResourceData);
+  }
+  handleAwardsData (id: string, name?: string)
+  {
+    this.disableSidebarContent = true;
+      this.resourceDocument
+        .getResourceTypeData(localStorage.getItem('resourceTypeId'))
+        .subscribe((res) => {
+          if (res && typeof res === 'object') {
+            this.data = res; // Wrap the single object in an array
+            this.filterResourceData = this.data.data; // Wrap the single object in an array
+
+            console.log('handleClick id', id);
+            this.filterResourceData = this.filterResourceData.filter(
+              (res: any) => {
+                if (res.resourceSubType == id) {
+                  console.log(res);
+                  return res;
+                }
+              }
+            );
+            console.log('this.data', this.data);
+          } else {
+            console.error('Invalid response data: expected a single object');
+          }
+        });
+  }
   // Inside your Angular component
   handleChange(event: any) {
     const selectedValue = event?.target?.value;

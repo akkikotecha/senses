@@ -14,103 +14,103 @@ export class AdminSidebarComponent {
 
   }
 
+  CarrereJob(): void {
+    this.router.navigate(['admin_carrers'])
+    // .then(() => {
+    //   window.location.reload();
+    // });
+
+  }
+  CarrereJobDetails(): void {
+    this.router.navigate(['admin_carrers_details'])
+    // .then(() => {
+    //   window.location.reload();
+    // });
+
+  }
   CategoryRoute(): void {
     this.router.navigate(['admin_product'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   SubCategoryRoute(): void {
     this.router.navigate(['admin_sub_product'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
 
   }
   AddProductRoute(): void {
     this.router.navigate(['admin_product_detail'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   ResourceRoute(): void {
     this.router.navigate(['admin_resource_type'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   SubResourceRoute(): void {
     this.router.navigate(['admin_resource_sub_type'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   AddResourceRoute(): void {
     this.router.navigate(['admin_resource'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   BannerRoute(): void {
     this.router.navigate(['admin_home_banner'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   FeaturedProductRoute(): void {
     this.router.navigate(['admin_featured_product'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   ProjectsRoute(): void {
     this.router.navigate(['admin_featured_project'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   BlogsRoute(): void {
     this.router.navigate(['admin_blog_news'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   InquiriesRoute(): void {
     this.router.navigate(['admin_lets_talk'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
-
-  }
-  CarrereJob(): void {
-    this.router.navigate(['admin_carrers'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
-
-  }
-  CarrereJobDetails(): void {
-    this.router.navigate(['admin_carrers_details'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
   MastersRoute(): void {
     this.router.navigate(['admin_dashboard'])
-      // .then(() => {
-      //   window.location.reload();
-      // });
+    // .then(() => {
+    //   window.location.reload();
+    // });
 
   }
 

@@ -26,6 +26,7 @@ export class ResourceDetailComponent {
       property: 'og:title',
       content: 'Resources | Senses Akustik',
     });
+// get data of sub menu 
 
     // Set the dynamic description
     this.meta.updateTag({
@@ -92,6 +93,57 @@ export class ResourceDetailComponent {
       localStorage.setItem('ResourceTypeName', name);
       // console.log(id)
       this.router.navigate([name]).then(() => {
+        // window.location.reload();
+      });
+    }, 1000);
+  }
+  resourceTypeClickSub(id: any, name: any): void {
+    console.log('resourceTypeClickSub', id);
+    setTimeout(() => {
+      localStorage.removeItem('resourceTypeIdSub');
+      localStorage.removeItem('resourceTypeSub');
+
+      localStorage.setItem('resourceTypeIdSub', id);
+      localStorage.setItem('ResourceTypeNameSub', name);
+      // console.log(id)
+      let routePath: string;
+
+switch (name) {
+  case 'Products':
+  case 'BTS':
+  case 'Projcts':
+    routePath = '/resources-gallery';
+    break;
+  case 'Product Lookbooks':
+  case 'Tear Sheets':
+  case 'Installation Manuals':
+  case 'Other':
+    routePath = '/resources-documents';
+    break;
+    case 'Fabrics':
+    case 'Felts':
+    case 'Colorline':
+    case 'CAD Files':
+    case 'Others':
+        routePath = '/resources-materials';
+        break;
+    case 'Certifications':
+      routePath = '/resources-certifications/Certifications';
+      break;
+    case 'Reports':
+      routePath = '/resources-certifications/Reports';
+      break;
+    case 'Awards':
+        routePath = '/resources-certifications/Awards';
+        break;
+  case 'Materials':
+    routePath = '/resources-materials';
+    break;
+  default:
+    routePath = '/resources-certifications';
+    break;
+}
+      this.router.navigate([routePath]).then(() => {
         // window.location.reload();
       });
     }, 1000);

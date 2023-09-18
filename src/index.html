@@ -102,7 +102,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjr4-bfjxvk8ho3JoH6qjnUE1jFmMTdYM"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
-
+      .rotate-effect {
+        transition: transform 0.2s ease-in-out;
+        transform: rotate(90deg); /* Rotate by 90 degrees, adjust as needed */
+      }
       body {
         margin: 0px !important;
         font-family: "Poppins" !important;
@@ -572,11 +575,11 @@
         border: 1px solid lightgrey !important;
       }
     </style>
-    <!-- <script
+    <script
       src="https://www.sensesakustik.com/wp-content/themes/custom/js/jquery-2.1.0.js"
       defer
       async
-    ></script> -->
+    ></script>
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-9JQ27TSK64"
@@ -672,7 +675,36 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
+
   <script>
+    setInterval(function () {
+      $(".carousel-control-next-icon").trigger("click");
+    }, 5000);
+
+    $(document).ready(function () {
+      // Initially hide the sub-menu items
+      // $(".sub-menu").hide();
+
+      // Toggle sub-menu items on click
+      $(".has-arrow").click(function () {
+        // Close all open sub-menus except the clicked one
+        $(".has-arrow")
+          .not(this)
+          .removeClass("active")
+          .next(".sub-menu")
+          .slideUp("slow");
+
+        // Toggle the clicked sub-menu
+        $(this).toggleClass("active").next(".sub-menu").slideToggle("slow");
+
+        // Remove "active" class from all sub-menu items
+        // $(".sub-menu li").removeClass("active");
+
+        // Add "active" class to the clicked sub-menu items
+        $(this).next(".sub-menu").find("li").eq(0).addClass("active");
+      });
+    });
+
     $(function () {
       function log(message) {
         $("<div>").text(message).prependTo("#log");
@@ -698,6 +730,20 @@
         },
       });
     });
+
+    // $(document).ready(function () {
+    //   $('.accordion-header button').click(function () {
+    //     var target = $(this).data('bs-target');
+    //     var isCollapsed = $(target).hasClass('show');
+
+    //     if (isCollapsed) {
+    //       // $(target).collapse('hide');
+    //     } else {
+    //       $('.accordion-collapse').collapse('hide');
+    //       $(target).collapse('show');
+    //     }
+    //   });
+    // });
   </script>
   <script></script>
   <script>
@@ -739,29 +785,29 @@
     });
 
     /*	ClassicEditor
-  .create( document.querySelector( '#editor' ), {
-    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-          
-          // Upload the images to the server using the CKFinder QuickUpload command.
-          
+.create( document.querySelector( '#editor' ), {
+  // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+        
+        // Upload the images to the server using the CKFinder QuickUpload command.
+        
  
-      // Enable the "Insert image" button in the toolbar.
-      //toolbar: [ 'imageUpload' ],
+    // Enable the "Insert image" button in the toolbar.
+    //toolbar: [ 'imageUpload' ],
  
 ckfinder: {
-    uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
-  },        
-      
-      
-  } )
-  .then( editor => {
-    //window.editor = editor;
-          theEditor = editor;
-  } )
-  .catch( err => {
-    console.error( err.stack );
-  } );
-      */
+  uploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+},        
+    
+    
+} )
+.then( editor => {
+  //window.editor = editor;
+        theEditor = editor;
+} )
+.catch( err => {
+  console.error( err.stack );
+} );
+    */
 
     var theEditor;
 
@@ -875,11 +921,13 @@ ckfinder: {
           loc.pathname.includes("/sub_products") ||
           loc.pathname.includes("/resources") ||
           loc.pathname.includes("/career") ||
+          loc.pathname.includes("/careerForm") ||
           loc.pathname.includes("/not_found") ||
           loc.pathname.includes("/find_dealer") ||
           loc.pathname.includes("/product_detail_two") ||
           loc.pathname.includes("/insights") ||
-          loc.pathname.includes("/zest_product_detail") ||
+          loc.pathname.includes("/blogs") ||
+          loc.pathname.includes("/project-case") ||
           loc.pathname.includes("/resources_detail") ||
           loc.pathname.includes("/resources_gallery") ||
           loc.pathname.includes("/resources_certificate") ||
@@ -1153,40 +1201,25 @@ ckfinder: {
       }, 2000);
     });
 
-  
-  // $(document).ready(function() {
-  //   // Initially hide the sub-menu items
-  //   $(".sub-menu").hide();
-    
-  //   // Toggle sub-menu items on click
-  //   $(".has-arrow").click(function() {
-  //     // Close all open sub-menus except the clicked one
-  //     $(".has-arrow").not(this).removeClass("active").next(".sub-menu").slideUp("slow");
-      
-  //     // Toggle the clicked sub-menu
-  //     $(this).toggleClass("active").next(".sub-menu").slideToggle("slow");
-  //   });
-  // });
-  $(document).ready(function() {
-    // Initially hide the sub-menu items
-    // $(".sub-menu").hide();
-    
-    // Toggle sub-menu items on click
-    $(".has-arrow").click(function() {
-      // Close all open sub-menus except the clicked one
-      $(".has-arrow").not(this).removeClass("active").next(".sub-menu").slideUp("slow");
-      
-      // Toggle the clicked sub-menu
-      $(this).toggleClass("active").next(".sub-menu").slideToggle("slow");
-      
-      // Remove "active" class from all sub-menu items
-      // $(".sub-menu li").removeClass("active");
-      
-      // Add "active" class to the clicked sub-menu items
-      $(this).next(".sub-menu").find("li").eq(0).addClass("active");
+    $(document).ready(function () {
+      $(".oneClick").click(function () {
+        $(".oneClickshow").toggle();
+        $(".oneClickshow").toggleClass("rotate-effect");
+      });
     });
-  });
+    $(document).ready(function () {
+      $(".twoClick").click(function () {
+        $(".twoClickShow").toggle();
+        $(".twoClickShow").toggleClass("rotate-effect");
+      });
+    });
+    $(document).ready(function () {
+      $(".threeClick").click(function () {
+        $(".threeClickShow").toggle();
+        $(".threeClickShow").toggleClass("rotate-effect");
+      });
+    });
 
-
+    // resource pages
   </script>
 </html>

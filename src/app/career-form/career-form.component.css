@@ -1,0 +1,12 @@
+
+.apply-btn:hover{
+    outline: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-appearance: none;
+    appearance: none;
+    color: #fff;
+    border-color: #fecc00;
+    background-color: #fecc00;
+}

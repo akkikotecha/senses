@@ -236,11 +236,7 @@ export class InsightsTwoComponent {
 
     localStorage.setItem('blogs_id', id);
     localStorage.setItem('blogs_title', name);
-
-    // console.log(id)
-    this.router.navigate(['blog_and_news_show_details', name]).then(() => {
-      // window.location.reload();
-    });
+    window.open(`/blogs/${name.replace(/\s+/g, '-')}`, '_blank');
   }
 
   toggleDescription() {

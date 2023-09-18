@@ -404,3 +404,7 @@ a:hover {
   font-size: 30px;
   color: #808080;
 }
+
+.button-sub-data {
+  cursor: pointer;
+}

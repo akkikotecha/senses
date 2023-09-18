@@ -80,24 +80,10 @@ export class FeaturedProductsComponent {
     private AdminCategoryService: FeaturedProjectService,
     private lazyLoadService: LazyLoadingService,
     private cdRef: ChangeDetectorRef
-  ) {
-
-    setTimeout(function () {
-      // console.log('HELLO');
-
-      $('.lightboxOverlay').css({
-        display: 'none',
-      });
-      $('.lightbox').css({
-        display: 'none',
-      });
-    }, 100);
-  }
+  ) {}
   objectKeys = Object.keys;
 
   ngOnInit(): void {
-
- 
     this.AdminCategoryService.getAllCategory().subscribe((res) => {
       this.JobsiteData = JSON.parse(JSON.stringify(res));
       // this.related_product = JSON.parse(JSON.stringify(res));
@@ -331,7 +317,7 @@ export class FeaturedProductsComponent {
         console.error('Editor initialization error.', error);
       });
 
-    ClassicEditor.create(document.querySelector('#submitfeatureOneDescription'), {
+    ClassicEditor.create(document.querySelector('#featureOneDescription'), {
       // toolbar: ['imageUpload'],
       ckfinder: {
         uploadUrl: environment.base_url + 'ckeEditorImageUpload',
@@ -359,11 +345,7 @@ export class FeaturedProductsComponent {
         console.error('Editor initialization error.', error);
       });
 
-      const initialData = sessionStorage.getItem("editfeatureProductOneDescription");
-    ClassicEditor.create(document.querySelector('#editfeatureOneDescription'),{
-      initialData: initialData,
-    })
-    
+    ClassicEditor.create(document.querySelector('#featureTwoDescription'))
       .then(
         (editor: {
           on: (arg0: string, arg1: { (): void; (): void }) => void;
@@ -540,96 +522,40 @@ export class FeaturedProductsComponent {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes',
       }).then((result) => {
-        // if (result.isConfirmed) {
-        //   const file = this.imageUpdate;
-        //   //    this.image = file;
-
-        //   const fda = new FormData();
-
-        //   fda.append('myFile', file);
-
-        //   // fda.append('select_category', 'Announcement');
-        //   // fda.append('select_date', $('#edit_select_date').val());
-        //   fda.append('title', $('#edit_title').val());
-        //   fda.append('edit_id', $('#edit_id').val());
-
-        //   console.log(
-        //     file +
-        //       ' ' +
-        //       $('#edit_select_date').val() +
-        //       ' ' +
-        //       $('#edit_title').val() +
-        //       ' ' +
-        //       $('#edit_id').val()
-        //   );
-        //   this.AdminCategoryService.EditOrganizationData(fda).subscribe(
-        //     (res) => {
-        //       console.log('Result ', res);
-        //       const ra = JSON.stringify(res);
-
-        //       const Authdata = JSON.parse(ra);
-
-        //       //  console.log(Authdata.data[0].User[0].first_name);
-
-        //       if (Authdata.message == 'Added') {
-        //         Swal.fire({
-        //           title: 'Featured Product Updated Successfully...',
-        //           text: '',
-        //           icon: 'success',
-        //           confirmButtonText: 'ok',
-        //           confirmButtonColor: '#fd7e14',
-        //         });
-
-        //         this.color = 'success';
-        //         this.successfully_login =
-        //           'Featured Product Updated Successfully...';
-        //         //  this.get_data();
-        //         window.location.reload();
-        //       } else {
-        //         Swal.fire({
-        //           title: ' Featured Product Not Added!!!',
-        //           text: '',
-        //           icon: 'error',
-        //           confirmButtonText: 'ok',
-        //           confirmButtonColor: '#fd7e14',
-        //         });
-
-        //         this.color = 'danger';
-        //         this.successfully_login =
-        //           'Organization Announcement Not Added!!!';
-        //       }
-
-        //       this.check_valid = true;
-        //     }
-        //   );
-        // }
         if (result.isConfirmed) {
-          const formData = new FormData();
+          const file = this.imageUpdate;
+          //    this.image = file;
 
-          this.addFeaturedThreeImage.forEach((file, index) => {
-            formData.append('image', file);
-          });
-          console.log('this.subCategoryID', this.subCategoryID);
-          formData.append('name', $('#editTitle').val());
-          formData.append('edit_id', $('#edit_id').val());
-          // formData.append('productId', this.subCategoryID);
-          formData.append('productId', $('#edit_sub_category').val());
+          const fda = new FormData();
 
-          formData.append('description', this.description_value_2);
+          fda.append('myFile', file);
 
-          formData.append('orderIndex', $('#edit_order_index').val() as string);
+          fda.append('select_category', 'Announcement');
+          fda.append('select_date', $('#edit_select_date').val());
+          fda.append('title', $('#edit_title').val());
+          fda.append('edit_id', $('#edit_id').val());
 
-          console.log(JSON.stringify(formData));
-          // Send the form data to the server
-          this.AdminCategoryService.EditOrganizationData(formData).subscribe(
+          console.log(
+            file +
+              ' ' +
+              $('#edit_select_date').val() +
+              ' ' +
+              $('#edit_title').val() +
+              ' ' +
+              $('#edit_id').val()
+          );
+          this.AdminCategoryService.EditOrganizationData(fda).subscribe(
             (res) => {
               console.log('Result ', res);
               const ra = JSON.stringify(res);
+
               const Authdata = JSON.parse(ra);
 
-              if (Authdata.message == 'Data Updated Successfully') {
+              //  console.log(Authdata.data[0].User[0].first_name);
+
+              if (Authdata.message == 'Added') {
                 Swal.fire({
-                  title: 'Featured Product Added Successfully...',
+                  title: 'Organization Announcement Updated Successfully...',
                   text: '',
                   icon: 'success',
                   confirmButtonText: 'ok',
@@ -638,22 +564,12 @@ export class FeaturedProductsComponent {
 
                 this.color = 'success';
                 this.successfully_login =
-                  'Product Detail Added Successfully...';
-                // window.location.reload();
-              } else if (Authdata.message == 'already exit index.') {
-                Swal.fire({
-                  title: 'Banner Index already exit',
-                  text: '',
-                  icon: 'error',
-                  confirmButtonText: 'ok',
-                  confirmButtonColor: '#fd7e14',
-                });
-
-                this.color = 'danger';
-                this.successfully_login = 'Banner Index already exit';
+                  'Organization Announcement Updated Successfully...';
+                //  this.get_data();
+                window.location.reload();
               } else {
                 Swal.fire({
-                  title: 'Product Detail Not Added!!!',
+                  title: 'Organization Announcement Not Added!!!',
                   text: '',
                   icon: 'error',
                   confirmButtonText: 'ok',
@@ -661,8 +577,10 @@ export class FeaturedProductsComponent {
                 });
 
                 this.color = 'danger';
-                this.successfully_login = 'Product Detail Not Added!!!';
+                this.successfully_login =
+                  'Organization Announcement Not Added!!!';
               }
+
               this.check_valid = true;
             }
           );

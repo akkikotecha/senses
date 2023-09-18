@@ -16,6 +16,11 @@ export class ResourceDocumentService {
     console.log(url);
     return this.http.get(url);
   }
+  getResourceDetailsBySubTypeId(id: any) {
+    let url = environment.base_url + 'getResourceDetailsBySubTypeId/' + id;
+    console.log(url);
+    return this.http.get(url);
+  }
   getResourceSubTypeDataByTypeID(id: any) {
     let url = environment.base_url + 'getAllResourceSubTypeByTypeID/' + id;
     console.log(url);
