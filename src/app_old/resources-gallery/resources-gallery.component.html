@@ -1,0 +1,281 @@
+<app-header> </app-header>
+
+<body>
+  <header
+    class="cd-header"
+    style="margin-bottom: -60px; background: transparent"
+  ></header>
+
+  <main class="cd-main-content">
+    <div class="cd-tab-filter-wrapper">
+      <div class="cd-tab-filter">
+        <ul class="cd-filters" style="cursor: pointer">
+          <li class="filter">
+            <a
+              class="selected"
+              [class.selected]="
+                !paramsValue || paramsValue.toLowerCase() === 'all'
+              "
+              (click)="handleClick('', '')"
+              data-type="all"
+              >All</a
+            >
+          </li>
+          <li
+            class="filter"
+            [attr.data-filter]="'.color-' + documentTypeIndex"
+            *ngFor="
+              let documentType of filterData.data;
+              let documentTypeIndex = index
+            "
+          >
+            <a
+              [class.selected]="
+                paramsValue?.toLowerCase() === documentType.title?.toLowerCase()
+              "
+              style="text-transform: capitalize"
+              [attr.data-type]="'color-' + documentTypeIndex"
+              (click)="handleClick(documentType._id, documentType.title)"
+              >{{ documentType.title }}</a
+            >
+          </li>
+        </ul>
+        <!-- cd-filters -->
+      </div>
+      <!-- cd-tab-filter -->
+    </div>
+    <!-- cd-tab-filter-wrapper -->
+
+    <section class="cd-gallery filter-is-visible">
+      <ng-container *ngIf="filterResourceData.length == 0">
+        <div style="height: 400px">
+          <h4>No Resource Available</h4>
+        </div>
+      </ng-container>
+      <ul *ngIf="filterResourceData.length != 0">
+        <li
+          class="mix color-1 check1 radio2 option3"
+          *ngFor="let resourceImage of filterResourceData"
+        >
+          <a
+            href="assets/{{ resourceImage.image | htmlToPlaintext }}"
+            class="se_image_2"
+            data-lightbox="gallery-group-2"
+          >
+            <img
+              id="se_image"
+              src="assets/{{ resourceImage.image | htmlToPlaintext }}"
+              class="thumbnail m-0"
+              width="35px"
+              height="35px"
+              alt=""
+            />
+          </a>
+          <!-- <a
+            href="assets/{{ resourceImage.image | htmlToPlaintext }}"
+            data-toggle="lightbox"
+            data-gallery="gallery"
+            class="col-md-4"
+          >
+            <img
+              class="filterImage"
+              src="assets/{{ resourceImage.image | htmlToPlaintext }}"
+              alt="Image 1"
+            />
+          </a> -->
+          <div class="d-flex align-items-center justify-content-between">
+            <div
+              class="row"
+              style="
+                float: left;
+                padding-left: 19px;
+                padding-top: 19px;
+                padding-bottom: 15px;
+              "
+            >
+              <h3 style="font-size: 16px; color: #000">
+                <input
+                  (change)="onFileSelect($event, resourceImage)"
+                  id="wp-comment-cookies-consent"
+                  name="wp-comment-cookies-consent"
+                  type="checkbox"
+                  class="checkbox_design"
+                  value="yes"
+                />
+
+                {{ resourceImage.title }}
+              </h3>
+            </div>
+            <div class="row" style="float: right; padding-right: 26px">
+              <a
+                href="assets/{{ resourceImage.image | htmlToPlaintext }}"
+                target="{{ resourceImage.image }}"
+                ><i
+                  class="fa fa-download"
+                  style="font-size: 18px; color: #000"
+                ></i
+              ></a>
+            </div>
+          </div>
+        </li>
+
+        <li class="gap"></li>
+        <li class="gap"></li>
+        <li class="gap"></li>
+      </ul>
+      <div class="cd-fail-message">No results found</div>
+    </section>
+    <!-- cd-gallery -->
+
+    <div class="cd-filter filter-is-visible" style="cursor: pointer">
+      <form style="height: inherit">
+        <div class="cd-filter-block d-none">
+          <h4>Search</h4>
+
+          <div class="cd-filter-content">
+            <input type="search" placeholder="Search" />
+          </div>
+          <!-- cd-filter-content -->
+        </div>
+        <!-- cd-filter-block -->
+
+        <div class="cd-filter-block d-none">
+          <h4>Check boxes</h4>
+
+          <ul class="cd-filter-content cd-filters list">
+            <li>
+              <input
+                class="filter"
+                data-filter=".check1"
+                type="checkbox"
+                id="checkbox1"
+              />
+              <label class="checkbox-label" for="checkbox1">Option 1</label>
+            </li>
+
+            <li>
+              <input
+                class="filter"
+                data-filter=".check2"
+                type="checkbox"
+                id="checkbox2"
+              />
+              <label class="checkbox-label" for="checkbox2">Option 2</label>
+            </li>
+
+            <li>
+              <input
+                class="filter"
+                data-filter=".check3"
+                type="checkbox"
+                id="checkbox3"
+              />
+              <label class="checkbox-label" for="checkbox3">Option 3</label>
+            </li>
+          </ul>
+          <!-- cd-filter-content -->
+        </div>
+        <!-- cd-filter-block -->
+
+        <div class="cd-filter-block">
+          <h4>Category</h4>
+
+          <div class="cd-filter-content">
+            <div class="cd-select cd-filters">
+              <select
+                [disabled]="disableSidebarContentDisable"
+                class="filter"
+                name="selectThis"
+                (change)="handleChange($event)"
+                id="categoryID"
+              >
+                <option value="">Choose an option</option>
+                <option
+                  value="{{ category._id }}"
+                  *ngFor="let category of categoryData.data"
+                >
+                  {{ category.categoryName }}
+                </option>
+              </select>
+            </div>
+            <!-- cd-select -->
+          </div>
+          <!-- cd-filter-content -->
+        </div>
+        <!-- cd-filter-block -->
+
+        <div class="cd-filter-block">
+          <h4>Product</h4>
+
+          <div class="cd-filter-content">
+            <div class="cd-select cd-filters">
+              <select
+                [disabled]="disableSidebarContentDisable"
+                class="filter"
+                name="selectThis"
+                id="subCategoryID"
+              >
+                <option value="">Choose an option</option>
+                <option
+                  value="{{ subCategory._id }}"
+                  *ngFor="let subCategory of subCategoryData.data"
+                >
+                  {{ subCategory.subCategoryName }}
+                </option>
+              </select>
+            </div>
+            <!-- cd-select -->
+          </div>
+          <!-- cd-filter-content -->
+        </div>
+
+        <!-- cd-filter-block -->
+        <div class="d-flex justify-content-around">
+          <button
+            [disabled]="disableSidebarContentDisable"
+            type="button"
+            class="fs-6 filterButton"
+            (click)="handleFormSubmit()"
+          >
+            Apply Filter
+          </button>
+          <button
+            [disabled]="disableSidebarContentDisable"
+            type="button"
+            class="fs-6 filterButtonReset"
+            (click)="handleResetButton()"
+          >
+            Reset Filter
+          </button>
+        </div>
+      </form>
+
+      <a class="cd-close"><i class="fa fa-close"></i></a>
+    </div>
+    <!-- cd-filter -->
+
+    <a class="cd-filter-trigger filter-is-visible">Filters</a>
+  </main>
+  <div *ngIf="selectedFiles.length > 1" id="downloadButtonDiv">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="ml-lg-5 mt-2 mb-0">{{ count }} selected item</p>
+      </div>
+      <div class="col-md-6 text-end">
+        <button
+          *ngIf="selectedFiles.length > 1"
+          class=""
+          style="width: auto"
+          (click)="downloadFiles()"
+        >
+          <i class="fa fa-download" aria-hidden="true"></i> Download ZIP
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- cd-main-content -->
+
+  <!-- .cd-3d-nav-container -->
+
+  <app-footer> </app-footer>
+</body>

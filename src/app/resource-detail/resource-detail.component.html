@@ -5,7 +5,7 @@
 <ng-template #normalScreen>
   <app-header> </app-header>
 
-  <section class="process resourceHeader">
+  <section class="process resourceHeader marginSetMobile">
     <div class="container mt-4">
       <div class="row">
         <div class="title-page-white text-center w-100">
@@ -21,53 +21,37 @@
     </div>
   </section>
 
-  <section class="process" style="margin-top: -31px !important">
+  <section class="process" style="margin-top: -61px !important">
     <div class="container">
       <div class="title-page-white text-center w-100">
         <div class="row justify-content-between mt-0">
           <div class="col-lg-3">
             <!-- <div class="row d-flex mt-0"> -->
-            <div
-              class="panel panel-default my-3"
-              *ngFor="
+            <div class="panel panel-default my-3" *ngFor="
                 let document of resourceFilterTypeSubTypeData.data;
                 let i = index
-              "
-            >
+              ">
               <div class="panel-heading2" role="tab" [attr.id]="'heading_' + i">
                 <h4 class="panel-title">
-                  <a
-                    role="button"
-                    data-toggle="collapse"
-                    data-parent="#accordion"
-                    [attr.href]="'#collapse_' + i"
-                    [attr.aria-controls]="'collapse_' + i"
-                    [attr.aria-expanded]="false"
-                  >
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse_' + i"
+                    [attr.aria-controls]="'collapse_' + i" [attr.aria-expanded]="false">
                     {{ document.title }}
                   </a>
                 </h4>
               </div>
-              <div
-                [attr.id]="'collapse_' + i"
-                class="panel-collapse collapse"
-                role="tabpanel"
-                [attr.aria-labelledby]="'heading_' + i"
-              >
+              <div [attr.id]="'collapse_' + i" class="panel-collapse collapse" role="tabpanel"
+                [attr.aria-labelledby]="'heading_' + i">
                 <div class="panel-body">
                   <!-- Your content here -->
-                  <p
-                    (click)="
+                  <p (click)="
                       resourceTypeClickSub(
                         subtypeDataFilter._id,
-                        subtypeDataFilter.title
+                        subtypeDataFilter.title,
+                        document._id
                       )
-                    "
-                    class="p_all_text_set_new button-sub-data"
-                    *ngFor="
+                    " class="p_all_text_set_new button-sub-data" *ngFor="
                       let subtypeDataFilter of document.resourceSubTypeData
-                    "
-                  >
+                    ">
                     {{ subtypeDataFilter.title }}
                   </p>
                 </div>
@@ -77,14 +61,9 @@
           </div>
           <div class="col-lg-9">
             <div class="row justify-content-between mt-3">
-              <div
-                class="col-lg-6"
-                *ngFor="let image of resourceType.data; let i = index"
-              >
+              <div class="col-lg-6" *ngFor="let image of resourceType.data; let i = index">
                 <!-- http://52.44.128.214/resources_document -->
-                <a
-                  style="cursor: pointer"
-                  (click)="
+                <a style="cursor: pointer" (click)="
                     resourceTypeClick(
                       image._id,
                       image.title === 'Images'
@@ -95,23 +74,15 @@
                         ? '/resources-materials'
                         : '/resources-certifications/all'
                     )
-                  "
-                >
+                  ">
                   <div class="card" style="cursor: pointer">
-                    <img
-                      src="assets/{{ image.image | htmlToPlaintext }}"
-                      class="card-img-top"
-                      style="height: 300px"
-                      alt="..."
-                    />
+                    <img src="assets/{{ image.image | htmlToPlaintext }}" class="card-img-top" style="height: 300px"
+                      alt="..." />
                     <div class="card-body">
-                      <h5
-                        class="card-title p_all_text_set card_header hover_effect"
-                        style="
+                      <h5 class="card-title p_all_text_set card_header hover_effect" style="
                           font-size: 24px !important;
                           text-transform: capitalize;
-                        "
-                      >
+                        ">
                         {{ image.title }}
                       </h5>
                       <p class="card-text text-left p_all_text_set d-none">
@@ -128,20 +99,15 @@
     </div>
   </section>
 
-  <section class="process">
+  <section class="process" style="margin-top: -61px !important;">
     <div class="container">
       <div class="title-page-white text-center w-100">
-        <p
-          class="card-text text-left p_all_text_set mt-4 mb-4 justify-content-center d-none"
-        >
-          <button
-            class="btn btn-dark"
-            style="
+        <p class="card-text text-left p_all_text_set mt-4 mb-4 justify-content-center d-none">
+          <button class="btn btn-dark" style="
               background-color: #fecc00;
               border-color: #fecc00;
               color: black;
-            "
-          >
+            ">
             <span style="font-weight: 600; font-size: 13px">
               Frequently Asked Question
             </span>
@@ -154,30 +120,14 @@
           <div class="panel panel-default my-2">
             <div class="panel-heading" role="tab" id="headingOne2">
               <h4 class="panel-title">
-                <a
-                  role="button"
-                  data-toggle="collapse"
-                  data-parent="#accordion_fabrics"
-                  href="#collapseOne2"
-                  aria-expanded="false"
-                  aria-controls="collapseOne2"
-                >
+                <a role="button" data-toggle="collapse" data-parent="#accordion_fabrics" href="#collapseOne2"
+                  aria-expanded="false" aria-controls="collapseOne2">
                   Images
                 </a>
               </h4>
             </div>
-            <div
-              id="collapseOne2"
-              class="panel-collapse collapse in"
-              role="tabpanel"
-              aria-labelledby="headingOne2"
-            >
-              <div
-                class="panel-group"
-                id="accordion_fabrics"
-                role="tablist"
-                aria-multiselectable="false"
-              >
+            <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
+              <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="false">
                 <div class="col-lg-12 mt-0 pl-4">
                   <p style="font-size: 18px; font-weight: 600">
                     1. Can I download product and project images?
@@ -219,30 +169,14 @@
           <div class="panel panel-default my-2">
             <div class="panel-heading" role="tab" id="headingOne2">
               <h4 class="panel-title">
-                <a
-                  role="button"
-                  data-toggle="collapse"
-                  data-parent="#accordion_fabrics"
-                  href="#collapseOne21"
-                  aria-expanded="false"
-                  aria-controls="collapseOne21"
-                >
+                <a role="button" data-toggle="collapse" data-parent="#accordion_fabrics" href="#collapseOne21"
+                  aria-expanded="false" aria-controls="collapseOne21">
                   Documents
                 </a>
               </h4>
             </div>
-            <div
-              id="collapseOne21"
-              class="panel-collapse collapse in"
-              role="tabpanel"
-              aria-labelledby="headingOne21"
-            >
-              <div
-                class="panel-group"
-                id="accordion_fabrics"
-                role="tablist"
-                aria-multiselectable="false"
-              >
+            <div id="collapseOne21" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne21">
+              <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="false">
                 <div class="col-lg-12 mt-0 pl-4">
                   <p style="font-size: 18px; font-weight: 600">
                     1. Can I download brochures, specification sheets and
@@ -297,30 +231,14 @@
           <div class="panel panel-default my-2">
             <div class="panel-heading" role="tab" id="headingOne2">
               <h4 class="panel-title">
-                <a
-                  role="button"
-                  data-toggle="collapse"
-                  data-parent="#accordion_fabrics"
-                  href="#collapseOne212"
-                  aria-expanded="false"
-                  aria-controls="collapseOne212"
-                >
+                <a role="button" data-toggle="collapse" data-parent="#accordion_fabrics" href="#collapseOne212"
+                  aria-expanded="false" aria-controls="collapseOne212">
                   Materials
                 </a>
               </h4>
             </div>
-            <div
-              id="collapseOne212"
-              class="panel-collapse collapse in"
-              role="tabpanel"
-              aria-labelledby="headingOne212"
-            >
-              <div
-                class="panel-group"
-                id="accordion_fabrics"
-                role="tablist"
-                aria-multiselectable="false"
-              >
+            <div id="collapseOne212" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne212">
+              <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="false">
                 <div class="col-lg-12 mt-0 pl-4">
                   <p style="font-size: 18px; font-weight: 600">
                     1. Can I order products other than the color mentioned in
@@ -364,30 +282,15 @@
           <div class="panel panel-default my-2">
             <div class="panel-heading" role="tab" id="headingOne2">
               <h4 class="panel-title">
-                <a
-                  role="button"
-                  data-toggle="collapse"
-                  data-parent="#accordion_fabrics"
-                  href="#collapseOne2122"
-                  aria-expanded="false"
-                  aria-controls="collapseOne2122"
-                >
+                <a role="button" data-toggle="collapse" data-parent="#accordion_fabrics" href="#collapseOne2122"
+                  aria-expanded="false" aria-controls="collapseOne2122">
                   Certifications
                 </a>
               </h4>
             </div>
-            <div
-              id="collapseOne2122"
-              class="panel-collapse collapse in"
-              role="tabpanel"
-              aria-labelledby="headingOne2122"
-            >
-              <div
-                class="panel-group"
-                id="accordion_fabrics"
-                role="tablist"
-                aria-multiselectable="false"
-              >
+            <div id="collapseOne2122" class="panel-collapse collapse in" role="tabpanel"
+              aria-labelledby="headingOne2122">
+              <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="false">
                 <div class="col-lg-12 mt-0 pl-4">
                   <p style="font-size: 18px; font-weight: 600">
                     1. What is the authenticity of certificates and awards?

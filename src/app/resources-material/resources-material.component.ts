@@ -23,6 +23,7 @@ export class ResourcesMaterialComponent {
   categorySelectedId: any = '';
   subCategorySelectedId: any = '';
   disableSidebarContent: any = '';
+
   fabrics_id: any = '';
   commonButtonClick: boolean = false;
   productLookBook: any = '';
@@ -117,20 +118,30 @@ export class ResourcesMaterialComponent {
       xhr.send();
     });
   }
+
+  isResourceTypeSelected(documentTypeId: string): boolean {
+    const localStorageValue = localStorage.getItem('resourceTypeIdSub');
+    return localStorageValue === documentTypeId;
+  }
   ngOnInit(): void {
     console.log('categorySelectedId', this.categorySelectedId);
-    if (localStorage.getItem('fabrics_id') == '648b0c153b5871e6e15ed4a1') {
-      this.fabrics_id = localStorage.getItem('fabrics_id');
-      this.filterResourceData = [];
-    } else {
-      this.fabrics_id = null;
-      this.filterResourceData = this.data.data.filter((res: any) => {
-        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
-          console.log(res);
-          return res;
-        }
-      });
+    if (
+      localStorage.getItem('resourceTypeIdSub') === '648b0c153b5871e6e15ed4a1'
+    ) {
+      if (localStorage.getItem('fabrics_id') == '648b0c153b5871e6e15ed4a1') {
+        this.fabrics_id = localStorage.getItem('fabrics_id');
+        this.filterResourceData = [];
+      } else {
+        this.fabrics_id = null;
+        this.filterResourceData = this.data.data.filter((res: any) => {
+          if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+            console.log(res);
+            return res;
+          }
+        });
+      }
     }
+
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/table/resourcesGalley.js')
@@ -214,11 +225,22 @@ export class ResourcesMaterialComponent {
     }, 1000);
     setTimeout(function () {
       // console.log('HELLO');
-      $('.header-main').css({
-        background: '#fff',
-        border: '2px solid #ededed',
-        padding: '9px 0px 11px 0px',
-      });
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        $('.header-main').css({
+          background: '#fff',
+          border: '2px solid #ededed',
+          padding: '14px 0px 1px 0px',
+        });
+        $('.cd-filter,.cd-filter-trigger').removeClass('filter-is-visible');
+      } else {
+        $('.header-main').css({
+          background: '#fff',
+          border: '2px solid #ededed',
+          padding: '14px 0px 20px 0px',
+        });
+      }
+      $('.Headerbutton').removeClass('button');
+      $('.Headerbutton').addClass('button_black');
       $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
       $('.sticky_color').addClass('sticky_add_color');
       $('.search-field').css({
@@ -280,19 +302,42 @@ export class ResourcesMaterialComponent {
     if (
       localStorage.getItem('resourceTypeIdSub') == '648b0c153b5871e6e15ed4a1'
     ) {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+          console.log(res);
+          return res;
+        }
+      });
       console.log('HHE 1');
       this.handleFabricData(id, name);
     } else if (
       localStorage.getItem('resourceTypeIdSub') == '648b0c213b5871e6e15ed4a5'
     ) {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+          console.log(res);
+          return res;
+        }
+      });
       console.log('HHE 2');
       this.handleFeltsData(id, name);
+
       this.router.navigate([`/resources-materials/${name}`]).then(() => {
         // window.location.reload();
       });
     } else if (
       localStorage.getItem('resourceTypeIdSub') == '648b0c343b5871e6e15ed4a9'
     ) {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+          console.log(res);
+          return res;
+        }
+      });
+      localStorage.setItem('fabrics_id', 'null');
       console.log('HHE 3');
       this.handleColorineData(id, name);
       this.router.navigate([`/resources-materials/${name}`]).then(() => {
@@ -301,6 +346,14 @@ export class ResourcesMaterialComponent {
     } else if (
       localStorage.getItem('resourceTypeIdSub') == '648b0c5d3b5871e6e15ed4ad'
     ) {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+          console.log(res);
+          return res;
+        }
+      });
+      localStorage.setItem('fabrics_id', 'null');
       console.log('HHE 3');
       this.handleCADFilesData(id, name);
       this.router.navigate([`/resources-materials/${name}`]).then(() => {
@@ -309,17 +362,34 @@ export class ResourcesMaterialComponent {
     } else if (
       localStorage.getItem('resourceTypeIdSub') == '64afd7778dcf20bfd4b01b1c'
     ) {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+          console.log(res);
+          return res;
+        }
+      });
+      localStorage.setItem('fabrics_id', 'null');
       console.log('HHE 3');
       this.handleOthersData(id, name);
       this.router.navigate([`/resources-materials/${name}`]).then(() => {
         // window.location.reload();
       });
     } else {
+      this.fabrics_id = null;
+      this.filterResourceData = this.data.data.filter((res: any) => {
+        if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+          console.log(res);
+          return res;
+        }
+      });
+      localStorage.setItem('fabrics_id', 'null');
       console.log('HHE 5');
 
       console.log('AllDataProfile', name);
       this.handleAllCertificateData('648ac68f3b5871e6e15ed344', name);
     }
+    // window.location.reload();
   }
   handleAllCertificateData(id: string, name?: string) {
     this.resourceDocument.getResourceTypeData(id).subscribe((res) => {
@@ -340,6 +410,7 @@ export class ResourcesMaterialComponent {
     });
   }
   handleFabricData(id: string, name?: string) {
+    localStorage.setItem('fabrics_id', id);
     this.disableSidebarContent = true;
     this.resourceDocument.getResourceDetailsBySubTypeId(id).subscribe((res) => {
       if (res && typeof res === 'object') {
@@ -371,6 +442,18 @@ export class ResourcesMaterialComponent {
             return res;
           }
         });
+        if (localStorage.getItem('fabrics_id') == '648b0c153b5871e6e15ed4a1') {
+          this.fabrics_id = localStorage.getItem('fabrics_id');
+          this.filterResourceData = [];
+        } else {
+          this.fabrics_id = null;
+          this.filterResourceData = this.data.data.filter((res: any) => {
+            if (res.resourceSubType == localStorage.getItem('fabrics_id')) {
+              console.log(res);
+              return res;
+            }
+          });
+        }
         console.log('this.data', this.data);
       } else {
         console.error('Invalid response data: expected a single object');

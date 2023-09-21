@@ -4,7 +4,7 @@
 
 <ng-template #otherContainer>
   <app-header> </app-header>
-  <header style="padding-bottom: 40px">
+  <header style="padding-bottom: 40px" class="entry-content">
     <div id="carouselExampleIndicators" class="carousel slide" style="position: relative" data-bs-ride="carousel"
       data-bs-ride="carousel" data-bs-interval="1000">
       <a class="carousel-control-prev carousel-control-prev-set left_right_click d-none"
@@ -26,7 +26,8 @@
       <div class="carousel-inner">
         <div class="carousel-item get_text active" *ngFor="let getData of Data.data; let i = index"
           [class.active]="i === 0">
-          <img class="d-block w-100" src="assets/{{ getData.image | htmlToPlaintext }}" style="height: 700px" />
+          <img class="d-block w-100 classheightSet" src="assets/{{ getData.image | htmlToPlaintext }}"
+            style="height: 700px" />
           <div class="carousel-caption d-none d-md-block" style="text-align: initial">
             <h3 style="font-weight: 500; font-size: 36px" class="text-left">
               {{ getData.title }}

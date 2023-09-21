@@ -11,7 +11,13 @@
       <div class="cd-tab-filter">
         <ul class="cd-filters" style="cursor: pointer">
           <li class="filter">
-            <a class="selected" (click)="handleClick('', '')" data-type="all"
+            <a
+              class="selected"
+              [class.selected]="
+                !paramsValue || paramsValue.toLowerCase() === 'all'
+              "
+              (click)="handleClick('', '')"
+              data-type="all"
               >All</a
             >
           </li>
@@ -24,6 +30,9 @@
             "
           >
             <a
+              [class.selected]="
+                paramsValue?.toLowerCase() === documentType.title?.toLowerCase()
+              "
               style="text-transform: capitalize"
               [attr.data-type]="'color-' + documentTypeIndex"
               (click)="handleClick(documentType._id, documentType.title)"
@@ -249,10 +258,10 @@
   </main>
   <div *ngIf="selectedFiles.length > 1" id="downloadButtonDiv">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 col-6">
         <p class="ml-lg-5 mt-2 mb-0">{{ count }} selected item</p>
       </div>
-      <div class="col-md-6 text-end">
+      <div class="col-md-6 col-6 text-end">
         <button
           *ngIf="selectedFiles.length > 1"
           class=""

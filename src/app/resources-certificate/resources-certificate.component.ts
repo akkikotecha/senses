@@ -23,6 +23,7 @@ export class ResourcesCertificateComponent {
   categorySelectedId: any = '';
   subCategorySelectedId: any = '';
   disableSidebarContent: any = '';
+  disableSidebarContentDisable: boolean = false;
   fabrics_id: any = '';
   commonButtonClick: boolean = false;
   productLookBook: any = '';
@@ -117,8 +118,24 @@ export class ResourcesCertificateComponent {
       xhr.send();
     });
   }
+
+  isResourceTypeSelected(documentTypeId: string): boolean {
+    const localStorageValue = localStorage.getItem('resourceTypeIdSub');
+    return localStorageValue === documentTypeId;
+  }
+
   ngOnInit(): void {
     console.log('categorySelectedId', this.categorySelectedId);
+    const resourceTypeNameSub = localStorage.getItem('ResourceTypeNameSub');
+
+    // Check if it's "Projects" or "BTS" and set disableSidebarContent accordingly
+    if (
+      resourceTypeNameSub === 'Certifications' ||
+      resourceTypeNameSub === 'Reports' ||
+      resourceTypeNameSub === 'Awards'
+    ) {
+      this.disableSidebarContentDisable = true;
+    }
 
     setTimeout(() => {
       this.lazyLoadService
@@ -159,7 +176,7 @@ export class ResourcesCertificateComponent {
           this.paramsValue
         );
       } else {
-        this.handleAllCertificateData('648adb5b3b5871e6e15ed348', 'All');
+        this.handleAllCertificateData('648adb5b3b5871e6e15ed348', 'all');
       }
       this.resourceDocument.getAllCategory().subscribe((res) => {
         this.categoryData = null;
@@ -187,11 +204,22 @@ export class ResourcesCertificateComponent {
     }, 1000);
     setTimeout(function () {
       // console.log('HELLO');
-      $('.header-main').css({
-        background: '#fff',
-        border: '2px solid #ededed',
-        padding: '9px 0px 11px 0px',
-      });
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        $('.header-main').css({
+          background: '#fff',
+          border: '2px solid #ededed',
+          padding: '14px 0px 1px 0px',
+        });
+        $('.cd-filter,.cd-filter-trigger').removeClass('filter-is-visible');
+      } else {
+        $('.header-main').css({
+          background: '#fff',
+          border: '2px solid #ededed',
+          padding: '14px 0px 20px 0px',
+        });
+      }
+      $('.Headerbutton').removeClass('button');
+      $('.Headerbutton').addClass('button_black');
       $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
       $('.sticky_color').addClass('sticky_add_color');
       $('.search-field').css({

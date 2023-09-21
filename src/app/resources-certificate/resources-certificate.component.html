@@ -1,10 +1,7 @@
 <app-header> </app-header>
 
 <body>
-  <header
-    class="cd-header"
-    style="margin-bottom: -60px; background: transparent"
-  ></header>
+  <header class="cd-header" style="margin-bottom: -60px; background: transparent"></header>
 
   <main class="cd-main-content">
     <div class="cd-tab-filter-wrapper">
@@ -15,29 +12,18 @@
             <!-- selected option on mobile -->
           </li>
           <li class="filter" (click)="handleAllData()">
-            <a
-              class="selected"
-              (click)="handleClick('648adb5b3b5871e6e15ed348', 'All')"
-              data-type="all"
-              style=""
-              >All</a
-            >
+            <a class="selected" [class.selected]="
+                !paramsValue || paramsValue.toLowerCase() === 'all'
+              " (click)="handleClick('648adb5b3b5871e6e15ed348', 'all')" data-type="all" style="">All</a>
           </li>
-          <li
-            (click)="handleAllCommonData()"
-            class="filter"
-            [attr.data-filter]="'.color-' + documentTypeIndex"
-            *ngFor="
+          <li (click)="handleAllCommonData()" class="filter" [attr.data-filter]="'.color-' + documentTypeIndex" *ngFor="
               let documentType of filterData.data;
               let documentTypeIndex = index
-            "
-          >
-            <a
-              style="text-transform: capitalize"
-              [attr.data-type]="'color-' + documentTypeIndex"
-              (click)="handleClick(documentType._id, documentType.title)"
-              >{{ documentType.title }}</a
-            >
+            ">
+            <a [class.selected]="
+                isResourceTypeSelected(documentType._id) && paramsValue
+              " style="text-transform: capitalize" [attr.data-type]="'color-' + documentTypeIndex"
+              (click)="handleClick(documentType._id, documentType.title)">{{ documentType.title }}</a>
           </li>
         </ul>
         <!-- cd-filters -->
@@ -47,130 +33,78 @@
     <!-- cd-tab-filter-wrapper -->
 
     <section class="cd-gallery filter-is-visible">
-      <ng-container
-        *ngIf="filterResourceData.length == 0 && fabrics_id == null"
-      >
+      <ng-container *ngIf="filterResourceData.length == 0 && fabrics_id == null">
         <div style="height: 400px">
           <h4>No Resource Available</h4>
         </div>
       </ng-container>
-      <form
-        id="download_form"
-        [ngClass]="{
+      <form id="download_form" [ngClass]="{
           'custom-class': catAData.length > 5 || filterResourceData.length >= 5,
           'custom-class1': filterResourceData.length < 5
-        }"
-        style="position: relative"
-      >
+        }" style="position: relative">
         <table>
-          <div
-            *ngIf="fabrics_id == '648b0c153b5871e6e15ed4a1'"
-            class="panel-group"
-            id="accordion_fabrics"
-            role="tablist"
-            aria-multiselectable="true"
-            [ngClass]="{
+          <div *ngIf="fabrics_id == '648b0c153b5871e6e15ed4a1'" class="panel-group" id="accordion_fabrics"
+            role="tablist" aria-multiselectable="true" [ngClass]="{
               'custom-class2':
                 catAData.length <= 6 ||
                 catBData.length <= 5 ||
                 catBData.length <= 5
-            }"
-          >
+            }">
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingOne2">
                 <h4 class="panel-title">
-                  <a
-                    role="button"
-                    data-toggle="collapse"
-                    data-parent="#accordion_fabrics"
-                    href="#collapseOne2"
-                    aria-expanded="false"
-                    aria-controls="collapseOne2"
-                  >
+                  <a role="button" data-toggle="collapse" data-parent="#accordion_fabrics" href="#collapseOne2"
+                    aria-expanded="false" aria-controls="collapseOne2">
                     Fabrics Files
                   </a>
                 </h4>
               </div>
-              <div
-                id="collapseOne2"
-                class="panel-collapse collapse in"
-                role="tabpanel"
-                aria-labelledby="headingOne2"
-              >
-                <div
-                  class="panel-group"
-                  id="accordion_fabrics"
-                  role="tablist"
-                  style="height: 1000px"
-                  aria-multiselectable="false"
-                >
+              <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne2">
+                <div class="panel-group" id="accordion_fabrics" role="tablist" style="height: 1000px"
+                  aria-multiselectable="false">
                   <div class="panel panel-default my-3">
                     <div class="panel-heading2" role="tab" id="headingOne">
                       <h4 class="panel-title">
-                        <a
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapseOne"
-                          aria-expanded="false"
-                          aria-controls="collapseOne"
-                        >
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                          aria-expanded="false" aria-controls="collapseOne">
                           Cat A
                         </a>
                       </h4>
                     </div>
-                    <div
-                      id="collapseOne"
-                      class="panel-collapse collapse in"
-                      role="tabpanel"
-                      aria-labelledby="headingOne"
-                    >
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                      aria-labelledby="headingOne">
                       <div class="panel-body">
                         <tr *ngFor="let document of catAData; let i = index">
                           <ng-container *ngIf="catAData.length != 0">
                             <th style="width: 995px">
                               <span style="font-size: 16px; color: #000">
-                                <input
-                                  (change)="onFileSelect($event, document)"
-                                  id="wp-comment-cookies-consent"
-                                  name="wp-comment-cookies-consent"
-                                  type="checkbox"
-                                  class="checkbox_design"
-                                  value="yes"
-                                />
+                                <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                                  name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design"
+                                  value="yes" />
                               </span>
                               <span class="truncate" style="font-weight: 600">{{
                                 document.title
-                              }}</span>
-                              <span
-                                class="download-item-type ml-2"
-                                style="font-size: 14px; font-weight: 400"
-                              >
+                                }}</span>
+                              <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                                 {{ document.resourceSubTypeData[0].title }}
                               </span>
                             </th>
                             <th>
                               {{
-                                document.imageSize
-                                  ? (
-                                      document.imageSize /
-                                      (1024 * 1024)
-                                    ).toFixed(2) + " MB"
-                                  : "7 MB"
+                              document.imageSize
+                              ? (
+                              document.imageSize /
+                              (1024 * 1024)
+                              ).toFixed(2) + " MB"
+                              : "7 MB"
                               }}
                             </th>
                             <th class="text-uppercase">
                               {{ document.resourceFormat }}
                             </th>
                             <th>
-                              <a
-                                [attr.href]="getPdfUrl(document.image)"
-                                target="{{ document.image }}"
-                              >
-                                <i
-                                  class="fa fa-download"
-                                  style="font-weight: 500"
-                                ></i>
+                              <a [attr.href]="getPdfUrl(document.image)" target="{{ document.image }}">
+                                <i class="fa fa-download" style="font-weight: 500"></i>
                               </a>
                             </th>
                           </ng-container>
@@ -181,73 +115,47 @@
                   <div class="panel panel-default my-3">
                     <div class="panel-heading2" role="tab" id="headingTwo">
                       <h4 class="panel-title">
-                        <a
-                          class="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapseTwo"
-                          aria-expanded="false"
-                          aria-controls="collapseTwo"
-                        >
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           Cat B
                         </a>
                       </h4>
                     </div>
-                    <div
-                      id="collapseTwo"
-                      class="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="headingTwo"
-                    >
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                       <div class="panel-body">
                         <tr *ngFor="let document of catBData; let i = index">
                           <ng-container *ngIf="catBData.length != 0">
                             <th style="width: 995px">
                               <span style="font-size: 16px; color: #000">
-                                <input
-                                  (change)="onFileSelect($event, document)"
-                                  id="wp-comment-cookies-consent"
-                                  name="wp-comment-cookies-consent"
-                                  type="checkbox"
-                                  class="checkbox_design"
-                                  value="yes"
-                                />
+                                <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                                  name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design"
+                                  value="yes" />
                               </span>
                               <span class="truncate" style="font-weight: 600">{{
                                 document.title
-                              }}</span>
-                              <span
-                                class="download-item-type ml-2"
-                                style="font-size: 14px; font-weight: 400"
-                              >
+                                }}</span>
+                              <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                                 {{ document.resourceSubTypeData[0].title }}
                               </span>
                             </th>
                             <th>
                               {{
-                                document.imageSize
-                                  ? (
-                                      document.imageSize /
-                                      (1024 * 1024)
-                                    ).toFixed(2) + " MB"
-                                  : "7 MB"
+                              document.imageSize
+                              ? (
+                              document.imageSize /
+                              (1024 * 1024)
+                              ).toFixed(2) + " MB"
+                              : "7 MB"
                               }}
                             </th>
                             <th class="text-uppercase">
                               {{ document.resourceFormat }}
                             </th>
                             <th>
-                              <a
-                                href="assets/{{
+                              <a href="assets/{{
                                   document.image | htmlToPlaintext
-                                }}"
-                                target="{{ document.image }}"
-                              >
-                                <i
-                                  class="fa fa-download"
-                                  style="font-weight: 500"
-                                ></i>
+                                }}" target="{{ document.image }}">
+                                <i class="fa fa-download" style="font-weight: 500"></i>
                               </a>
                             </th>
                           </ng-container>
@@ -258,73 +166,48 @@
                   <div class="panel panel-default my-3">
                     <div class="panel-heading2" role="tab" id="headingThree">
                       <h4 class="panel-title">
-                        <a
-                          class="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapseThree"
-                          aria-expanded="false"
-                          aria-controls="collapseThree"
-                        >
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                          href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                           Cat C
                         </a>
                       </h4>
                     </div>
-                    <div
-                      id="collapseThree"
-                      class="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="headingThree"
-                    >
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                      aria-labelledby="headingThree">
                       <div class="panel-body">
                         <tr *ngFor="let document of catCData; let i = index">
                           <ng-container *ngIf="catCData.length != 0">
                             <th style="width: 995px">
                               <span style="font-size: 16px; color: #000">
-                                <input
-                                  (change)="onFileSelect($event, document)"
-                                  id="wp-comment-cookies-consent"
-                                  name="wp-comment-cookies-consent"
-                                  type="checkbox"
-                                  class="checkbox_design"
-                                  value="yes"
-                                />
+                                <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                                  name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design"
+                                  value="yes" />
                               </span>
                               <span class="truncate" style="font-weight: 600">{{
                                 document.title
-                              }}</span>
-                              <span
-                                class="download-item-type ml-2"
-                                style="font-size: 14px; font-weight: 400"
-                              >
+                                }}</span>
+                              <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                                 {{ document.resourceSubTypeData[0].title }}
                               </span>
                             </th>
                             <th>
                               {{
-                                document.imageSize
-                                  ? (
-                                      document.imageSize /
-                                      (1024 * 1024)
-                                    ).toFixed(2) + " MB"
-                                  : "7 MB"
+                              document.imageSize
+                              ? (
+                              document.imageSize /
+                              (1024 * 1024)
+                              ).toFixed(2) + " MB"
+                              : "7 MB"
                               }}
                             </th>
                             <th class="text-uppercase">
                               {{ document.resourceFormat }}
                             </th>
                             <th>
-                              <a
-                                href="assets/{{
+                              <a href="assets/{{
                                   document.image | htmlToPlaintext
-                                }}"
-                                target="{{ document.image }}"
-                              >
-                                <i
-                                  class="fa fa-download"
-                                  style="font-weight: 500"
-                                ></i>
+                                }}" target="{{ document.image }}">
+                                <i class="fa fa-download" style="font-weight: 500"></i>
                               </a>
                             </th>
                           </ng-container>
@@ -341,38 +224,26 @@
               <ng-container *ngIf="filterResourceData.length != 0">
                 <th style="width: 80%">
                   <span style="font-size: 16px; color: #000">
-                    <input
-                      (change)="onFileSelect($event, document)"
-                      id="wp-comment-cookies-consent"
-                      name="wp-comment-cookies-consent"
-                      type="checkbox"
-                      class="checkbox_design"
-                      value="yes"
-                    />
+                    <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                      name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                   </span>
                   <span class="truncate" style="font-weight: 600">{{
                     document.title
-                  }}</span>
-                  <span
-                    class="download-item-type ml-2"
-                    style="font-size: 14px; font-weight: 400"
-                  >
+                    }}</span>
+                  <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                     {{ document.resourceSubTypeData[0].title }}
                   </span>
                 </th>
                 <th>
                   {{
-                    document.imageSize
-                      ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
-                      : "7 MB"
+                  document.imageSize
+                  ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
+                  : "7 MB"
                   }}
                 </th>
                 <th class="text-uppercase">{{ document.resourceFormat }}</th>
                 <th>
-                  <a
-                    href="assets/{{ document.image | htmlToPlaintext }}"
-                    target="{{ document.image }}"
-                  >
+                  <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                     <i class="fa fa-download" style="font-weight: 500"></i>
                   </a>
                 </th>
@@ -382,38 +253,26 @@
               <ng-container *ngIf="filterResourceData.length != 0">
                 <th style="width: 80%">
                   <span style="font-size: 16px; color: #000">
-                    <input
-                      (change)="onFileSelect($event, document)"
-                      id="wp-comment-cookies-consent"
-                      name="wp-comment-cookies-consent"
-                      type="checkbox"
-                      class="checkbox_design"
-                      value="yes"
-                    />
+                    <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                      name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                   </span>
                   <span class="truncate" style="font-weight: 600">{{
                     document.title
-                  }}</span>
-                  <span
-                    class="download-item-type ml-2"
-                    style="font-size: 14px; font-weight: 400"
-                  >
+                    }}</span>
+                  <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                     {{ document.resourceSubTypeData[0].title }}
                   </span>
                 </th>
                 <th>
                   {{
-                    document.imageSize
-                      ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
-                      : "7 MB"
+                  document.imageSize
+                  ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
+                  : "7 MB"
                   }}
                 </th>
                 <th class="text-uppercase">{{ document.resourceFormat }}</th>
                 <th>
-                  <a
-                    href="assets/{{ document.image | htmlToPlaintext }}"
-                    target="{{ document.image }}"
-                  >
+                  <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                     <i class="fa fa-download" style="font-weight: 500"></i>
                   </a>
                 </th>
@@ -423,38 +282,26 @@
               <ng-container *ngIf="filterResourceData.length != 0">
                 <th style="width: 80%">
                   <span style="font-size: 16px; color: #000">
-                    <input
-                      (change)="onFileSelect($event, document)"
-                      id="wp-comment-cookies-consent"
-                      name="wp-comment-cookies-consent"
-                      type="checkbox"
-                      class="checkbox_design"
-                      value="yes"
-                    />
+                    <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                      name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                   </span>
                   <span class="truncate" style="font-weight: 600">{{
                     document.title
-                  }}</span>
-                  <span
-                    class="download-item-type ml-2"
-                    style="font-size: 14px; font-weight: 400"
-                  >
+                    }}</span>
+                  <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                     {{ document.resourceSubTypeData[0].title }}
                   </span>
                 </th>
                 <th>
                   {{
-                    document.imageSize
-                      ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
-                      : "7 MB"
+                  document.imageSize
+                  ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
+                  : "7 MB"
                   }}
                 </th>
                 <th class="text-uppercase">{{ document.resourceFormat }}</th>
                 <th>
-                  <a
-                    href="assets/{{ document.image | htmlToPlaintext }}"
-                    target="{{ document.image }}"
-                  >
+                  <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                     <i class="fa fa-download" style="font-weight: 500"></i>
                   </a>
                 </th>
@@ -465,39 +312,27 @@
                 <ng-container *ngIf="commonOtherData.length != 0">
                   <th style="width: 80%">
                     <span style="font-size: 16px; color: #000">
-                      <input
-                        (change)="onFileSelect($event, document)"
-                        id="wp-comment-cookies-consent"
-                        name="wp-comment-cookies-consent"
-                        type="checkbox"
-                        class="checkbox_design"
-                        value="yes"
-                      />
+                      <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                        name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                     </span>
                     <span class="truncate" style="font-weight: 600">{{
                       document.title
-                    }}</span>
-                    <span
-                      class="download-item-type ml-2"
-                      style="font-size: 14px; font-weight: 400"
-                    >
+                      }}</span>
+                    <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                       {{ document.resourceSubTypeData[0].title }}
                     </span>
                   </th>
                   <th>
                     {{
-                      document.imageSize
-                        ? (document.imageSize / (1024 * 1024)).toFixed(2) +
-                          " MB"
-                        : "7 MB"
+                    document.imageSize
+                    ? (document.imageSize / (1024 * 1024)).toFixed(2) +
+                    " MB"
+                    : "7 MB"
                     }}
                   </th>
                   <th class="text-uppercase">{{ document.resourceFormat }}</th>
                   <th>
-                    <a
-                      href="assets/{{ document.image | htmlToPlaintext }}"
-                      target="{{ document.image }}"
-                    >
+                    <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                       <i class="fa fa-download" style="font-weight: 500"></i>
                     </a>
                   </th>
@@ -512,38 +347,26 @@
               <ng-container *ngIf="filterResourceData.length != 0">
                 <th style="width: 80%">
                   <span style="font-size: 16px; color: #000">
-                    <input
-                      (change)="onFileSelect($event, document)"
-                      id="wp-comment-cookies-consent"
-                      name="wp-comment-cookies-consent"
-                      type="checkbox"
-                      class="checkbox_design"
-                      value="yes"
-                    />
+                    <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                      name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                   </span>
                   <span class="truncate" style="font-weight: 600">{{
                     document.title
-                  }}</span>
-                  <span
-                    class="download-item-type ml-2"
-                    style="font-size: 14px; font-weight: 400"
-                  >
+                    }}</span>
+                  <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                     {{ document.resourceSubTypeData[0].title }}
                   </span>
                 </th>
                 <th>
                   {{
-                    document.imageSize
-                      ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
-                      : "7 MB"
+                  document.imageSize
+                  ? (document.imageSize / (1024 * 1024)).toFixed(2) + " MB"
+                  : "7 MB"
                   }}
                 </th>
                 <th class="text-uppercase">{{ document.resourceFormat }}</th>
                 <th>
-                  <a
-                    href="assets/{{ document.image | htmlToPlaintext }}"
-                    target="{{ document.image }}"
-                  >
+                  <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                     <i class="fa fa-download" style="font-weight: 500"></i>
                   </a>
                 </th>
@@ -552,50 +375,35 @@
           </ng-container>
           <!-- </ng-container> -->
           <ng-template id="notDocument" #notDocument>
-            <ng-container
-              *ngIf="
+            <ng-container *ngIf="
                 fabrics_id != '648b0c153b5871e6e15ed4a1' ||
                 documentFilter == false
-              "
-              style="height: 400px"
-            >
+              " style="height: 400px">
               <tr *ngFor="let document of filterResourceData; let i = index">
                 <ng-container *ngIf="filterResourceData.length != 0">
                   <th style="width: 80%">
                     <span style="font-size: 16px; color: #000">
-                      <input
-                        (change)="onFileSelect($event, document)"
-                        id="wp-comment-cookies-consent"
-                        name="wp-comment-cookies-consent"
-                        type="checkbox"
-                        class="checkbox_design"
-                        value="yes"
-                      />
+                      <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                        name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                     </span>
                     <span class="truncate" style="font-weight: 600">{{
                       document.title
-                    }}</span>
-                    <span
-                      class="download-item-type ml-2"
-                      style="font-size: 14px; font-weight: 400"
-                    >
+                      }}</span>
+                    <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                       {{ document.resourceSubTypeData[0].title }}
                     </span>
                   </th>
                   <th>
                     {{
-                      document.imageSize
-                        ? (document.imageSize / (1024 * 1024)).toFixed(2) +
-                          " MB"
-                        : "7 MB"
+                    document.imageSize
+                    ? (document.imageSize / (1024 * 1024)).toFixed(2) +
+                    " MB"
+                    : "7 MB"
                     }}
                   </th>
                   <th class="text-uppercase">{{ document.resourceFormat }}</th>
                   <th>
-                    <a
-                      href="assets/{{ document.image | htmlToPlaintext }}"
-                      target="{{ document.image }}"
-                    >
+                    <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                       <i class="fa fa-download" style="font-weight: 500"></i>
                     </a>
                   </th>
@@ -606,41 +414,29 @@
                   <ng-container *ngIf="commonOtherData.length != 0">
                     <th style="width: 80%">
                       <span style="font-size: 16px; color: #000">
-                        <input
-                          (change)="onFileSelect($event, document)"
-                          id="wp-comment-cookies-consent"
-                          name="wp-comment-cookies-consent"
-                          type="checkbox"
-                          class="checkbox_design"
-                          value="yes"
-                        />
+                        <input (change)="onFileSelect($event, document)" id="wp-comment-cookies-consent"
+                          name="wp-comment-cookies-consent" type="checkbox" class="checkbox_design" value="yes" />
                       </span>
                       <span class="truncate" style="font-weight: 600">{{
                         document.title
-                      }}</span>
-                      <span
-                        class="download-item-type ml-2"
-                        style="font-size: 14px; font-weight: 400"
-                      >
+                        }}</span>
+                      <span class="download-item-type ml-2" style="font-size: 14px; font-weight: 400">
                         {{ document.resourceSubTypeData[0].title }}
                       </span>
                     </th>
                     <th>
                       {{
-                        document.imageSize
-                          ? (document.imageSize / (1024 * 1024)).toFixed(2) +
-                            " MB"
-                          : "7 MB"
+                      document.imageSize
+                      ? (document.imageSize / (1024 * 1024)).toFixed(2) +
+                      " MB"
+                      : "7 MB"
                       }}
                     </th>
                     <th class="text-uppercase">
                       {{ document.resourceFormat }}
                     </th>
                     <th>
-                      <a
-                        href="assets/{{ document.image | htmlToPlaintext }}"
-                        target="{{ document.image }}"
-                      >
+                      <a href="assets/{{ document.image | htmlToPlaintext }}" target="{{ document.image }}">
                         <i class="fa fa-download" style="font-weight: 500"></i>
                       </a>
                     </th>
@@ -674,18 +470,10 @@
 
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
-              <select
-                [disabled]="disableSidebarContent"
-                class="filter"
-                name="selectThis"
-                (change)="handleChange($event)"
-                id="categoryID"
-              >
+              <select [disabled]="disableSidebarContent" class="filter" name="selectThis"
+                (change)="handleChange($event)" id="categoryID">
                 <option value="">Choose an option</option>
-                <option
-                  value="{{ category._id }}"
-                  *ngFor="let category of categoryData.data"
-                >
+                <option value="{{ category._id }}" *ngFor="let category of categoryData.data">
                   {{ category.categoryName }}
                 </option>
               </select>
@@ -701,17 +489,9 @@
 
           <div class="cd-filter-content">
             <div class="cd-select cd-filters">
-              <select
-                [disabled]="disableSidebarContent"
-                class="filter"
-                name="selectThis"
-                id="subCategoryID"
-              >
+              <select [disabled]="disableSidebarContent" class="filter" name="selectThis" id="subCategoryID">
                 <option value="">Choose an option</option>
-                <option
-                  value="{{ subCategory._id }}"
-                  *ngFor="let subCategory of subCategoryData.data"
-                >
+                <option value="{{ subCategory._id }}" *ngFor="let subCategory of subCategoryData.data">
                   {{ subCategory.subCategoryName }}
                 </option>
               </select>
@@ -723,49 +503,30 @@
 
         <!-- cd-filter-block -->
         <div class="d-flex justify-content-around">
-          <button
-            type="button"
-            [disabled]="disableSidebarContent"
-            class="fs-6 filterButton"
-            (click)="handleFormSubmit()"
-          >
+          <button type="button" [disabled]="disableSidebarContent" class="fs-6 filterButton"
+            (click)="handleFormSubmit()">
             Apply Filter
           </button>
-          <button
-            type="button"
-            [disabled]="disableSidebarContent"
-            class="fs-6 filterButtonReset"
-            (click)="handleResetButton()"
-          >
+          <button type="button" [disabled]="disableSidebarContent" class="fs-6 filterButtonReset"
+            (click)="handleResetButton()">
             Reset Filter
           </button>
         </div>
       </form>
 
-      <a class="cd-close"
-        ><i class="fa fa-close" style="cursor: pointer"></i
-      ></a>
+      <a class="cd-close"><i class="fa fa-close" style="cursor: pointer"></i></a>
     </div>
     <!-- cd-filter -->
 
-    <a
-      class="cd-filter-trigger filter-is-visible"
-      style="cursor: pointer; position: absolute"
-      >Filters</a
-    >
+    <a class="cd-filter-trigger filter-is-visible" style="cursor: pointer; position: absolute">Filters</a>
   </main>
   <div *ngIf="selectedFiles.length > 1" id="downloadButtonDiv">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 col-6">
         <p class="ml-lg-5 mt-2">{{ count }} selected item</p>
       </div>
-      <div class="col-md-6 text-end">
-        <button
-          *ngIf="selectedFiles.length > 1"
-          class=""
-          style="width: auto"
-          (click)="downloadFiles()"
-        >
+      <div class="col-md-6 text-end  col-6">
+        <button *ngIf="selectedFiles.length > 1" class="" style="width: auto" (click)="downloadFiles()">
           <i class="fa fa-download" aria-hidden="true"></i> Download ZIP
         </button>
       </div>

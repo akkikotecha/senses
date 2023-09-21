@@ -7,7 +7,7 @@ declare var $: any;
   styleUrls: ['./privacy-policy.component.css'],
 })
 export class PrivacyPolicyComponent {
-  constructor(private meta: Meta, private titleService: Title) {}
+  constructor(private meta: Meta, private titleService: Title) { }
   ngOnInit(): void {
     this.titleService.setTitle('Privacy & Cookie Policy | Senses Akustik');
     this.meta.updateTag({
@@ -34,16 +34,28 @@ export class PrivacyPolicyComponent {
     // }
 
     setTimeout(function () {
-      $('.header-main').css({
-        background: '#fff',
-        border: '2px solid #ededed',
-        padding: '9px 0px 11px 0px',
-      });
+      if (window.matchMedia("(max-width: 767px)").matches) {
+
+        $(".header-main").css({
+          background: "#fff",
+          border: "2px solid #ededed",
+          padding: "14px 0px 1px 0px",
+        });
+      } else {
+
+        $(".header-main").css({
+          background: "#fff",
+          border: "2px solid #ededed",
+          padding: "14px 0px 20px 0px",
+        });
+      }
       $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
       $('.sticky_color').addClass('sticky_add_color');
       $('.search-field').css({
         'background-image': "url('./assets/search.png')",
       });
+      $('.Headerbutton').removeClass('button')
+      $('.Headerbutton').addClass('button_black')
       $('.logo img').css({ 'max-width': '170px' });
       $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 200);

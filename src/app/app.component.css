@@ -6,3 +6,16 @@
 .btnLetsTalk:hover {
   background-color: #fecc00;
 }
+
+@media only screen and (max-width: 600px) {
+.fontsetmobile
+{
+  font-size: 28px;
+}
+.logoset
+{
+  width: 13%;
+  /* margin-left: 20px; */
+  margin-top: -20px;
+}
+}

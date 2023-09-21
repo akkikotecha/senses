@@ -302,6 +302,52 @@ input:focus-visible {
   .about_us_image {
     width: 100%;
   }
+  .title-page-white-mobile
+  {
+    margin-top: 66px;
+  }
+  .mobileImageSetWithMargin
+  {
+    width: 96%;
+  }
+  .text_align_left
+  {
+    text-align: left;
+  }
+  .justify-content-start
+  {
+    justify-content: flex-start!important;
+  }
+  .mobileReverse
+  {
+    flex-direction: column-reverse;
+  }
+  .mapwidthset
+  {
+    width:108%!important;
+  }
+  #map
+  {
+    width:108%!important;
+  }
+  .padding_mobile
+  {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+    
+  }
+  .mobileMargin
+  {
+    margin-top: -77px;
+  }
+  .mobileMarginManufact
+  {
+    margin-top: -60px;
+  }
+  .height270
+  {
+    height: 270px!important;
+  }
 }
 .customProcess {
   padding-top: 60px;

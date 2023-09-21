@@ -1,0 +1,967 @@
+<app-header></app-header>
+
+<style>
+    body {
+        background: #E5E5E5 !important;
+
+    }
+
+    .container-test:after {
+        border-width: 0 3px 3px 0 !important;
+        bottom: 25px !important;
+        right: 35px !important;
+    }
+
+
+
+
+    .career-box .know-btn {
+        display: block;
+        text-align: center;
+        color: #000;
+        margin-top: 14px;
+        position: relative;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: underline;
+
+    }
+
+    .career-box {
+        padding: 30px;
+        margin-bottom: 40px;
+        transition: 0.5s;
+        border: 1px solid #f7f7f7;
+        background: #f7f7f7;
+    }
+
+    .career-box p {
+        font-family: 'Roboto' !important;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        /* or 150% */
+
+
+        color: #4D4D4D;
+    }
+
+
+    .career-box span {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 36px;
+        /* identical to box height */
+
+        letter-spacing: 0.006em;
+
+        color: #000;
+    }
+
+    .container-test {
+        position: relative !important;
+        display: table !important;
+        background: url(http://placehold.it/200x100) no-repeat top left !important;
+        width: 720px !important;
+        height: 100px !important;
+    }
+
+    .mobile_number_span_text {
+        color: rgb(0 37 84 / 60%);
+        position: relative;
+        left: 12px;
+        top: 27px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .save_button {
+        min-width: 190px;
+        max-width: 190px;
+        background: #000;
+        border: none !important;
+        height: 50px;
+    }
+
+    .title-page-contact p {
+        font-size: 21px !important;
+        color: #000;
+        font-weight: 500 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .p_title {
+        font-size: 43px !important;
+        color: #000 !important;
+        font-weight: 500 !important;
+        margin-bottom: 25px !important;
+    }
+
+    .title-page p {
+        font-size: 25px;
+        color: #000;
+        font-weight: 500;
+        text-align: center;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 30px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    body {
+        background: #E5E5E5 !important;
+    }
+
+    .list {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 47px;
+        /* or 150% */
+
+
+        color: #4D4D4D;
+    }
+
+    ul li::marker {
+        background: #000;
+        color: #000;
+        font-size: 22px;
+
+    }
+
+    .about_us {
+        margin-top: 60px !important;
+    }
+
+    .apply-btn {
+        display: block;
+        background: transparent;
+        border: 2px solid #000;
+        color: #000;
+        text-align: center;
+        padding: 13px 11px !important;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+
+
+    }
+
+
+    .apply-btn-second {
+        display: block;
+        background: transparent;
+        border: 2px solid #000;
+        color: #000;
+        text-align: center;
+        padding: 13px 11px !important;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+
+    }
+
+    .career-box .know-btn {
+        display: block;
+        text-align: center;
+        color: #000;
+        margin-top: 14px;
+        position: relative;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: underline;
+
+    }
+
+    .career-box {
+        padding: 0px;
+        margin-bottom: 20px;
+        transition: 0.5s;
+        border: 1px solid #f7f7f7;
+        background: #f7f7f7;
+    }
+
+    .career-box p {
+        font-family: 'Roboto' !important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 36px;
+        /* identical to box height, or 150% */
+
+        letter-spacing: 0.006em;
+
+        color: #4D4D4D;
+    }
+
+
+    .d_team {
+        font-family: 'Roboto' !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 26px !important;
+        line-height: 39px !important;
+        /* identical to box height, or 150% */
+
+
+        color: #000 !important;
+    }
+
+    .career-box span {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 50px;
+        /* or 100% */
+
+        letter-spacing: 0.006em;
+
+        color: #000;
+    }
+
+    .container-test {
+        position: relative !important;
+        display: table !important;
+        background: url(http://placehold.it/200x100) no-repeat top left !important;
+        width: 660px !important;
+        height: 100px !important;
+    }
+
+
+    .save_button {
+        min-width: 190px;
+        max-width: 190px;
+        background: #000;
+        border: none !important;
+        height: 50px;
+    }
+
+    .title-page-contact p {
+        font-size: 21px !important;
+        color: #000;
+        font-weight: 500 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .title-page-ul-title p {
+        font-size: 24px !important;
+        color: #000;
+        font-weight: 500 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .hr {
+        background: rgba(77, 77, 77, 0.5);
+        border-radius: 30px;
+        border: 1px solid rgba(77, 77, 77, 0.5);
+        width: 100%;
+    }
+
+
+
+    .contact_address {
+        height: 83% !important;
+    }
+
+
+    body {
+        background: #E5E5E5 !important;
+    }
+
+
+    input {
+        background: transparent !important;
+        border: 1px solid #C4C4C4 !important;
+    }
+
+
+    ul li::marker {
+        background: #000;
+        color: #000;
+        font-size: 22px;
+    }
+
+    .about_us {
+        margin-top: 60px !important;
+    }
+
+    .apply-btn {
+        display: block;
+        background: transparent;
+        border: 2px solid #000;
+        color: white;
+        text-align: center;
+        padding: 17px 20px !important;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+    }
+
+
+    .apply-btn-second {
+        display: block;
+        background: transparent;
+        border: 2px solid #000;
+        color: white;
+        text-align: center;
+        padding: 8px 20px !important;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+
+    }
+
+    .career-box .know-btn {
+        display: block;
+        text-align: center;
+        color: #000;
+        margin-top: 14px;
+        position: relative;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: underline;
+
+    }
+
+    .career-box {
+        padding: 0px;
+        margin-bottom: 20px;
+        transition: 0.5s;
+        border: 1px solid #f7f7f7;
+        background: #f7f7f7;
+    }
+
+    .career-box p {
+        font-family: 'Roboto' !important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 36px;
+        /* identical to box height, or 150% */
+
+        letter-spacing: 0.006em;
+
+        color: #4D4D4D;
+    }
+
+
+    .d_team {
+        font-family: 'Roboto' !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 26px !important;
+        line-height: 39px !important;
+        /* identical to box height, or 150% */
+
+
+        color: #000 !important;
+    }
+
+    .career-box span {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 50px;
+        /* or 100% */
+
+        letter-spacing: 0.006em;
+
+        color: #000;
+    }
+
+
+
+    .span_new {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 50px;
+        /* or 100% */
+
+        letter-spacing: 0.006em;
+
+        color: #000;
+    }
+
+
+    .container-test {
+        position: relative !important;
+        display: table !important;
+        background: url(http://placehold.it/200x100) no-repeat top left !important;
+        width: 660px !important;
+        height: 100px !important;
+    }
+
+
+    .save_button {
+        min-width: 190px;
+        max-width: 190px;
+        background: #000;
+        border: none !important;
+        height: 50px;
+    }
+
+    .title-page-contact p {
+        font-size: 21px !important;
+        color: #000;
+        font-weight: 500 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .title-page-ul-title p {
+        font-size: 24px !important;
+        color: #000;
+        font-weight: 500 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .hr {
+        background: rgba(77, 77, 77, 0.5);
+        border-radius: 30px;
+        border: 1px solid rgba(77, 77, 77, 0.5);
+        width: 100%;
+    }
+
+
+    .contact_address {
+        height: 83% !important;
+    }
+
+    label {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 30px;
+        /* identical to box height, or 188% */
+
+        display: flex;
+        align-items: center;
+
+        color: #4D4D4D;
+    }
+</style>
+
+
+
+<ng-template [ngIf]="isLoggedIn">
+
+    <section class="about_us" style="margin-top: 20px!important;">
+        <div class="container ">
+            <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 10px!important;">
+                <div class="col-md-12 col-sm-12">
+                    <div class="career-box bg-transparent border-0">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 pl-0">
+                                <span class="hey-august span_new" style="font-size: 35px;">Apply For A Job</span>
+                                <!-- <p class="hey-august mt-2">Surat, Gujarat, India</p> -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class=" ml-auto mr-auto col-lg-8 ">
+                <hr class="hr" />
+            </div>
+
+
+            <form method="POST" id="add-form" enctype="multipart/form-data" class="parsleyjs"
+                data-parsley-priority-enabled="false" (ngSubmit)="submit()">
+
+                <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12 pl-0">
+
+                                    <div class="hey-august span_new">Personal Information</div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12 p-0">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Full Name</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname"
+                                placeholder="Enter Full name" data-parsley-errors-container="#error-fullname"
+                                data-parsley-required="true" data-parsley-required-message="Please Enter a Full Name.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-fullname"></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+                        <div class="form-group">
+                            <label class="label" for="email">Email Address</label>
+                            <input type="email" class="form-control" name="email" id="email" data-parsley-type="email"
+                                placeholder="Enter Email Address" data-parsley-errors-container="#error-email"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Email Address.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-email"></p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+                        <div class="form-group">
+                            <label class="label" for="email">Mobile Number</label>
+                            <div style="position: relative;margin-top: -19px;">
+                                <span class="mobile_number_span_text">+91 |</span>
+                                <input type="text" class="form-control mobile_number" id="mobile_number"
+                                    name="mobile_number" data-parsley-errors-container="#error-mobile"
+                                    data-parsley-required="true"
+                                    data-parsley-required-message="Please Enter a Mobile Number."
+                                    data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" placeholder=""
+                                    style="padding-left: 52px;" data-parsley-trigger="keyup"
+                                    data-parsley-validation-threshold="1" data-parsley-debounce="500"
+                                    data-parsley-type="digits" data-parsley-minlength="10" data-parsley-maxlength="10">
+                            </div>
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-mobile"></p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12 pl-0">
+
+                                    <div class="hey-august span_new" style="font-size:26px!important">Professional
+                                        Information</div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12 p-0">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Current Job Type</label>
+                            <input type="text" class="form-control" name="current_job" id="current_job"
+                                placeholder="Job Type" data-parsley-errors-container="#error-type"
+                                data-parsley-required="true" data-parsley-required-message="Please Enter a Job Type.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-type"></p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Curent Job Designation</label>
+                            <input type="text" class="form-control" name="designation" id="designation"
+                                placeholder="Job Designation" data-parsley-errors-container="#error-designation"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Job Designation.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-designation"></p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Experience</label>
+                            <input type="text" class="form-control" name="experience" id="experience"
+                                data-parsley-errors-container="#error-experience" placeholder="Experience"
+                                data-parsley-required="true" data-parsley-required-message="Please Enter a Experience.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-experience"></p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Current CTC</label>
+                            <input type="text" class="form-control" name="current_ctc" id="current_ctc"
+                                placeholder="Current CTC" data-parsley-errors-container="#error-cur_ctc"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Current CTC.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-cur_ctc"></p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Expected CTC</label>
+                            <input type="text" class="form-control" name="expected_ctc" id="expected_ctc"
+                                placeholder="Expected CTC" data-parsley-errors-container="#error-ex_ctc"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Expected CTC">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-ex_ctc"></p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12 pl-0">
+                                    <div class="hey-august span_new">Attach Resume</div>
+                                    <p class="hey-august " style="font-size: 14px!important;">File size not more than 3
+                                        MB. Please attach your resume and not your portfolio.</p>
+                                    <div>
+                                        <!-- <button class="apply-btn text-center mr-auto mb-5" style="margin-left: 0px;;width: 167px!important; background: transparent;border:2px solid #000;color: #000!important;font-family: 400;"><i class="fa fa-upload" style="margin-right: 5px;"></i> Add File</button> -->
+                                        <input (change)="upload($event)" type='file' />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0 mt-5">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 pl-0">
+                                    <input type="submit" class="apply-btn text-center mr-auto mb-5"
+                                        style="margin-left: 0px;;width: 167px!important; background: transparent!important;border:2px solid #000!important;color: #000!important;font-weight: 600;"
+                                        value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</ng-template>
+
+
+<ng-template [ngIf]="islaptop">
+
+
+    <section class="main  m_banner_top m_bottom ">
+        <div class="container-fluid">
+            <div class="row ">
+
+                <div class="col-lg-12 all_padding col-12 ">
+
+                    <div class="card  card_new border-0 " style="background: #E5E5E5!important;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+    <section class="about_us">
+        <div class="container ">
+
+
+            <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 120px!important;">
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="career-box bg-transparent border-0">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 pl-0">
+
+                                <span class="hey-august">Apply For A Job</span>
+                                <!-- <p class="hey-august mt-3">Surat, Gujarat, India</p> -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class=" ml-auto mr-auto col-lg-8 ">
+                <hr class="hr" />
+            </div>
+            <form method="POST" id="add-form" enctype="multipart/form-data" class="parsleyjs"
+                data-parsley-priority-enabled="false" (ngSubmit)="submit()">
+
+                <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12 pl-0">
+
+                                    <div class="hey-august span_new">Personal Information</div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12 p-0">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Full Name</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname"
+                                placeholder="Enter Full name" data-parsley-errors-container="#error-fullname"
+                                data-parsley-required="true" data-parsley-required-message="Please Enter a Full Name.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-fullname"></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+                        <div class="form-group">
+                            <label class="label" for="email">Email Address</label>
+                            <input type="email" class="form-control" name="email" id="email" data-parsley-type="email"
+                                placeholder="Enter Email Address" data-parsley-errors-container="#error-email"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Email Address.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-email"></p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+                        <div class="form-group">
+                            <label class="label" for="email">Mobile Number</label>
+                            <div style="position: relative;margin-top: -19px;">
+                                <span class="mobile_number_span_text">+91 |</span>
+                                <input type="text" class="form-control mobile_number" id="mobile_number"
+                                    name="mobile_number" data-parsley-errors-container="#error-mobile"
+                                    data-parsley-required="true"
+                                    data-parsley-required-message="Please Enter a Mobile Number."
+                                    data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" placeholder=""
+                                    style="padding-left: 52px;" data-parsley-trigger="keyup"
+                                    data-parsley-validation-threshold="1" data-parsley-debounce="500"
+                                    data-parsley-type="digits" data-parsley-minlength="10" data-parsley-maxlength="10">
+                            </div>
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-mobile"></p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12 pl-0">
+
+                                    <div class="hey-august span_new">Professional Information</div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+
+                    <div class="col-md-12 col-sm-12 p-0">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Current Job Type</label>
+                            <input type="text" class="form-control" name="current_job" id="current_job"
+                                placeholder="Job Type" data-parsley-errors-container="#error-type"
+                                data-parsley-required="true" data-parsley-required-message="Please Enter a Job Type.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-type"></p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Curent Job Designation</label>
+                            <input type="text" class="form-control" name="designation" id="designation"
+                                placeholder="Job Designation" data-parsley-errors-container="#error-designation"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Job Designation.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-designation"></p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Experience</label>
+                            <input type="text" class="form-control" name="experience" id="experience"
+                                data-parsley-errors-container="#error-experience" placeholder="Experience"
+                                data-parsley-required="true" data-parsley-required-message="Please Enter a Experience.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-experience"></p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Current CTC</label>
+                            <input type="text" class="form-control" name="current_ctc" id="current_ctc"
+                                placeholder="Current CTC" data-parsley-errors-container="#error-cur_ctc"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Current CTC.">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-cur_ctc"></p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12 col-sm-12 p-0 mt-2">
+
+
+                        <div class="form-group">
+                            <label class="label" for="name">Expected CTC</label>
+                            <input type="text" class="form-control" name="expected_ctc" id="expected_ctc"
+                                placeholder="Expected CTC" data-parsley-errors-container="#error-ex_ctc"
+                                data-parsley-required="true"
+                                data-parsley-required-message="Please Enter a Expected CTC">
+                            <p class="text-danger mb-0 text-left f-12  mt-2" id="error-ex_ctc"></p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class=" ml-auto mr-auto col-lg-8 " style="margin-top: 30px!important;">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12 pl-0">
+                                    <div class="hey-august span_new">Attach Resume</div>
+                                    <p class="hey-august " style="font-size: 14px!important;">File size not more than 3
+                                        MB. Please attach your resume and not your portfolio.</p>
+                                    <div>
+                                        <!-- <button class="apply-btn text-center mr-auto mb-5" style="margin-left: 0px;;width: 167px!important; background: transparent;border:2px solid #000;color: #000!important;font-family: 400;"><i class="fa fa-upload" style="margin-right: 5px;"></i> Add File</button> -->
+                                        <input (change)="upload($event)" type='file'
+                                            data-parsley-max-file-size="3072" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="career-box bg-transparent border-0 mt-5">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 pl-0">
+                                    <input type="submit" class="apply-btn text-center mr-auto mb-5"
+                                        style="margin-left: 0px;;width: 167px!important; background: transparent!important;border:2px solid #000!important;color: #000!important;font-weight: 600;"
+                                        value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+</ng-template>
+<app-footer style="background-color: black;"></app-footer>

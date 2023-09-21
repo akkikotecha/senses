@@ -1,1 +1,27 @@
 
+@media screen and (max-width: 600px) {
+ 
+.widthset
+{
+    width:93.8%!important;
+}
+.margin_bottom_7
+{
+    margin-bottom: 7px!important;
+    
+}
+.titlefontset
+{
+    font-size: 25px!important;
+}
+.margintopbottomset
+{
+    margin-top: 0px!important;
+    margin-bottom: 7px!important;
+    
+}
+.margintop_13
+{
+    margin-top: 13px;
+}
+}

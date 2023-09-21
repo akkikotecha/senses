@@ -1,0 +1,129 @@
+/* ⚠️ Warning! ⚠️
+   SOME CSS IS BEING REFERENCED IN THE SETTINGS
+   BE SURE TO REFERENCE BOOSTRAP 3
+   BE SURE TO REFERENCE HOVER.CSS
+   CHECK CODEPEN SETTINGS > HTML & CSS TABS
+*/
+.footer {
+  border-top: 1px solid #dfdfdf;
+  background: #fff;
+  /* position: relative;
+  top: 120px; */
+}
+.footer h4 {
+  font-weight: 600;
+  padding-bottom: 15px;
+  color: #2d2d2d;
+  font-size: 16px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #888888;
+}
+
+.footer a:hover {
+  color: #f9c70c;
+}
+
+.footer-rowtop {
+  padding: 40px 00px 50px 00px;
+  color: #888888;
+}
+@media only screen and (max-width: 600px) {
+  .footer-rowtop {
+    padding: 30px 20px;
+    color: #888888;
+    text-align: left;
+  }
+}
+
+.footer-rowbottom {
+  padding: 30px 20px;
+  background: #f3f3f3;
+  color: #888888;
+}
+
+.footer-links {
+  line-height: 24px;
+}
+
+.footer-social-icons {
+  padding-right: 15px;
+}
+
+/* CSS for Form Field */
+/* ------------------------------- */
+
+input[type="text"],
+select {
+  width: 78%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button_set {
+  width: 20%;
+  background-color: #0b0b0b;
+  color: white;
+  padding: 9px 20px;
+  border: none;
+
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.button_set:hover {
+  background-color: #fecc00;
+}
+
+div .forrm {
+  border-radius: 5px;
+}
+
+/* ------------------------------- */
+
+.logo_style_footer {
+  width: 90%;
+}
+
+.icon_hover_instagram:hover {
+  font-size: 36px;
+  color: transparent;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  -webkit-background-clip: text;
+  /* Also define standard property for compatibility */
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.3s;
+}
+
+.icon_hover_linkedin:hover {
+  font-size: 36px;
+  color: #0a66c2 !important;
+  transition: 0.3s;
+}
+
+.icon_hover_youtube:hover {
+  font-size: 36px;
+  color: #cd201f !important;
+  transition: 0.3s;
+}
+
+.hover_effect2:hover {
+  color: #ffcc00 !important;
+}

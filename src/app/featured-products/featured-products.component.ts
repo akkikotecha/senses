@@ -80,7 +80,7 @@ export class FeaturedProductsComponent {
     private AdminCategoryService: FeaturedProjectService,
     private lazyLoadService: LazyLoadingService,
     private cdRef: ChangeDetectorRef
-  ) {}
+  ) { }
   objectKeys = Object.keys;
 
   ngOnInit(): void {
@@ -94,36 +94,36 @@ export class FeaturedProductsComponent {
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/js/sweetalert.js')
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
 
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript(
           'https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js'
         )
-        .subscribe((_) => {});
+        .subscribe((_) => { });
       this.lazyLoadService
         .loadScript('../../assets/assets/table/select.js')
-        .subscribe((_) => {});
+        .subscribe((_) => { });
 
       this.lazyLoadService
         .loadScript('../../assets/assets/table/featuredProduct.js')
@@ -136,6 +136,7 @@ export class FeaturedProductsComponent {
           // //   console.log('ckeditor content: ' + $('textarea[name="DSC"]').val());
           // // })
         });
+
     }, 1000);
   }
 
@@ -537,12 +538,12 @@ export class FeaturedProductsComponent {
 
           console.log(
             file +
-              ' ' +
-              $('#edit_select_date').val() +
-              ' ' +
-              $('#edit_title').val() +
-              ' ' +
-              $('#edit_id').val()
+            ' ' +
+            $('#edit_select_date').val() +
+            ' ' +
+            $('#edit_title').val() +
+            ' ' +
+            $('#edit_id').val()
           );
           this.AdminCategoryService.EditOrganizationData(fda).subscribe(
             (res) => {

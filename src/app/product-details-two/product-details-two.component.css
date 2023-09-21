@@ -434,7 +434,7 @@ table {
 }
 th,
 td {
-  padding: 8px;
+  padding: 4px;
   text-align: left;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
@@ -629,6 +629,6 @@ td {
 @media screen and (max-width: 768px) {
   .productSlider {
     height: 250px;
-    margin-top: 96px;
+    margin-top: 89px;
   }
 }

@@ -115,7 +115,7 @@ const routes: Routes = [
   },
   {
     path: 'resources-materials',
-    component: ResourcesDocumentComponent,
+    component: ResourcesMaterialComponent,
     runGuardsAndResolvers: 'always',
   },
   {

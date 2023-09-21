@@ -299,10 +299,12 @@ export class ResourcesGalleryComponent {
   disableSidebarContent: any = '';
   fabrics_id: any = '';
   commonButtonClick: boolean = false;
+  disableSidebarContentDisable: boolean = false;
   productLookBook: any = '';
   tearSheets: any = '';
   installationManuals: any = '';
   paramsValue: any = '';
+
   constructor(
     private lazyLoadService: LazyLoadingService,
     private router: Router,
@@ -391,9 +393,15 @@ export class ResourcesGalleryComponent {
       xhr.send();
     });
   }
+
   ngOnInit(): void {
     console.log('categorySelectedId', this.categorySelectedId);
+    const resourceTypeNameSub = localStorage.getItem('ResourceTypeNameSub');
 
+    // Check if it's "Projects" or "BTS" and set disableSidebarContent accordingly
+    if (resourceTypeNameSub === 'Projects' || resourceTypeNameSub === 'BTS') {
+      this.disableSidebarContentDisable = true;
+    }
     setTimeout(() => {
       this.lazyLoadService
         .loadScript('../../assets/assets/table/resourcesGalley.js')
@@ -469,11 +477,22 @@ export class ResourcesGalleryComponent {
     }, 1000);
     setTimeout(function () {
       // console.log('HELLO');
-      $('.header-main').css({
-        background: '#fff',
-        border: '2px solid #ededed',
-        padding: '9px 0px 11px 0px',
-      });
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        $('.header-main').css({
+          background: '#fff',
+          border: '2px solid #ededed',
+          padding: '14px 0px 1px 0px',
+        });
+        $('.cd-filter,.cd-filter-trigger').removeClass('filter-is-visible');
+      } else {
+        $('.header-main').css({
+          background: '#fff',
+          border: '2px solid #ededed',
+          padding: '14px 0px 20px 0px',
+        });
+      }
+      $('.Headerbutton').removeClass('button');
+      $('.Headerbutton').addClass('button_black');
       $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
       $('.sticky_color').addClass('sticky_add_color');
       $('.search-field').css({
@@ -557,6 +576,7 @@ export class ResourcesGalleryComponent {
     }
   }
   handleAllCertificateData(id: string, name?: string) {
+    this.disableSidebarContent = false;
     this.resourceDocument.getResourceTypeData(id).subscribe((res) => {
       this.data = null;
       if (res && typeof res === 'object') {
@@ -575,7 +595,7 @@ export class ResourcesGalleryComponent {
     });
   }
   handleProductsData(id: string, name?: string) {
-    this.disableSidebarContent = true;
+    this.disableSidebarContent = false;
     this.resourceDocument.getResourceDetailsBySubTypeId(id).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
@@ -635,7 +655,7 @@ export class ResourcesGalleryComponent {
     });
   }
   handleOthersData(id: string, name?: string) {
-    this.disableSidebarContent = true;
+    this.disableSidebarContent = false;
     this.resourceDocument.getResourceDetailsBySubTypeId(id).subscribe((res) => {
       if (res && typeof res === 'object') {
         this.data = res; // Wrap the single object in an array
@@ -657,6 +677,7 @@ export class ResourcesGalleryComponent {
   // Inside your Angular component
   handleChange(event: any) {
     const selectedValue = event?.target?.value;
+
     if (selectedValue) {
       // Function logic here
       console.log('Selected value:', selectedValue);

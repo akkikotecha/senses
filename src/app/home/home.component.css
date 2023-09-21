@@ -440,6 +440,10 @@ header:hover .owl-next {
 }
 @media screen and (max-width: 600px) {
  
+  .entry-content
+  {
+    padding-top: 114px!important;
+  }
   .carousel-control-prev,
   .carousel-control-next {
     top: 40%;
@@ -758,6 +762,10 @@ header:hover .owl-next {
   margin-top: 22px;
 }
 @media only screen and (max-width: 600px) {
+  .classheightSet
+  {
+    height: 250px!important;
+  }
   .sustainabilityHeader {
     height: auto;
     padding: 20px 0;

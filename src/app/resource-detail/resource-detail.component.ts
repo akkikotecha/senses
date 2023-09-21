@@ -15,7 +15,7 @@ export class ResourceDetailComponent {
     private router: Router,
     private meta: Meta,
     private titleService: Title
-  ) {}
+  ) { }
   resourceType: any = '';
   resourceSubType: any = '';
   resourceFilterTypeSubTypeData: any = '';
@@ -64,18 +64,31 @@ export class ResourceDetailComponent {
       this.isLoading = false;
     }, 1000);
     setTimeout(function () {
-      $('.header-main').css({
-        background: '#fff',
-        border: '2px solid #ededed',
-        padding: '9px 0px 11px 0px',
-      });
+      if (window.matchMedia("(max-width: 767px)").matches) {
+
+        $(".header-main").css({
+          background: "#fff",
+          border: "2px solid #ededed",
+          padding: "14px 0px 1px 0px",
+        });
+      } else {
+
+        $(".header-main").css({
+          background: "#fff",
+          border: "2px solid #ededed",
+          padding: "14px 0px 20px 0px",
+        });
+      }
+      $('.Headerbutton').removeClass('button')
+      $('.Headerbutton').addClass('button_black')
       $('.header-top').css({ background: '#fff', padding: '5px 0px 5px 0px' });
       $('.sticky_color').addClass('sticky_add_color');
       $('.search-field').css({
         'background-image': "url('./assets/search.png')",
       });
+
+      $(".logo_style").attr("src", "./assets/SENSES LOGO.svg");
       $('.logo img').css({ 'max-width': '170px' });
-      $('.logo_style').attr('src', './assets/SENSES LOGO.svg');
     }, 1100);
   }
   activeIndex = 0; // Initially set the first accordion item as active
@@ -97,12 +110,21 @@ export class ResourceDetailComponent {
       });
     }, 1000);
   }
-  resourceTypeClickSub(id: any, name: any): void {
+  resourceTypeClickSub(id: any, name: any, parent_id: any): void {
     setTimeout(() => {
       localStorage.removeItem('resourceTypeIdSub');
       localStorage.removeItem('resourceTypeSub');
+      localStorage.removeItem('resourceTypeId');
+      localStorage.removeItem('fabrics_id');
 
+      if (
+        localStorage.getItem('resourceTypeIdSub') === '648b0c153b5871e6e15ed4a1'
+      ) {
+        localStorage.setItem('fabrics_id', id);
+      }
       localStorage.setItem('fabrics_id', id);
+
+      localStorage.setItem('resourceTypeId', parent_id);
 
       localStorage.setItem('resourceTypeIdSub', id);
       localStorage.setItem('ResourceTypeNameSub', name);

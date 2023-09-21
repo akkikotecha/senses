@@ -213,7 +213,7 @@ export class HomeComponent implements OnInit {
 
   handleViewAllImage() {
     localStorage.setItem('resourceTypeId', '648ac6763b5871e6e15ed341');
-    window.open('/resources_gallery', '_blank');
+    window.open('/resources-gallery', '_blank');
     // this.router.navigate(['resources_gallery']).then(() => {
     //   // window.location.reload();
     // });

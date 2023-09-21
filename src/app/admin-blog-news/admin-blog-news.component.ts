@@ -739,7 +739,7 @@ export class AdminBlogNewsComponent {
 
                 if (Authdata.message == 'Data Uplodaded SuccessFully') {
                   Swal.fire({
-                    title: 'Blog Added Successfully...',
+                    title: 'Featured Project Added Successfully...',
                     text: '',
                     icon: 'success',
                     confirmButtonText: 'ok',
