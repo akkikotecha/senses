@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Bootstrap Core and vandor -->
+    <style>
+      /*!Don't remove this!
+ * jQuery MDTimePicker v1.0 plugin
+ * 
+ * Author: Dionlee Uy
+ * Email: dionleeuy@gmail.com
+ *
+ * Date: Tuesday, August 28 2017
+ */
+      @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+      .swal2-html-container {
+        white-space: break-spaces !important;
+        font-size: 15px;
+      }
+
+      .brand-name-margin-set {
+        margin-left: 65px !important;
+      }
+      .sidebar_dark.offcanvas-active #header_top {
+        background-color: #004660 !important;
+      }
+      .padding_left_css {
+        padding: 5px 15px 5px 65px !important;
+      }
+      .datepicker {
+        padding-left: 23px !important;
+      }
+      .itemDisplayNone {
+        display: block;
+      }
+
+      .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0, 0, 0, 0.2);
+        margin-left: 5px;
+      }
+
+      .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+      }
+    </style>
+  </head>
+
+  <body class="font-montserrat sidebar_dark">
+    <title>Login</title>
+    <div class="auth">
+      <div class="auth_left">
+        <div class="card">
+          <div class="text-center mb-2">
+            <a class="header-brand" href="index.html"
+              ><i class="fe fe-command brand-logo"></i
+            ></a>
+          </div>
+          <form method="POST" (ngSubmit)="submit()">
+            <div
+              class="alert alert-{{ color }} alert-dismissable"
+              role="alert"
+              *ngIf="check_valid"
+            >
+              <button
+                type="button"
+                class="close d-none"
+                data-dismiss="alert"
+                aria-label="Close"
+              ></button>
+              <h6 class="alert-heading font-size-h4 font-w400 mb-0">
+                {{ successfully_login }}
+              </h6>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Login to your account</div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  [(ngModel)]="AuthUser.email"
+                  [ngModelOptions]="{ standalone: true }"
+                  placeholder="Enter email address"
+                />
+                <p class="text-danger mb-0 text-left" *ngIf="auth_email">
+                  Please Enter Email Address
+                </p>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Password<a
+                    [routerLink]="['/ForgotPassword']"
+                    class="float-right small"
+                    >I forgot password</a
+                  ></label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  [(ngModel)]="AuthUser.password"
+                  [ngModelOptions]="{ standalone: true }"
+                  placeholder="Enter Password"
+                />
+                <p class="text-danger mb-0 text-left" *ngIf="auth_password">
+                  Please Enter Password
+                </p>
+              </div>
+              <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" />
+                  <span class="custom-control-label">Remember me</span>
+                </label>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Sign in
+                </button>
+
+                <!-- <a href="index.html" class="btn btn-primary btn-block" title="">Sign in</a> -->
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="auth_right">
+        <div class="carousel slide" data-ride="carousel" data-interval="3000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="./assets/assets/images/slider3.svg"
+                class="img-fluid"
+                alt="login page"
+              />
+              <div class="px-4 mt-4">
+                <h4>Senses</h4>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="assets/assets/bundles/lib.vendor.bundle.js"
+      loading="lazy"
+    ></script>
+
+    <script
+      src="assets/assets/bundles/apexcharts.bundle.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/bundles/counterup.bundle.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/bundles/knobjs.bundle.js"
+      loading="lazy"
+    ></script>
+    <script src="assets/assets/bundles/c3.bundle.js" loading="lazy"></script>
+
+    <script src="assets/assets/js/core.js" loading="lazy"></script>
+    <script src="assets/assets/js/page/index.js" loading="lazy"></script>
+
+    <script
+      src="assets/assets/plugins/sweetalert/sweetalert.min.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/dropify/js/dropify.min.js"
+      loading="lazy"
+    ></script>
+
+    <script src="assets/assets/js/page/dialogs.js" loading="lazy"></script>
+    <script src="assets/assets/js/form/dropify.js" loading="lazy"></script>
+
+    <script
+      src="assets/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/bootstrap-multiselect/bootstrap-multiselect.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/multi-select/js/jquery.multi-select.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/jquery.maskedinput/jquery.maskedinput.min.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/dropify/js/dropify.min.js"
+      loading="lazy"
+    ></script>
+    <script src="assets/assets/plugins/parsleyjs/js/parsley.min.js"></script>
+    <script src="assets/assets/bundles/lib.vendor.bundle.js"></script>
+
+    <script src="assets/assets/js/sweetalert.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script src="assets/assets/js/core.js" loading="lazy"></script>
+    <script
+      src="assets/assets/js/form/form-advanced.js"
+      loading="lazy"
+    ></script>
+
+    <script src="assets/assets/js/form/date_picker.js"></script>
+    <script>
+      $(document).on("click", ".btn_open_modal", function () {
+        //  itemDisplayNone
+        $(".open_show_popup").toggleClass("itemDisplayNone");
+      });
+
+      var date = new Date();
+      $(".date_picker").datepicker({
+        autoclose: true,
+        format: "dd-mm-yyyy",
+        viewMode: "date",
+        minViewMode: "date",
+        endDate: new Date(),
+      });
+
+      $(".date_picker").focusout(function () {
+        $(".date_of_birth_validation").addClass("d-none");
+        $("#dateAndTime").css("border-color", "#ced4da");
+      });
+    </script>
+  </body>
+</html>

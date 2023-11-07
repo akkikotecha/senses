@@ -1,0 +1,23 @@
+p{
+    text-align: left!important;
+}
+h1,h2,h3,h4,h5,h6{
+    text-align: center!important;
+  }
+
+  
+  @media screen and (max-width: 600px) {
+
+  .blogTitleMobile
+  {
+    font-size:24px!important;
+  }
+  .blogSubTitleMobile
+  {
+    font-size: 20px!important;
+  }
+  p>strong
+  {
+    font-size: 23px!important;
+  }
+}

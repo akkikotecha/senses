@@ -1,0 +1,1243 @@
+<ng-container *ngIf="isLoading; else normalScreen">
+  <app-loader-products></app-loader-products>
+</ng-container>
+
+<ng-template #normalScreen>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Kolo, Innovative & Functional Soundproof Office Pods | Senses Akustik
+    </title>
+  </head>
+
+  <body>
+    <app-header> </app-header>
+    <header style="margin-top: 6%">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-bs-interval="100"
+        style="position: relative">
+        <a class="carousel-control-prev carousel-control-prev-set left_right_click d-none"
+          href="#carouselExampleIndicators" role="button" data-slide="prev" style="height: 60px">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next carousel-control-next-set left_right_click  d-none"
+          href="#carouselExampleIndicators" role="button" data-slide="next" style="height: 60px">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        <ol class="carousel-indicators home_caro">
+          <li *ngFor="let image of Data[0].images; let i = index" [attr.data-target]="'#carouselExampleIndicators'"
+            [attr.data-slide-to]="i" [class.active]="i === 0"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item get_text active" *ngFor="let getData of Data[0].images; let i = index"
+            [class.active]="i === 0">
+            <img class="d-block w-100 productSlider" src="assets/{{ this.getData | htmlToPlaintext }}" />
+            <div class="carousel-caption d-none d-md-block" style="text-align: initial">
+              <h3 style="font-weight: 500; font-size: 36px" class="text-left">
+                {{ Data[0].subcategoriesdata[0].subCategoryName }}
+              </h3>
+              <p style="font-size: 20px" class="text-left">
+                {{ Data[0].subcategoriesdata[0].subCategoryDesc }}
+              </p>
+              <button *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'"
+                class="btn btn_set_css_new text-left" (click)="scrollToSectionKOLO('target')">
+                Learn More
+              </button>
+              <button *ngIf="Data[0].subcategoriesdata[0].subCategoryName != 'Kolo'"
+                class="btn btn_set_css_new text-left" (click)="scrollToSection('featuredOne')">
+                Learn More
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- <a
+      class="carousel-control-prev"
+      href="#carouselExampleIndicators"
+      role="button"
+      data-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon"
+        aria-hidden="true"
+        style="width: 40px !important"
+      ></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#carouselExampleIndicators"
+      role="button"
+      data-slide="next"
+      style="right: 0px !important; left: unset !important"
+    >
+      <span
+        class="carousel-control-next-icon"
+        aria-hidden="true"
+        style="width: 40px !important"
+      ></span>
+      <span class="sr-only">Next</span>
+    </a> -->
+      </div>
+    </header>
+    <section class="process pt-0">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="px-0">
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist"
+              style="border-bottom: 0px solid #dee2e6; margin: 0px !important">
+              <button class="nav-link active" id="nav-home-tab" style="line-height: 20px; font-weight: 600"
+                data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                aria-selected="true">
+                Overview
+              </button>
+              <button class="nav-link ml-4" id="nav-profile-tab" style="line-height: 20px; font-weight: 600"
+                data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                aria-selected="false">
+                Downloads
+              </button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="container mt-3">
+                <div class="title-page-white text-center w-100">
+                  <div class="row justify-content-between mt-0 d-flex">
+                    <div class="col-lg-12">
+                      <div class="card" style="border: none !important">
+                        <div class="card-body p-0">
+                          <h5 class="card-title text-left p_all_text_set card_header_set_header d-none">
+                            Kolo
+                          </h5>
+                          <p class="p-card-text text-left p_all_text_set" style="font-size: 19px"
+                            [innerHTML]="this.Data[0].overview"></p>
+                          <br />
+                          <p class="card-text text-left p_all_text_set mt-2" style="
+                                font-size: 19px;
+                                color: rgba(0, 0, 0, 0.65);
+                              ">
+                            Discover how
+                            {{ Data[0].subcategoriesdata[0].subCategoryName }}
+                            can elevate your space.
+                            <button data-toggle="modal" data-target="#myModal" class="link" style="
+                                  border: none;
+                                  outline: none;
+                                  background-color: transparent;
+                                  font-weight: bold;
+                                  color: #fecc00;
+                                ">
+                              Let's talk
+                            </button>
+                            and explore the possibilities.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="container mt-5">
+                <div class="row">
+                  <div class="title-page-white text-center w-100">
+                    <div class="row text-left mt-0 d-flex">
+                      <div class="panel-group" id="accordion_fabrics1" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingOneTwqo">
+                            <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion_finishes"
+                                href="#collapseOneTqwo" aria-expanded="false" aria-controls="collapseOneTqwo">
+                                Documents
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapseOneTqwo" class="panel-collapse collapse in" role="tabpanel"
+                            aria-labelledby="headingOneTqwo">
+                            <div class="panel-group" id="accordion_finishes" role="tablist"
+                              aria-multiselectable="false">
+                              <!-- Project LookBook -->
+
+                              <tr *ngFor="
+                                    let document of filterLookbookData;
+                                    let i = index
+                                  " style="width: 1195px">
+                                <ng-container>
+                                  <th style="width: 1200px">
+                                    <span style="font-size: 16px; color: #000">
+                                      <input (change)="
+                                            onFileSelect($event, document)
+                                          " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                        type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                    </span>
+                                    <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                    <span class="download-item-type ml-2" style="
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                        ">
+                                      {{
+                                      document.resourceSubTypeData[0].title
+                                      }}
+                                    </span>
+                                  </th>
+                                  <th>
+                                    {{
+                                    document.imageSize
+                                    ? (
+                                    document.imageSize /
+                                    (1024 * 1024)
+                                    ).toFixed(2) + " MB"
+                                    : "7 MB"
+                                    }}
+                                  </th>
+                                  <th class="text-uppercase">
+                                    {{ document.resourceFormat }}
+                                  </th>
+                                  <th>
+                                    <a href="assets/{{
+                                          document.image | htmlToPlaintext
+                                        }}" target="{{ document.image }}">
+                                      <i class="fa fa-download" style="font-weight: 500"></i>
+                                    </a>
+                                  </th>
+                                </ng-container>
+                              </tr>
+                              <!-- Tear Sheet  -->
+                              <tr *ngFor="
+                                    let document of filterTearSheetsData;
+                                    let i = index
+                                  " style="width: 1195px">
+                                <ng-container>
+                                  <th style="width: 1200px">
+                                    <span style="font-size: 16px; color: #000">
+                                      <input (change)="
+                                            onFileSelect($event, document)
+                                          " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                        type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                    </span>
+                                    <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                    <span class="download-item-type ml-2" style="
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                        ">
+                                      {{
+                                      document.resourceSubTypeData[0].title
+                                      }}
+                                    </span>
+                                  </th>
+                                  <th>
+                                    {{
+                                    document.imageSize
+                                    ? (
+                                    document.imageSize /
+                                    (1024 * 1024)
+                                    ).toFixed(2) + " MB"
+                                    : "7 MB"
+                                    }}
+                                  </th>
+                                  <th class="text-uppercase">
+                                    {{ document.resourceFormat }}
+                                  </th>
+                                  <th>
+                                    <a href="assets/{{
+                                          document.image | htmlToPlaintext
+                                        }}" target="{{ document.image }}">
+                                      <i class="fa fa-download" style="font-weight: 500"></i>
+                                    </a>
+                                  </th>
+                                </ng-container>
+                              </tr>
+                              <!-- Installation Manual  -->
+                              <tr *ngFor="
+                                    let document of filterInstallationManualsData;
+                                    let i = index
+                                  " style="width: 1195px">
+                                <ng-container>
+                                  <th style="width: 1200px">
+                                    <span style="font-size: 16px; color: #000">
+                                      <input (change)="
+                                            onFileSelect($event, document)
+                                          " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                        type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                    </span>
+                                    <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                    <span class="download-item-type ml-2" style="
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                        ">
+                                      {{
+                                      document.resourceSubTypeData[0].title
+                                      }}
+                                    </span>
+                                  </th>
+                                  <th>
+                                    {{
+                                    document.imageSize
+                                    ? (
+                                    document.imageSize /
+                                    (1024 * 1024)
+                                    ).toFixed(2) + " MB"
+                                    : "7 MB"
+                                    }}
+                                  </th>
+                                  <th class="text-uppercase">
+                                    {{ document.resourceFormat }}
+                                  </th>
+                                  <th>
+                                    <a href="assets/{{
+                                          document.image | htmlToPlaintext
+                                        }}" target="{{ document.image }}">
+                                      <i class="fa fa-download" style="font-weight: 500"></i>
+                                    </a>
+                                  </th>
+                                </ng-container>
+                              </tr>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingOneTwo">
+                            <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion_finishes"
+                                href="#collapseOneTwo" aria-expanded="false" aria-controls="collapseOneTwo">
+                                Finishes
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapseOneTwo" class="panel-collapse collapse in" role="tabpanel"
+                            aria-labelledby="headingOneTwo">
+                            <div class="panel-group" id="accordion_finishes" role="tablist"
+                              aria-multiselectable="false">
+                              <!-- Fabrics Data patch start -->
+                              <!-- KOLO Pods Fabrics Data -->
+                              <ng-container *ngIf="paramsValue == 'kolo-pods'">
+                                <tr *ngFor="
+                                      let document of koloPodsFinishesData;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container>
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            text-transform: uppercase;
+                                          ">
+                                        {{ document.fabricsType }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                              </ng-container>
+                              <ng-container *ngIf="
+                                    paramsValue != 'nexus' &&
+                                    paramsValue != 'spark' &&
+                                    paramsValue != 'instill' &&
+                                    paramsValue != 'kolo-pods' &&
+                                    paramsValue != 'dome'
+                                  ">
+                                <tr *ngFor="
+                                      let document of catAData;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container>
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            text-transform: uppercase;
+                                          ">
+                                        {{ document.fabricsType }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                                <tr *ngFor="
+                                      let document of catBData;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container>
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            text-transform: uppercase;
+                                          ">
+                                        {{ document.fabricsType }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                                <tr *ngFor="
+                                      let document of catCData;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container>
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            text-transform: uppercase;
+                                          ">
+                                        {{ document.fabricsType }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                              </ng-container>
+                              <ng-container *ngIf="
+                                    paramsValue == 'spark' ||
+                                    paramsValue == 'instill'
+                                  ">
+                                <tr *ngFor="
+                                      let document of commonDataTest;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container>
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            text-transform: uppercase;
+                                          ">
+                                        {{ document.fabricsType }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                              </ng-container>
+                              <!-- ColorLine And Felts Data -->
+                              <ng-container *ngIf="
+                                    this.Data[0].subcategoriesdata[0]
+                                      .subCategoryName == 'Dome'
+                                  ">
+                                <tr *ngFor="
+                                      let document of colorLineData;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container *ngIf="
+                                        document._id ==
+                                        '648beeed564782d486078c6b'
+                                      ">
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                          ">
+                                        {{
+                                        document.resourceSubTypeData[0]
+                                        .title
+                                        }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                                <tr *ngFor="
+                                      let document of feltsData;
+                                      let i = index
+                                    " style="width: 1195px">
+                                  <ng-container *ngIf="
+                                        document._id ==
+                                        '648bef6c564782d486078c81'
+                                      ">
+                                    <th style="width: 1200px">
+                                      <span style="font-size: 16px; color: #000">
+                                        <input (change)="
+                                              onFileSelect($event, document)
+                                            " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                          type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                      </span>
+                                      <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                      <span class="download-item-type ml-2" style="
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                          ">
+                                        {{
+                                        document.resourceSubTypeData[0]
+                                        .title
+                                        }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                      document.imageSize
+                                      ? (
+                                      document.imageSize /
+                                      (1024 * 1024)
+                                      ).toFixed(2) + " MB"
+                                      : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a href="assets/{{
+                                            document.image | htmlToPlaintext
+                                          }}" target="{{ document.image }}">
+                                        <i class="fa fa-download" style="font-weight: 500"></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr>
+                              </ng-container>
+                              <ng-container *ngIf="
+                                    this.Data[0].subcategoriesdata[0]
+                                      .subCategoryName != 'Dome'
+                                  ">
+                                <ng-container *ngIf="
+                                      this.Data[0].subcategoriesdata[0]
+                                        .subCategoryName != 'Cara' ||
+                                      this.Data[0].subcategoriesdata[0]
+                                        .subCategoryName != 'Plush'
+                                    " else noDisplay>
+                                  <tr *ngFor="
+                                        let document of colorLineData;
+                                        let i = index
+                                      " style="width: 1195px">
+                                    <ng-container>
+                                      <th style="width: 1200px">
+                                        <span style="font-size: 16px; color: #000">
+                                          <input (change)="
+                                                onFileSelect($event, document)
+                                              " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                            type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                        </span>
+                                        <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                        <span class="download-item-type ml-2" style="
+                                              font-size: 14px;
+                                              font-weight: 400;
+                                            ">
+                                          {{
+                                          document.resourceSubTypeData[0]
+                                          .title
+                                          }}
+                                        </span>
+                                      </th>
+                                      <th>
+                                        {{
+                                        document.imageSize
+                                        ? (
+                                        document.imageSize /
+                                        (1024 * 1024)
+                                        ).toFixed(2) + " MB"
+                                        : "7 MB"
+                                        }}
+                                      </th>
+                                      <th class="text-uppercase">
+                                        {{ document.resourceFormat }}
+                                      </th>
+                                      <th>
+                                        <a href="assets/{{
+                                              document.image | htmlToPlaintext
+                                            }}" target="{{ document.image }}">
+                                          <i class="fa fa-download" style="font-weight: 500"></i>
+                                        </a>
+                                      </th>
+                                    </ng-container>
+                                  </tr>
+                                  <tr *ngFor="
+                                        let document of feltsData;
+                                        let i = index
+                                      " style="width: 1195px">
+                                    <ng-container>
+                                      <th style="width: 1200px">
+                                        <span style="font-size: 16px; color: #000">
+                                          <input (change)="
+                                                onFileSelect($event, document)
+                                              " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                            type="checkbox" class="checkbox_design mr-3" value="yes" />
+                                        </span>
+                                        <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                        <span class="download-item-type ml-2" style="
+                                              font-size: 14px;
+                                              font-weight: 400;
+                                            ">
+                                          {{
+                                          document.resourceSubTypeData[0]
+                                          .title
+                                          }}
+                                        </span>
+                                      </th>
+                                      <th>
+                                        {{
+                                        document.imageSize
+                                        ? (
+                                        document.imageSize /
+                                        (1024 * 1024)
+                                        ).toFixed(2) + " MB"
+                                        : "7 MB"
+                                        }}
+                                      </th>
+                                      <th class="text-uppercase">
+                                        {{ document.resourceFormat }}
+                                      </th>
+                                      <th>
+                                        <a href="assets/{{
+                                              document.image | htmlToPlaintext
+                                            }}" target="{{ document.image }}">
+                                          <i class="fa fa-download" style="font-weight: 500"></i>
+                                        </a>
+                                      </th>
+                                    </ng-container>
+                                  </tr>
+                                  <ng-container #noDisplay> </ng-container>
+                                </ng-container>
+                              </ng-container>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingOne2">
+                            <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion_certifications"
+                                href="#collapseOneThree" aria-expanded="false" aria-controls="collapseOneThree">
+                                Certifications
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapseOneThree" class="panel-collapse collapse in" role="tabpanel"
+                            aria-labelledby="headingOne2">
+                            <div class="panel-group" id="accordion_certifications" role="tablist"
+                              aria-multiselectable="false">
+                              <p *ngIf="reportsData.length == 0" class="ml-5">
+                                Get reports in a breeze! Just fill out this
+                                <span data-toggle="modal" data-target="#myModal" style="
+                                      cursor: pointer;
+
+                                      color: #007bff;
+                                    ">
+                                  form</span>
+                                and receive them via email.
+                              </p>
+                              <tr *ngFor="
+                                    let document of reportsData;
+                                    let i = index
+                                  ">
+                                <ng-container>
+                                  <th style="width: 1200px">
+                                    <span style="
+                                          font-size: 16px;
+                                          color: #000;
+                                          margin-right: 10px;
+                                        ">
+                                      <input (change)="
+                                            onFileSelect($event, document)
+                                          " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                        type="checkbox" class="checkbox_design" value="yes" />
+                                    </span>
+                                    <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                    <span class="download-item-type ml-2" style="
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                        ">
+                                      {{
+                                      document.resourceSubTypeData[0].title
+                                      }}
+                                    </span>
+                                  </th>
+                                  <th>
+                                    {{
+                                    document.imageSize
+                                    ? (
+                                    document.imageSize /
+                                    (1024 * 1024)
+                                    ).toFixed(2) + " MB"
+                                    : "7 MB"
+                                    }}
+                                  </th>
+                                  <th class="text-uppercase">
+                                    {{ document.resourceFormat }}
+                                  </th>
+                                  <th>
+                                    <a href="assets/{{
+                                          document.image | htmlToPlaintext
+                                        }}" target="{{ document.image }}">
+                                      <i class="fa fa-download" style="font-weight: 500"></i>
+                                    </a>
+                                  </th>
+                                </ng-container>
+                              </tr>
+
+                              <!-- <tr
+                                  *ngFor="
+                                    let document of certificationsData;
+                                    let i = index
+                                  "
+                                >
+                                  <ng-container>
+                                    <th style="width: 1200px">
+                                      <span
+                                        style="
+                                          font-size: 16px;
+                                          color: #000;
+                                          margin-right: 10px;
+                                        "
+                                      >
+                                        <input
+                                          (change)="
+                                            onFileSelect($event, document)
+                                          "
+                                          id="wp-comment-cookies-consent"
+                                          name="wp-comment-cookies-consent"
+                                          type="checkbox"
+                                          class="checkbox_design"
+                                          value="yes"
+                                        />
+                                      </span>
+                                      <span
+                                        class="truncate"
+                                        style="font-weight: 600"
+                                        >{{ document.title }}</span
+                                      >
+                                      <span
+                                        class="download-item-type ml-2"
+                                        style="
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                        "
+                                      >
+                                        {{
+                                          document.resourceSubTypeData[0].title
+                                        }}
+                                      </span>
+                                    </th>
+                                    <th>
+                                      {{
+                                        document.imageSize
+                                          ? (
+                                              document.imageSize /
+                                              (1024 * 1024)
+                                            ).toFixed(2) + " MB"
+                                          : "7 MB"
+                                      }}
+                                    </th>
+                                    <th class="text-uppercase">
+                                      {{ document.resourceFormat }}
+                                    </th>
+                                    <th>
+                                      <a
+                                        href="assets/{{
+                                          document.image | htmlToPlaintext
+                                        }}"
+                                        target="{{document.image}}"
+                                      >
+                                        <i
+                                          class="fa fa-download"
+                                          style="font-weight: 500"
+                                        ></i>
+                                      </a>
+                                    </th>
+                                  </ng-container>
+                                </tr> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="headingOne2">
+                            <h4 class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion_fabrics"
+                                href="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+                                CAD Files
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel"
+                            aria-labelledby="headingOne2">
+                            <div class="panel-group" id="accordion_fabrics" role="tablist" aria-multiselectable="false">
+                              <tr *ngFor="
+                                    let document of CADFiles;
+                                    let i = index
+                                  ">
+                                <ng-container>
+                                  <th style="width: 1200px">
+                                    <span style="
+                                          font-size: 16px;
+                                          color: #000;
+                                          margin-right: 10px;
+                                        ">
+                                      <input (change)="
+                                            onFileSelect($event, document)
+                                          " id="wp-comment-cookies-consent" name="wp-comment-cookies-consent"
+                                        type="checkbox" class="checkbox_design" value="yes" />
+                                    </span>
+                                    <span class="truncate" style="font-weight: 600">{{ document.title }}</span>
+                                    <span class="download-item-type ml-2" style="
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                        ">
+                                      {{
+                                      document.resourceSubTypeData[0].title
+                                      }}
+                                    </span>
+                                  </th>
+                                  <th style="width: 75px">
+                                    {{
+                                    document.imageSize
+                                    ? (
+                                    document.imageSize /
+                                    (1024 * 1024)
+                                    ).toFixed(2) + " MB"
+                                    : "7 MB"
+                                    }}
+                                  </th>
+                                  <th class="text-uppercase">
+                                    {{ document.resourceFormat }}
+                                  </th>
+                                  <th>
+                                    <a href="assets/{{
+                                          document.image | htmlToPlaintext
+                                        }}" target="{{ document.image }}">
+                                      <i class="fa fa-download" style="font-weight: 500"></i>
+                                    </a>
+                                  </th>
+                                </ng-container>
+                              </tr>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="selectedFiles.length > 1" id="downloadButtonDiv">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="ml-lg-5 mt-2">{{ count }} selected item</p>
+                  </div>
+                  <div class="col-md-6 text-end">
+                    <button *ngIf="selectedFiles.length > 1" class="" style="width: auto" (click)="downloadFiles()">
+                      <i class="fa fa-download" aria-hidden="true"></i>
+                      Download ZIP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="target" #target class="process" style="background: #f9f9f9"
+      *ngIf="Data[0].subcategoriesdata[0].subCategoryName == 'Kolo'">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6" style="background: #f9f9f9 !important">
+            <div class="col-lg-12 px-0 d-flex align-items-center py-5">
+              <div class="col-lg-6">
+                <img src="assets/sub_pro_image/accoustic-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4"
+                  alt="..." />
+                <div class="">
+                  <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
+                    Acoustic Solution
+                  </h5>
+                  <p class="card-text text-left p_all_text_set" style="font-size: 16px">
+                    Made with class-leading soundproofing materials and
+                    structural detailing to mitigate noise.
+                  </p>
+                  <p class="card-text text-left p_all_text_set d-none">
+                    <a href="#" class="set_link">BLOG</a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <img src="assets/sub_pro_image/personal-light-icon.svg"
+                  class="card-img-top card-img-top-width mx-auto mb-4" alt="..." />
+                <div class="">
+                  <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
+                    Personalised Lighting
+                  </h5>
+                  <p class="card-text text-left p_all_text_set" style="font-size: 16px">
+                    Adjustable LED light brightness and temperature with
+                    automatic motion detector.
+                  </p>
+                  <p class="card-text text-left p_all_text_set d-none">
+                    <a href="#" class="set_link">BLOG</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 px-0 d-flex align-items-center mb-5">
+              <div class="col-lg-6">
+                <img src="assets/sub_pro_image/Vents-icon.svg" class="card-img-top card-img-top-width mx-auto mb-4"
+                  alt="..." />
+                <div class="">
+                  <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
+                    Ventilated Space
+                  </h5>
+                  <p class="card-text text-left p_all_text_set" style="font-size: 16px">
+                    Custom-designed airflow vents provide constant natural air
+                    circulation.
+                  </p>
+                  <p class="card-text text-left p_all_text_set d-none">
+                    <a href="#" class="set_link">BLOG</a>
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <img src="assets/sub_pro_image/Charging ports-icon.svg"
+                  class="card-img-top card-img-top-width mx-auto mb-4" alt="..." />
+                <div class="">
+                  <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 22px">
+                    Built-in Charging Station
+                  </h5>
+                  <p class="card-text text-left p_all_text_set" style="font-size: 16px">
+                    User-friendly charging ports placed at table level for
+                    easy access.
+                  </p>
+                  <p class="card-text text-left p_all_text_set d-none">
+                    <a href="#" class="set_link">BLOG</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 px-lg-5 d-flex align-items-center justify-content-center">
+            <img src="assets/sub_pro_image/Untitled design.gif" class="w-100" style="width: 100% !important"
+              alt="..." />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featuredOne" class="process" [style.background-color]="
+          Data[0].subcategoriesdata[0].subCategoryName === 'Kolo'
+            ? '#fbfbfb'
+            : 'white'
+        ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6 px-0 text-center">
+            <img src="assets/{{
+                  this.Data[0].featuredOneImage | htmlToPlaintext
+                }}" class="w-100" style="width: 70% !important" alt="..." />
+          </div>
+          <div class="col-lg-6 px-lg-1 d-flex align-items-center">
+            <div class="card" style="
+                  background-color: transparent !important;
+                  background: transparent !important;
+                ">
+              <img src="assets/{{
+                    this.Data[0].featuredOneImage | htmlToPlaintext
+                  }}" class="card-img-top card-img-top-width mx-auto d-none" alt="..." />
+              <div class="card-body mt-3">
+                <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 30px"
+                  [innerHTML]="this.Data[0].featuredOneTitle"></h5>
+                <p class="card-text text-left p_all_text_set card-featured-desc" style="font-size: 16px"
+                  [innerHTML]="this.Data[0].featuredOneDesc">
+                  <!-- {{ this.Data[0].featuredOneDesc | htmlToPlaintext }} -->
+                </p>
+                <p class="card-text text-left p_all_text_set d-none">
+                  <a href="#" class="set_link">BLOG</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 pl-lg-5 d-flex align-items-center">
+            <div class="card ml-lg-5 ml-md-0" style="
+                  background-color: transparent !important;
+                  background: transparent !important;
+                ">
+              <img src="assets/sub_pro_image/Midi Studio Pod.jpg" class="card-img-top card-img-top-width mx-auto d-none"
+                alt="..." />
+              <div class="card-body mt-3">
+                <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 30px"
+                  [innerHTML]="this.Data[0].featuredTwoTitle"></h5>
+                <p class="card-text text-left p_all_text_set card-featured-desc" style="font-size: 16px"
+                  [innerHTML]="this.Data[0].featuredTwoDesc">
+                  <!-- {{ this.Data[0].featuredTwoDesc | htmlToPlaintext }} -->
+                </p>
+                <p class="card-text text-left p_all_text_set d-none">
+                  <a href="#" class="set_link">BLOG</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 px-0 text-center">
+            <img src="assets/{{
+                  this.Data[0].featuredTwoImage | htmlToPlaintext
+                }}" class="w-100" style="width: 70% !important" alt="..." />
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-lg-6 px-0 text-center">
+            <img src="assets/{{
+                  this.Data[0].featuredThreeImage | htmlToPlaintext
+                }}" class="w-100 replace_iamge" style="width: 70% !important" alt="..." />
+          </div>
+          <div class="col-lg-6 px-lg-1 d-flex align-items-center">
+            <div class="card" style="
+                  background-color: transparent !important;
+                  background: transparent !important;
+                ">
+              <img src="assets/sub_pro_image/Duo Meeting Pod.jpg"
+                class="card-img-top replace_iamge card-img-top-width mx-auto d-none" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title p_all_text_set text-left card_header text-capitalize" style="font-size: 30px"
+                  [innerHTML]="this.Data[0].featuredThreeTitle"></h5>
+                <p class="card-text text-left p_all_text_set mt-3 card-featured-desc" style="font-size: 16px"
+                  [innerHTML]="this.Data[0].featuredThreeDesc">
+                  <!-- {{ this.Data[0].featuredThreeDesc | htmlToPlaintext }} -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="title-page-white text-center w-100">
+          <h2 class="title_set mb-3" style="font-weight: 700">Snapshots</h2>
+
+          <div class="row justify-content-center d-flex">
+            <div class="col-lg-4" *ngFor="let getData of Data[0].snapShots">
+              <div class="card bg-transparent">
+                <img src="assets/{{ this.getData | htmlToPlaintext }}"
+                  class="card-img-top card-img-top-width-snapshot mx-auto rounded-lg" alt="..." style="height: 300px" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="card-text text-center p_all_text_set mt-2" style="font-size: 19px; color: rgba(0, 0, 0, 0.65)">
+        Interested in learning more about our products?
+
+        <a class="link" [routerLink]="['/about-us', 'whoWeAre']" style="
+              border: none;
+              outline: none;
+              background-color: transparent;
+              font-weight: bold;
+              color: #fecc00;
+            ">
+          Connect
+        </a>
+        with our sales rep.
+      </p>
+    </section>
+
+    <section class="process" style="background: #fff7e3ad !important; margin-bottom: -26px">
+      <div class="container">
+        <div class="title-page-white text-center w-100">
+          <div class="row justify-content-between mb-3">
+            <div class="col-md-12">
+              <div class="title-page-white text-center w-100 mb-4">
+                <h2 class="title_set" style="font-weight: 700">
+                  Discover other great choices to complete your space
+                </h2>
+              </div>
+
+              <div id="owl-demo-new" class="owl-carousel owl-theme owl-theme-blog">
+                <div class="item m" *ngFor="let getData of related_product.data">
+                  <!-- <div class="row justify-content-between mt-0"> -->
+                  <!-- <div class="col-lg-12" > -->
+                  <a class="set_link" (click)="
+                        handleFeaturedProduct(
+                          getData._id,
+                          getData.subCategoryName
+                        )
+                      " style="cursor: pointer">
+                    <div class="card">
+                      <div class="image-container text-center">
+                        <img src="assets/{{ getData.images }}" class="card-img-top" alt="..." />
+                        <div class="image-overlay"></div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title p_all_text_set text-left"
+                          style="font-weight: 600 !important; font-size: 18px">
+                          {{ getData.subCategoryName }}
+                        </h5>
+                      </div>
+                      <!-- </div> -->
+                      <!-- </div> -->
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-footer> </app-footer>
+  </body>
+
+  </html>
+</ng-template>

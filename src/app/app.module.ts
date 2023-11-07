@@ -71,6 +71,9 @@ import { CareerNewComponent } from './career-new/career-new.component';
 import { AdminCareersComponent } from './admin-careers/admin-careers.component';
 import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-details/admin-carerrs-job-form-details.component';
 import { CareerFormComponent } from './career-form/career-form.component';
+import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
+import { OutofboxComponent } from './outofbox/outofbox.component';
+
 
 @NgModule({
   declarations: [
@@ -132,6 +135,8 @@ import { CareerFormComponent } from './career-form/career-form.component';
     AdminCareersComponent,
     AdminCarerrsJobFormDetailsComponent,
     CareerFormComponent,
+    AdminChangePasswordComponent,
+    OutofboxComponent
   ],
   imports: [
     BrowserModule,

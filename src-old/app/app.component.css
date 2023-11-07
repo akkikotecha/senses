@@ -1,0 +1,8 @@
+.btnLetsTalk {
+  color: black;
+  border: 2px solid black;
+  font-weight: 600;
+}
+.btnLetsTalk:hover {
+  background-color: #fecc00;
+}

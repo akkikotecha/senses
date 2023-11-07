@@ -1,0 +1,282 @@
+<ng-container *ngIf="isLoading; else normalScreen">
+  <app-loader-products></app-loader-products>
+</ng-container>
+
+<ng-template #normalScreen>
+  <app-header> </app-header>
+
+  <section class="process mobileSetMargin" style="top: 25px; margin-top: 7% ">
+    <div class="container">
+      <div class="row">
+        <div class="title-page-white text-center w-100">
+          <h2 class="title_set hover_effect my-3" style="font-weight: 500">
+            Introduction
+          </h2>
+
+          <p class="p_all_text_set" style="font-size: 19px">
+            Step into our world and discover the inspiration you need to
+            transform your space!<br />
+            Our "Insights" page is your go-to destination for the latest trends,
+            expert insights, and<br />
+            captivating stories in the world of acoustics & furniture design.
+            From stunning design<br />
+            journeys to insightful case studies and interviews with top
+            designers, we have <br />everything you need to unlock the full
+            potential of your commercial space.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process pb-0" id="projectCase" #projectCase>
+    <div id="carouselExampleIndicators_new" class="carousel slide" data-ride="carousel" style="position: relative">
+      <ol class="carousel-indicators"></ol>
+      <div class="carousel-inner">
+        <div class="carousel-item get_text_slider active" data-count_val="1"
+          data-text_h1="From Concept to Reality: A Look at Our Featured Projects"
+          data-p_all_text_set="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
+          data-url="#1">
+          <img class="d-block projectImage" src="assets/Collage.webp" alt="First slide" />
+        </div>
+        <div class="carousel-item get_text_slider" [attr.data-count_val]="i + 2" [attr.data-text_h1]="dataProject.title"
+          [attr.data-id]="dataProject._id" [attr.data-p_all_text_set]="dataProject.short_description"
+          [attr.data-url]="'#' + i + 2" *ngFor="let dataProject of FeaturedProjectdata; let i = index">
+          <img class="d-block projectImage" src="assets/{{ dataProject.image }}" alt="Second slide" />
+        </div>
+      </div>
+      <a class="carousel-control-prev left_right_click" href="#carouselExampleIndicators_new" role="button"
+        data-slide="prev" style="height: 60px">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <span class="p_all_text_set numberIcon" style="
+          position: relative;
+          top: -114px;
+          padding: 15px;
+          left: 5.5%;
+          font-size: 26px;
+          letter-spacing: 11px;
+        "><span class="text_number_change">1</span>/{{ lengthCount + 1 }}</span>
+
+      <a class="carousel-control-next left_right_click" href="#carouselExampleIndicators_new" role="button"
+        data-slide="next" style="height: 60px">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <div class="row col-lg-4 bg-transparent featureSlider p-4">
+        <p class="p_all_text_set h1_text_set projectHeading">
+          From Concept to Reality: A Look at Our Featured Projects
+        </p>
+        <p class="p_all_text_set p_text_set projectPara">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor.
+        </p>
+
+        <p class="p_all_text_set viewProjectProjectsButton">
+          <a class="p_text_button view_project"><button class="">View Project</button></a>
+
+
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="process pt-0 marginSetclientele setmargincalss" id="clientele" #clientele>
+    <div class="container">
+      <div class="row">
+        <div class="title-page-white text-center w-100">
+          <h2 class="title_set hover_effect" style="font-weight: 500">
+            Trusted By Brands
+          </h2>
+
+          <div class="row ml-auto mr-auto mb-4 pt-2 pl-3" style="width: 100%">
+            <div class="col-lg-6 d-none">
+              <p class="p_all_text_set">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+                penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. massa quis enim.
+              </p>
+            </div>
+            <div class="row">
+              <div class="box col-5 col-lg-2 text-center">
+                <a href="https://www.amazon.com" target="_blank">
+                  <img src="assets/logo/Amazon.svg" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.cisco.com" target="_blank">
+                  <img src="assets/logo/Cisco.svg" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.dbs.com" target="_blank">
+                  <img src="assets/logo/DBS.svg" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www2.deloitte.com/" target="_blank">
+                  <img src="assets/logo/Deloitte.svg" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.here.com" target="_blank">
+                  <img src="assets/logo/Here Solutions.svg" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://anatomyit.com/" target="_blank">
+                  <img src="assets/logo/Ice.svg" alt="Owl Image" class="box__image customImage" />
+                </a>
+              </div>
+
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://kpmg.com/xx/en/home.html" target="_blank">
+                  <img class="box__image" src="assets/logo/KPMG.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.sc.com/in/" target="_blank">
+                  <img class="box__image" src="assets/logo/Standard Chartered.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.telstra.com.au" target="_blank">
+                  <img class="box__image" src="assets/logo/Telstra.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.wellsfargo.com/" target="_blank">
+                  <img class="box__image customImage" src="assets/logo/Wells Fargo.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.wework.com/en-GB" target="_blank">
+                  <img class="box__image" src="assets/logo/WeWork.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.wipro.com" target="_blank">
+                  <img class="box__image" src="assets/logo/Wipro.svg" alt="Owl Image" />
+                </a>
+              </div>
+            </div>
+            <div class="row" *ngIf="showDescription">
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.accenture.com/us-en" target="_blank">
+                  <img src="assets/logo/Accenture.webp" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.google.com/" target="_blank">
+                  <img src="assets/logo/Google.webp" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.hcltech.com/" target="_blank">
+                  <img src="assets/logo/HCL.webp" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.icicibank.com/" target="_blank">
+                  <img src="assets/logo/ICICI Bank.webp" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.kotak.com/en/home.html" target="_blank">
+                  <img src="assets/logo/Kotak.webp" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.maersk.com/" target="_blank">
+                  <img src="assets/logo/Maersk.webp" alt="Owl Image" class="box__image" />
+                </a>
+              </div>
+
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.sportingnews.com/in/nba" target="_blank">
+                  <img class="box__image customImage" src="assets/logo/NBA.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.oneplus.in/" target="_blank">
+                  <img class="box__image" src="assets/logo/OnePlus.webp" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.qualcomm.com/" target="_blank">
+                  <img class="box__image" src="assets/logo/Qualcomm.webp" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.slb.com/" target="_blank">
+                  <img class="box__image customImage" src="assets/logo/Schlumberger.svg" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.siemens.com/in" target="_blank">
+                  <img class="box__image" src="assets/logo/Siemens.webp" alt="Owl Image" />
+                </a>
+              </div>
+              <div class="box  col-5 col-lg-2 text-center">
+                <a href="https://www.westerndigital.com/en-in" target="_blank">
+                  <img class="box__image" src="assets/logo/Western Digital.webp" alt="Owl Image" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center w-100" (click)="toggleDescription()">
+      <button class="btn_set_css">
+        {{ showDescription ? "Show Less" : "Show More" }}
+      </button>
+    </div>
+  </section>
+  <section class="process mt-0 mb-0">
+    <div class="container">
+      <div class="row">
+        <div class="title-page-white text-center w-100">
+          <h2 class="title_set hover_effect" style="font-weight: 500" id="blogs" #blogs>
+            Blogs & News
+          </h2>
+
+          <div class="row ml-auto mr-auto mt-5">
+            <div id="owl-demo-new" class="owl-carousel owl-theme owl-theme-blog">
+              <div class="item blogCardShadow" *ngFor="let getData of getAllBlogs.data">
+                <!-- <div class="row justify-content-between mt-0"> -->
+                <!-- <div class="col-lg-12" > -->
+                <a (click)="blog_news_click(getData._id, getData.title)" style="cursor: pointer">
+                  <div class="card">
+                    <img src="assets/{{ getData.image }}" class="card-img-top" alt="..." />
+                    <div class="card-body" style="height: 168px">
+                      <div class="text-container">
+                        <h5 class="card-title p_all_text_set text-left"
+                          style="font-weight: 600 !important; font-size: 18px">
+                          {{ getData.title }}
+                        </h5>
+                      </div>
+                      <p class="card-text mt-2 text-left p_all_text_set" style="font-size: 18px"
+                        [innerHtml]="getData.Description.substr(0, 60) + '...'"></p>
+
+                      <p class="card-text text-left p_all_text_set">
+                        <a class="set_link viewMoreLink" (click)="blog_news_click(getData._id, getData.title)">View
+                          More</a>
+                      </p>
+                    </div>
+                    <!-- </div> -->
+                    <!-- </div> -->
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer> </app-footer>
+</ng-template>

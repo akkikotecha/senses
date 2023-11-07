@@ -1,208 +1,187 @@
-
-
 .process {
-    /* background: #E8741D; */
-     padding-top: 60px;
-     padding-bottom: 80px;
-     margin-top: 20px;
- }
- .title_set
- {
-   font-style: 800!important;
- }
- .hr_draw
- {
-   border: none;
-   color: #FECC00;
-   width: 250px;
-   height: 3px;
- margin-top: 0%;
- 
- }
- .hr_draw_faq
- {
+  /* background: #E8741D; */
+  padding-top: 60px;
+  padding-bottom: 80px;
+  margin-top: 20px;
+}
+.title_set {
+  font-style: 800 !important;
+}
+.hr_draw {
   border: none;
-   color: #FECC00;
-   width: 60px;
-   height: 3px;
- margin-top: 0%;
-  
- }
- .hr_draw_aal_you
- {
+  color: #fecc00;
+  width: 250px;
+  height: 3px;
+  margin-top: 0%;
+}
+.hr_draw_faq {
   border: none;
-  color: #FECC00;
+  color: #fecc00;
+  width: 60px;
+  height: 3px;
+  margin-top: 0%;
+}
+.hr_draw_aal_you {
+  border: none;
+  color: #fecc00;
   width: 270px;
   height: 3px;
-margin-top: 0%;
+  margin-top: 0%;
+}
 
- }
- 
- .p_all_text_set
- {
-   font-size: 19px;
-   font-weight: 400;
-   width: 100%;
- }
- 
- .p_all_text_set_new
- {
+.p_all_text_set {
+  font-size: 19px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.p_all_text_set_new {
   font-size: 16px;
   font-weight: 400;
   width: 100%;
+}
 
- }
- 
- .card
- {
-   border-top-left-radius: 30px;
-   border-top-right-radius: 30px;
-   border: 0px solid rgb(139 139 139 / 7%)!important;
- }
- 
- .card_header
- {
-   font-weight: 500!important;
-   font-size: 38px!important;
-   color:#000;
- }
- .card-text
- {
-   color:#000;
- }
- .search-field {
-    background-color: transparent;
-    background-image: url(../../assets/search_white.png);
-    background-position: 7px  center;
-    background-repeat: no-repeat;
-    background-size: 17px 17px;
-    border: none;
-    cursor: pointer;
-    height: 31px;
-    margin: 2px 0;
-    padding: 0 0 0 34px;
-    position: relative;
-    -webkit-transition: width 400ms ease, background 400ms ease;
-    transition:         width 400ms ease, background 400ms ease;
-    width:1302px!important;
-   cursor: pointer;    margin-right: -10px;
+.card {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border: 0px solid rgb(139 139 139 / 7%) !important;
+}
+
+.card_header {
+  font-weight: 500 !important;
+  font-size: 38px !important;
+  color: #000;
+}
+.card-text {
+  color: #000;
+}
+.search-field {
+  background-color: transparent;
+  background-image: url(../../assets/search_white.png);
+  background-position: 7px center;
+  background-repeat: no-repeat;
+  background-size: 17px 17px;
+  border: none;
+  cursor: pointer;
+  height: 31px;
+  margin: 2px 0;
+  padding: 0 0 0 34px;
+  position: relative;
+  -webkit-transition: width 400ms ease, background 400ms ease;
+  transition: width 400ms ease, background 400ms ease;
+  width: 1302px !important;
+  cursor: pointer;
+  margin-right: -10px;
 }
 
 .search-field {
-    background-image: url(../../assets/search.png)!important;
-    background-position: 7px  center;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-color: #F1F1F1;
-    border: 0.5px solid #E8E4E4;
-    border-radius: 18px;
-    cursor: text;
-    outline: 0;
-    width: 250px;
-  color:#000;
+  background-image: url(../../assets/search.png) !important;
+  background-position: 7px center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-color: #f1f1f1;
+  border: 0.5px solid #e8e4e4;
+  border-radius: 18px;
+  cursor: text;
+  outline: 0;
+  width: 250px;
+  color: #000;
 }
-.search-form
-.search-submit { 
-display:none;
+.search-form .search-submit {
+  display: none;
 }
-.p_side_text
-{
+.p_side_text {
   font-weight: 600;
-font-size: 16px;
+  font-size: 16px;
 }
-.p_side_text
-{
+.p_side_text {
   color: #000;
 }
 
-.accordion-item
-{
-    border:none;
-    border-bottom: 1px solid gainsboro;
+.accordion-item {
+  border: none;
+  border-bottom: 1px solid gainsboro;
 }
 
 .accordion-button:not(.collapsed) {
-    color: #000;
-    background-color: transparent!important;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-    border-bottom: 1px solid gainsboro;
+  color: #000;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
 }
 
 .accordion-button:focus {
-    z-index: 3;
-    background-color: transparent!important;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-    outline: 0;
+  z-index: 3;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  outline: 0;
 }
 
 .accordion-button:not(.collapsed)::after {
-    flex-shrink: 0;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-left: auto;
-    content: "";
-    background-image: url('../../assets/down icon.svg')!important;
-    background-repeat: no-repeat;
-    background-size: 1.25rem;
-    transition: transform .2s ease-in-out;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("../../assets/down icon.svg") !important;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
 }
 
 .accordion-button::after {
-    flex-shrink: 0;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-left: auto;
-    content: "";
-    background-image: url('../../assets/down icon.svg');
-    background-repeat: no-repeat;
-    background-size: 1.25rem;
-    transition: transform .2s ease-in-out;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("../../assets/down icon.svg");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
 }
 
 .accordion-button:not(.collapsed) {
-    color: #000;
-    font-style: normal;
-font-weight: 600;
-font-size: 20px;
-    background-color: transparent!important;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-    border-bottom: 1px solid gainsboro;
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
 }
 
-.accordion-button,.accordion-button:focus {
-    color: #000;
-    font-style: normal;
-font-weight: 600;
-font-size: 20px;
-    background-color: transparent!important;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-    border-bottom: 1px solid gainsboro;
+.accordion-button,
+.accordion-button:focus {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
 }
 
-
-
-.accordion-item-text
-{
-    border:none;
-    border-bottom: 1px solid gainsboro;
-    
+.accordion-item-text {
+  border: none;
+  border-bottom: 1px solid gainsboro;
 }
 .accordion-button-text:not(.collapsed) {
   color: #000;
-  background-color: transparent!important;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-  border-bottom: 0px solid gainsboro!important;
-  padding-left: 0px!important;
-    padding-right: 0px!important;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .accordion-button-text:focus {
   z-index: 3;
-  background-color: transparent!important;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
   outline: 0;
-  padding-left: 0px!important;
-    padding-right: 0px!important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .accordion-button-text:not(.collapsed)::after {
@@ -211,10 +190,10 @@ font-size: 20px;
   height: 1.25rem;
   margin-left: auto;
   content: "";
-  background-image: url('../../assets/minus.svg')!important;
+  background-image: url("../../assets/minus.svg") !important;
   background-repeat: no-repeat;
   background-size: 1.25rem;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .accordion-button-text::after {
@@ -223,34 +202,33 @@ font-size: 20px;
   height: 1.25rem;
   margin-left: auto;
   content: "";
-  background-image: url('../../assets/plus.svg');
+  background-image: url("../../assets/plus.svg");
   background-repeat: no-repeat;
   background-size: 1.25rem;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .accordion-button-text:not(.collapsed) {
   color: #000;
   font-style: normal;
-font-weight: 600;
-font-size: 16px;
-  background-color: transparent!important;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-  border-bottom: 0px solid gainsboro!important;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
 }
 
-.accordion-button-text,.accordion-button-text:focus {
+.accordion-button-text,
+.accordion-button-text:focus {
   color: #000;
   font-style: normal;
-font-weight: 600;
-font-size: 16px;
-  background-color: transparent!important;
-  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%)!important;
-  border-bottom: 0px solid gainsboro!important;
-  padding-left: 0px!important;
-  padding-right: 0px!important;
- 
-  
+  font-weight: 600;
+  font-size: 16px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 /* Scrollbar Styling */
@@ -267,62 +245,54 @@ font-size: 16px;
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #6d6d6d; 
+  background: #6d6d6d;
 }
-.accor_left
-{
+.accor_left {
   text-align: initial;
 }
-.set_title_text
-{
+.set_title_text {
   font-size: 24px;
   font-weight: 400;
 }
-.set_title_text_bold
-{
+.set_title_text_bold {
   font-size: 18px;
   font-weight: 600;
-  
 }
-.set_border_bottom
-{
-  color:#c4c4c4
+.set_border_bottom {
+  color: #c4c4c4;
 }
 
-.left_right_click_new_icon
-{
-  background-image: url('../../assets/right_arrow.svg')!important;
+.left_right_click_new_icon {
+  background-image: url("../../assets/right_arrow.svg") !important;
 
   width: 40px;
   height: 40px;
   background: black;
   opacity: 0.9;
-  top:20px
+  top: 20px;
 }
-.left_right_click_new_icon_left
-{
-  background-image: url('../../assets/right_arrow.svg')!important;
+.left_right_click_new_icon_left {
+  background-image: url("../../assets/right_arrow.svg") !important;
 
   width: 40px;
   height: 40px;
   background: black;
   opacity: 0.9;
-  top:20px;
+  top: 20px;
   transform: rotate(180deg);
 }
 
-.accordion_back
-{
-  background-color: #ECF5F5!important;
-  border: none!important;
+.accordion_back {
+  background-color: #ecf5f5 !important;
+  border: none !important;
   margin-bottom: 10px;
 }
 
-.accordion-button-set.accordion-button-set:not(.collapsed){
-  border-bottom: none!important;
+.accordion-button-set.accordion-button-set:not(.collapsed) {
+  border-bottom: none !important;
 }
 
-.accordion-button-set, .accordion-button-set:focus
-{
-  border-bottom: none!important;
+.accordion-button-set,
+.accordion-button-set:focus {
+  border-bottom: none !important;
 }

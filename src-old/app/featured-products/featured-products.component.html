@@ -1,0 +1,635 @@
+<!-- <div class="page-loader-wrapper">
+    <div class="loader">
+    </div>
+</div> -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Bootstrap Core and vandor -->
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+      .swal2-html-container {
+        white-space: break-spaces !important;
+        font-size: 15px;
+      }
+
+      .brand-name-margin-set {
+        margin-left: 65px !important;
+      }
+      .sidebar_dark.offcanvas-active #header_top {
+        background-color: #004660 !important;
+      }
+      .padding_left_css {
+        padding: 5px 15px 5px 65px !important;
+      }
+      .datepicker {
+        padding-left: 23px !important;
+      }
+      .itemDisplayNone {
+        display: block;
+      }
+
+      .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0, 0, 0, 0.2);
+        margin-left: 5px;
+      }
+
+      .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+      }
+    </style>
+  </head>
+
+  <body class="font-montserrat sidebar_dark">
+    <title>Dashboard</title>
+    <div id="main_content">
+      <app-admin-sidebar></app-admin-sidebar>
+      <div class="page">
+        <app-admin-header></app-admin-header>
+
+        <div id="page_top" class="section-body">
+          <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center">
+              <ul class="nav nav-tabs page-header-tab">
+                <li class="nav-item d-none">
+                  <a
+                    class="nav-link active"
+                    id="Employee-tab"
+                    data-toggle="tab"
+                    href="#Employee-list"
+                    >All</a
+                  >
+                </li>
+                <li class="nav-item d-none">
+                  <a
+                    class="nav-link"
+                    id="Employee-tab"
+                    data-toggle="tab"
+                    href="#Employee-view"
+                    >View</a
+                  >
+                </li>
+                <li class="nav-item d-none">
+                  <a
+                    class="nav-link"
+                    id="Employee-tab"
+                    data-toggle="tab"
+                    href="#Employee-Request"
+                    >Leave Request</a
+                  >
+                </li>
+              </ul>
+              <div class="header-action">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  <i class="fe fe-plus mr-2"></i>Add Featured Product
+                </button>
+              </div>
+            </div>
+            <div class="row d-none">
+              <div class="col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body w_sparkline">
+                    <div class="details">
+                      <span>Total Employee</span>
+                      <h3 class="mb-0 counter">614</h3>
+                    </div>
+                    <div class="w_chart">
+                      <span id="mini-bar-chart1" class="mini-bar-chart"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body w_sparkline">
+                    <div class="details">
+                      <span>New Employee</span>
+                      <h3 class="mb-0 counter">124</h3>
+                    </div>
+                    <div class="w_chart">
+                      <span id="mini-bar-chart2" class="mini-bar-chart"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body w_sparkline">
+                    <div class="details">
+                      <span>Male</span>
+                      <h3 class="mb-0 counter">504</h3>
+                    </div>
+                    <div class="w_chart">
+                      <span id="mini-bar-chart3" class="mini-bar-chart"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="card">
+                  <div class="card-body w_sparkline">
+                    <div class="details">
+                      <span>Female</span>
+                      <h3 class="mb-0 counter">110</h3>
+                    </div>
+                    <div class="w_chart">
+                      <span id="mini-bar-chart4" class="mini-bar-chart"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="container-fluid">
+            <div class="tab-content">
+              <div
+                class="tab-pane fade show active"
+                id="Employee-list"
+                role="tabpanel"
+              >
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Featured Project</h3>
+                    <div class="card-options">
+                      <form>
+                        <div class="input-group d-none">
+                          <input
+                            type="text"
+                            class="form-control form-control-sm"
+                            placeholder="Search something..."
+                            name="s"
+                          />
+                          <span class="input-group-btn ml-2"
+                            ><button class="btn btn-icon btn-sm" type="submit">
+                              <span class="fe fe-search"></span></button
+                          ></span>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <div id="example">
+                        <div id="grid"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="section-body">
+                  <footer class="footer">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-6 col-sm-12">Copyright © 2022.</div>
+                        <div class="col-md-6 col-sm-12 text-md-right d-none">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                              <a href="../doc/index.html">Documentation</a>
+                            </li>
+                            <li class="list-inline-item">
+                              <a href="javascript:void(0)">FAQ</a>
+                            </li>
+                            <li class="list-inline-item">
+                              <a
+                                href="javascript:void(0)"
+                                class="btn btn-outline-primary btn-sm"
+                                >Buy Now</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="editOrgCSR"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModa"
+        aria-hidden="true"
+      >
+        <form
+          method="POST"
+          id="edit_basic-form"
+          class="parsleyjs"
+          data-parsley-priority-enabled="false"
+          (ngSubmit)="submitEditData()"
+        >
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModa">Edit Announcement</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div
+                class="alert alert-{{ edit_color }} alert-dismissable"
+                role="alert"
+                *ngIf="check_valid_data"
+              >
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+                <h6 class="alert-heading font-size-h4 font-w400 mb-0">
+                  {{ edit_successfully_login }}
+                </h6>
+              </div>
+              <div class="modal-body">
+                <div class="row clearfix">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <input
+                        type="hidden"
+                        class="form-control"
+                        name="edit_id"
+                        id="edit_id"
+                        placeholder="Select Date"
+                      />
+
+                      <label>Select Date<span class="text-red">*</span></label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        name="edit_select_date"
+                        id="edit_select_date"
+                        placeholder="Select Date"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-select_date"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-select_date"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label>Title<span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="edit_title"
+                        id="edit_title"
+                        placeholder="Title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-title"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-title"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12">
+                    <a href="" target="_blank"
+                      ><i class="fa fa-pdf-o" style="font-size: 35px"></i
+                    ></a>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label>Upload PDF</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="edit_myFile"
+                        id="edit_myFileData"
+                        accept="application/pdf"
+                        style="padding-left: 0px; border: none"
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-upload_pdf"
+                      ></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary btn-close"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Create Product Details Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <form
+          method="POST"
+          id="add-form"
+          enctype="multipart/form-data"
+          class="parsleyjs"
+          data-parsley-priority-enabled="false"
+          (ngSubmit)="submit()"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header" style="padding-bottom: 0px">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Add Product Detail
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div
+                class="alert alert-{{ color }} alert-dismissable"
+                role="alert"
+                *ngIf="check_valid"
+              >
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+                <h6 class="alert-heading font-size-h4 font-w400 mb-0">
+                  {{ successfully_login }}
+                </h6>
+              </div>
+              <div class="modal-body">
+                <div class="row clearfix">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Image <span class="text-red">*</span></label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="myFile"
+                        id="myFileData"
+                        (change)="featuredThreeImageChange($event)"
+                        style="padding-left: 0px; border: none"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-featureThreeImage"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-featureThreeImage"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Title<span class="text-red">*</span></label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="AddTitle"
+                        id="AddTitle"
+                        placeholder="Title"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-AddTitle"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                      />
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-AddTitle"
+                      ></p>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                      <label
+                        >Select Product <span class="text-red">*</span></label
+                      >
+                      <select
+                        class="form-control sub_category"
+                        name="sub_category"
+                        id="sub_category"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-add-product"
+                        data-parsley-required-message="This field is required"
+                        data-parsley-required
+                        (change)="onChange($event)"
+                      >
+                        <option value="">Select</option>
+                        <option
+                          value="{{ jobData._id }}"
+                          *ngFor="
+                            let jobData of JobsiteData.data;
+                            let i = index
+                          "
+                        >
+                          {{ jobData.subCategoryName }}
+                        </option>
+                      </select>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        id="error-add-add-product"
+                      ></p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description<span class="text-red">*</span></label>
+                      <div
+                        #featureOneDescription
+                        id="featureOneDescription"
+                        contenteditable="true"
+                      ></div>
+                      <p
+                        class="text-danger mb-0 text-left f-12 mt-2"
+                        *ngIf="featuredOneDescValidation"
+                      >
+                        This field is required
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Order Index</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="banner_index"
+                        id="order_index"
+                        placeholder="Order Index"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary btn-close"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Edit Product Detail Modal -->
+    </div>
+
+    <script
+      src="assets/assets/bundles/lib.vendor.bundle.js"
+      loading="lazy"
+    ></script>
+
+    <script
+      src="assets/assets/bundles/apexcharts.bundle.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/bundles/counterup.bundle.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/bundles/knobjs.bundle.js"
+      loading="lazy"
+    ></script>
+    <script src="assets/assets/bundles/c3.bundle.js" loading="lazy"></script>
+
+    <script src="assets/assets/js/core.js" loading="lazy"></script>
+    <script src="assets/assets/js/page/index.js" loading="lazy"></script>
+
+    <script
+      src="assets/assets/plugins/sweetalert/sweetalert.min.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/dropify/js/dropify.min.js"
+      loading="lazy"
+    ></script>
+
+    <script src="assets/assets/js/page/dialogs.js" loading="lazy"></script>
+    <script src="assets/assets/js/form/dropify.js" loading="lazy"></script>
+
+    <script
+      src="assets/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/bootstrap-multiselect/bootstrap-multiselect.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/multi-select/js/jquery.multi-select.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/jquery.maskedinput/jquery.maskedinput.min.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"
+      loading="lazy"
+    ></script>
+    <script
+      src="assets/assets/plugins/dropify/js/dropify.min.js"
+      loading="lazy"
+    ></script>
+    <script src="assets/assets/plugins/parsleyjs/js/parsley.min.js"></script>
+    <script src="assets/assets/bundles/lib.vendor.bundle.js"></script>
+    <script src="assets/assets/js/sweetalert.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script
+      src="assets/assets/js/form/form-advanced.js"
+      loading="lazy"
+    ></script>
+    <script src="assets/assets/js/form/date_picker.js"></script>
+
+    <script>
+      $(document).on("click", ".btn_open_modal", function () {
+        //  itemDisplayNone
+        $(".open_show_popup").toggleClass("itemDisplayNone");
+      });
+
+      var date = new Date();
+      $(".date_picker").datepicker({
+        autoclose: true,
+        format: "dd-mm-yyyy",
+        viewMode: "date",
+        minViewMode: "date",
+        endDate: new Date(),
+      });
+
+      $(".date_picker").focusout(function () {
+        $(".date_of_birth_validation").addClass("d-none");
+        $("#dateAndTime").css("border-color", "#ced4da");
+      });
+    </script>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -16,6 +17,13 @@ export class AdminSidebarComponent {
 
   CarrereJob(): void {
     this.router.navigate(['admin_carrers'])
+    // .then(() => {
+    //   window.location.reload();
+    // });
+
+  }
+  ChangePasswordRoute(): void {
+    this.router.navigate(['admin_change_password'])
     // .then(() => {
     //   window.location.reload();
     // });
@@ -108,6 +116,47 @@ export class AdminSidebarComponent {
   }
   MastersRoute(): void {
     this.router.navigate(['admin_dashboard'])
+    // .then(() => {
+    //   window.location.reload();
+    // });
+
+  }
+  logout(): void {
+
+
+       Swal.fire({
+        title: 'Do you want to Logout?',
+        text: '',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#fd7e14',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+        
+         Swal.fire({
+                title: 'Logout Successfully',
+                text: '',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#fd7e14',
+              });
+
+
+                 setTimeout(() => {
+               
+              this.router.navigate(['/admin_login'])
+      localStorage.removeItem('id');
+              }, 2000);
+
+
+              
+        }
+      });
+    
+    
+    
     // .then(() => {
     //   window.location.reload();
     // });

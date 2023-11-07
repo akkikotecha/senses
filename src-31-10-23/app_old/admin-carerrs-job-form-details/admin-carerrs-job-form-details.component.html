@@ -1,0 +1,400 @@
+<p>admin-careers works!</p>
+<!-- <div class="page-loader-wrapper">
+    <div class="loader">
+    </div>
+</div> -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Bootstrap Core and vandor -->
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+        .swal2-html-container {
+            white-space: break-spaces !important;
+            font-size: 15px;
+        }
+
+        .brand-name-margin-set {
+            margin-left: 65px !important;
+        }
+
+        .sidebar_dark.offcanvas-active #header_top {
+            background-color: #004660 !important;
+        }
+
+        .padding_left_css {
+            padding: 5px 15px 5px 65px !important;
+        }
+
+        .datepicker {
+            padding-left: 23px !important;
+        }
+
+        .itemDisplayNone {
+            display: block;
+        }
+
+        .customer-photo {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-size: 32px 35px;
+            background-position: center center;
+            vertical-align: middle;
+            line-height: 32px;
+            box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-left: 5px;
+        }
+
+        .customer-name {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 32px;
+            padding-left: 3px;
+        }
+    </style>
+</head>
+
+<body class="font-montserrat sidebar_dark">
+    <title>Dashboard</title>
+    <div id="main_content">
+        <app-admin-sidebar></app-admin-sidebar>
+        <div class="page">
+            <app-admin-header></app-admin-header>
+
+            <div id="page_top" class="section-body">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <ul class="nav nav-tabs page-header-tab">
+                            <li class="nav-item d-none">
+                                <a class="nav-link active" id="Employee-tab" data-toggle="tab"
+                                    href="#Employee-list">All</a>
+                            </li>
+                            <li class="nav-item d-none">
+                                <a class="nav-link" id="Employee-tab" data-toggle="tab" href="#Employee-view">View</a>
+                            </li>
+                            <li class="nav-item d-none">
+                                <a class="nav-link" id="Employee-tab" data-toggle="tab" href="#Employee-Request">Leave
+                                    Request</a>
+                            </li>
+                        </ul>
+                        <div class="header-action">
+                            <button type="button" class="btn d-none btn-primary" data-toggle="modal"
+                                data-target="#exampleModal">
+                                <i class="fe fe-plus mr-2"></i>Add Carerrs
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row d-none">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body w_sparkline">
+                                    <div class="details">
+                                        <span>Total Employee</span>
+                                        <h3 class="mb-0 counter">614</h3>
+                                    </div>
+                                    <div class="w_chart">
+                                        <span id="mini-bar-chart1" class="mini-bar-chart"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body w_sparkline">
+                                    <div class="details">
+                                        <span>New Employee</span>
+                                        <h3 class="mb-0 counter">124</h3>
+                                    </div>
+                                    <div class="w_chart">
+                                        <span id="mini-bar-chart2" class="mini-bar-chart"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body w_sparkline">
+                                    <div class="details">
+                                        <span>Male</span>
+                                        <h3 class="mb-0 counter">504</h3>
+                                    </div>
+                                    <div class="w_chart">
+                                        <span id="mini-bar-chart3" class="mini-bar-chart"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body w_sparkline">
+                                    <div class="details">
+                                        <span>Female</span>
+                                        <h3 class="mb-0 counter">110</h3>
+                                    </div>
+                                    <div class="w_chart">
+                                        <span id="mini-bar-chart4" class="mini-bar-chart"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="container-fluid">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="Employee-list" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Careers And Job Form Details</h3>
+                                    <div class="card-options">
+                                        <form>
+                                            <div class="input-group d-none">
+                                                <input type="text" class="form-control form-control-sm"
+                                                    placeholder="Search something..." name="s" />
+                                                <span class="input-group-btn ml-2"><button class="btn btn-icon btn-sm"
+                                                        type="submit">
+                                                        <span class="fe fe-search"></span></button></span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <div id="example">
+                                            <div id="gridDataDetails"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-body">
+                                <footer class="footer">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12">Copyright © 2022.</div>
+                                            <div class="col-md-6 col-sm-12 text-md-right d-none">
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a href="../doc/index.html">Documentation</a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="javascript:void(0)">FAQ</a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="javascript:void(0)"
+                                                            class="btn btn-outline-primary btn-sm">Buy Now</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editOrgCSR" tabindex="-1" role="dialog" aria-labelledby="exampleModa"
+            aria-hidden="true">
+            <form method="POST" id="edit_basic-form" class="parsleyjs" data-parsley-priority-enabled="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModa">Edit Careers</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div>
+                            <!-- <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                ></button> -->
+                            <h6 class="alert-heading font-size-h4 font-w400 mb-0">
+                                <!-- {{ edit_successfully_login }} -->
+                            </h6>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row clearfix">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="hidden" name="edit_id" id="edit_id">
+                                        <label>Update Title <span class="text-red">*</span></label>
+                                        <input type="text" class="form-control" name="addCarrer" id="edit_title"
+                                            placeholder="Careers Title" data-parsley-trigger-after-failure="change"
+                                            data-parsley-required-message="This field is required"
+                                            data-parsley-errors-container="#error-add-product-addCarrer-type"
+                                            data-parsley-required />
+
+                                        <p class="text-danger mb-0 text-left f-12 mt-2"
+                                            id="error-add-product-addCarrer-type"></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Update Description <span class="text-red">*</span></label>
+
+
+                                        <textarea class="form-control" name="description" id="edit_CarrerDescription"
+                                            placeholder="Description" data-parsley-trigger-after-failure="change"
+                                            data-parsley-errors-container="#error-add-addCarrerDescription"
+                                            data-parsley-required></textarea>
+                                        <p class="text-danger mb-0 text-left f-12 mt-2"
+                                            id="error-add-addCarrerDescription"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <form method="POST" id="add-form" enctype="multipart/form-data" class="parsleyjs"
+                data-parsley-priority-enabled="false">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="padding-bottom: 0px">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Add Careers
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                            <h6 class="alert-heading font-size-h4 font-w400 mb-0">
+                                <!-- {{ successfully_login }} -->
+                            </h6>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row clearfix">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Add Title <span class="text-red">*</span></label>
+                                        <input type="text" class="form-control" name="addCarrer" id="title"
+                                            placeholder="Careers Title" data-parsley-trigger-after-failure="change"
+                                            data-parsley-required-message="This field is required"
+                                            data-parsley-errors-container="#error-add-product-addCarrer-type"
+                                            data-parsley-required />
+
+                                        <p class="text-danger mb-0 text-left f-12 mt-2"
+                                            id="error-add-product-addCarrer-type"></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Add Description <span class="text-red">*</span></label>
+                                        <!-- <input
+                        type="file"
+                        class="form-control"
+                        name="myFile"
+                        id="myFileData"
+                  
+                        style="padding-left: 0px; border: none"
+                        data-parsley-trigger-after-failure="change"
+                        data-parsley-errors-container="#error-add-upload_resource_type_image"
+                        data-parsley-required
+                        data-parsley-required-message="This field is required"
+                      /> -->
+                                        <textarea class="form-control" name="description" id="addCarrerDescription"
+                                            placeholder="Description" data-parsley-trigger-after-failure="change"
+                                            data-parsley-errors-container="#error-add-addCarrerDescription"
+                                            data-parsley-required></textarea>
+                                        <p class="text-danger mb-0 text-left f-12 mt-2"
+                                            id="error-add-addCarrerDescription"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/assets/bundles/lib.vendor.bundle.js" loading="lazy"></script>
+
+    <script src="assets/assets/bundles/apexcharts.bundle.js" loading="lazy"></script>
+    <script src="assets/assets/bundles/counterup.bundle.js" loading="lazy"></script>
+    <script src="assets/assets/bundles/knobjs.bundle.js" loading="lazy"></script>
+    <script src="assets/assets/bundles/c3.bundle.js" loading="lazy"></script>
+
+    <script src="assets/assets/js/core.js" loading="lazy"></script>
+    <script src="assets/assets/js/page/index.js" loading="lazy"></script>
+
+    <script src="assets/assets/plugins/sweetalert/sweetalert.min.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/dropify/js/dropify.min.js" loading="lazy"></script>
+
+    <script src="assets/assets/js/page/dialogs.js" loading="lazy"></script>
+    <script src="assets/assets/js/form/dropify.js" loading="lazy"></script>
+
+    <script src="assets/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/bootstrap-multiselect/bootstrap-multiselect.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/multi-select/js/jquery.multi-select.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/jquery.maskedinput/jquery.maskedinput.min.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/dropify/js/dropify.min.js" loading="lazy"></script>
+    <script src="assets/assets/plugins/parsleyjs/js/parsley.min.js"></script>
+    <script src="assets/assets/bundles/lib.vendor.bundle.js"></script>
+    <script src="assets/assets/js/sweetalert.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.3.1109/js/kendo.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="assets/assets/js/form/form-advanced.js" loading="lazy"></script>
+    <script src="assets/assets/js/form/date_picker.js"></script>
+
+    <script>
+        $(document).on("click", ".btn_open_modal", function () {
+            //  itemDisplayNone
+            $(".open_show_popup").toggleClass("itemDisplayNone");
+        });
+
+        var date = new Date();
+        $(".date_picker").datepicker({
+            autoclose: true,
+            format: "dd-mm-yyyy",
+            viewMode: "date",
+            minViewMode: "date",
+            endDate: new Date(),
+        });
+
+        $(".date_picker").focusout(function () {
+            $(".date_of_birth_validation").addClass("d-none");
+            $("#dateAndTime").css("border-color", "#ced4da");
+        });
+    </script>
+</body>
+
+</html>

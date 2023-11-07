@@ -1,0 +1,418 @@
+<ng-container *ngIf="isLoading; else normalScreen">
+  <app-loader-products></app-loader-products>
+</ng-container>
+
+<ng-template #normalScreen>
+  <app-header> </app-header>
+
+  <section class="process resourceHeader">
+    <div class="container mt-4">
+      <div class="row">
+        <div class="title-page-white text-center w-100">
+          <p class="p_all_text_set text-center" style="width: 100%">
+            On this page, you'll find everything you need to know about our
+            products. If you <br />have any questions or need further
+            assistance, please don't hesitate to reach <br />out to us or check
+            out our FAQ section. We're committed to providing you with <br />the
+            best possible experience, so feel free to explore and discover.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" style="margin-top: -31px !important">
+    <div class="container">
+      <div class="title-page-white text-center w-100">
+        <div class="row justify-content-between mt-0">
+          <div class="col-lg-3">
+            <!-- <div class="row d-flex mt-0"> -->
+            <div
+              class="panel panel-default my-3"
+              *ngFor="
+                let document of resourceFilterTypeSubTypeData.data;
+                let i = index
+              "
+            >
+              <div class="panel-heading2" role="tab" [attr.id]="'heading_' + i">
+                <h4 class="panel-title">
+                  <a
+                    role="button"
+                    data-toggle="collapse"
+                    data-parent="#accordion"
+                    [attr.href]="'#collapse_' + i"
+                    [attr.aria-controls]="'collapse_' + i"
+                    [attr.aria-expanded]="false"
+                  >
+                    {{ document.title }}
+                  </a>
+                </h4>
+              </div>
+              <div
+                [attr.id]="'collapse_' + i"
+                class="panel-collapse collapse"
+                role="tabpanel"
+                [attr.aria-labelledby]="'heading_' + i"
+              >
+                <div class="panel-body">
+                  <!-- Your content here -->
+                  <p
+                    class="p_all_text_set_new"
+                    *ngFor="
+                      let subtypeDataFilter of document.resourceSubTypeData
+                    "
+                  >
+                    {{ subtypeDataFilter.title }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+          <div class="col-lg-9">
+            <div class="row justify-content-between mt-3">
+              <div
+                class="col-lg-6"
+                *ngFor="let image of resourceType.data; let i = index"
+              >
+                <!-- http://52.44.128.214/resources_document -->
+                <a
+                  style="cursor: pointer"
+                  (click)="
+                    resourceTypeClick(
+                      image._id,
+                      image.title === 'Images'
+                        ? '/resources-gallery'
+                        : image.title === 'Documents'
+                        ? '/resources-documents'
+                        : image.title === 'Materials'
+                        ? '/resources-materials'
+                        : '/resources-certifications'
+                    )
+                  "
+                >
+                  <div class="card" style="cursor: pointer">
+                    <img
+                      src="assets/{{ image.image | htmlToPlaintext }}"
+                      class="card-img-top"
+                      style="height: 300px"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5
+                        class="card-title p_all_text_set card_header hover_effect"
+                        style="
+                          font-size: 24px !important;
+                          text-transform: capitalize;
+                        "
+                      >
+                        {{ image.title }}
+                      </h5>
+                      <p class="card-text text-left p_all_text_set d-none">
+                        <a href="#" class="set_link">BLOG</a>
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="container">
+      <div class="title-page-white text-center w-100">
+        <p
+          class="card-text text-left p_all_text_set mt-4 mb-4 justify-content-center d-none"
+        >
+          <button
+            class="btn btn-dark"
+            style="
+              background-color: #fecc00;
+              border-color: #fecc00;
+              color: black;
+            "
+          >
+            <span style="font-weight: 600; font-size: 13px">
+              Frequently Asked Question
+            </span>
+          </button>
+        </p>
+        <h2 class="title_set hover_effect" style="font-weight: 700">FAQs</h2>
+      </div>
+      <div class="row col-lg-12 ml-0 d-flex mt-4 d-flex justify-content-center">
+        <div class="col-lg-10 resourceFAQ">
+          <div class="panel panel-default my-2">
+            <div class="panel-heading" role="tab" id="headingOne2">
+              <h4 class="panel-title">
+                <a
+                  role="button"
+                  data-toggle="collapse"
+                  data-parent="#accordion_fabrics"
+                  href="#collapseOne2"
+                  aria-expanded="false"
+                  aria-controls="collapseOne2"
+                >
+                  Images
+                </a>
+              </h4>
+            </div>
+            <div
+              id="collapseOne2"
+              class="panel-collapse collapse in"
+              role="tabpanel"
+              aria-labelledby="headingOne2"
+            >
+              <div
+                class="panel-group"
+                id="accordion_fabrics"
+                role="tablist"
+                aria-multiselectable="false"
+              >
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    1. Can I download product and project images?
+                  </p>
+
+                  <p class="pl-4">
+                    You can download high-resolution images and project case
+                    studies in PDF format from our website.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    2. Can I use and share the images commercially?
+                  </p>
+
+                  <p class="pl-4">
+                    Unauthorized commercial use of our property is strictly
+                    prohibited. For more information, read our Terms of Use
+                    Policy.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    3. The color of the actual product I received is different
+                    from that shown in the images, why is it so?
+                  </p>
+
+                  <p class="pl-4 mb-0 pb-3">
+                    Please be aware that the PDF color shades can appear
+                    different from the real fabric colors. We advise you to
+                    request actual fabric samples before ordering.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default my-2">
+            <div class="panel-heading" role="tab" id="headingOne2">
+              <h4 class="panel-title">
+                <a
+                  role="button"
+                  data-toggle="collapse"
+                  data-parent="#accordion_fabrics"
+                  href="#collapseOne21"
+                  aria-expanded="false"
+                  aria-controls="collapseOne21"
+                >
+                  Documents
+                </a>
+              </h4>
+            </div>
+            <div
+              id="collapseOne21"
+              class="panel-collapse collapse in"
+              role="tabpanel"
+              aria-labelledby="headingOne21"
+            >
+              <div
+                class="panel-group"
+                id="accordion_fabrics"
+                role="tablist"
+                aria-multiselectable="false"
+              >
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    1. Can I download brochures, specification sheets and
+                    assembly guidelines?
+                  </p>
+
+                  <p class="pl-4">
+                    The Downloads Section is exclusively available for your
+                    convenience.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    2. Can I order products of different dimensions than that
+                    mentioned in the Specification Sheet?
+                  </p>
+
+                  <p class="pl-4">
+                    Customizations are not available unless specified on the
+                    product specification sheet.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    3. Can you provide a video for product assembly guidelines?
+                  </p>
+
+                  <p class="pl-4">
+                    While we don't offer video assembly services currently, we
+                    provide detailed and user-friendly installation manuals that
+                    make the process easy to follow.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    4. I am having some doubts regarding the dimensions of the
+                    product, whom should I contact?
+                  </p>
+
+                  <p class="pl-4 mb-0 pb-3">
+                    To discuss your exact requirements and address any specific
+                    inquiries, we recommend reaching out to our Sales Rep or
+                    Dealer in your location.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default my-2">
+            <div class="panel-heading" role="tab" id="headingOne2">
+              <h4 class="panel-title">
+                <a
+                  role="button"
+                  data-toggle="collapse"
+                  data-parent="#accordion_fabrics"
+                  href="#collapseOne212"
+                  aria-expanded="false"
+                  aria-controls="collapseOne212"
+                >
+                  Materials
+                </a>
+              </h4>
+            </div>
+            <div
+              id="collapseOne212"
+              class="panel-collapse collapse in"
+              role="tabpanel"
+              aria-labelledby="headingOne212"
+            >
+              <div
+                class="panel-group"
+                id="accordion_fabrics"
+                role="tablist"
+                aria-multiselectable="false"
+              >
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    1. Can I order products other than the color mentioned in
+                    swatch cards?
+                  </p>
+
+                  <p class="pl-4">
+                    While we strive to provide a wide range of color options, we
+                    cannot guarantee an exact match to specific expectations.
+                    However, we will do our best to find a color that closely
+                    aligns with your preferences from our extensive colorway
+                    options.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    2. Why is there color variation in the swatch cards and the
+                    actual product?
+                  </p>
+
+                  <p class="pl-4">
+                    Colors may appear slightly different in photos than in
+                    reality due to monitor variations.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    3. Can I download CAD files?
+                  </p>
+
+                  <p class="pl-4 mb-0 pb-3">
+                    Feel free to access and download the available 2D drawing
+                    files from our website.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default my-2">
+            <div class="panel-heading" role="tab" id="headingOne2">
+              <h4 class="panel-title">
+                <a
+                  role="button"
+                  data-toggle="collapse"
+                  data-parent="#accordion_fabrics"
+                  href="#collapseOne2122"
+                  aria-expanded="false"
+                  aria-controls="collapseOne2122"
+                >
+                  Certifications
+                </a>
+              </h4>
+            </div>
+            <div
+              id="collapseOne2122"
+              class="panel-collapse collapse in"
+              role="tabpanel"
+              aria-labelledby="headingOne2122"
+            >
+              <div
+                class="panel-group"
+                id="accordion_fabrics"
+                role="tablist"
+                aria-multiselectable="false"
+              >
+                <div class="col-lg-12 mt-0 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    1. What is the authenticity of certificates and awards?
+                  </p>
+
+                  <p class="pl-4">
+                    Our products are certified and awarded by renowned
+                    organizations. For more information on the certifications we
+                    hold, please visit our website.
+                  </p>
+                </div>
+
+                <div class="col-lg-12 mt-4 pl-4">
+                  <p style="font-size: 18px; font-weight: 600">
+                    2. Are the test reports validated by a Third party or valid
+                    institution?
+                  </p>
+
+                  <p class="pl-4 mb-0 pb-3">
+                    Rest assured, our test reports undergo rigorous validation
+                    by esteemed institutions, ensuring their accuracy and
+                    reliability.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-footer> </app-footer>
+</ng-template>

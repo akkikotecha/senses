@@ -1,0 +1,109 @@
+<app-header> </app-header>
+
+<section class="process" style="margin-top: 80px">
+  <div class="container">
+    <div class="row">
+      <div class="title-page-white text-left w-100">
+        <h2 class="title_set" style="font-weight: 700">Job Openings</h2>
+        <div class="col-lg-12 text-left mb-4 pl-0">
+          <hr class="hr_draw" />
+        </div>
+        <div class="row">
+          <div class="title-page-white text-center w-100">
+            <div class="row col-lg-12 justify-content-between mt-4 d-flex">
+              <div class="col-lg-4 pl-5 pr-5">
+                <div class="accordion" id="accordionExampleNew">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Location
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExampleNew">
+                      <div class="accordion-body p_all_text_set">Lorem</div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Expertise
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExampleNew">
+                      <div class="accordion-body p_all_text_set">Lorem</div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Keywords
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExampleNew">
+                      <div class="accordion-body p_all_text_set">Lorem</div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="col-lg-8">
+                <ng-container *ngIf="jsonData && jsonData.length > 0; else noJobsMessage">
+                  <div class="accordion" id="accordionExample">
+                    <div *ngFor="let item of jsonData; let i = index" class="accordion-item accordion-item-border">
+                      <h2 class="accordion-header" [id]="'headingSet' + i">
+                        <button class="accordion-button acc_button collapsed" type="button"
+                          [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapseSet' + i"
+                          [attr.aria-expanded]="false" [attr.aria-controls]="'collapseSet' + i">
+                          {{ item.title }}
+                        </button>
+
+
+                        <p class="small_font_set"> <a class="apply-btn" [routerLink]="['/careerForm', item._id]" style="font-weight: 600;
+                          font-size: 16px;
+                          line-height: 19px;
+                          /* identical to box height */
+                          
+  ">Apply Now</a></p>
+                        <!-- <p class="small_font_set">{{ item.createdAt }}</p> -->
+                      </h2>
+                      <div [id]="'collapseSet' + i" class="accordion-collapse collapse"
+                        [attr.aria-labelledby]="'headingSet' + i" data-bs-parent="#accordionExample">
+                        <div class="accordion-body p_all_text_set">{{ item.description }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+
+              <div class="col-lg-4">&nbsp;</div>
+
+              <div class="col-lg-8">
+                <ng-template #noJobsMessage>
+                  <div class="" style="
+                      width: 100%;
+                      border: 1px solid gainsboro !important;
+                      padding-top: 10%;
+                      padding-bottom: 10%;
+                      font-size: 20px;
+                      font-weight: 600;
+                    ">
+                    We don't have any job openings at the moment.
+                  </div>
+                </ng-template>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer> </app-footer>

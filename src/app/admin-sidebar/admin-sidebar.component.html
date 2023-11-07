@@ -503,6 +503,7 @@
             <ul class="sub-menu">
               <li class="active"><a (click)="ProjectsRoute()" class="cursor-pointer font-weith-submenu"><i
                     class="fa-solid fa-folder-plus me-2"></i><span>Add Project</span></a></li>
+
               <li class="active"><a (click)="BlogsRoute()" class="cursor-pointer font-weith-submenu"><i
                     class="fa-solid fa-circle-plus me-2"></i><span> Add Blog</span></a></li>
               <!-- <li><a (click)="AddResourceRoute()" class="cursor-pointer"><span>Add Resource</span></a></li> -->
@@ -538,6 +539,19 @@
 
 
             </ul>
+          </li>
+          <li class="active">
+            <a href="javascript:void(0)" class="has-arrow arrow-c cursor-pointer "><i
+                class="fa-solid fa-file-pen me-2"></i><span>Password</span></a>
+            <ul class="sub-menu">
+              <li class="active"><a (click)="ChangePasswordRoute()" class="cursor-pointer font-weith-submenu "><i
+                    class="fa-solid fa-unlock-keyhole me-2"></i><span>Change Password</span></a></li>
+
+            </ul>
+          </li>
+          <li class="active">
+            <a href="javascript:void(0)" (click)="logout()" class="has-arrow arrow-c cursor-pointer "><i class="fa-solid fa-right-from-bracket me-2"></i><span>Logout</span></a>
+             
           </li>
 
           <!-- <li>

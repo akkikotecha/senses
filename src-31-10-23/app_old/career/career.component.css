@@ -1,0 +1,565 @@
+.process {
+  /* background: #E8741D; */
+  padding-top: 60px;
+  padding-bottom: 80px;
+  margin-top: 20px;
+}
+.title_set {
+  font-style: 800 !important;
+  font-size: 40px;
+}
+.hr_draw {
+  border: none;
+  color: #fecc00;
+  width: 284px;
+  height: 3px;
+  margin-top: 0%;
+}
+
+.p_all_text_set {
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.accordion-item {
+  border: none;
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #000;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  outline: 0;
+}
+
+.accordion-button:not(.collapsed)::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  display: none;
+  /* background-image: url("../../assets/down icon.svg") !important; */
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  display: none;
+  /* background-image: url("../../assets/down icon.svg"); */
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+}
+
+.accordion-button,
+.accordion-button:focus {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+}
+
+.small_font_set {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  padding: 0rem 1.25rem;
+  cursor: pointer;
+}
+
+.accordion-item-border {
+  border: 1px solid gainsboro !important;
+  margin-bottom: 15px;
+}
+.acc_button::after {
+  top: 40px;
+  position: relative;
+}
+
+.apply-btn {
+  display: block;
+  background: transparent;
+  border: 2px solid #000;
+  color: #000;
+  text-align: center;
+  padding: 13px 11px !important;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  width: 17%;
+}
+
+.apply-btn:hover {
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #fff;
+  border-color: #fecc00;
+  background-color: #fecc00;
+}
+
+/* Adding new css  below*/
+
+.process {
+  /* background: #E8741D; */
+  padding-top: 30px;
+  padding-bottom: 40px;
+  /* margin-top: 20px; */
+}
+.title_set {
+  font-style: 800 !important;
+}
+.hr_draw {
+  border: none;
+  color: #fecc00;
+  width: 250px;
+  height: 3px;
+  margin-top: 0%;
+}
+.hr_draw_faq {
+  border: none;
+  color: #fecc00;
+  width: 60px;
+  height: 3px;
+  margin-top: 0%;
+}
+.hr_draw_aal_you {
+  border: none;
+  color: #fecc00;
+  width: 270px;
+  height: 3px;
+  margin-top: 0%;
+}
+
+.p_all_text_set {
+  font-size: 19px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.p_all_text_set_new {
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.card {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border: 0px solid rgb(139 139 139 / 7%) !important;
+}
+.card:hover {
+  border: none !important;
+}
+
+.card_header {
+  font-weight: 500 !important;
+  font-size: 38px !important;
+  color: #000;
+}
+.card-text {
+  color: #000;
+}
+.search-field {
+  background-color: transparent;
+  background-image: url(../../assets/search_white.png);
+  background-position: 7px center;
+  background-repeat: no-repeat;
+  background-size: 17px 17px;
+  border: none;
+  cursor: pointer;
+  height: 31px;
+  margin: 2px 0;
+  padding: 0 0 0 34px;
+  position: relative;
+  -webkit-transition: width 400ms ease, background 400ms ease;
+  transition: width 400ms ease, background 400ms ease;
+  width: 1302px !important;
+  cursor: pointer;
+  margin-right: -10px;
+}
+
+.search-field {
+  background-image: url(../../assets/search.png) !important;
+  background-position: 7px center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-color: #f1f1f1;
+  border: 0.5px solid #e8e4e4;
+  border-radius: 18px;
+  cursor: text;
+  outline: 0;
+  width: 250px;
+  color: #000;
+}
+.search-form .search-submit {
+  display: none;
+}
+.p_side_text {
+  font-weight: 600;
+  font-size: 16px;
+}
+.p_side_text {
+  color: #000;
+}
+
+.accordion-item {
+  border: none;
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #000;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  outline: 0;
+}
+
+.accordion-button:not(.collapsed)::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  display: none;
+  /* background-image: url("../../assets/down icon.svg") !important; */
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  display: none;
+  /* background-image: url("../../assets/down icon.svg"); */
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-button,
+.accordion-button:focus {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 1px solid gainsboro;
+}
+
+.accordion-item-text {
+  border: none;
+  border-bottom: 1px solid gainsboro;
+}
+.accordion-button-text:not(.collapsed) {
+  color: #000;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.accordion-button-text:focus {
+  z-index: 3;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  outline: 0;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.accordion-button-text:not(.collapsed)::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("../../assets/minus.svg") !important;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button-text::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: auto;
+  content: "";
+  background-image: url("../../assets/plus.svg");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button-text:not(.collapsed) {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+}
+
+.accordion-button-text,
+.accordion-button-text:focus {
+  color: #000;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+  border-bottom: 0px solid gainsboro !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
+}
+.accor_left {
+  text-align: initial;
+}
+.set_title_text {
+  font-size: 24px;
+  font-weight: 400;
+}
+.set_title_text_bold {
+  font-size: 18px;
+  font-weight: 600;
+}
+.set_border_bottom {
+  color: #c4c4c4;
+}
+
+.left_right_click_new_icon {
+  background-image: url("../../assets/right_arrow.svg") !important;
+
+  width: 40px;
+  height: 40px;
+  background: black;
+  opacity: 0.9;
+  top: 20px;
+}
+.left_right_click_new_icon_left {
+  background-image: url("../../assets/right_arrow.svg") !important;
+
+  width: 40px;
+  height: 40px;
+  background: black;
+  opacity: 0.9;
+  top: 20px;
+  transform: rotate(180deg);
+}
+
+.accordion_back {
+  /* background-color: #ecf5f5 !important; */
+  border: none !important;
+  margin-bottom: 10px;
+}
+
+.accordion-button-set.accordion-button-set:not(.collapsed) {
+  border-bottom: none !important;
+}
+
+.accordion-button-set,
+.accordion-button-set:focus {
+  border-bottom: none !important;
+}
+
+.set_link:hover {
+  border: 0px !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.resourceHeader {
+  margin-top: 7%;
+}
+
+@media only screen and (max-width: 600px) {
+  .process {
+    /* background: #E8741D; */
+    padding-top: 30px;
+    padding-bottom: 40px;
+    /* margin-top: 20px; */
+  }
+  .resourceFAQ {
+    padding: 0;
+  }
+}
+.panel-default {
+  text-align: left;
+}
+.panel-default > .panel-heading {
+  color: #333;
+  /* background-color: #ecf5f5; */
+  border-color: #e4e5e7;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.panel-default > .panel-heading a,
+.panel-default > .panel-heading2 a {
+  display: block;
+  /* background-color: #ecf5f5; */
+  color: #000000;
+  padding: 10px 15px;
+}
+.panel-default > .panel-heading a:hover,
+.panel-default > .panel-heading2 a:hover {
+  color: #000000;
+}
+
+.panel-default > .panel-heading a:after {
+  content: "";
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  float: right;
+  transition: transform 0.25s linear;
+  -webkit-transition: -webkit-transform 0.25s linear;
+}
+
+.panel-default > .panel-heading a[aria-expanded="true"] {
+  /* background-color: #ecf5f5; */
+  /* color: #fecc00; */
+}
+.panel-default > .panel-heading2 a[aria-expanded="true"]:after {
+  content: "\2212";
+  right: 0;
+  right: 30px;
+  position: absolute;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.panel-default > .panel-heading2 a[aria-expanded="false"]:after {
+  content: "\002b";
+  right: 30px;
+  position: absolute;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.panel-default > .panel-heading a[aria-expanded="true"]:after {
+  content: "\2304"; /* Font Awesome icon for arrow-up */
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+
+  top: 10px;
+  font-size: 30px;
+  /* color: #808080; */
+}
+
+.panel-default > .panel-heading a[aria-expanded="false"]:after {
+  content: "\2304"; /* Font Awesome icon for arrow-down */
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+
+  top: -10px;
+  font-size: 30px;
+  color: #808080;
+}
+
+.panel-default > .panel-heading-two a[aria-expanded="true"]:after {
+  content: "\2304"; /* Font Awesome icon for arrow-up */
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+
+  top: -65px;
+  font-size: 30px;
+  /* color: #808080; */
+}
+
+.panel-default > .panel-heading-two a[aria-expanded="false"]:after {
+  content: "\2304"; /* Font Awesome icon for arrow-down */
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+
+  top: -86px !important;
+  font-size: 30px;
+  color: #808080;
+}
+.button-sub-data {
+  cursor: pointer;
+}

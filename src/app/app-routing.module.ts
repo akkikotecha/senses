@@ -46,11 +46,25 @@ import { CareerNewComponent } from './career-new/career-new.component';
 import { AdminCareersComponent } from './admin-careers/admin-careers.component';
 import { AdminCarerrsJobFormDetailsComponent } from './admin-carerrs-job-form-details/admin-carerrs-job-form-details.component';
 import { CareerFormComponent } from './career-form/career-form.component';
+import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
+import { OutofboxComponent } from './outofbox/outofbox.component';
+
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'mailer/outofbox',
+    component: OutofboxComponent,
+    runGuardsAndResolvers: 'always',
+  },
+
+  {
+    path: 'admin_change_password',
+    component: AdminChangePasswordComponent,
     runGuardsAndResolvers: 'always',
   },
   {
@@ -307,4 +321,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
